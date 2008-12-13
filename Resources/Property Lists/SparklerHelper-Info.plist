@@ -19,9 +19,9 @@
 	<key>CFBundleSignature</key>
 	<string>ZERO</string>
 	<key>CFBundleVersion</key>
-	<string>0.1</string>
+	<string>100.00</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>1.0.0d</string>
 	<key>NSMainNibFile</key>
 	<string>SparklerHelper</string>
 	<key>NSPrincipalClass</key>

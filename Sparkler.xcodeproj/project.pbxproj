@@ -494,8 +494,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sparkler.pch;
 				INFOPLIST_FILE = "Resources/Property Lists/SparklerHelper-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = "@executable_path/../Resources";
 				PRODUCT_NAME = SparklerHelper;
+				VERSION_INFO_FILE = "";
 			};
 			name = Development;
 		};
@@ -508,8 +509,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sparkler.pch;
 				INFOPLIST_FILE = "Resources/Property Lists/SparklerHelper-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = "@executable_path/../Resources";
 				PRODUCT_NAME = SparklerHelper;
+				VERSION_INFO_FILE = "";
 			};
 			name = Release;
 		};
@@ -527,6 +529,7 @@
 				INFOPLIST_FILE = "Resources/Property Lists/Sparkler-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Sparkler;
+				VERSION_INFO_FILE = "";
 			};
 			name = Development;
 		};
@@ -541,6 +544,7 @@
 				INFOPLIST_FILE = "Resources/Property Lists/Sparkler-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Sparkler;
+				VERSION_INFO_FILE = "";
 			};
 			name = Release;
 		};

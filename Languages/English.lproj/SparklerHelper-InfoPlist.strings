@@ -1,1 +1,3 @@
 /* Localized versions of SparklerHelper-Info.plist keys. */
+
+NSHumanReadableCopyright = "Sparkler © 2008 Divisible by Zero";
