@@ -29,32 +29,12 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerPreferencePaneProtocol.h"
+#import "SparklerPreferencePane.h"
 
-@interface SparklerGeneralPreferencePane : NSObject<SparklerPreferencePaneProtocol> {
-    IBOutlet NSView *myView;
+@interface SparklerGeneralPreferencePane : SparklerPreferencePane {
+    
 }
 
-+ (id<SparklerPreferencePaneProtocol>)preferencePane;
-
-#pragma mark -
-
 - (void)preferencePaneDidLoad;
-
-#pragma mark -
-
-- (NSView *)view;
-
-#pragma mark -
-
-- (NSString *)name;
-
-#pragma mark -
-
-- (NSImage *)icon;
-
-#pragma mark -
-
-- (NSString *)toolTip;
 
 @end

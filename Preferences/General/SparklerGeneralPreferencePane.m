@@ -29,49 +29,13 @@
 // 
 
 #import "SparklerGeneralPreferencePane.h"
-#import "SparklerPreferencePaneProtocol.h"
 #import "SparklerUtilities.h"
 
 @implementation SparklerGeneralPreferencePane
 
-+ (id<SparklerPreferencePaneProtocol>)preferencePane {
-    return [[[SparklerGeneralPreferencePane alloc] init] autorelease];
-}
-
-#pragma mark -
-
 - (void)preferencePaneDidLoad {
-    NSLog(@"The general preference pane was loaded by the preference pane manager.");
-    
-    if (![NSBundle loadNibNamed: @"SparklerGeneralPreferences" owner: self]) {
-        NSLog(@"Failed loading the general preferences NIB file.");
-    }
-}
-
-#pragma mark -
-
-- (NSView *)view {
-    return myView;
-}
-
-#pragma mark -
-
-- (NSString *)name {
-    return @"General";
-}
-
-#pragma mark -
-
-- (NSImage *)icon {
-    NSString *path = [[SparklerUtilities sparklerBundle] pathForImageResource: @"General Preferences"];
-    
-    return [[[NSImage alloc] initWithContentsOfFile: path] autorelease];
-}
-
-#pragma mark -
-
-- (NSString *)toolTip {
-    return nil;
+    [self setName: @"General"];
+    [self setIcon: [SparklerUtilities imageFromBundledImageResource: @"General Preferences"]];
 }
 
 @end

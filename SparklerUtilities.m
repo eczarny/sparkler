@@ -73,6 +73,12 @@
 
 #pragma mark -
 
++ (void)registerDefaults {
+    [[NSUserDefaults standardUserDefaults] registerDefaults: [SparklerUtilities existingSparklerDefaults]];
+}
+
+#pragma mark -
+
 + (NSString *)applicationSupportPath {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *applicationSupportPath = SparklerApplicationSupportPath;
@@ -102,8 +108,11 @@
 
 #pragma mark -
 
-+ (void)registerDefaults {
-    [[NSUserDefaults standardUserDefaults] registerDefaults: [SparklerUtilities existingSparklerDefaults]];
++ (NSImage *)imageFromBundledImageResource: (NSString *)imageResource {
+    NSString *path = [[SparklerUtilities sparklerBundle] pathForImageResource: imageResource];
+    NSImage *image = [[[NSImage alloc] initWithContentsOfFile: path] autorelease];
+    
+    return image;
 }
 
 @end

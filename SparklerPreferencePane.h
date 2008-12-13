@@ -22,29 +22,43 @@
 
 // 
 // Sparkler
-// SparklerPreferencePaneProtocol.h
+// SparklerPreferencePane.h
 // 
-// Created by Eric Czarny on Friday, December 12, 2008.
+// Created by Eric Czarny on Saturday, December 13, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
+#import "SparklerPreferencePaneProtocol.h"
 
-@protocol SparklerPreferencePaneProtocol
+@interface SparklerPreferencePane : NSObject<SparklerPreferencePaneProtocol> {
+    NSString *myName;
+    NSImage *myIcon;
+    NSString *myToolTip;
+    IBOutlet NSView *myView;
+}
 
 - (void)preferencePaneDidLoad;
+
+- (void)viewDidLoad;
 
 #pragma mark -
 
 - (NSString *)name;
 
+- (void)setName: (NSString *)name;
+
 #pragma mark -
 
 - (NSImage *)icon;
 
+- (void)setIcon: (NSImage *)icon;
+
 #pragma mark -
 
 - (NSString *)toolTip;
+
+- (void)setToolTip: (NSString *)toolTip;
 
 #pragma mark -
 

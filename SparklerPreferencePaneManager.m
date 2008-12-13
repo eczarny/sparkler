@@ -30,6 +30,7 @@
 
 #import "SparklerPreferencePaneManager.h"
 #import "SparklerPreferencePaneProtocol.h"
+#import "SparklerPreferencePane.h"
 #import "SparklerUtilities.h"
 
 @implementation SparklerPreferencePaneManager
@@ -72,12 +73,14 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
             Class preferencePaneClass = [sparklerBundle classNamed: preferencePaneClassName];
             
             if (preferencePaneClass) {
-                id<SparklerPreferencePaneProtocol> preferencePane = [preferencePaneClass preferencePane];
+                SparklerPreferencePane *preferencePane = [[preferencePaneClass alloc] init];
                 
                 if (preferencePane) {
                     [preferencePane preferencePaneDidLoad];
                     
                     [myPreferencePanes setObject: preferencePane forKey: preferencePaneName];
+                    
+                    [preferencePane release];
                 } else {
                     NSLog(@"Failed initializing preference pane named: %@", preferencePaneName);
                 }

@@ -44,6 +44,7 @@
 #define SparklerHelperNibName                            @"SparklerHelper"
 #define SparklerPreferencesNibName                       @"SparklerPreferences"
 #define SparklerGeneralPreferencesNibName                @"SparklerGeneralPreferences"
+#define SparklerPreferencePaneNibNameEnding              @"PreferencePane"
 
 #pragma mark -
 

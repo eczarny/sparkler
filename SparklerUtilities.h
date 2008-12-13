@@ -40,6 +40,10 @@
 
 #pragma mark -
 
++ (void)registerDefaults;
+
+#pragma mark -
+
 + (NSString *)applicationSupportPath;
 
 #pragma mark -
@@ -50,6 +54,6 @@
 
 #pragma mark -
 
-+ (void)registerDefaults;
++ (NSImage *)imageFromBundledImageResource: (NSString *)imageResource;
 
 @end
