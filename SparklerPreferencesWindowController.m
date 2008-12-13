@@ -21,18 +21,6 @@
 // 
 
 // 
-// Copyright (c) 2003 Matt Gemmell
-// 
-// License Agreement for Source Code provided by Matt Gemmell
-// 
-// This  software  is  supplied to you by Matt Gemmell in consideration of your
-// agreement  to  the following terms, and your use, installation, modification
-// or redistribution of this software constitutes acceptance of these terms. If
-// you  do  not  agree  with these terms, please do not use, install, modify or
-// redistribute this software.
-// 
-
-// 
 // Sparkler
 // SparklerPreferencesWindowController.m
 // 
