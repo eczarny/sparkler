@@ -37,6 +37,7 @@
 @interface SparklerApplicationsPreferencePane : SparklerPreferencePane<SparklerApplicationScannerDelegate> {
     SparklerApplicationsDataSource *myListOfApplicationsDataSource;
     IBOutlet NSTableView *myListOfApplicationsTableView;
+    IBOutlet NSButton *myRefreshListOfApplicationsButton;
     IBOutlet NSProgressIndicator *myListOfApplicationsProgressIndicator;
 }
 

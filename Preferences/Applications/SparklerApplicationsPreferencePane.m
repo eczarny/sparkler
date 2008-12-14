@@ -86,6 +86,8 @@
     
     [myListOfApplicationsProgressIndicator startAnimation: nil];
     
+    [myRefreshListOfApplicationsButton setEnabled: NO];
+    
     [sharedScanner scan];
 }
 
@@ -101,10 +103,14 @@
     [myListOfApplicationsDataSource setApplicationMetadata: applicationMetadata];
     
     [myListOfApplicationsProgressIndicator stopAnimation: nil];
+    
+    [myRefreshListOfApplicationsButton setEnabled: YES];
 }
 
 - (void)applicationScannerFailedFindingApplicationMetadata {
     [myListOfApplicationsProgressIndicator stopAnimation: nil];
+    
+    [myRefreshListOfApplicationsButton setEnabled: YES];
 }
 
 #pragma mark -
