@@ -28,6 +28,7 @@
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
+#import <QuartzCore/QuartzCore.h>
 #import "SparklerPreferencesWindowController.h"
 #import "SparklerPreferencePaneManager.h"
 #import "SparklerPreferencePaneProtocol.h"
@@ -43,7 +44,7 @@
 
 #pragma mark -
 
-- (void)displayPreferencePaneWithName: (NSString *)name;
+- (void)displayPreferencePaneWithName: (NSString *)name initialPreferencePane: (BOOL)initialPreferencePane;
 
 #pragma mark -
 
@@ -143,7 +144,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)displayPreferencePaneWithName: (NSString *)name {
+- (void)displayPreferencePaneWithName: (NSString *)name initialPreferencePane: (BOOL)initialPreferencePane {
     id<SparklerPreferencePaneProtocol> preferencePane = [self preferencePaneWithName: name];
     
     NSLog(@"Displaying the %@ preference pane.", name);
@@ -152,13 +153,29 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
         NSWindow *preferencesWindow = [self window];
         NSView *preferencePaneView = [preferencePane view];
         NSRect preferencesWindowFrame = [preferencesWindow frame];
+        NSView *transitionView = [[NSView alloc] initWithFrame: [[preferencesWindow contentView] frame]];
+        
+        [preferencesWindow setContentView: transitionView];
+        
+        [transitionView release]; 
         
         preferencesWindowFrame.size.height = [preferencePaneView frame].size.height + ([preferencesWindow frame].size.height - [[preferencesWindow contentView] frame].size.height);
         preferencesWindowFrame.size.width = [preferencePaneView frame].size.width;
         preferencesWindowFrame.origin.y += ([[preferencesWindow contentView] frame].size.height - [preferencePaneView frame].size.height);
         
         [preferencesWindow setFrame: preferencesWindowFrame display: YES animate: YES];
+        
+        NSDictionary *preferencePaneViewAnimation = [NSDictionary dictionaryWithObjectsAndKeys: preferencePaneView, NSViewAnimationTargetKey, NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
+        NSArray *preferencePaneViewAnimations = [NSArray arrayWithObjects: preferencePaneViewAnimation, nil];
+        NSViewAnimation *viewAnimation = [[NSViewAnimation alloc] initWithViewAnimations: preferencePaneViewAnimations];
+        
         [preferencesWindow setContentView: preferencePaneView];
+        
+        if (!initialPreferencePane) {
+            [viewAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
+            [viewAnimation startAnimation];
+            [viewAnimation release];
+        }
         
         [preferencesWindow setShowsResizeIndicator: YES];
         
@@ -184,7 +201,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
         NSRunAlertPanel(@"Preferences", [NSString stringWithFormat: @"Preferences are not available for %@.", applicationName], @"OK", nil, nil);
     }
     
-    [self displayPreferencePaneWithName: [preferencePane name]];
+    [self displayPreferencePaneWithName: [preferencePane name] initialPreferencePane: YES];
     
     [[self window] center];
 }
@@ -238,7 +255,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     NSString *toolbarItemIdentifier = [toolbarItem itemIdentifier];
     
     if (![toolbarItemIdentifier isEqualToString: [[self window] title]]) {
-        [self displayPreferencePaneWithName: toolbarItemIdentifier];
+        [self displayPreferencePaneWithName: toolbarItemIdentifier initialPreferencePane: NO];
     }
 }
 
