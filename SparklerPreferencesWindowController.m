@@ -42,8 +42,6 @@
 
 - (id<SparklerPreferencePaneProtocol>)preferencePaneWithName: (NSString *)name;
 
-#pragma mark -
-
 - (void)displayPreferencePaneWithName: (NSString *)name initialPreferencePane: (BOOL)initialPreferencePane;
 
 #pragma mark -
@@ -105,7 +103,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 }
 
 - (void)hidePreferencesWindow {
-    [[self window] orderOut: nil];
+    [[self window] performClose: nil];
 }
 
 #pragma mark -
@@ -117,6 +115,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (void)dealloc {
+    [myToolbar release];
     [myToolbarItems release];
     
     [super dealloc];
@@ -141,8 +140,6 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 - (id<SparklerPreferencePaneProtocol>)preferencePaneWithName: (NSString *)name {
     return [[SparklerPreferencePaneManager sharedManager] preferencePaneWithName: name];
 }
-
-#pragma mark -
 
 - (void)displayPreferencePaneWithName: (NSString *)name initialPreferencePane: (BOOL)initialPreferencePane {
     id<SparklerPreferencePaneProtocol> preferencePane = [self preferencePaneWithName: name];
@@ -174,8 +171,9 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
         if (!initialPreferencePane) {
             [viewAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
             [viewAnimation startAnimation];
-            [viewAnimation release];
         }
+        
+        [viewAnimation release];
         
         [preferencesWindow setShowsResizeIndicator: YES];
         
