@@ -30,8 +30,9 @@
 
 #import "SparklerApplicationsPreferencePane.h"
 #import "SparklerApplicationsDataSource.h"
-#import "SparklerApplicationScanner.h"
+#import "SparklerApplicationMetadataManager.h"
 #import "SparklerUtilities.h"
+#import "SparklerConstants.h"
 
 @implementation SparklerApplicationsPreferencePane
 
@@ -46,7 +47,20 @@
 #pragma mark -
 
 - (void)preferencePaneDidLoad {
+    SparklerApplicationMetadataManager *sharedApplicationMetadataManager = [SparklerApplicationMetadataManager sharedManager];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
+    [notificationCenter addObserver: self
+                           selector: @selector(applicationMetadataWillUpdate:)
+                               name: SparklerApplicationMetadataWillUpdateNotification
+                             object: nil];
+    
+    [notificationCenter addObserver: self
+                           selector: @selector(applicationMetadataDidUpdate:)
+                               name: SparklerApplicationMetadataDidUpdateNotification
+                             object: nil];
+    
+    [sharedApplicationMetadataManager synchronizeApplicationMetadata];
 }
 
 - (void)preferencePaneDidDisplay {
@@ -72,15 +86,9 @@
 #pragma mark -
 
 - (IBAction)refreshListOfApplications: (id)sender {
-    SparklerApplicationScanner *sharedScanner = [SparklerApplicationScanner sharedScanner];
+    SparklerApplicationMetadataManager *sharedApplicationMetadataManager = [SparklerApplicationMetadataManager sharedManager];
     
-    [sharedScanner setDelegate: self];
-    
-    [myListOfApplicationsProgressIndicator startAnimation: nil];
-    
-    [myRefreshListOfApplicationsButton setEnabled: NO];
-    
-    [sharedScanner scan];
+    [sharedApplicationMetadataManager rescanFilesystemForApplicationMetadata];
 }
 
 #pragma mark -
@@ -91,17 +99,17 @@
 
 #pragma mark -
 
-- (void)applicationScannerDidFindApplicationMetadata: (NSArray *)applicationMetadata {
-    [myListOfApplicationsDataSource setApplicationMetadata: applicationMetadata];
+- (void)applicationMetadataWillUpdate: (NSNotification *)notification {
+    [myListOfApplicationsProgressIndicator startAnimation: nil];
     
-    [myListOfApplicationsProgressIndicator stopAnimation: nil];
-    
-    [myRefreshListOfApplicationsButton setEnabled: YES];
+    [myRefreshListOfApplicationsButton setEnabled: NO];
 }
 
-- (void)applicationScannerFailedFindingApplicationMetadata {
-    [myListOfApplicationsProgressIndicator stopAnimation: nil];
+- (void)applicationMetadataDidUpdate: (NSNotification *)notification {
+    [myListOfApplicationsTableView reloadData];
     
+    [myListOfApplicationsProgressIndicator stopAnimation: nil];
+
     [myRefreshListOfApplicationsButton setEnabled: YES];
 }
 

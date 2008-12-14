@@ -48,7 +48,7 @@
 
 #pragma mark -
 
-+ (void)saveSparklerApplicationMetadata: (NSArray *)applicationMetadata toFile: (NSString *)file;
++ (BOOL)saveSparklerApplicationMetadata: (NSArray *)applicationMetadata toFile: (NSString *)file;
 
 + (NSArray *)sparklerApplicationMetadataFromFile: (NSString *)file;
 

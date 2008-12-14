@@ -31,17 +31,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SparklerApplicationsDataSource : NSObject {
-    NSArray *myApplicationMetadata;
     NSTableView *myTableView;
 }
 
 - (id)initWithTableView: (NSTableView *)tableView;
-
-#pragma mark -
-
-- (NSArray *)applicationMetadata;
-
-- (void)setApplicationMetadata: (NSArray *)applicationMetadata;
 
 #pragma mark -
 

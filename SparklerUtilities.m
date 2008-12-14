@@ -94,16 +94,16 @@
 
 #pragma mark -
 
-+ (void)saveSparklerApplicationMetadata: (NSArray *)applicationMetadata toFile: (NSString *)file {
-    NSString *path = [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file];
++ (BOOL)saveSparklerApplicationMetadata: (NSArray *)applicationMetadata toFile: (NSString *)file {
+    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPath];
     
-    [NSKeyedArchiver archiveRootObject: applicationMetadata toFile: path];
+    return [NSKeyedArchiver archiveRootObject: applicationMetadata toFile: [applicationSupportPath stringByAppendingPathComponent: file]];
 }
 
 + (NSArray *)sparklerApplicationMetadataFromFile: (NSString *)file {
-    NSString *path = [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file];
+    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPath];
     
-    return [NSKeyedUnarchiver unarchiveObjectWithFile: path];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile: [applicationSupportPath stringByAppendingPathComponent: file]];
 }
 
 #pragma mark -

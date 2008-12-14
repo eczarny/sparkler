@@ -22,42 +22,39 @@
 
 // 
 // Sparkler
-// SparklerApplicationsPreferencePane.h
+// SparklerApplicationMetadataManager.h
 // 
-// Created by Eric Czarny on Saturday, December 13, 2008.
+// Created by Eric Czarny on Sunday, December 14, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerPreferencePane.h"
+#import "SparklerApplicationScannerDelegate.h"
 
-@class SparklerApplicationsDataSource;
-
-@interface SparklerApplicationsPreferencePane : SparklerPreferencePane {
-    SparklerApplicationsDataSource *myListOfApplicationsDataSource;
-    IBOutlet NSTableView *myListOfApplicationsTableView;
-    IBOutlet NSButton *myRefreshListOfApplicationsButton;
-    IBOutlet NSProgressIndicator *myListOfApplicationsProgressIndicator;
+@interface SparklerApplicationMetadataManager : NSObject<SparklerApplicationScannerDelegate> {
+    NSArray *myApplicationMetadata;
 }
 
-- (void)preferencePaneDidLoad;
-
-- (void)preferencePaneDidDisplay;
++ (SparklerApplicationMetadataManager *)sharedManager;
 
 #pragma mark -
 
-- (NSString *)name;
+- (NSArray *)applicationMetadata;
+
+- (void)setApplicationMetadata: (NSArray *)applicationMetadata;
 
 #pragma mark -
 
-- (NSImage *)icon;
+- (void)rescanFilesystemForApplicationMetadata;
 
 #pragma mark -
 
-- (IBAction)refreshListOfApplications: (id)sender;
+- (void)synchronizeApplicationMetadata;
 
 #pragma mark -
 
-- (IBAction)viewHelpForPreferencePane: (id)sender;
+- (void)applicationScannerDidFindApplicationMetadata: (NSArray *)applicationMetadata;
+
+- (void)applicationScannerFailedFindingApplicationMetadata;
 
 @end

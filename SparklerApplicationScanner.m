@@ -57,9 +57,7 @@ static SparklerApplicationScanner *sharedInstance = nil;
 
 - (id)init {
     if (self = [super init]) {
-        myThread = [[NSThread alloc] initWithTarget: self
-                                           selector: @selector(scanForApplications:)
-                                             object: nil];
+        myThread = [[NSThread alloc] initWithTarget: self selector: @selector(scanForApplications:) object: nil];
     }
     
     return self;
