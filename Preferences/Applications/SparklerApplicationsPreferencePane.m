@@ -33,14 +33,6 @@
 #import "SparklerApplicationScanner.h"
 #import "SparklerUtilities.h"
 
-@interface SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
-
-- (void)prepareListOfApplicationsTableView;
-
-@end
-
-#pragma mark -
-
 @implementation SparklerApplicationsPreferencePane
 
 - (id)init {
@@ -62,7 +54,7 @@
     
     [myListOfApplicationsProgressIndicator setDisplayedWhenStopped: NO];
     
-    [self prepareListOfApplicationsTableView];
+    [myListOfApplicationsTableView setDataSource: myListOfApplicationsDataSource];
 }
 
 #pragma mark -
@@ -122,15 +114,3 @@
 }
 
 @end
-#pragma mark -
-
-@implementation SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
-
-- (void)prepareListOfApplicationsTableView {
-    [myListOfApplicationsTableView setDataSource: myListOfApplicationsDataSource];
-    
-    [myListOfApplicationsTableView setRowHeight: 40.0];
-}
-
-@end
-
