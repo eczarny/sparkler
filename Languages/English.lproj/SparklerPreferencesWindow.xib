@@ -38,8 +38,8 @@
 			<object class="NSWindowTemplate" id="331434498">
 				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{196, 185}, {520, 325}}</string>
-				<int key="NSWTFlags">603979776</int>
+				<string key="NSWindowRect">{{580, 508}, {520, 325}}</string>
+				<int key="NSWTFlags">607649792</int>
 				<string key="NSWindowTitle">Preferences</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
@@ -129,9 +129,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{580, 534}, {520, 325}}</string>
+					<string>{{580, 508}, {520, 325}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{580, 534}, {520, 325}}</string>
+					<string>{{580, 508}, {520, 325}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>

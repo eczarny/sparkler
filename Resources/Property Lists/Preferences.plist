@@ -4,5 +4,7 @@
 <dict>
 	<key>General</key>
 	<string>SparklerGeneralPreferencePane</string>
+	<key>Applications</key>
+	<string>SparklerApplicationsPreferencePane</string>
 </dict>
 </plist>
