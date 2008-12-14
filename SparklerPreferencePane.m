@@ -44,9 +44,6 @@
 - (id)init {
     if (self = [super init]) {
         myView = nil;
-        myName = nil;
-        myIcon = nil;
-        myToolTip = nil;
     }
     
     return self;
@@ -55,53 +52,33 @@
 #pragma mark -
 
 - (void)preferencePaneDidLoad {
-    NSLog(@"The %@ preference pane did load.", myName);
+    NSLog(@"The %@ preference pane did load.", [self name]);
+}
+
+- (void)preferencePaneDidDisplay {
+    NSLog(@"The %@ preference pane did display.", [self name]);
 }
 
 - (void)viewDidLoad {
-    NSLog(@"The %@ preference pane's Nib did load.", myName);
+    [self preferencePaneDidDisplay];
 }
 
 #pragma mark -
 
 - (NSString *)name {
-    return myName;
-}
-
-- (void)setName: (NSString *)name {
-    if (myName != name) {
-        [myName release];
-        
-        myName = [name retain];
-    }
+    return nil;
 }
 
 #pragma mark -
 
 - (NSImage *)icon {
-    return myIcon;
-}
-
-- (void)setIcon: (NSImage *)icon {
-    if (myIcon != icon) {
-        [myIcon release];
-        
-        myIcon = [icon retain];
-    }
+    return nil;
 }
 
 #pragma mark -
 
 - (NSString *)toolTip {
-    return myToolTip;
-}
-
-- (void)setToolTip: (NSString *)toolTip {
-    if (myToolTip != toolTip) {
-        [myToolTip release];
-        
-        myToolTip = [toolTip retain];
-    }
+    return nil;
 }
 
 #pragma mark -
@@ -123,9 +100,6 @@
 #pragma mark -
 
 - (void)dealloc {
-    [myName release];
-    [myIcon release];
-    [myToolTip release];
     [myView release];
     
     [super dealloc];

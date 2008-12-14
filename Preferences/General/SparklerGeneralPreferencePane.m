@@ -33,9 +33,20 @@
 
 @implementation SparklerGeneralPreferencePane
 
-- (void)preferencePaneDidLoad {
-    [self setName: @"General"];
-    [self setIcon: [SparklerUtilities imageFromBundledImageResource: @"General Preferences"]];
+- (void)preferencePaneDidDisplay {
+    
+}
+
+#pragma mark -
+
+- (NSString *)name {
+    return @"General";
+}
+
+#pragma mark -
+
+- (NSImage *)icon {
+    return [SparklerUtilities imageFromBundledImageResource: @"General Preferences"];
 }
 
 @end

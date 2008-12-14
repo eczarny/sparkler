@@ -22,7 +22,7 @@
 
 // 
 // Sparkler
-// SparklerApplicationDataSource.h
+// SparklerApplicationsDataSource.h
 // 
 // Created by Eric Czarny on Saturday, November 29, 2008.
 // Copyright (c) 2008 Divisible by Zero.
@@ -30,7 +30,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SparklerApplicationDataSource : NSObject {
+@interface SparklerApplicationsDataSource : NSObject {
     NSArray *myApplicationMetadata;
     NSTableView *myTableView;
 }
@@ -41,17 +41,13 @@
 
 - (NSArray *)applicationMetadata;
 
-- (void)setApplicationsMetadata: (NSArray *)applicationMetadata;
+- (void)setApplicationMetadata: (NSArray *)applicationMetadata;
 
 #pragma mark -
 
 - (NSTableView *)tableView;
 
 - (void)setTableView: (NSTableView *)tableView;
-
-#pragma mark -
-
-- (void)refreshListOfApplicationsWithinTableView: (NSTableView *)tableView;
 
 #pragma mark -
 

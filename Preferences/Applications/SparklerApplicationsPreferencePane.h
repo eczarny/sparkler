@@ -30,11 +30,40 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SparklerPreferencePane.h"
+#import "SparklerApplicationScannerDelegate.h"
 
-@interface SparklerApplicationsPreferencePane : SparklerPreferencePane {
-    
+@class SparklerApplicationsDataSource;
+
+@interface SparklerApplicationsPreferencePane : SparklerPreferencePane<SparklerApplicationScannerDelegate> {
+    SparklerApplicationsDataSource *myListOfApplicationsDataSource;
+    IBOutlet NSTableView *myListOfApplicationsTableView;
+    IBOutlet NSProgressIndicator *myListOfApplicationsProgressIndicator;
 }
 
 - (void)preferencePaneDidLoad;
+
+- (void)preferencePaneDidDisplay;
+
+#pragma mark -
+
+- (NSString *)name;
+
+#pragma mark -
+
+- (NSImage *)icon;
+
+#pragma mark -
+
+- (IBAction)refreshListOfApplications: (id)sender;
+
+#pragma mark -
+
+- (IBAction)viewHelpForPreferencePane: (id)sender;
+
+#pragma mark -
+
+- (void)applicationScannerDidFindApplicationMetadata: (NSArray *)applicationMetadata;
+
+- (void)applicationScannerFailedFindingApplicationMetadata;
 
 @end

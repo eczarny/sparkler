@@ -22,17 +22,17 @@
 
 // 
 // Sparkler
-// SparklerApplicationDataSource.m
+// SparklerApplicationsDataSource.m
 // 
 // Created by Eric Czarny on Saturday, November 29, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
-#import "SparklerApplicationDataSource.h"
+#import "SparklerApplicationsDataSource.h"
 #import "SparklerApplicationScanner.h"
 #import "SparklerConstants.h"
 
-@implementation SparklerApplicationDataSource
+@implementation SparklerApplicationsDataSource
 
 - (id)initWithTableView: (NSTableView *)tableView {
     if (self = [super init]) {
@@ -48,7 +48,9 @@
     return myApplicationMetadata;
 }
 
-- (void)setApplicationsMetadata: (NSArray *)applicationMetadata {
+- (void)setApplicationMetadata: (NSArray *)applicationMetadata {
+    NSLog(@"The applications data source is using the following application metadata: %@", applicationMetadata);
+    
     if (myApplicationMetadata != applicationMetadata) {
         [myApplicationMetadata release];
         
@@ -70,12 +72,6 @@
         
         myTableView = [tableView retain];
     }
-}
-
-#pragma mark -
-
-- (void)refreshListOfApplicationsWithinTableView: (NSTableView *)tableView {
-    NSLog(@"refreshListOfApplicationsWithinTableView:");
 }
 
 #pragma mark -

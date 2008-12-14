@@ -77,6 +77,16 @@ static SparklerApplicationScanner *sharedInstance = nil;
 
 #pragma mark -
 
+- (id<SparklerApplicationScannerDelegate>)delegate {
+    return myDelegate;
+}
+
+- (void)setDelegate: (id<SparklerApplicationScannerDelegate>)delegate {
+    myDelegate = delegate;
+}
+
+#pragma mark -
+
 - (void)scan {
     [myThread start];
 }
@@ -146,11 +156,11 @@ static SparklerApplicationScanner *sharedInstance = nil;
 #pragma mark -
 
 - (void)scannerDidFinishAndFoundApplicationMetadata: (NSArray *)applicationMetadata {
-    NSLog(@"scannerDidFinishAndFoundApplicationMetadata:");
+    [myDelegate applicationScannerDidFindApplicationMetadata: applicationMetadata];
 }
 
 - (void)scannerFailedFindingApplicationMetadata {
-    NSLog(@"scannerFailedFindingApplicationMetadata");
+    [myDelegate applicationScannerFailedFindingApplicationMetadata];
 }
 
 @end

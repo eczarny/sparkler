@@ -35,6 +35,14 @@
     
 }
 
-- (void)preferencePaneDidLoad;
+- (void)preferencePaneDidDisplay;
+
+#pragma mark -
+
+- (NSString *)name;
+
+#pragma mark -
+
+- (NSImage *)icon;
 
 @end

@@ -29,13 +29,102 @@
 // 
 
 #import "SparklerApplicationsPreferencePane.h"
+#import "SparklerApplicationsDataSource.h"
+#import "SparklerApplicationScanner.h"
 #import "SparklerUtilities.h"
+
+@interface SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
+
+- (void)prepareListOfApplicationsTableView;
+
+@end
+
+#pragma mark -
 
 @implementation SparklerApplicationsPreferencePane
 
+- (id)init {
+    if (self = [super init]) {
+        myListOfApplicationsDataSource = [[SparklerApplicationsDataSource alloc] init];
+    }
+    
+    return self;
+}
+
+#pragma mark -
+
 - (void)preferencePaneDidLoad {
-    [self setName: @"Applications"];
-    [self setIcon: [SparklerUtilities imageFromBundledImageResource: @"Application Preferences"]];
+    
+}
+
+- (void)preferencePaneDidDisplay {
+    [myListOfApplicationsDataSource setTableView: myListOfApplicationsTableView];
+    
+    [myListOfApplicationsProgressIndicator setDisplayedWhenStopped: NO];
+    
+    [self prepareListOfApplicationsTableView];
+}
+
+#pragma mark -
+
+- (NSString *)name {
+    return @"Applications";
+}
+
+#pragma mark -
+
+- (NSImage *)icon {
+    return [SparklerUtilities imageFromBundledImageResource: @"Application Preferences"];
+}
+
+#pragma mark -
+
+- (IBAction)refreshListOfApplications: (id)sender {
+    SparklerApplicationScanner *sharedScanner = [SparklerApplicationScanner sharedScanner];
+    
+    [sharedScanner setDelegate: self];
+    
+    [myListOfApplicationsProgressIndicator startAnimation: nil];
+    
+    [sharedScanner scan];
+}
+
+#pragma mark -
+
+- (IBAction)viewHelpForPreferencePane: (id)sender {
+    NSLog(@"refreshListOfApplications:");
+}
+
+#pragma mark -
+
+- (void)applicationScannerDidFindApplicationMetadata: (NSArray *)applicationMetadata {
+    [myListOfApplicationsDataSource setApplicationMetadata: applicationMetadata];
+    
+    [myListOfApplicationsProgressIndicator stopAnimation: nil];
+}
+
+- (void)applicationScannerFailedFindingApplicationMetadata {
+    [myListOfApplicationsProgressIndicator stopAnimation: nil];
+}
+
+#pragma mark -
+
+- (void)dealloc {
+    [myListOfApplicationsDataSource release];
+    
+    [super dealloc];
 }
 
 @end
+#pragma mark -
+
+@implementation SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
+
+- (void)prepareListOfApplicationsTableView {
+    [myListOfApplicationsTableView setDataSource: myListOfApplicationsDataSource];
+    
+    [myListOfApplicationsTableView setRowHeight: 40.0];
+}
+
+@end
+

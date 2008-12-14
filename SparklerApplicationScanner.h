@@ -29,12 +29,20 @@
 // 
 
 #import <Cocoa/Cocoa.h>
+#import "SparklerApplicationScannerDelegate.h"
 
 @interface SparklerApplicationScanner : NSObject {
     NSThread *myThread;
+    id<SparklerApplicationScannerDelegate> myDelegate;
 }
 
 + (SparklerApplicationScanner *)sharedScanner;
+
+#pragma mark -
+
+- (id<SparklerApplicationScannerDelegate>)delegate;
+
+- (void)setDelegate: (id<SparklerApplicationScannerDelegate>)delegate;
 
 #pragma mark -
 

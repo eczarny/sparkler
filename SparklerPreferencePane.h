@@ -32,13 +32,14 @@
 #import "SparklerPreferencePaneProtocol.h"
 
 @interface SparklerPreferencePane : NSObject<SparklerPreferencePaneProtocol> {
-    NSString *myName;
-    NSImage *myIcon;
-    NSString *myToolTip;
     IBOutlet NSView *myView;
 }
 
 - (void)preferencePaneDidLoad;
+
+- (void)preferencePaneDidDisplay;
+
+#pragma mark -
 
 - (void)viewDidLoad;
 
@@ -46,19 +47,13 @@
 
 - (NSString *)name;
 
-- (void)setName: (NSString *)name;
-
 #pragma mark -
 
 - (NSImage *)icon;
 
-- (void)setIcon: (NSImage *)icon;
-
 #pragma mark -
 
 - (NSString *)toolTip;
-
-- (void)setToolTip: (NSString *)toolTip;
 
 #pragma mark -
 
