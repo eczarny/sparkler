@@ -32,6 +32,7 @@
 
 @interface SparklerApplicationMetadata : NSObject<NSCoding> {
     NSString *myName;
+    NSString *myVersion;
     NSString *myPath;
     NSString *myAppcastURL;
     NSImage *myIcon;
@@ -50,6 +51,12 @@
 - (NSString *)name;
 
 - (void)setName: (NSString *)name;
+
+#pragma mark -
+
+- (NSString *)version;
+
+- (void)setVersion: (NSString *)version;
 
 #pragma mark -
 

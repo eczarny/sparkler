@@ -194,7 +194,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     id<SparklerPreferencePaneProtocol> preferencePane = [preferencePanes objectAtIndex: 0];
     
     if (!preferencePanes || !preferencePane) {
-        NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey: SparklerApplicationBundleName];
+        NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey: SparklerApplicationCFBundleName];
         
         NSRunAlertPanel(@"Preferences", [NSString stringWithFormat: @"Preferences are not available for %@.", applicationName], @"OK", nil, nil);
     }

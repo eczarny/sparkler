@@ -67,11 +67,12 @@
 #define SparklerApplicationResourcesDirectory            @"Resources"
 #define SparklerApplicationInfoFile                      @"Info.plist"
 
-#define SparklerApplicationBundleName                    @"CFBundleName"
-#define SparklerApplicationAppcastURL                    @"SUFeedURL"
+#define SparklerApplicationCFBundleName                  @"CFBundleName"
+#define SparklerApplicationCFBundleVersion               @"CFBundleVersion"
+#define SparklerApplicationCFBundleShortVersionString    @"CFBundleShortVersionString"
+#define SparklerApplicationSUFeedURL                     @"SUFeedURL"
 
-#define SparklerApplicationPathField                     @"applicationPath"
 #define SparklerApplicationSelectionField                @"applicationSelection"
 #define SparklerApplicationIconField                     @"applicationIcon"
 #define SparklerApplicationNameField                     @"applicationName"
-#define SparklerApplicationAppcastURLField               @"applicationAppcastURL"
+#define SparklerApplicationVersionField                  @"applicationVersion"

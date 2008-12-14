@@ -94,6 +94,12 @@
         objectValue = [[myApplicationMetadata objectAtIndex: rowIndex] icon];
     } else if ([columnIdentifier isEqualToString: SparklerApplicationNameField]) {
         objectValue = [[myApplicationMetadata objectAtIndex: rowIndex] name];
+    } else if ([columnIdentifier isEqualToString: SparklerApplicationVersionField]) {
+        objectValue = [[myApplicationMetadata objectAtIndex: rowIndex] version];
+        
+        if (!objectValue) {
+            objectValue = @"N/A";
+        }
     } else {
         objectValue = nil;
     }

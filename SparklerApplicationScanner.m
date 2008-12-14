@@ -114,11 +114,13 @@ static SparklerApplicationScanner *sharedInstance = nil;
             path = [path stringByAppendingPathComponent: SparklerApplicationInfoFile];
             
             NSDictionary *applicationInformation = [[NSDictionary alloc] initWithContentsOfFile: [applicationsDirectory stringByAppendingPathComponent: path]];
-            NSString *applicationAppcastURL = [applicationInformation objectForKey: SparklerApplicationAppcastURL];
+            NSString *applicationAppcastURL = [applicationInformation objectForKey: SparklerApplicationSUFeedURL];
+            NSString *applicationVersion = [applicationInformation objectForKey: SparklerApplicationCFBundleShortVersionString];
             
             if (applicationAppcastURL) {
                 SparklerApplicationMetadata *currentApplicationMetadata = [[SparklerApplicationMetadata alloc] initWithName: applicationName path: applicationPath];
                 
+                [currentApplicationMetadata setVersion: applicationVersion];
                 [currentApplicationMetadata setAppcastURL: applicationAppcastURL];
                 
                 [applicationMetadata addObject: currentApplicationMetadata];
