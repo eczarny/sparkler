@@ -163,6 +163,8 @@
 				07D395A00EF4E114006583F2 /* SparklerApplicationsPreferencePane.m */,
 				071F0FCB0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.h */,
 				071F0FCC0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.m */,
+				07A366150EF4186A00E78A70 /* SparklerPreferencePane.h */,
+				07A366160EF4186A00E78A70 /* SparklerPreferencePane.m */,
 			);
 			name = "Preference Panes";
 			sourceTree = "<group>";
@@ -187,8 +189,6 @@
 			children = (
 				078DD8500EF20F7700C6997D /* SparklerApplicationMetadata.h */,
 				078DD8510EF20F7700C6997D /* SparklerApplicationMetadata.m */,
-				07A366150EF4186A00E78A70 /* SparklerPreferencePane.h */,
-				07A366160EF4186A00E78A70 /* SparklerPreferencePane.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
