@@ -90,7 +90,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (id)init {
-    if (self = [super initWithWindowNibName: SparklerPreferencesNibName]) {
+    if (self = [super initWithWindowNibName: SparklerPreferencesWindowNibName]) {
         myToolbarItems = [[NSMutableDictionary alloc] init];
     }
     
