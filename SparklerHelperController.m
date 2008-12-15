@@ -29,7 +29,6 @@
 // 
 
 #import "SparklerHelperController.h"
-#import "SparklerApplicationScanner.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 

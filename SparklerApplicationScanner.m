@@ -29,7 +29,7 @@
 // 
 
 #import "SparklerApplicationScanner.h"
-#import "SparklerApplicationMetadata.h"
+#import "SparklerTargetedApplication.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
@@ -39,13 +39,13 @@
 
 #pragma mark -
 
-- (void)loadIconsForApplicationMetadata: (NSArray *)applicationMetadata;
+- (void)loadIconsForApplications: (NSArray *)applications;
 
 #pragma mark -
 
-- (void)scannerDidFinishAndFoundApplicationMetadata: (NSArray *)applicationMetadata;
+- (void)scannerDidFinishAndFoundApplications: (NSArray *)applications;
 
-- (void)scannerFailedFindingApplicationMetadata;
+- (void)scannerFailedFindingApplications;
 
 @end
 
@@ -101,7 +101,7 @@ static SparklerApplicationScanner *sharedInstance = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSDirectoryEnumerator *applicationsDirectoryEnumerator = [fileManager enumeratorAtPath: applicationsDirectory];
     NSString *path;
-    NSMutableArray *applicationMetadata = [NSMutableArray array];
+    NSMutableArray *applications = [NSMutableArray array];
     
     while (path = [applicationsDirectoryEnumerator nextObject]) {
         if ([[path pathExtension] isEqualToString: SparklerApplicationExtension]) {
@@ -116,51 +116,51 @@ static SparklerApplicationScanner *sharedInstance = nil;
             NSString *applicationVersion = [applicationInformation objectForKey: SparklerApplicationCFBundleShortVersionString];
             
             if (applicationAppcastURL) {
-                SparklerApplicationMetadata *currentApplicationMetadata = [[SparklerApplicationMetadata alloc] initWithName: applicationName path: applicationPath];
+                SparklerTargetedApplication *application = [[SparklerTargetedApplication alloc] initWithName: applicationName path: applicationPath];
                 
-                [currentApplicationMetadata setVersion: applicationVersion];
-                [currentApplicationMetadata setAppcastURL: applicationAppcastURL];
+                [application setVersion: applicationVersion];
+                [application setAppcastURL: applicationAppcastURL];
                 
-                [applicationMetadata addObject: currentApplicationMetadata];
+                [applications addObject: application];
                 
-                [currentApplicationMetadata release];
+                [application release];
             }
             
             [applicationInformation release];
         }
     }
     
-    [self loadIconsForApplicationMetadata: applicationMetadata];
+    [self loadIconsForApplications: applications];
     
-    [self scannerDidFinishAndFoundApplicationMetadata: applicationMetadata];
+    [self scannerDidFinishAndFoundApplications: applications];
     
     [autoreleasePool release];
 }
 
 #pragma mark -
 
-- (void)loadIconsForApplicationMetadata: (NSArray *)applicationMetadata {
+- (void)loadIconsForApplications: (NSArray *)applications {
     NSWorkspace *sharedWorkspace = [NSWorkspace sharedWorkspace];
-    NSEnumerator *applicationMetadataEnumerator = [applicationMetadata objectEnumerator];
-    id currentApplicationMetadata;
+    NSEnumerator *applicationEnumerator = [applications objectEnumerator];
+    id currentApplication;
     
-    while (currentApplicationMetadata = [applicationMetadataEnumerator nextObject]) {
-        NSImage *applicationIcon = [sharedWorkspace iconForFile: [currentApplicationMetadata path]];
+    while (currentApplication = [applicationEnumerator nextObject]) {
+        NSImage *applicationIcon = [sharedWorkspace iconForFile: [currentApplication path]];
         
         if (applicationIcon) {
-            [currentApplicationMetadata setIcon: applicationIcon];
+            [currentApplication setIcon: applicationIcon];
         }
     }
 }
 
 #pragma mark -
 
-- (void)scannerDidFinishAndFoundApplicationMetadata: (NSArray *)applicationMetadata {
-    [myDelegate applicationScannerDidFindApplicationMetadata: applicationMetadata];
+- (void)scannerDidFinishAndFoundApplications: (NSArray *)applications {
+    [myDelegate applicationScannerDidFindApplications: applications];
 }
 
-- (void)scannerFailedFindingApplicationMetadata {
-    [myDelegate applicationScannerFailedFindingApplicationMetadata];
+- (void)scannerFailedFindingApplications {
+    [myDelegate applicationScannerFailedFindingApplications];
 }
 
 @end

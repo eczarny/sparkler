@@ -30,10 +30,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SparklerApplicationMetadataManager;
+@class SparklerTargetedApplicationManager;
 
 @interface SparklerApplicationsDataSource : NSObject {
-    SparklerApplicationMetadataManager *myApplicationMetadataManager;
+    SparklerTargetedApplicationManager *myApplicationMetadataManager;
     NSTableView *myTableView;
 }
 

@@ -22,7 +22,7 @@
 
 // 
 // Sparkler
-// SparklerApplicationMetadata.h
+// SparklerTargetedApplication.h
 // 
 // Created by Eric Czarny on Wednesday, December 10, 2008.
 // Copyright (c) 2008 Divisible by Zero.
@@ -30,14 +30,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SparklerApplicationMetadata : NSObject<NSCoding> {
+@interface SparklerTargetedApplication : NSObject<NSCoding> {
     NSString *myName;
     NSString *myVersion;
     NSString *myPath;
     NSString *myAppcastURL;
     NSImage *myIcon;
     
-    BOOL checkForUpdates;
+    BOOL targetedForUpdates;
 }
 
 - (id)initWithName: (NSString *)name path: (NSString *)path;
@@ -80,8 +80,8 @@
 
 #pragma mark -
 
-- (BOOL)checkForUpdates;
+- (BOOL)targetedForUpdates;
 
-- (void)setCheckForUpdates: (BOOL)flag;
+- (void)setTargetedForUpdates: (BOOL)flag;
 
 @end

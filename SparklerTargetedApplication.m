@@ -22,15 +22,15 @@
 
 // 
 // Sparkler
-// SparklerApplicationMetadata.m
+// SparklerTargetedApplication.m
 // 
 // Created by Eric Czarny on Wednesday, December 10, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
-#import "SparklerApplicationMetadata.h"
+#import "SparklerTargetedApplication.h"
 
-@implementation SparklerApplicationMetadata
+@implementation SparklerTargetedApplication
 
 - (id)initWithName: (NSString *)name path: (NSString *)path {
     if (self = [super init]) {
@@ -40,7 +40,7 @@
         myAppcastURL = nil;
         myIcon = nil;
         
-        checkForUpdates = YES;
+        targetedForUpdates = YES;
     }
     
     return self;
@@ -54,7 +54,7 @@
         myAppcastURL = [[coder decodeObjectForKey: @"appcastURL"] retain];
         myIcon = [[coder decodeObjectForKey: @"icon"] retain];
         
-        checkForUpdates = [coder decodeBoolForKey: @"checkForUpdates"];
+        targetedForUpdates = [coder decodeBoolForKey: @"targetedForUpdates"];
     }
     
     return self;
@@ -69,7 +69,7 @@
     [coder encodeObject: myAppcastURL forKey: @"appcastURL"];
     [coder encodeObject: myIcon forKey: @"icon"];
     
-    [coder encodeBool: checkForUpdates forKey: @"checkForUpdates"];
+    [coder encodeBool: targetedForUpdates forKey: @"targetedForUpdates"];
 }
 
 #pragma mark -
@@ -144,12 +144,12 @@
 
 #pragma mark -
 
-- (BOOL)checkForUpdates {
-    return checkForUpdates;
+- (BOOL)targetedForUpdates {
+    return targetedForUpdates;
 }
 
-- (void)setCheckForUpdates: (BOOL)flag {
-    checkForUpdates = flag;
+- (void)setTargetedForUpdates: (BOOL)flag {
+    targetedForUpdates = flag;
 }
 
 #pragma mark -

@@ -29,15 +29,15 @@
 // 
 
 #import "SparklerApplicationsDataSource.h"
-#import "SparklerApplicationMetadataManager.h"
-#import "SparklerApplicationMetadata.h"
+#import "SparklerTargetedApplicationManager.h"
+#import "SparklerTargetedApplication.h"
 #import "SparklerConstants.h"
 
 @implementation SparklerApplicationsDataSource
 
 - (id)init {
     if (self = [super init]) {
-        myApplicationMetadataManager = [SparklerApplicationMetadataManager sharedManager];
+        myApplicationMetadataManager = [SparklerTargetedApplicationManager sharedManager];
         myTableView = nil;
     }
     
@@ -61,32 +61,33 @@
 #pragma mark -
 
 - (NSInteger)numberOfRowsInTableView: (NSTableView *)tableView {
-    NSArray *applicationMetadata = [myApplicationMetadataManager applicationMetadata];
+    NSArray *applications = [myApplicationMetadataManager applications];
     
-    return [applicationMetadata count];
+    return [applications count];
 }
 
 - (id)tableView: (NSTableView *)tableView objectValueForTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    SparklerApplicationMetadata *applicationMetadata = [[myApplicationMetadataManager applicationMetadata] objectAtIndex: rowIndex];
+    NSArray *applications = [myApplicationMetadataManager applications];
+    SparklerTargetedApplication *application = [applications objectAtIndex: rowIndex];
     id objectValue;
     
-    if ([[myApplicationMetadataManager applicationMetadata] count] == 0) {
+    if ([applications count] == 0) {
         return nil;
     }
     
     if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {
-        if ([applicationMetadata checkForUpdates]) {
+        if ([application targetedForUpdates]) {
             objectValue = [NSNumber numberWithInt: NSOnState];
         } else {
             objectValue = [NSNumber numberWithInt: NSOffState];
         }
     } else if ([columnIdentifier isEqualToString: SparklerApplicationIconField]) {
-        objectValue = [applicationMetadata icon];
+        objectValue = [application icon];
     } else if ([columnIdentifier isEqualToString: SparklerApplicationNameField]) {
-        objectValue = [applicationMetadata name];
+        objectValue = [application name];
     } else if ([columnIdentifier isEqualToString: SparklerApplicationVersionField]) {
-        objectValue = [applicationMetadata version];
+        objectValue = [application version];
         
         if (!objectValue) {
             objectValue = @"N/A";
@@ -100,10 +101,11 @@
 
 - (void)tableView: (NSTableView *)tableView setObjectValue: (id)objectValue forTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    SparklerApplicationMetadata *applicationMetadata = [[myApplicationMetadataManager applicationMetadata] objectAtIndex: rowIndex];
+    NSArray *applications = [myApplicationMetadataManager applications];
+    SparklerTargetedApplication *application = [applications objectAtIndex: rowIndex];
     
     if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {
-        [applicationMetadata setCheckForUpdates: [objectValue boolValue]];
+        [application setTargetedForUpdates: [objectValue boolValue]];
     }
 }
 

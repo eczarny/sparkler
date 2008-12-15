@@ -22,24 +22,24 @@
 
 // 
 // Sparkler
-// SparklerApplicationMetadataManager.m
+// SparklerTargetedApplicationManager.m
 // 
 // Created by Eric Czarny on Sunday, December 14, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
-#import "SparklerApplicationMetadataManager.h"
+#import "SparklerTargetedApplicationManager.h"
 #import "SparklerApplicationScanner.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
-@implementation SparklerApplicationMetadataManager
+@implementation SparklerTargetedApplicationManager
 
-static SparklerApplicationMetadataManager *sharedInstance = nil;
+static SparklerTargetedApplicationManager *sharedInstance = nil;
 
-+ (SparklerApplicationMetadataManager *)sharedManager {
++ (SparklerTargetedApplicationManager *)sharedManager {
     if (!sharedInstance) {
-        sharedInstance = [[SparklerApplicationMetadataManager alloc] init];
+        sharedInstance = [[SparklerTargetedApplicationManager alloc] init];
     }
     
     return sharedInstance;
@@ -49,7 +49,7 @@ static SparklerApplicationMetadataManager *sharedInstance = nil;
 
 - (id)init {
     if (self = [super init]) {
-        myApplicationMetadata = nil;
+        myApplications = nil;
     }
     
     return self;
@@ -57,25 +57,25 @@ static SparklerApplicationMetadataManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (NSArray *)applicationMetadata {
-    if (!myApplicationMetadata) {
-        [self synchronizeApplicationMetadata];
+- (NSArray *)applications {
+    if (!myApplications) {
+        [self synchronize];
     }
     
-    return myApplicationMetadata;
+    return myApplications;
 }
 
-- (void)setApplicationMetadata: (NSArray *)applicationMetadata {
-    if (myApplicationMetadata != applicationMetadata) {
-        [myApplicationMetadata release];
+- (void)setApplications: (NSArray *)applications {
+    if (myApplications != applications) {
+        [myApplications release];
         
-        myApplicationMetadata = [applicationMetadata retain];
+        myApplications = [applications retain];
     }
 }
 
 #pragma mark -
 
-- (void)rescanFilesystemForApplicationMetadata {
+- (void)rescanFilesystemForApplications {
     SparklerApplicationScanner *sharedApplicationScanner = [SparklerApplicationScanner sharedScanner];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
@@ -85,51 +85,51 @@ static SparklerApplicationMetadataManager *sharedInstance = nil;
     
     [sharedApplicationScanner scan];
     
-    [notificationCenter postNotificationName: SparklerApplicationMetadataWillUpdateNotification object: self];
+    [notificationCenter postNotificationName: SparklerApplicationsWillUpdateNotification object: self];
 }
 
 #pragma mark -
 
-- (void)synchronizeApplicationMetadata {
-    NSArray *applicationMetadata = [SparklerUtilities sparklerApplicationMetadataFromFile: SparklerApplicationMetadataFile];
+- (void)synchronize {
+    NSArray *applications = [SparklerUtilities sparklerApplicationMetadataFromFile: SparklerTargetedApplicationFile];
     
-    if (!myApplicationMetadata && applicationMetadata) {
-        [self setApplicationMetadata: applicationMetadata];
+    if (!myApplications && applications) {
+        [self setApplications: applications];
         
         NSLog(@"The application metadata manager found application metadata from disk.");
         
         return;
-    } else if (!myApplicationMetadata && !applicationMetadata) {
-        [self rescanFilesystemForApplicationMetadata];
+    } else if (!myApplications && !applications) {
+        [self rescanFilesystemForApplications];
     } else {
-        NSLog(@"The application metadata manager is saving the current application metadata to disk.");
+        NSLog(@"The targeted application manager is saving the current application metadata to disk.");
         
-        [SparklerUtilities saveSparklerApplicationMetadata: myApplicationMetadata toFile: SparklerApplicationMetadataFile];
+        [SparklerUtilities saveSparklerApplicationMetadata: myApplications toFile: SparklerTargetedApplicationFile];
     }
 }
 
 #pragma mark -
 
-- (void)applicationScannerDidFindApplicationMetadata: (NSArray *)applicationMetadata {
+- (void)applicationScannerDidFindApplications: (NSArray *)applications {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
-    [self setApplicationMetadata: applicationMetadata];
+    [self setApplications: applications];
     
-    NSLog(@"The application scanner manager found application metadata.");
+    NSLog(@"The application scanner manager found applications.");
     
-    [self synchronizeApplicationMetadata];
+    [self synchronize];
     
-    [notificationCenter postNotificationName: SparklerApplicationMetadataDidUpdateNotification object: self];
+    [notificationCenter postNotificationName: SparklerApplicationsDidUpdateNotification object: self];
 }
 
-- (void)applicationScannerFailedFindingApplicationMetadata {
-    NSLog(@"The application scanner failed to find any application metadata.");
+- (void)applicationScannerFailedFindingApplications {
+    NSLog(@"The application scanner failed to find any applications.");
 }
 
 #pragma mark -
 
 - (void)dealloc {
-    [myApplicationMetadata release];
+    [myApplications release];
     
     [super dealloc];
 }

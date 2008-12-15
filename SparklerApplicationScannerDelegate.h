@@ -32,8 +32,8 @@
 
 @protocol SparklerApplicationScannerDelegate
 
-- (void)applicationScannerDidFindApplicationMetadata: (NSArray *)applicationMetadata;
+- (void)applicationScannerDidFindApplications: (NSArray *)applications;
 
-- (void)applicationScannerFailedFindingApplicationMetadata;
+- (void)applicationScannerFailedFindingApplications;
 
 @end

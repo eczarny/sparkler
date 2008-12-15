@@ -30,7 +30,7 @@
 
 #import "SparklerApplicationsPreferencePane.h"
 #import "SparklerApplicationsDataSource.h"
-#import "SparklerApplicationMetadataManager.h"
+#import "SparklerTargetedApplicationManager.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
@@ -47,20 +47,20 @@
 #pragma mark -
 
 - (void)preferencePaneDidLoad {
-    SparklerApplicationMetadataManager *sharedApplicationMetadataManager = [SparklerApplicationMetadataManager sharedManager];
+    SparklerTargetedApplicationManager *sharedApplicationMetadataManager = [SparklerTargetedApplicationManager sharedManager];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     [notificationCenter addObserver: self
                            selector: @selector(applicationMetadataWillUpdate:)
-                               name: SparklerApplicationMetadataWillUpdateNotification
+                               name: SparklerApplicationsWillUpdateNotification
                              object: nil];
     
     [notificationCenter addObserver: self
                            selector: @selector(applicationMetadataDidUpdate:)
-                               name: SparklerApplicationMetadataDidUpdateNotification
+                               name: SparklerApplicationsDidUpdateNotification
                              object: nil];
     
-    [sharedApplicationMetadataManager synchronizeApplicationMetadata];
+    [sharedApplicationMetadataManager synchronize];
 }
 
 - (void)preferencePaneDidDisplay {
@@ -86,9 +86,9 @@
 #pragma mark -
 
 - (IBAction)refreshListOfApplications: (id)sender {
-    SparklerApplicationMetadataManager *sharedApplicationMetadataManager = [SparklerApplicationMetadataManager sharedManager];
+    SparklerTargetedApplicationManager *sharedApplicationMetadataManager = [SparklerTargetedApplicationManager sharedManager];
     
-    [sharedApplicationMetadataManager rescanFilesystemForApplicationMetadata];
+    [sharedApplicationMetadataManager rescanFilesystemForApplications];
 }
 
 #pragma mark -

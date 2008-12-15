@@ -22,7 +22,7 @@
 
 // 
 // Sparkler
-// SparklerApplicationMetadataManager.h
+// SparklerTargetedApplicationManager.h
 // 
 // Created by Eric Czarny on Sunday, December 14, 2008.
 // Copyright (c) 2008 Divisible by Zero.
@@ -31,30 +31,30 @@
 #import <Cocoa/Cocoa.h>
 #import "SparklerApplicationScannerDelegate.h"
 
-@interface SparklerApplicationMetadataManager : NSObject<SparklerApplicationScannerDelegate> {
-    NSArray *myApplicationMetadata;
+@interface SparklerTargetedApplicationManager : NSObject<SparklerApplicationScannerDelegate> {
+    NSArray *myApplications;
 }
 
-+ (SparklerApplicationMetadataManager *)sharedManager;
++ (SparklerTargetedApplicationManager *)sharedManager;
 
 #pragma mark -
 
-- (NSArray *)applicationMetadata;
+- (NSArray *)applications;
 
-- (void)setApplicationMetadata: (NSArray *)applicationMetadata;
-
-#pragma mark -
-
-- (void)rescanFilesystemForApplicationMetadata;
+- (void)setApplications: (NSArray *)applications;
 
 #pragma mark -
 
-- (void)synchronizeApplicationMetadata;
+- (void)rescanFilesystemForApplications;
 
 #pragma mark -
 
-- (void)applicationScannerDidFindApplicationMetadata: (NSArray *)applicationMetadata;
+- (void)synchronize;
 
-- (void)applicationScannerFailedFindingApplicationMetadata;
+#pragma mark -
+
+- (void)applicationScannerDidFindApplications: (NSArray *)applications;
+
+- (void)applicationScannerFailedFindingApplications;
 
 @end
