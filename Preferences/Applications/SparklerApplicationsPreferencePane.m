@@ -47,7 +47,7 @@
 #pragma mark -
 
 - (void)preferencePaneDidLoad {
-    SparklerTargetedApplicationManager *sharedApplicationMetadataManager = [SparklerTargetedApplicationManager sharedManager];
+    SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     [notificationCenter addObserver: self
@@ -60,7 +60,7 @@
                                name: SparklerApplicationsDidUpdateNotification
                              object: nil];
     
-    [sharedApplicationMetadataManager synchronize];
+    [sharedTargetedApplicationManager synchronize];
 }
 
 - (void)preferencePaneDidDisplay {
@@ -86,9 +86,9 @@
 #pragma mark -
 
 - (IBAction)refreshListOfApplications: (id)sender {
-    SparklerTargetedApplicationManager *sharedApplicationMetadataManager = [SparklerTargetedApplicationManager sharedManager];
+    SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
     
-    [sharedApplicationMetadataManager rescanFilesystemForApplications];
+    [sharedTargetedApplicationManager rescanFilesystemForApplications];
 }
 
 #pragma mark -

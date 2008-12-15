@@ -36,7 +36,7 @@
 @implementation SparklerApplicationController
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    NSLog(@"applicationDidFinishLaunching:");
+    [[SparklerTargetedApplicationManager sharedManager] synchronize];
 }
 
 #pragma mark -
@@ -60,9 +60,7 @@
 #pragma mark -
 
 - (void)applicationShouldTerminate: (NSNotification *)notification {
-    SparklerTargetedApplicationManager *sharedApplicationMetadataManager = [SparklerTargetedApplicationManager sharedManager];
-    
-    [sharedApplicationMetadataManager synchronize];
+    [[SparklerTargetedApplicationManager sharedManager] synchronize];
 }
 
 #pragma mark -
