@@ -160,7 +160,7 @@
 					<object class="NSMatrix" id="299245693">
 						<reference key="NSNextResponder" ref="238325092"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{184, 52}, {316, 38}}</string>
+						<string key="NSFrame">{{183, 52}, {316, 38}}</string>
 						<reference key="NSSuperview" ref="238325092"/>
 						<bool key="NSEnabled">YES</bool>
 						<int key="NSNumRows">2</int>
