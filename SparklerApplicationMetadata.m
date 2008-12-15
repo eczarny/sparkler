@@ -39,6 +39,8 @@
         myPath = [path retain];
         myAppcastURL = nil;
         myIcon = nil;
+        
+        checkForUpdates = YES;
     }
     
     return self;
@@ -51,6 +53,8 @@
         myPath = [[coder decodeObjectForKey: @"path"] retain];
         myAppcastURL = [[coder decodeObjectForKey: @"appcastURL"] retain];
         myIcon = [[coder decodeObjectForKey: @"icon"] retain];
+        
+        checkForUpdates = [coder decodeBoolForKey: @"checkForUpdates"];
     }
     
     return self;
@@ -64,6 +68,8 @@
     [coder encodeObject: myPath forKey: @"path"];
     [coder encodeObject: myAppcastURL forKey: @"appcastURL"];
     [coder encodeObject: myIcon forKey: @"icon"];
+    
+    [coder encodeBool: checkForUpdates forKey: @"checkForUpdates"];
 }
 
 #pragma mark -
@@ -134,6 +140,16 @@
         
         myIcon = [icon retain];
     }
+}
+
+#pragma mark -
+
+- (BOOL)checkForUpdates {
+    return checkForUpdates;
+}
+
+- (void)setCheckForUpdates: (BOOL)flag {
+    checkForUpdates = flag;
 }
 
 #pragma mark -

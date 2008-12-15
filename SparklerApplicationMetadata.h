@@ -36,6 +36,8 @@
     NSString *myPath;
     NSString *myAppcastURL;
     NSImage *myIcon;
+    
+    BOOL checkForUpdates;
 }
 
 - (id)initWithName: (NSString *)name path: (NSString *)path;
@@ -75,5 +77,11 @@
 - (NSImage *)icon;
 
 - (void)setIcon: (NSImage *)icon;
+
+#pragma mark -
+
+- (BOOL)checkForUpdates;
+
+- (void)setCheckForUpdates: (BOOL)flag;
 
 @end

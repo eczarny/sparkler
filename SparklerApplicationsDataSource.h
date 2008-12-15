@@ -30,13 +30,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SparklerApplicationMetadataManager;
+
 @interface SparklerApplicationsDataSource : NSObject {
+    SparklerApplicationMetadataManager *myApplicationMetadataManager;
     NSTableView *myTableView;
 }
-
-- (id)initWithTableView: (NSTableView *)tableView;
-
-#pragma mark -
 
 - (NSTableView *)tableView;
 
@@ -48,6 +47,6 @@
 
 - (id)tableView: (NSTableView *)tableView objectValueForTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex;
 
-- (void)tableView: (NSTableView *)tableView setObjectValue: (id)object  forTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex;
+- (void)tableView: (NSTableView *)tableView setObjectValue: (id)objectValue  forTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex;
 
 @end

@@ -30,6 +30,7 @@
 
 #import "SparklerApplicationController.h"
 #import "SparklerPreferencesWindowController.h"
+#import "SparklerApplicationMetadataManager.h"
 #import "SparklerUtilities.h"
 
 @implementation SparklerApplicationController
@@ -59,7 +60,9 @@
 #pragma mark -
 
 - (void)applicationShouldTerminate: (NSNotification *)notification {
-    NSLog(@"applicationShouldTerminate:");
+    SparklerApplicationMetadataManager *sharedApplicationMetadataManager = [SparklerApplicationMetadataManager sharedManager];
+    
+    [sharedApplicationMetadataManager synchronizeApplicationMetadata];
 }
 
 #pragma mark -

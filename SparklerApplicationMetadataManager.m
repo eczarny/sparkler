@@ -81,6 +81,8 @@ static SparklerApplicationMetadataManager *sharedInstance = nil;
     
     [sharedApplicationScanner setDelegate: self];
     
+    NSLog(@"The application metadata manager is rescanning the filesystem...");
+    
     [sharedApplicationScanner scan];
     
     [notificationCenter postNotificationName: SparklerApplicationMetadataWillUpdateNotification object: self];
@@ -94,10 +96,14 @@ static SparklerApplicationMetadataManager *sharedInstance = nil;
     if (!myApplicationMetadata && applicationMetadata) {
         [self setApplicationMetadata: applicationMetadata];
         
+        NSLog(@"The application metadata manager found application metadata from disk.");
+        
         return;
     } else if (!myApplicationMetadata && !applicationMetadata) {
         [self rescanFilesystemForApplicationMetadata];
     } else {
+        NSLog(@"The application metadata manager is saving the current application metadata to disk.");
+        
         [SparklerUtilities saveSparklerApplicationMetadata: myApplicationMetadata toFile: SparklerApplicationMetadataFile];
     }
 }
@@ -109,13 +115,15 @@ static SparklerApplicationMetadataManager *sharedInstance = nil;
     
     [self setApplicationMetadata: applicationMetadata];
     
+    NSLog(@"The application scanner manager found application metadata.");
+    
     [self synchronizeApplicationMetadata];
     
     [notificationCenter postNotificationName: SparklerApplicationMetadataDidUpdateNotification object: self];
 }
 
 - (void)applicationScannerFailedFindingApplicationMetadata {
-    NSLog(@"The application scanner failed to find any application metadata!");
+    NSLog(@"The application scanner failed to find any application metadata.");
 }
 
 #pragma mark -
