@@ -57,8 +57,6 @@
         }
     }
     
-    NSLog(@"Failed searching for the application bundle, returning the main bundle instead.");
-    
     return [NSBundle mainBundle];
 }
 
