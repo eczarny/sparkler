@@ -22,42 +22,31 @@
 
 // 
 // Sparkler
-// SparklerPreferencePaneManager.h
+// SparklerUpdatesPreferencePane.m
 // 
-// Created by Eric Czarny on Friday, December 12, 2008.
+// Created by Eric Czarny on Monday, December 15, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
-#import <Cocoa/Cocoa.h>
-#import "SparklerPreferencePaneProtocol.h"
+#import "SparklerUpdatesPreferencePane.h"
+#import "SparklerUtilities.h"
 
-@interface SparklerPreferencePaneManager : NSObject {
-    NSMutableDictionary *myPreferencePanes;
-    NSMutableArray *myPreferencePaneOrder;
+@implementation SparklerUpdatesPreferencePane
+
+- (void)preferencePaneDidDisplay {
+    
 }
 
-+ (SparklerPreferencePaneManager *)sharedManager;
+#pragma mark -
+
+- (NSString *)name {
+    return @"Updates";
+}
 
 #pragma mark -
 
-- (BOOL)preferencePanesAreReady;
-
-#pragma mark -
-
-- (void)loadPreferencePanes;
-
-#pragma mark -
-
-- (id<SparklerPreferencePaneProtocol>)preferencePaneWithName: (NSString *)name;
-
-#pragma mark -
-
-- (NSArray *)preferencePanes;
-
-- (NSArray *)preferencePaneNames;
-
-#pragma mark -
-
-- (NSArray *)preferencePaneOrder;
+- (NSImage *)icon {
+    return [SparklerUtilities imageFromBundledImageResource: @"Update Preferences"];
+}
 
 @end

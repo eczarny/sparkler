@@ -22,42 +22,42 @@
 
 // 
 // Sparkler
-// SparklerPreferencePaneManager.h
+// SparklerApplicationsPreferencePane.h
 // 
-// Created by Eric Czarny on Friday, December 12, 2008.
+// Created by Eric Czarny on Saturday, December 13, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerPreferencePaneProtocol.h"
+#import "SparklerPreferencePane.h"
 
-@interface SparklerPreferencePaneManager : NSObject {
-    NSMutableDictionary *myPreferencePanes;
-    NSMutableArray *myPreferencePaneOrder;
+@class SparklerApplicationsDataSource;
+
+@interface SparklerApplicationsPreferencePane : SparklerPreferencePane {
+    SparklerApplicationsDataSource *myListOfApplicationsDataSource;
+    IBOutlet NSTableView *myListOfApplicationsTableView;
+    IBOutlet NSButton *myRefreshListOfApplicationsButton;
+    IBOutlet NSProgressIndicator *myListOfApplicationsProgressIndicator;
 }
 
-+ (SparklerPreferencePaneManager *)sharedManager;
+- (void)preferencePaneDidLoad;
+
+- (void)preferencePaneDidDisplay;
 
 #pragma mark -
 
-- (BOOL)preferencePanesAreReady;
+- (NSString *)name;
 
 #pragma mark -
 
-- (void)loadPreferencePanes;
+- (NSImage *)icon;
 
 #pragma mark -
 
-- (id<SparklerPreferencePaneProtocol>)preferencePaneWithName: (NSString *)name;
+- (IBAction)refreshListOfApplications: (id)sender;
 
 #pragma mark -
 
-- (NSArray *)preferencePanes;
-
-- (NSArray *)preferencePaneNames;
-
-#pragma mark -
-
-- (NSArray *)preferencePaneOrder;
+- (IBAction)viewHelpForPreferencePane: (id)sender;
 
 @end

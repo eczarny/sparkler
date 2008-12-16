@@ -50,6 +50,7 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
 - (id)init {
     if (self = [super init]) {
         myPreferencePanes = [[NSMutableDictionary alloc] init];
+        myPreferencePaneOrder = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -57,17 +58,28 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (BOOL)preferencePanesAreReady {
+    return myPreferencePanes && ([myPreferencePanes count] > 0);
+}
+
+#pragma mark -
+
 - (void)loadPreferencePanes {
     NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
-    NSString *path = [sparklerBundle pathForResource: @"Preferences" ofType: @"plist"];
+    NSString *path = [sparklerBundle pathForResource: @"PreferencePanes" ofType: @"plist"];
     NSDictionary *preferencePaneDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    NSEnumerator *preferencePaneNameEnumerator = [preferencePaneDictionary keyEnumerator];
+    NSDictionary *preferencePanes = [preferencePaneDictionary objectForKey: @"PreferencePanes"];
+    NSArray *preferencePaneOrder = [preferencePaneDictionary objectForKey: @"PreferencePaneOrder"];
+    NSEnumerator *preferencePaneNameEnumerator = [preferencePanes keyEnumerator];
+    NSEnumerator *preferencePaneNameOrderEnumerator = [preferencePaneOrder objectEnumerator];
     NSString *preferencePaneName;
     
     NSLog(@"The preference pane manager is loading preference panes from: %@", path);
     
+    [myPreferencePanes removeAllObjects];
+    
     while (preferencePaneName = [preferencePaneNameEnumerator nextObject]) {
-        NSString *preferencePaneClassName = [preferencePaneDictionary objectForKey: preferencePaneName];
+        NSString *preferencePaneClassName = [preferencePanes objectForKey: preferencePaneName];
         
         if (preferencePaneClassName) {
             Class preferencePaneClass = [sparklerBundle classNamed: preferencePaneClassName];
@@ -91,6 +103,18 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
             NSLog(@"The preference pane, %@, is missing a class name!", preferencePaneName);
         }
     }
+    
+    [myPreferencePaneOrder removeAllObjects];
+    
+    while (preferencePaneName = [preferencePaneNameOrderEnumerator nextObject]) {
+        if ([myPreferencePanes objectForKey: preferencePaneName]) {
+            NSLog(@"Adding %@ to the preference pane order.", preferencePaneName);
+            
+            [myPreferencePaneOrder addObject: preferencePaneName];
+        } else {
+            NSLog(@"Unable to set the preference pane order for preference pane named: ", preferencePaneName);
+        }
+    }
 }
 
 #pragma mark -
@@ -106,25 +130,24 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
 #pragma mark -
 
 - (NSArray *)preferencePanes {
-    if (!myPreferencePanes || ([myPreferencePanes count] < 1)) {
-        [self loadPreferencePanes];
-    }
-    
     return [myPreferencePanes allValues];
 }
 
 - (NSArray *)preferencePaneNames {
-    if (!myPreferencePanes || ([myPreferencePanes count] < 1)) {
-        [self loadPreferencePanes];
-    }
-    
     return [myPreferencePanes allKeys];
+}
+
+#pragma mark -
+
+- (NSArray *)preferencePaneOrder {
+    return myPreferencePaneOrder;
 }
 
 #pragma mark -
 
 - (void)dealloc {
     [myPreferencePanes release];
+    [myPreferencePaneOrder release];
     
     [super dealloc];
 }

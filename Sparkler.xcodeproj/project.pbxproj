@@ -13,8 +13,6 @@
 		071F0AFB0EF2B05C00F9ED3E /* SparklerHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF80EF2B05C00F9ED3E /* SparklerHelper.xib */; };
 		071F0B1E0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F0B1D0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m */; };
 		071F0F720EF34CAF00F9ED3E /* SparklerPreferencePaneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F0F710EF34CAF00F9ED3E /* SparklerPreferencePaneManager.m */; };
-		071F0F990EF350A400F9ED3E /* Preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 071F0F980EF350A400F9ED3E /* Preferences.plist */; };
-		071F0FCD0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F0FCC0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.m */; };
 		071F0FD30EF359B400F9ED3E /* General Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 071F0FD20EF359B400F9ED3E /* General Preferences.tiff */; };
 		078DD8020EF20BE600C6997D /* SparklerHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = 078DD7FA0EF20B8C00C6997D /* SparklerHelper.app */; };
 		078DD8240EF20D1B00C6997D /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 078DD8230EF20D1B00C6997D /* Defaults.plist */; };
@@ -25,7 +23,6 @@
 		078DD8680EF20FB900C6997D /* SparklerApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8670EF20FB900C6997D /* SparklerApplicationController.m */; };
 		078DD8870EF210F100C6997D /* SparklerTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8850EF210F100C6997D /* SparklerTextFieldCell.m */; };
 		078DD8D80EF216AF00C6997D /* SparklerApplicationScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8530EF20F7700C6997D /* SparklerApplicationScanner.m */; };
-		07A366170EF4186A00E78A70 /* SparklerPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A366160EF4186A00E78A70 /* SparklerPreferencePane.m */; };
 		07A366650EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A366630EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib */; };
 		07ACE3CD0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE3CB0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib */; };
 		07ACE3CE0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE3CB0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib */; };
@@ -35,8 +32,14 @@
 		07ACE7D30EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */; };
 		07ACE7E80EF5DFA400DF1D36 /* SparklerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8570EF20F7700C6997D /* SparklerUtilities.m */; };
 		07BDB2C20EF4CDA9003D52CA /* SparklerPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07BDB2C00EF4CDA9003D52CA /* SparklerPreferencesWindow.xib */; };
+		07CD901B0EF743C80053BCAF /* SparklerUpdatesPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90190EF743C80053BCAF /* SparklerUpdatesPreferencePane.xib */; };
+		07CD90280EF74A2F0053BCAF /* Update Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */; };
+		07CD90370EF74E800053BCAF /* PreferencePanes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90360EF74E800053BCAF /* PreferencePanes.plist */; };
+		07CD909B0EF86D440053BCAF /* SparklerApplicationsPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CD90960EF86D440053BCAF /* SparklerApplicationsPreferencePane.m */; };
+		07CD909C0EF86D440053BCAF /* SparklerGeneralPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CD90980EF86D440053BCAF /* SparklerGeneralPreferencePane.m */; };
+		07CD909D0EF86D440053BCAF /* SparklerUpdatesPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CD909A0EF86D440053BCAF /* SparklerUpdatesPreferencePane.m */; };
+		07CD90BC0EF86E4C0053BCAF /* SparklerPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CD90BB0EF86E4C0053BCAF /* SparklerPreferencePane.m */; };
 		07D3959E0EF4E0A0006583F2 /* Application Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07D3959D0EF4E0A0006583F2 /* Application Preferences.tiff */; };
-		07D395A10EF4E114006583F2 /* SparklerApplicationsPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D395A00EF4E114006583F2 /* SparklerApplicationsPreferencePane.m */; };
 		07D395A40EF4E1BB006583F2 /* SparklerApplicationsPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D395A20EF4E1BB006583F2 /* SparklerApplicationsPreferencePane.xib */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -62,9 +65,6 @@
 		071F0B1D0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerPreferencesWindowController.m; sourceTree = "<group>"; };
 		071F0F700EF34CAF00F9ED3E /* SparklerPreferencePaneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerPreferencePaneManager.h; sourceTree = "<group>"; };
 		071F0F710EF34CAF00F9ED3E /* SparklerPreferencePaneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerPreferencePaneManager.m; sourceTree = "<group>"; };
-		071F0F980EF350A400F9ED3E /* Preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Preferences.plist; path = "Resources/Property Lists/Preferences.plist"; sourceTree = "<group>"; };
-		071F0FCB0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparklerGeneralPreferencePane.h; path = Preferences/General/SparklerGeneralPreferencePane.h; sourceTree = "<group>"; };
-		071F0FCC0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparklerGeneralPreferencePane.m; path = Preferences/General/SparklerGeneralPreferencePane.m; sourceTree = "<group>"; };
 		071F0FD20EF359B400F9ED3E /* General Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "General Preferences.tiff"; path = "Resources/Icons/Toolbar Icons/General Preferences.tiff"; sourceTree = "<group>"; };
 		078DD7FA0EF20B8C00C6997D /* SparklerHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparklerHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078DD7FC0EF20B8C00C6997D /* SparklerHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SparklerHelper-Info.plist"; path = "Resources/Property Lists/SparklerHelper-Info.plist"; sourceTree = "<group>"; };
@@ -80,8 +80,6 @@
 		078DD8830EF210F100C6997D /* SparklerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerConstants.h; sourceTree = "<group>"; };
 		078DD8840EF210F100C6997D /* SparklerTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerTextFieldCell.h; sourceTree = "<group>"; };
 		078DD8850EF210F100C6997D /* SparklerTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerTextFieldCell.m; sourceTree = "<group>"; };
-		07A366150EF4186A00E78A70 /* SparklerPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerPreferencePane.h; sourceTree = "<group>"; };
-		07A366160EF4186A00E78A70 /* SparklerPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerPreferencePane.m; sourceTree = "<group>"; };
 		07A366640EF423BC00E78A70 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerGeneralPreferencePane.xib; sourceTree = "<group>"; };
 		07ACE3CC0EF4EC0000DF1D36 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerApplicationUpdatesWindow.xib; sourceTree = "<group>"; };
 		07ACE4CA0EF57CD400DF1D36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
@@ -93,9 +91,18 @@
 		07ACE7D10EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerTargetedApplicationManager.h; sourceTree = "<group>"; };
 		07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerTargetedApplicationManager.m; sourceTree = "<group>"; };
 		07BDB2C10EF4CDA9003D52CA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerPreferencesWindow.xib; sourceTree = "<group>"; };
+		07CD901A0EF743C80053BCAF /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerUpdatesPreferencePane.xib; sourceTree = "<group>"; };
+		07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Update Preferences.tiff"; path = "Resources/Icons/Toolbar Icons/Update Preferences.tiff"; sourceTree = "<group>"; };
+		07CD90360EF74E800053BCAF /* PreferencePanes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PreferencePanes.plist; path = "Resources/Property Lists/PreferencePanes.plist"; sourceTree = "<group>"; };
+		07CD90950EF86D440053BCAF /* SparklerApplicationsPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparklerApplicationsPreferencePane.h; path = PreferencePanes/SparklerApplicationsPreferencePane.h; sourceTree = "<group>"; };
+		07CD90960EF86D440053BCAF /* SparklerApplicationsPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparklerApplicationsPreferencePane.m; path = PreferencePanes/SparklerApplicationsPreferencePane.m; sourceTree = "<group>"; };
+		07CD90970EF86D440053BCAF /* SparklerGeneralPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparklerGeneralPreferencePane.h; path = PreferencePanes/SparklerGeneralPreferencePane.h; sourceTree = "<group>"; };
+		07CD90980EF86D440053BCAF /* SparklerGeneralPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparklerGeneralPreferencePane.m; path = PreferencePanes/SparklerGeneralPreferencePane.m; sourceTree = "<group>"; };
+		07CD90990EF86D440053BCAF /* SparklerUpdatesPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparklerUpdatesPreferencePane.h; path = PreferencePanes/SparklerUpdatesPreferencePane.h; sourceTree = "<group>"; };
+		07CD909A0EF86D440053BCAF /* SparklerUpdatesPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparklerUpdatesPreferencePane.m; path = PreferencePanes/SparklerUpdatesPreferencePane.m; sourceTree = "<group>"; };
+		07CD90BA0EF86E4C0053BCAF /* SparklerPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerPreferencePane.h; sourceTree = "<group>"; };
+		07CD90BB0EF86E4C0053BCAF /* SparklerPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerPreferencePane.m; sourceTree = "<group>"; };
 		07D3959D0EF4E0A0006583F2 /* Application Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Application Preferences.tiff"; path = "Resources/Icons/Toolbar Icons/Application Preferences.tiff"; sourceTree = "<group>"; };
-		07D3959F0EF4E114006583F2 /* SparklerApplicationsPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparklerApplicationsPreferencePane.h; path = Preferences/Applications/SparklerApplicationsPreferencePane.h; sourceTree = "<group>"; };
-		07D395A00EF4E114006583F2 /* SparklerApplicationsPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparklerApplicationsPreferencePane.m; path = Preferences/Applications/SparklerApplicationsPreferencePane.m; sourceTree = "<group>"; };
 		07D395A30EF4E1BB006583F2 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerApplicationsPreferencePane.xib; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -141,6 +148,7 @@
 			children = (
 				07D3959D0EF4E0A0006583F2 /* Application Preferences.tiff */,
 				071F0FD20EF359B400F9ED3E /* General Preferences.tiff */,
+				07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */,
 			);
 			name = "Toolbar Icons";
 			sourceTree = "<group>";
@@ -156,12 +164,12 @@
 		071F101C0EF35EB800F9ED3E /* Preference Panes */ = {
 			isa = PBXGroup;
 			children = (
-				07D3959F0EF4E114006583F2 /* SparklerApplicationsPreferencePane.h */,
-				07D395A00EF4E114006583F2 /* SparklerApplicationsPreferencePane.m */,
-				071F0FCB0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.h */,
-				071F0FCC0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.m */,
-				07A366150EF4186A00E78A70 /* SparklerPreferencePane.h */,
-				07A366160EF4186A00E78A70 /* SparklerPreferencePane.m */,
+				07CD90950EF86D440053BCAF /* SparklerApplicationsPreferencePane.h */,
+				07CD90960EF86D440053BCAF /* SparklerApplicationsPreferencePane.m */,
+				07CD90970EF86D440053BCAF /* SparklerGeneralPreferencePane.h */,
+				07CD90980EF86D440053BCAF /* SparklerGeneralPreferencePane.m */,
+				07CD90990EF86D440053BCAF /* SparklerUpdatesPreferencePane.h */,
+				07CD909A0EF86D440053BCAF /* SparklerUpdatesPreferencePane.m */,
 			);
 			name = "Preference Panes";
 			sourceTree = "<group>";
@@ -184,6 +192,8 @@
 		071F101E0EF35F0300F9ED3E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				07CD90BA0EF86E4C0053BCAF /* SparklerPreferencePane.h */,
+				07CD90BB0EF86E4C0053BCAF /* SparklerPreferencePane.m */,
 				07ACE7C20EF5DC8200DF1D36 /* SparklerTargetedApplication.h */,
 				07ACE7C30EF5DC8200DF1D36 /* SparklerTargetedApplication.m */,
 			);
@@ -228,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				078DD8230EF20D1B00C6997D /* Defaults.plist */,
-				071F0F980EF350A400F9ED3E /* Preferences.plist */,
+				07CD90360EF74E800053BCAF /* PreferencePanes.plist */,
 				8D1107310486CEB800E47090 /* Sparkler-Info.plist */,
 				071F0AF00EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings */,
 				078DD7FC0EF20B8C00C6997D /* SparklerHelper-Info.plist */,
@@ -246,6 +256,7 @@
 				071F0AF80EF2B05C00F9ED3E /* SparklerHelper.xib */,
 				07A366630EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib */,
 				07BDB2C00EF4CDA9003D52CA /* SparklerPreferencesWindow.xib */,
+				07CD90190EF743C80053BCAF /* SparklerUpdatesPreferencePane.xib */,
 			);
 			name = "Interface Builder";
 			sourceTree = "<group>";
@@ -401,9 +412,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07ACE3CE0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */,
 				071F0AFA0EF2B05C00F9ED3E /* SparklerHelper-InfoPlist.strings in Resources */,
 				071F0AFB0EF2B05C00F9ED3E /* SparklerHelper.xib in Resources */,
-				07ACE3CE0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,17 +422,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D3959E0EF4E0A0006583F2 /* Application Preferences.tiff in Resources */,
 				078DD8240EF20D1B00C6997D /* Defaults.plist in Resources */,
 				071F0FD30EF359B400F9ED3E /* General Preferences.tiff in Resources */,
-				071F0F990EF350A400F9ED3E /* Preferences.plist in Resources */,
-				078DD8020EF20BE600C6997D /* SparklerHelper.app in Resources */,
+				07CD90370EF74E800053BCAF /* PreferencePanes.plist in Resources */,
 				071F0AF40EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings in Resources */,
 				071F0AF50EF2B04E00F9ED3E /* Sparkler.xib in Resources */,
-				07A366650EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib in Resources */,
-				07BDB2C20EF4CDA9003D52CA /* SparklerPreferencesWindow.xib in Resources */,
-				07D3959E0EF4E0A0006583F2 /* Application Preferences.tiff in Resources */,
 				07D395A40EF4E1BB006583F2 /* SparklerApplicationsPreferencePane.xib in Resources */,
 				07ACE3CD0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */,
+				07A366650EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib in Resources */,
+				078DD8020EF20BE600C6997D /* SparklerHelper.app in Resources */,
+				07BDB2C20EF4CDA9003D52CA /* SparklerPreferencesWindow.xib in Resources */,
+				07CD901B0EF743C80053BCAF /* SparklerUpdatesPreferencePane.xib in Resources */,
+				07CD90280EF74A2F0053BCAF /* Update Preferences.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,16 +458,17 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				078DD8680EF20FB900C6997D /* SparklerApplicationController.m in Sources */,
 				078DD8D80EF216AF00C6997D /* SparklerApplicationScanner.m in Sources */,
-				078DD8870EF210F100C6997D /* SparklerTextFieldCell.m in Sources */,
-				078DD8640EF20F9E00C6997D /* SparklerUtilities.m in Sources */,
-				071F0B1E0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m in Sources */,
-				071F0F720EF34CAF00F9ED3E /* SparklerPreferencePaneManager.m in Sources */,
-				071F0FCD0EF3592E00F9ED3E /* SparklerGeneralPreferencePane.m in Sources */,
-				07A366170EF4186A00E78A70 /* SparklerPreferencePane.m in Sources */,
-				07D395A10EF4E114006583F2 /* SparklerApplicationsPreferencePane.m in Sources */,
 				07ACE5AF0EF58E8100DF1D36 /* SparklerApplicationsDataSource.m in Sources */,
+				07CD909B0EF86D440053BCAF /* SparklerApplicationsPreferencePane.m in Sources */,
+				07CD909C0EF86D440053BCAF /* SparklerGeneralPreferencePane.m in Sources */,
+				07CD90BC0EF86E4C0053BCAF /* SparklerPreferencePane.m in Sources */,
+				071F0F720EF34CAF00F9ED3E /* SparklerPreferencePaneManager.m in Sources */,
+				071F0B1E0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m in Sources */,
 				07ACE7C40EF5DC8200DF1D36 /* SparklerTargetedApplication.m in Sources */,
 				07ACE7D30EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m in Sources */,
+				078DD8870EF210F100C6997D /* SparklerTextFieldCell.m in Sources */,
+				07CD909D0EF86D440053BCAF /* SparklerUpdatesPreferencePane.m in Sources */,
+				078DD8640EF20F9E00C6997D /* SparklerUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +537,14 @@
 				07BDB2C10EF4CDA9003D52CA /* English */,
 			);
 			name = SparklerPreferencesWindow.xib;
+			sourceTree = "<group>";
+		};
+		07CD90190EF743C80053BCAF /* SparklerUpdatesPreferencePane.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07CD901A0EF743C80053BCAF /* English */,
+			);
+			name = SparklerUpdatesPreferencePane.xib;
 			sourceTree = "<group>";
 		};
 		07D395A20EF4E1BB006583F2 /* SparklerApplicationsPreferencePane.xib */ = {

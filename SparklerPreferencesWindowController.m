@@ -208,7 +208,8 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 
 - (void)createToolbar {
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSArray *preferencePanes = [[SparklerPreferencePaneManager sharedManager] preferencePanes];
+    SparklerPreferencePaneManager *preferencePaneManager = [SparklerPreferencePaneManager sharedManager];
+    NSArray *preferencePanes = [preferencePaneManager preferencePanes];
     NSEnumerator *preferencePaneEnumerator = [preferencePanes objectEnumerator];
     id<SparklerPreferencePaneProtocol> preferencePane;
     
@@ -216,7 +217,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
         NSString *preferencePaneName = [preferencePane name];
         NSString *preferencePaneToolTip = [preferencePane toolTip];
         NSToolbarItem *toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: preferencePaneName];
-            
+        
         [toolbarItem setLabel: preferencePaneName];
         [toolbarItem setImage: [preferencePane icon]];
         
@@ -264,15 +265,15 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 @implementation SparklerPreferencesWindowController (SparklerPreferencesWindowControllerToolbarDelegate)
 
 - (NSArray *)toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePaneNames];
+    return [[SparklerPreferencePaneManager sharedManager] preferencePaneOrder];
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePaneNames];
+    return [[SparklerPreferencePaneManager sharedManager] preferencePaneOrder];
 }
 
 - (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePaneNames];
+    return [[SparklerPreferencePaneManager sharedManager] preferencePaneOrder];
 }
 
 - (NSToolbarItem *)toolbar: (NSToolbar *)toolbar itemForItemIdentifier: (NSString *)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {

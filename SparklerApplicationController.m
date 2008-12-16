@@ -31,12 +31,15 @@
 #import "SparklerApplicationController.h"
 #import "SparklerPreferencesWindowController.h"
 #import "SparklerTargetedApplicationManager.h"
+#import "SparklerPreferencePaneManager.h"
 #import "SparklerUtilities.h"
 
 @implementation SparklerApplicationController
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    [[SparklerTargetedApplicationManager sharedManager] synchronize];
+    SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
+    
+    [sharedTargetedApplicationManager synchronize];
 }
 
 #pragma mark -
@@ -48,7 +51,12 @@
 #pragma mark -
 
 - (IBAction)showSparklerPreferences: (id)sender {
+    SparklerPreferencePaneManager *sharedPreferencePaneManager = [SparklerPreferencePaneManager sharedManager];
     SparklerPreferencesWindowController *sharedController = [SparklerPreferencesWindowController sharedController];
+    
+    if (![sharedPreferencePaneManager preferencePanesAreReady]) {
+        [sharedPreferencePaneManager loadPreferencePanes];
+    }
     
     if ([[sharedController window] isKeyWindow]) {
         [sharedController hidePreferencesWindow];
@@ -60,7 +68,9 @@
 #pragma mark -
 
 - (void)applicationShouldTerminate: (NSNotification *)notification {
-    [[SparklerTargetedApplicationManager sharedManager] synchronize];
+    SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
+    
+    [sharedTargetedApplicationManager synchronize];
 }
 
 #pragma mark -
