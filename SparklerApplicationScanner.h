@@ -32,7 +32,6 @@
 #import "SparklerApplicationScannerDelegate.h"
 
 @interface SparklerApplicationScanner : NSObject {
-    NSThread *myThread;
     id<SparklerApplicationScannerDelegate> myDelegate;
 }
 

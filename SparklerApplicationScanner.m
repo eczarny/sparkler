@@ -35,7 +35,11 @@
 
 @interface SparklerApplicationScanner (SparklerApplicationScannerPrivate)
 
-- (void)scanForApplications: (id)arguments;
+- (void)scanForApplications;
+
+#pragma mark -
+
+- (NSArray *)scanForApplicationsAtSearchPath: (NSString *)searchPath;
 
 #pragma mark -
 
@@ -54,16 +58,6 @@
 @implementation SparklerApplicationScanner
 
 static SparklerApplicationScanner *sharedInstance = nil;
-
-- (id)init {
-    if (self = [super init]) {
-        myThread = [[NSThread alloc] initWithTarget: self selector: @selector(scanForApplications:) object: nil];
-    }
-    
-    return self;
-}
-
-#pragma mark -
 
 + (SparklerApplicationScanner *)sharedScanner {
     if (!sharedInstance) {
@@ -86,7 +80,7 @@ static SparklerApplicationScanner *sharedInstance = nil;
 #pragma mark -
 
 - (void)scan {
-    [myThread start];
+    [NSThread detachNewThreadSelector: @selector(scanForApplications) toTarget: self withObject: nil];
 }
 
 @end
@@ -95,23 +89,44 @@ static SparklerApplicationScanner *sharedInstance = nil;
 
 @implementation SparklerApplicationScanner (SparklerApplicationScannerPrivate)
 
-- (void)scanForApplications: (id)arguments {
+- (void)scanForApplications {
     NSAutoreleasePool *autoreleasePool = [[NSAutoreleasePool alloc] init];
     NSString *applicationsDirectory = [NSString stringWithString: SparklerApplicationsDirectory];
+    NSArray *applications;
+    
+    NSLog(@"Initiating the scan for applications...");
+    
+    applications = [self scanForApplicationsAtSearchPath: applicationsDirectory];
+    
+    NSLog(@"The scan has completed. Sparkler found %d Sparkle-enabled applications.", [applications count]);
+    
+    [self loadIconsForApplications: applications];
+    
+    [self scannerDidFinishAndFoundApplications: applications];
+    
+    [autoreleasePool release];
+}
+
+#pragma mark -
+
+- (NSArray *)scanForApplicationsAtSearchPath: (NSString *)searchPath {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *applicationsDirectoryEnumerator = [fileManager enumeratorAtPath: applicationsDirectory];
-    NSString *path;
+    NSArray *applicationsDirectory = [fileManager directoryContentsAtPath: searchPath];
+    NSEnumerator *applicationsDirectoryEnumerator = [applicationsDirectory objectEnumerator];
     NSMutableArray *applications = [NSMutableArray array];
+    NSString *path;
     
     while (path = [applicationsDirectoryEnumerator nextObject]) {
+        path = [searchPath stringByAppendingPathComponent: path];
+        
         if ([[path pathExtension] isEqualToString: SparklerApplicationExtension]) {
-            NSString *applicationName = [path stringByDeletingPathExtension];
-            NSString *applicationPath = [applicationsDirectory stringByAppendingPathComponent: path];
+            NSString *applicationName = [[path stringByDeletingPathExtension] lastPathComponent];
+            NSString *applicationPath = [NSString stringWithString: path];
             
             path = [path stringByAppendingPathComponent: SparklerApplicationContentsDirectory];
             path = [path stringByAppendingPathComponent: SparklerApplicationInfoFile];
             
-            NSDictionary *applicationInformation = [[NSDictionary alloc] initWithContentsOfFile: [applicationsDirectory stringByAppendingPathComponent: path]];
+            NSDictionary *applicationInformation = [[NSDictionary alloc] initWithContentsOfFile: path];
             NSString *applicationAppcastURL = [applicationInformation objectForKey: SparklerApplicationSUFeedURL];
             NSString *applicationVersion = [applicationInformation objectForKey: SparklerApplicationCFBundleShortVersionString];
             
@@ -127,28 +142,26 @@ static SparklerApplicationScanner *sharedInstance = nil;
             }
             
             [applicationInformation release];
+        } else {
+            [applications addObjectsFromArray: [self scanForApplicationsAtSearchPath: path]];
         }
     }
     
-    [self loadIconsForApplications: applications];
-    
-    [self scannerDidFinishAndFoundApplications: applications];
-    
-    [autoreleasePool release];
+    return applications;
 }
 
 #pragma mark -
 
 - (void)loadIconsForApplications: (NSArray *)applications {
     NSWorkspace *sharedWorkspace = [NSWorkspace sharedWorkspace];
-    NSEnumerator *applicationEnumerator = [applications objectEnumerator];
-    id currentApplication;
+    NSEnumerator *applicationsEnumerator = [applications objectEnumerator];
+    id application;
     
-    while (currentApplication = [applicationEnumerator nextObject]) {
-        NSImage *applicationIcon = [sharedWorkspace iconForFile: [currentApplication path]];
+    while (application = [applicationsEnumerator nextObject]) {
+        NSImage *applicationIcon = [sharedWorkspace iconForFile: [application path]];
         
         if (applicationIcon) {
-            [currentApplication setIcon: applicationIcon];
+            [application setIcon: applicationIcon];
         }
     }
 }
