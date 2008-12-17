@@ -45,7 +45,7 @@ to provide your patch with a detailed description of your changes.
 The preferences controller was designed with Matt Gemmel's SS_PrefsController as
 a template, much of his work resides in this controller.
 
-Please refer to the ACKNOWLEDGEMENTS file for third-party license information.
+Please refer to the LICENSES file for third-party license information.
 
 # License
 
