@@ -38,7 +38,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        myListOfApplicationsDataSource = [[SparklerApplicationsDataSource alloc] init];
+        myApplicationsDataSource = [[SparklerApplicationsDataSource alloc] init];
     }
     
     return self;
@@ -64,11 +64,11 @@
 }
 
 - (void)preferencePaneDidDisplay {
-    [myListOfApplicationsDataSource setTableView: myListOfApplicationsTableView];
+    [myApplicationsDataSource setTableView: myApplicationsTableView];
     
-    [myListOfApplicationsProgressIndicator setDisplayedWhenStopped: NO];
+    [myApplicationsTableView setDataSource: myApplicationsDataSource];
     
-    [myListOfApplicationsTableView setDataSource: myListOfApplicationsDataSource];
+    [myScanningForApplicationsIndicator setDisplayedWhenStopped: NO];
 }
 
 #pragma mark -
@@ -100,23 +100,23 @@
 #pragma mark -
 
 - (void)applicationMetadataWillUpdate: (NSNotification *)notification {
-    [myListOfApplicationsProgressIndicator startAnimation: nil];
+    [myScanningForApplicationsIndicator startAnimation: nil];
     
-    [myRefreshListOfApplicationsButton setEnabled: NO];
+    [myRefreshApplicationsButton setEnabled: NO];
 }
 
 - (void)applicationMetadataDidUpdate: (NSNotification *)notification {
-    [myListOfApplicationsTableView reloadData];
+    [myApplicationsTableView reloadData];
     
-    [myListOfApplicationsProgressIndicator stopAnimation: nil];
+    [myScanningForApplicationsIndicator stopAnimation: nil];
 
-    [myRefreshListOfApplicationsButton setEnabled: YES];
+    [myRefreshApplicationsButton setEnabled: YES];
 }
 
 #pragma mark -
 
 - (void)dealloc {
-    [myListOfApplicationsDataSource release];
+    [myApplicationsDataSource release];
     
     [super dealloc];
 }

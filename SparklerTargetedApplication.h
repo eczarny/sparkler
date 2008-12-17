@@ -36,8 +36,7 @@
     NSString *myPath;
     NSString *myAppcastURL;
     NSImage *myIcon;
-    
-    BOOL targetedForUpdates;
+    BOOL isTargetedForUpdates;
 }
 
 - (id)initWithName: (NSString *)name path: (NSString *)path;
@@ -80,7 +79,7 @@
 
 #pragma mark -
 
-- (BOOL)targetedForUpdates;
+- (BOOL)isTargetedForUpdates;
 
 - (void)setTargetedForUpdates: (BOOL)flag;
 

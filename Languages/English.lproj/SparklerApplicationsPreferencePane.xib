@@ -281,7 +281,7 @@
 											<bytes key="NSRGB">MC45MTMwNDM1IDAuOTEzMDQzNSAwLjkxMzA0MzUAA</bytes>
 										</object>
 										<double key="NSRowHeight">4.000000e+01</double>
-										<int key="NSTvFlags">849346560</int>
+										<int key="NSTvFlags">853540864</int>
 										<int key="NSGridStyleMask">3</int>
 										<int key="NSColumnAutoresizingStyle">4</int>
 										<int key="NSDraggingSourceMaskForLocal">15</int>
@@ -394,14 +394,6 @@
 			<object class="NSMutableArray" key="connectionRecords">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myView</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="116251633"/>
-					</object>
-					<int key="connectionID">4</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">viewHelpForPreferencePane:</string>
 						<reference key="source" ref="1001"/>
@@ -419,27 +411,35 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myListOfApplicationsTableView</string>
+						<string key="label">myApplicationsTableView</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="587529132"/>
 					</object>
-					<int key="connectionID">41</int>
+					<int key="connectionID">51</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myListOfApplicationsProgressIndicator</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="373364825"/>
-					</object>
-					<int key="connectionID">42</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myRefreshListOfApplicationsButton</string>
+						<string key="label">myRefreshApplicationsButton</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="452301694"/>
 					</object>
-					<int key="connectionID">47</int>
+					<int key="connectionID">52</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myScanningForApplicationsIndicator</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="373364825"/>
+					</object>
+					<int key="connectionID">53</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="116251633"/>
+					</object>
+					<int key="connectionID">54</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -726,7 +726,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">50</int>
+			<int key="maxID">54</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -751,15 +751,15 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>myListOfApplicationsProgressIndicator</string>
-							<string>myListOfApplicationsTableView</string>
-							<string>myRefreshListOfApplicationsButton</string>
+							<string>myApplicationsTableView</string>
+							<string>myRefreshApplicationsButton</string>
+							<string>myScanningForApplicationsIndicator</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSProgressIndicator</string>
 							<string>NSTableView</string>
 							<string>NSButton</string>
+							<string>NSProgressIndicator</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

@@ -77,7 +77,7 @@
     }
     
     if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {
-        if ([application targetedForUpdates]) {
+        if ([application isTargetedForUpdates]) {
             objectValue = [NSNumber numberWithInt: NSOnState];
         } else {
             objectValue = [NSNumber numberWithInt: NSOffState];

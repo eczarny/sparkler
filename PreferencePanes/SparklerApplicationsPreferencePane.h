@@ -34,10 +34,10 @@
 @class SparklerApplicationsDataSource;
 
 @interface SparklerApplicationsPreferencePane : SparklerPreferencePane {
-    SparklerApplicationsDataSource *myListOfApplicationsDataSource;
-    IBOutlet NSTableView *myListOfApplicationsTableView;
-    IBOutlet NSButton *myRefreshListOfApplicationsButton;
-    IBOutlet NSProgressIndicator *myListOfApplicationsProgressIndicator;
+    SparklerApplicationsDataSource *myApplicationsDataSource;
+    IBOutlet NSTableView *myApplicationsTableView;
+    IBOutlet NSButton *myRefreshApplicationsButton;
+    IBOutlet NSProgressIndicator *myScanningForApplicationsIndicator;
 }
 
 - (void)preferencePaneDidLoad;

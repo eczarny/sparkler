@@ -39,8 +39,7 @@
         myPath = [path retain];
         myAppcastURL = nil;
         myIcon = nil;
-        
-        targetedForUpdates = YES;
+        isTargetedForUpdates = YES;
     }
     
     return self;
@@ -53,8 +52,7 @@
         myPath = [[coder decodeObjectForKey: @"path"] retain];
         myAppcastURL = [[coder decodeObjectForKey: @"appcastURL"] retain];
         myIcon = [[coder decodeObjectForKey: @"icon"] retain];
-        
-        targetedForUpdates = [coder decodeBoolForKey: @"targetedForUpdates"];
+        isTargetedForUpdates = [coder decodeBoolForKey: @"targetedForUpdates"];
     }
     
     return self;
@@ -68,8 +66,7 @@
     [coder encodeObject: myPath forKey: @"path"];
     [coder encodeObject: myAppcastURL forKey: @"appcastURL"];
     [coder encodeObject: myIcon forKey: @"icon"];
-    
-    [coder encodeBool: targetedForUpdates forKey: @"targetedForUpdates"];
+    [coder encodeBool: isTargetedForUpdates forKey: @"targetedForUpdates"];
 }
 
 #pragma mark -
@@ -144,12 +141,12 @@
 
 #pragma mark -
 
-- (BOOL)targetedForUpdates {
-    return targetedForUpdates;
+- (BOOL)isTargetedForUpdates {
+    return isTargetedForUpdates;
 }
 
-- (void)setTargetedForUpdates: (BOOL)flag {
-    targetedForUpdates = flag;
+- (void)setTargetedForUpdates: (BOOL)targetedForUpdates {
+    isTargetedForUpdates = targetedForUpdates;
 }
 
 #pragma mark -
