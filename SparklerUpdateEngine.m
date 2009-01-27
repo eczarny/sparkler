@@ -1,5 +1,5 @@
 // 
-// Copyright (c) 2008 Eric Czarny <eczarny@gmail.com>
+// Copyright (c) 2009 Eric Czarny <eczarny@gmail.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of  this  software  and  associated documentation files (the "Software"), to
@@ -24,8 +24,8 @@
 // Sparkler
 // SparklerUpdateEngine.m
 // 
-// Created by Eric Czarny on Friday, December 19, 2008.
-// Copyright (c) 2008 Divisible by Zero.
+// Created by Eric Czarny on Friday, December 19, 2009.
+// Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import "SparklerUpdateEngine.h"
