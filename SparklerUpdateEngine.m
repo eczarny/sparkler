@@ -22,65 +22,55 @@
 
 // 
 // Sparkler
-// SparklerTargetedApplication.h
+// SparklerUpdateEngine.m
 // 
-// Created by Eric Czarny on Wednesday, December 10, 2008.
+// Created by Eric Czarny on Friday, December 19, 2008.
 // Copyright (c) 2008 Divisible by Zero.
 // 
 
-#import <Cocoa/Cocoa.h>
+#import "SparklerUpdateEngine.h"
+#import "SparklerTargetedApplicationManager.h"
 
-@interface SparklerTargetedApplication : NSObject<NSCoding> {
-    NSString *myName;
-    NSString *myVersion;
-    NSString *myPath;
-    NSString *myAppcastURL;
-    NSImage *myIcon;
-    BOOL isTargetedForUpdates;
+@implementation SparklerUpdateEngine
+
+static SparklerUpdateEngine *sharedInstance = nil;
+
+- (id)init {
+    if (self = [super init]) {
+        myTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
+    }
+    
+    return self;
 }
 
-- (id)initWithName: (NSString *)name path: (NSString *)path;
+#pragma mark -
 
-- (id)initWithCoder: (NSCoder*)coder;
++ (SparklerUpdateEngine *)sharedEngine {
+    if (!sharedInstance) {
+        sharedInstance = [[SparklerUpdateEngine alloc] init];
+    }
+    
+    return sharedInstance;
+}
 
 #pragma mark -
 
-- (void)encodeWithCoder: (NSCoder*)coder;
+- (SparklerUpdateMonitor *)updateMonitor {
+    return myUpdateMonitor;
+}
+
+- (void)setUpdateMonitor: (SparklerUpdateMonitor *)updateMonitor {
+    if (myUpdateMonitor != updateMonitor) {
+        [myUpdateMonitor release];
+        
+        myUpdateMonitor = [updateMonitor retain];
+    }
+}
 
 #pragma mark -
 
-- (NSString *)name;
-
-- (void)setName: (NSString *)name;
-
-#pragma mark -
-
-- (NSString *)version;
-
-- (void)setVersion: (NSString *)version;
-
-#pragma mark -
-
-- (NSString *)path;
-
-- (void)setPath: (NSString *)path;
-
-#pragma mark -
-
-- (NSString *)appcastURL;
-
-- (void)setAppcastURL: (NSString *)appcastURL;
-
-#pragma mark -
-
-- (NSImage *)icon;
-
-- (void)setIcon: (NSImage *)icon;
-
-#pragma mark -
-
-- (BOOL)isTargetedForUpdates;
-
-- (void)setTargetedForUpdates: (BOOL)flag;
+- (void)checkForUpdates {
+    
+}
 
 @end

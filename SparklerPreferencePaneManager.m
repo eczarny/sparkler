@@ -37,16 +37,6 @@
 
 static SparklerPreferencePaneManager *sharedInstance = nil;
 
-+ (SparklerPreferencePaneManager *)sharedManager {
-    if (!sharedInstance) {
-        sharedInstance = [[SparklerPreferencePaneManager alloc] init];
-    }
-    
-    return sharedInstance;
-}
-
-#pragma mark -
-
 - (id)init {
     if (self = [super init]) {
         myPreferencePanes = [[NSMutableDictionary alloc] init];
@@ -54,6 +44,16 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
     }
     
     return self;
+}
+
+#pragma mark -
+
++ (SparklerPreferencePaneManager *)sharedManager {
+    if (!sharedInstance) {
+        sharedInstance = [[SparklerPreferencePaneManager alloc] init];
+    }
+    
+    return sharedInstance;
 }
 
 #pragma mark -

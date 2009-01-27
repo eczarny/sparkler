@@ -114,9 +114,9 @@
 - (NSString *)nibName {
     NSString *preferencePaneName = [self name];
     NSString *nibNamePrefix = SparklerNibName;
-    NSString *nibname = [nibNamePrefix stringByAppendingString: preferencePaneName];
+    NSString *nibName = [nibNamePrefix stringByAppendingString: preferencePaneName];
     
-    return [nibname stringByAppendingString: SparklerPreferencePaneNibNameEnding];
+    return [nibName stringByAppendingString: SparklerPreferencePaneNibNameEnding];
 }
 
 @end

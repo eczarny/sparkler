@@ -45,7 +45,7 @@
     return self;
 }
 
--(id)initWithCoder: (NSCoder*)coder {
+- (id)initWithCoder: (NSCoder*)coder {
     if (self = [super init]) {
         myName = [[coder decodeObjectForKey: @"name"] retain];
         myVersion = [[coder decodeObjectForKey: @"version"] retain];
@@ -60,7 +60,7 @@
 
 #pragma mark -
 
--(void)encodeWithCoder: (NSCoder*)coder {
+- (void)encodeWithCoder: (NSCoder*)coder {
     [coder encodeObject: myName forKey: @"name"];
     [coder encodeObject: myVersion forKey: @"version"];
     [coder encodeObject: myPath forKey: @"path"];

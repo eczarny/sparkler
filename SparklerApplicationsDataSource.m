@@ -37,7 +37,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        myApplicationMetadataManager = [SparklerTargetedApplicationManager sharedManager];
+        myTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
         myTableView = nil;
     }
     
@@ -61,14 +61,14 @@
 #pragma mark -
 
 - (NSInteger)numberOfRowsInTableView: (NSTableView *)tableView {
-    NSArray *applications = [myApplicationMetadataManager applications];
+    NSArray *applications = [myTargetedApplicationManager applications];
     
     return [applications count];
 }
 
 - (id)tableView: (NSTableView *)tableView objectValueForTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    NSArray *applications = [myApplicationMetadataManager applications];
+    NSArray *applications = [myTargetedApplicationManager applications];
     SparklerTargetedApplication *application = [applications objectAtIndex: rowIndex];
     id objectValue;
     
@@ -101,7 +101,7 @@
 
 - (void)tableView: (NSTableView *)tableView setObjectValue: (id)objectValue forTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    NSArray *applications = [myApplicationMetadataManager applications];
+    NSArray *applications = [myTargetedApplicationManager applications];
     SparklerTargetedApplication *application = [applications objectAtIndex: rowIndex];
     
     if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {

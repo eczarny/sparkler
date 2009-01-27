@@ -37,22 +37,22 @@
 
 static SparklerTargetedApplicationManager *sharedInstance = nil;
 
-+ (SparklerTargetedApplicationManager *)sharedManager {
-    if (!sharedInstance) {
-        sharedInstance = [[SparklerTargetedApplicationManager alloc] init];
-    }
-    
-    return sharedInstance;
-}
-
-#pragma mark -
-
 - (id)init {
     if (self = [super init]) {
         myApplications = nil;
     }
     
     return self;
+}
+
+#pragma mark -
+
++ (SparklerTargetedApplicationManager *)sharedManager {
+    if (!sharedInstance) {
+        sharedInstance = [[SparklerTargetedApplicationManager alloc] init];
+    }
+    
+    return sharedInstance;
 }
 
 #pragma mark -
