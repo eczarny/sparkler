@@ -39,10 +39,6 @@
 		07ACE3CD0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE3CB0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib */; };
 		07ACE3CE0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE3CB0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib */; };
 		07ACE4CB0EF57CD400DF1D36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ACE4CA0EF57CD400DF1D36 /* QuartzCore.framework */; };
-		07AD3F9E0EFEAD90003B0B36 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AD3F9D0EFEAD90003B0B36 /* Sparkle.framework */; };
-		07AD3FAF0EFEADBE003B0B36 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07AD3F9D0EFEAD90003B0B36 /* Sparkle.framework */; };
-		07AD3FB40EFEAE50003B0B36 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AD3F9D0EFEAD90003B0B36 /* Sparkle.framework */; };
-		07AD3FB60EFEAE6F003B0B36 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07AD3F9D0EFEAD90003B0B36 /* Sparkle.framework */; };
 		07BDB2C20EF4CDA9003D52CA /* SparklerPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07BDB2C00EF4CDA9003D52CA /* SparklerPreferencesWindow.xib */; };
 		07CD901B0EF743C80053BCAF /* SparklerUpdatesPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90190EF743C80053BCAF /* SparklerUpdatesPreferencePane.xib */; };
 		07CD90280EF74A2F0053BCAF /* Update Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */; };
@@ -69,7 +65,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				07AD3FAF0EFEADBE003B0B36 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +74,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				07AD3FB60EFEAE6F003B0B36 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +120,6 @@
 		07AD3F900EFEAC3C003B0B36 /* SparklerUpdateMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateMonitor.m; sourceTree = "<group>"; };
 		07AD3F920EFEAC9D003B0B36 /* SparklerUpdateDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateDriver.h; sourceTree = "<group>"; };
 		07AD3F930EFEAC9D003B0B36 /* SparklerUpdateDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateDriver.m; sourceTree = "<group>"; };
-		07AD3F9D0EFEAD90003B0B36 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		07BDB2C10EF4CDA9003D52CA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerPreferencesWindow.xib; sourceTree = "<group>"; };
 		07CD901A0EF743C80053BCAF /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerUpdatesPreferencePane.xib; sourceTree = "<group>"; };
 		07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Update Preferences.tiff"; path = "Resources/Icons/Toolbar Icons/Update Preferences.tiff"; sourceTree = "<group>"; };
@@ -157,7 +150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				078DD8440EF20ED400C6997D /* Cocoa.framework in Frameworks */,
-				07AD3FB40EFEAE50003B0B36 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +159,6 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				07ACE4CB0EF57CD400DF1D36 /* QuartzCore.framework in Frameworks */,
-				07AD3F9E0EFEAD90003B0B36 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				07AD3F9D0EFEAD90003B0B36 /* Sparkle.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
