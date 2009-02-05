@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerPreferencePane.m
 // 
-// Created by Eric Czarny on Saturday, December 13, 2009.
+// Created by Eric Czarny on Saturday, December 13, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

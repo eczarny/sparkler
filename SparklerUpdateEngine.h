@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerUpdateEngine.h
 // 
-// Created by Eric Czarny on Friday, December 19, 2009.
+// Created by Eric Czarny on Friday, December 19, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

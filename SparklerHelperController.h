@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerHelperController.h
 // 
-// Created by Eric Czarny on Wednesday, November 26, 2009.
+// Created by Eric Czarny on Wednesday, November 26, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

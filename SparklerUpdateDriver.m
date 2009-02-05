@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerUpdateDriver.m
 // 
-// Created by Eric Czarny on Sunday, December 21, 2009.
+// Created by Eric Czarny on Sunday, December 21, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

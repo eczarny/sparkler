@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerTextFieldCell.h
 // 
-// Created by Eric Czarny on Saturday, November 29, 2009.
+// Created by Eric Czarny on Saturday, November 29, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

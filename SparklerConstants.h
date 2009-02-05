@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerConstants.h
 // 
-// Created by Eric Czarny on Thursday, November 27, 2009.
+// Created by Eric Czarny on Thursday, November 27, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

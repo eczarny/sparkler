@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerTargetedApplication.h
 // 
-// Created by Eric Czarny on Wednesday, December 10, 2009.
+// Created by Eric Czarny on Wednesday, December 10, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

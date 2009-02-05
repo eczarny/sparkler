@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerUpdatesPreferencePane.h
 // 
-// Created by Eric Czarny on Monday, December 15, 2009.
+// Created by Eric Czarny on Monday, December 15, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

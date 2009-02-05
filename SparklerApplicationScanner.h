@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerApplicationScanner.h
 // 
-// Created by Eric Czarny on Friday, November 28, 2009.
+// Created by Eric Czarny on Friday, November 28, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 

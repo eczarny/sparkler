@@ -24,7 +24,7 @@
 // Sparkler
 // SparklerPreferencesWindowController.m
 // 
-// Created by Eric Czarny on Friday, December 12, 2009.
+// Created by Eric Czarny on Friday, December 12, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
