@@ -36,10 +36,22 @@
 
 @implementation SparklerApplicationController
 
+- (id)init {
+    if (self = [super init]) {
+        myPreferencesWindowController = [SparklerPreferencesWindowController sharedController];
+    }
+    
+    return self;
+}
+
+#pragma mark -
+
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
     SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
     
-    [sharedTargetedApplicationManager synchronize];
+    [sharedTargetedApplicationManager synchronizeWithFilesystem];
+    
+    [myPreferencesWindowController loadPreferencePanes];
 }
 
 #pragma mark -
@@ -50,19 +62,8 @@
 
 #pragma mark -
 
-- (IBAction)showSparklerPreferences: (id)sender {
-    SparklerPreferencePaneManager *sharedPreferencePaneManager = [SparklerPreferencePaneManager sharedManager];
-    SparklerPreferencesWindowController *sharedController = [SparklerPreferencesWindowController sharedController];
-    
-    if (![sharedPreferencePaneManager preferencePanesAreReady]) {
-        [sharedPreferencePaneManager loadPreferencePanes];
-    }
-    
-    if ([[sharedController window] isKeyWindow]) {
-        [sharedController hidePreferencesWindow];
-    } else {
-        [sharedController showPreferencesWindow];
-    }
+- (IBAction)togglePreferencesWindow: (id)sender {
+    [myPreferencesWindowController togglePreferencesWindow];
 }
 
 #pragma mark -
@@ -70,7 +71,7 @@
 - (void)applicationShouldTerminate: (NSNotification *)notification {
     SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
     
-    [sharedTargetedApplicationManager synchronize];
+    [sharedTargetedApplicationManager synchronizeWithFilesystem];
 }
 
 #pragma mark -

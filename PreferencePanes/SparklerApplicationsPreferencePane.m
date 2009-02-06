@@ -60,7 +60,7 @@
                                name: SparklerApplicationsDidUpdateNotification
                              object: nil];
     
-    [sharedTargetedApplicationManager synchronize];
+    [sharedTargetedApplicationManager synchronizeWithFilesystem];
 }
 
 - (void)preferencePaneDidDisplay {

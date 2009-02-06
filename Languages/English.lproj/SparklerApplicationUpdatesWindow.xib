@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">9F33</string>
+		<string key="IBDocument.SystemVersion">9G55</string>
 		<string key="IBDocument.InterfaceBuilderVersion">677</string>
-		<string key="IBDocument.AppKitVersion">949.34</string>
-		<string key="IBDocument.HIToolboxVersion">352.00</string>
+		<string key="IBDocument.AppKitVersion">949.43</string>
+		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="2"/>
@@ -52,7 +52,7 @@
 						<object class="NSButton" id="921451910">
 							<reference key="NSNextResponder" ref="631618124"/>
 							<int key="NSvFlags">289</int>
-							<string key="NSFrame">{{402, 12}, {96, 32}}</string>
+							<string key="NSFrame">{{360, 12}, {138, 32}}</string>
 							<reference key="NSSuperview" ref="631618124"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="808065415">
@@ -199,7 +199,7 @@
 												<object class="NSTableView" id="948124633">
 													<reference key="NSNextResponder" ref="883127382"/>
 													<int key="NSvFlags">4402</int>
-													<string key="NSFrameSize">{471, 172}</string>
+													<string key="NSFrameSize">{471, 167}</string>
 													<reference key="NSSuperview" ref="883127382"/>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSTableHeaderView" key="NSHeaderView" id="602772060">
@@ -212,7 +212,7 @@
 													<object class="_NSCornerView" key="NSCornerView" id="1026690601">
 														<reference key="NSNextResponder" ref="406238201"/>
 														<int key="NSvFlags">-2147483392</int>
-														<string key="NSFrame">{{456, 0}, {16, 17}}</string>
+														<string key="NSFrame">{{-26, 0}, {16, 17}}</string>
 														<reference key="NSSuperview" ref="406238201"/>
 													</object>
 													<object class="NSMutableArray" key="NSTableColumns">
@@ -385,7 +385,7 @@
 														<bytes key="NSRGB">MC45MTMwNDM1IDAuOTEzMDQzNSAwLjkxMzA0MzUAA</bytes>
 													</object>
 													<double key="NSRowHeight">4.000000e+01</double>
-													<int key="NSTvFlags">849346560</int>
+													<int key="NSTvFlags">853540864</int>
 													<int key="NSGridStyleMask">3</int>
 													<int key="NSColumnAutoresizingStyle">4</int>
 													<int key="NSDraggingSourceMaskForLocal">15</int>
@@ -393,7 +393,7 @@
 													<bool key="NSAllowsTypeSelect">NO</bool>
 												</object>
 											</object>
-											<string key="NSFrame">{{1, 17}, {470, 172}}</string>
+											<string key="NSFrame">{{1, 17}, {470, 167}}</string>
 											<reference key="NSSuperview" ref="406238201"/>
 											<reference key="NSNextKeyView" ref="948124633"/>
 											<reference key="NSDocView" ref="948124633"/>
@@ -436,7 +436,7 @@
 										</object>
 										<reference ref="1026690601"/>
 									</object>
-									<string key="NSFrameSize">{472, 190}</string>
+									<string key="NSFrameSize">{472, 185}</string>
 									<reference key="NSSuperview" ref="751067287"/>
 									<reference key="NSNextKeyView" ref="883127382"/>
 									<int key="NSsFlags">658</int>
@@ -450,7 +450,7 @@
 								<object class="NSCustomView" id="225854815">
 									<reference key="NSNextResponder" ref="751067287"/>
 									<int key="NSvFlags">306</int>
-									<string key="NSFrame">{{0, 199}, {472, 204}}</string>
+									<string key="NSFrame">{{0, 194}, {472, 209}}</string>
 									<reference key="NSSuperview" ref="751067287"/>
 									<string key="NSClassName">NSView</string>
 								</object>
@@ -768,11 +768,11 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{584, 265}, {512, 563}}</string>
+					<string>{{584, 402}, {512, 563}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO" id="6"/>
 					<reference ref="6"/>
-					<string>{{584, 265}, {512, 563}}</string>
+					<string>{{584, 402}, {512, 563}}</string>
 					<boolean value="YES"/>
 					<reference ref="6"/>
 					<reference ref="6"/>

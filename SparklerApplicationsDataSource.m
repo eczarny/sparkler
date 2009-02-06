@@ -61,33 +61,33 @@
 #pragma mark -
 
 - (NSInteger)numberOfRowsInTableView: (NSTableView *)tableView {
-    NSArray *applications = [myTargetedApplicationManager applications];
+    NSArray *targetedApplications = [myTargetedApplicationManager targetedApplications];
     
-    return [applications count];
+    return [targetedApplications count];
 }
 
 - (id)tableView: (NSTableView *)tableView objectValueForTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    NSArray *applications = [myTargetedApplicationManager applications];
-    SparklerTargetedApplication *application = [applications objectAtIndex: rowIndex];
+    NSArray *targetedApplications = [myTargetedApplicationManager targetedApplications];
+    SparklerTargetedApplication *targetedApplication = [targetedApplications objectAtIndex: rowIndex];
     id objectValue;
     
-    if ([applications count] == 0) {
+    if ([targetedApplications count] == 0) {
         return nil;
     }
     
     if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {
-        if ([application isTargetedForUpdates]) {
+        if ([targetedApplication isTargetedForUpdates]) {
             objectValue = [NSNumber numberWithInt: NSOnState];
         } else {
             objectValue = [NSNumber numberWithInt: NSOffState];
         }
     } else if ([columnIdentifier isEqualToString: SparklerApplicationIconField]) {
-        objectValue = [application icon];
+        objectValue = [targetedApplication icon];
     } else if ([columnIdentifier isEqualToString: SparklerApplicationNameField]) {
-        objectValue = [application name];
+        objectValue = [targetedApplication name];
     } else if ([columnIdentifier isEqualToString: SparklerApplicationVersionField]) {
-        objectValue = [application version];
+        objectValue = [targetedApplication version];
         
         if (!objectValue) {
             objectValue = @"N/A";
@@ -101,11 +101,11 @@
 
 - (void)tableView: (NSTableView *)tableView setObjectValue: (id)objectValue forTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    NSArray *applications = [myTargetedApplicationManager applications];
-    SparklerTargetedApplication *application = [applications objectAtIndex: rowIndex];
+    NSArray *targetedApplications = [myTargetedApplicationManager targetedApplications];
+    SparklerTargetedApplication *targetedApplication = [targetedApplications objectAtIndex: rowIndex];
     
     if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {
-        [application setTargetedForUpdates: [objectValue boolValue]];
+        [targetedApplication setTargetedForUpdates: [objectValue boolValue]];
     }
 }
 

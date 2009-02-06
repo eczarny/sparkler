@@ -120,10 +120,6 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
 #pragma mark -
 
 - (id<SparklerPreferencePaneProtocol>)preferencePaneWithName: (NSString *)name {
-    if (!myPreferencePanes || ([myPreferencePanes count] < 1)) {
-        [self loadPreferencePanes];
-    }
-    
     return [myPreferencePanes objectForKey: name];
 }
 

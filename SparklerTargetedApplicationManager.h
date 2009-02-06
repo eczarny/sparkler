@@ -32,16 +32,16 @@
 #import "SparklerApplicationScannerDelegate.h"
 
 @interface SparklerTargetedApplicationManager : NSObject<SparklerApplicationScannerDelegate> {
-    NSArray *myApplications;
+    NSArray *myTargetedApplications;
 }
 
 + (SparklerTargetedApplicationManager *)sharedManager;
 
 #pragma mark -
 
-- (NSArray *)applications;
+- (NSArray *)targetedApplications;
 
-- (void)setApplications: (NSArray *)applications;
+- (void)setTargetedApplications: (NSArray *)targetedApplications;
 
 #pragma mark -
 
@@ -49,7 +49,7 @@
 
 #pragma mark -
 
-- (void)synchronize;
+- (void)synchronizeWithFilesystem;
 
 #pragma mark -
 

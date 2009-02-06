@@ -30,9 +30,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SparklerPreferencePaneManager;
+
 @interface SparklerPreferencesWindowController : NSWindowController {
     NSToolbar *myToolbar;
     NSMutableDictionary *myToolbarItems;
+    SparklerPreferencePaneManager *myPreferencePaneManager;
 }
 
 + (SparklerPreferencesWindowController *)sharedController;
@@ -41,9 +44,15 @@
 
 - (void)showPreferencesWindow;
 
+- (void)hidePreferencesWindow;
+
 #pragma mark -
 
-- (void)hidePreferencesWindow;
+- (void)togglePreferencesWindow;
+
+#pragma mark -
+
+- (void)loadPreferencePanes;
 
 #pragma mark -
 

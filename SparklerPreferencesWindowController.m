@@ -81,6 +81,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 - (id)init {
     if (self = [super initWithWindowNibName: SparklerPreferencesWindowNibName]) {
         myToolbarItems = [[NSMutableDictionary alloc] init];
+        myPreferencePaneManager = [SparklerPreferencePaneManager sharedManager];
     }
     
     return self;
@@ -108,8 +109,28 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
+- (void)togglePreferencesWindow {
+    if ([[self window] isKeyWindow]) {
+        [self hidePreferencesWindow];
+    } else {
+        [self showPreferencesWindow];
+    }
+}
+
+#pragma mark -
+
+- (void)loadPreferencePanes {
+    [myPreferencePaneManager loadPreferencePanes];
+}
+
+#pragma mark -
+
 - (NSArray *)loadedPreferencePanes {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePanes];
+    if (![myPreferencePaneManager preferencePanesAreReady]) {
+        [myPreferencePaneManager loadPreferencePanes];
+    }
+    
+    return [myPreferencePaneManager preferencePanes];
 }
 
 #pragma mark -
@@ -138,7 +159,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (id<SparklerPreferencePaneProtocol>)preferencePaneWithName: (NSString *)name {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePaneWithName: name];
+    return [myPreferencePaneManager preferencePaneWithName: name];
 }
 
 - (void)displayPreferencePaneWithName: (NSString *)name initialPreferencePane: (BOOL)initialPreferencePane {
@@ -190,7 +211,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (void)preparePreferencesWindow {
-    NSArray *preferencePanes = [[SparklerPreferencePaneManager sharedManager] preferencePanes];
+    NSArray *preferencePanes = [myPreferencePaneManager preferencePanes];
     id<SparklerPreferencePaneProtocol> preferencePane = [preferencePanes objectAtIndex: 0];
     
     if (!preferencePanes || !preferencePane) {
@@ -208,8 +229,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 
 - (void)createToolbar {
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    SparklerPreferencePaneManager *preferencePaneManager = [SparklerPreferencePaneManager sharedManager];
-    NSArray *preferencePanes = [preferencePaneManager preferencePanes];
+    NSArray *preferencePanes = [myPreferencePaneManager preferencePanes];
     NSEnumerator *preferencePaneEnumerator = [preferencePanes objectEnumerator];
     id<SparklerPreferencePaneProtocol> preferencePane;
     
@@ -265,15 +285,15 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 @implementation SparklerPreferencesWindowController (SparklerPreferencesWindowControllerToolbarDelegate)
 
 - (NSArray *)toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePaneOrder];
+    return [myPreferencePaneManager preferencePaneOrder];
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePaneOrder];
+    return [myPreferencePaneManager preferencePaneOrder];
 }
 
 - (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar {
-    return [[SparklerPreferencePaneManager sharedManager] preferencePaneOrder];
+    return [myPreferencePaneManager preferencePaneOrder];
 }
 
 - (NSToolbarItem *)toolbar: (NSToolbar *)toolbar itemForItemIdentifier: (NSString *)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {

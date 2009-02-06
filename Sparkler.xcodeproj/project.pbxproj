@@ -226,8 +226,6 @@
 				078DD84C0EF20F2400C6997D /* SparklerHelperController.m */,
 				071F0B1C0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.h */,
 				071F0B1D0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m */,
-				07AD3F8F0EFEAC3C003B0B36 /* SparklerUpdateMonitor.h */,
-				07AD3F900EFEAC3C003B0B36 /* SparklerUpdateMonitor.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -252,10 +250,6 @@
 				071F0F710EF34CAF00F9ED3E /* SparklerPreferencePaneManager.m */,
 				07ACE7D10EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.h */,
 				07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */,
-				07AD3F920EFEAC9D003B0B36 /* SparklerUpdateDriver.h */,
-				07AD3F930EFEAC9D003B0B36 /* SparklerUpdateDriver.m */,
-				07AD3EC50EFC1C33003B0B36 /* SparklerUpdateEngine.h */,
-				07AD3EC60EFC1C33003B0B36 /* SparklerUpdateEngine.m */,
 				078DD8560EF20F7700C6997D /* SparklerUtilities.h */,
 				078DD8570EF20F7700C6997D /* SparklerUtilities.m */,
 			);
@@ -289,6 +283,27 @@
 			name = "Interface Builder";
 			sourceTree = "<group>";
 		};
+		077C08D60F3BB26200766F11 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				071F0FD00EF3599E00F9ED3E /* Icons */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		077C09B90F3BBF7700766F11 /* Update Engine */ = {
+			isa = PBXGroup;
+			children = (
+				07AD3F920EFEAC9D003B0B36 /* SparklerUpdateDriver.h */,
+				07AD3F930EFEAC9D003B0B36 /* SparklerUpdateDriver.m */,
+				07AD3EC50EFC1C33003B0B36 /* SparklerUpdateEngine.h */,
+				07AD3EC60EFC1C33003B0B36 /* SparklerUpdateEngine.m */,
+				07AD3F8F0EFEAC3C003B0B36 /* SparklerUpdateMonitor.h */,
+				07AD3F900EFEAC3C003B0B36 /* SparklerUpdateMonitor.m */,
+			);
+			name = "Update Engine";
+			sourceTree = "<group>";
+		};
 		07ACE6120EF5954B00DF1D36 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,7 +318,6 @@
 				071F10210EF35F6B00F9ED3E /* Common */,
 				071F101F0EF35F1300F9ED3E /* Controllers */,
 				071F101E0EF35F0300F9ED3E /* Models */,
-				071F101C0EF35EB800F9ED3E /* Preference Panes */,
 				071F10200EF35F2B00F9ED3E /* Views */,
 			);
 			name = Classes;
@@ -341,6 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
+				071F101C0EF35EB800F9ED3E /* Preference Panes */,
+				077C09B90F3BBF7700766F11 /* Update Engine */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -362,7 +378,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				071F0FD00EF3599E00F9ED3E /* Icons */,
+				077C08D60F3BB26200766F11 /* Images */,
 				071F10230EF35FEA00F9ED3E /* Interface Builder */,
 				071F10220EF35FCF00F9ED3E /* Property Lists */,
 			);

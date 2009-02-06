@@ -30,10 +30,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SparklerPreferencesWindowController;
+
 @interface SparklerApplicationController : NSObject {
-    
+    SparklerPreferencesWindowController *myPreferencesWindowController;
 }
 
-- (IBAction)showSparklerPreferences: (id)sender;
+- (IBAction)togglePreferencesWindow: (id)sender;
 
 @end

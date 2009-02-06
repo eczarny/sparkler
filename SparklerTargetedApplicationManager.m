@@ -39,7 +39,7 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 - (id)init {
     if (self = [super init]) {
-        myApplications = nil;
+        myTargetedApplications = nil;
     }
     
     return self;
@@ -57,19 +57,19 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (NSArray *)applications {
-    if (!myApplications) {
-        [self synchronize];
+- (NSArray *)targetedApplications {
+    if (!myTargetedApplications) {
+        [self synchronizeWithFilesystem];
     }
     
-    return myApplications;
+    return myTargetedApplications;
 }
 
-- (void)setApplications: (NSArray *)applications {
-    if (myApplications != applications) {
-        [myApplications release];
+- (void)setTargetedApplications: (NSArray *)targetedApplications {
+    if (myTargetedApplications != targetedApplications) {
+        [myTargetedApplications release];
         
-        myApplications = [applications retain];
+        myTargetedApplications = [targetedApplications retain];
     }
 }
 
@@ -81,7 +81,7 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
     
     [sharedApplicationScanner setDelegate: self];
     
-    NSLog(@"The application metadata manager is rescanning the filesystem...");
+    NSLog(@"The targeted application manager is rescanning the filesystem...");
     
     [sharedApplicationScanner scan];
     
@@ -90,21 +90,21 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)synchronize {
-    NSArray *applications = [SparklerUtilities sparklerApplicationMetadataFromFile: SparklerTargetedApplicationFile];
+- (void)synchronizeWithFilesystem {
+    NSArray *targetedApplications = [SparklerUtilities targetedApplicationsFromFile: SparklerTargetedApplicationFile];
     
-    if (!myApplications && applications) {
-        [self setApplications: applications];
+    if (!myTargetedApplications && targetedApplications) {
+        [self setTargetedApplications: targetedApplications];
         
-        NSLog(@"The application metadata manager found application metadata from disk.");
+        NSLog(@"The targeted application manager found application metadata saved to disk.");
         
         return;
-    } else if (!myApplications && !applications) {
+    } else if (!myTargetedApplications && !targetedApplications) {
         [self rescanFilesystemForApplications];
     } else {
         NSLog(@"The targeted application manager is saving the current application metadata to disk.");
         
-        [SparklerUtilities saveSparklerApplicationMetadata: myApplications toFile: SparklerTargetedApplicationFile];
+        [SparklerUtilities saveTargetedApplications: myTargetedApplications toFile: SparklerTargetedApplicationFile];
     }
 }
 
@@ -113,23 +113,23 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 - (void)applicationScannerDidFindApplications: (NSArray *)applications {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
-    [self setApplications: applications];
+    [self setTargetedApplications: applications];
     
-    NSLog(@"The application scanner manager found applications.");
+    NSLog(@"The application scanner found targetable applications.");
     
-    [self synchronize];
+    [self synchronizeWithFilesystem];
     
     [notificationCenter postNotificationName: SparklerApplicationsDidUpdateNotification object: self];
 }
 
 - (void)applicationScannerFailedFindingApplications {
-    NSLog(@"The application scanner failed to find any applications.");
+    NSLog(@"The application scanner failed to find any targetable applications.");
 }
 
 #pragma mark -
 
 - (void)dealloc {
-    [myApplications release];
+    [myTargetedApplications release];
     
     [super dealloc];
 }
