@@ -34,7 +34,7 @@
     NSString *myName;
     NSString *myVersion;
     NSString *myPath;
-    NSString *myAppcastURL;
+    NSURL *myAppcastURL;
     NSImage *myIcon;
     BOOL isTargetedForUpdates;
 }
@@ -67,9 +67,9 @@
 
 #pragma mark -
 
-- (NSString *)appcastURL;
+- (NSURL *)appcastURL;
 
-- (void)setAppcastURL: (NSString *)appcastURL;
+- (void)setAppcastURL: (NSURL *)appcastURL;
 
 #pragma mark -
 
@@ -82,5 +82,9 @@
 - (BOOL)isTargetedForUpdates;
 
 - (void)setTargetedForUpdates: (BOOL)flag;
+
+#pragma mark -
+
+- (NSBundle *)applicationBundle;
 
 @end

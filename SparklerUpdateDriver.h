@@ -29,11 +29,20 @@
 // 
 
 #import <Cocoa/Cocoa.h>
+#import <Sparkle/Sparkle.h>
+
+@class SparklerTargetedApplication;
 
 @interface SparklerUpdateDriver : NSObject {
-    
+    SparklerTargetedApplication *myTargetedApplication;
+    SUHost *myHost;
+    SUAppcastItem *myAppcastItem;
 }
 
+- (void)checkTargetedApplicationForUpdates: (SparklerTargetedApplication *)targetedApplication;
 
+#pragma mark -
+
+- (void)abortUpdate;
 
 @end

@@ -40,6 +40,10 @@
 
 #pragma mark -
 
++ (NSString *)sparklerVersion;
+
+#pragma mark -
+
 + (void)registerDefaults;
 
 #pragma mark -

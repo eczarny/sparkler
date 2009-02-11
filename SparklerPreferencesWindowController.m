@@ -28,7 +28,6 @@
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import <QuartzCore/QuartzCore.h>
 #import "SparklerPreferencesWindowController.h"
 #import "SparklerPreferencePaneManager.h"
 #import "SparklerPreferencePaneProtocol.h"

@@ -134,7 +134,7 @@ static SparklerApplicationScanner *sharedInstance = nil;
                 SparklerTargetedApplication *application = [[SparklerTargetedApplication alloc] initWithName: applicationName path: applicationPath];
                 
                 [application setVersion: applicationVersion];
-                [application setAppcastURL: applicationAppcastURL];
+                [application setAppcastURL: [NSURL URLWithString: applicationAppcastURL]];
                 
                 [applications addObject: application];
                 

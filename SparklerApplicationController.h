@@ -38,4 +38,8 @@
 
 - (IBAction)togglePreferencesWindow: (id)sender;
 
+#pragma mark -
+
+- (IBAction)checkForUpdates: (id)sender;
+
 @end

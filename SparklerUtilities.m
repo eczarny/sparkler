@@ -71,6 +71,19 @@
 
 #pragma mark -
 
++ (NSString *)sparklerVersion {
+    NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
+    NSString *sparlerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationCFBundleShortVersionString];
+    
+    if (!sparlerVersion) {
+        sparlerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationCFBundleVersion];
+    }
+    
+    return sparlerVersion;
+}
+
+#pragma mark -
+
 + (void)registerDefaults {
     [[NSUserDefaults standardUserDefaults] registerDefaults: [SparklerUtilities existingSparklerDefaults]];
 }

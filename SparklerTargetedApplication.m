@@ -113,11 +113,11 @@
 
 #pragma mark -
 
-- (NSString *)appcastURL {
+- (NSURL *)appcastURL {
     return myAppcastURL;
 }
 
-- (void)setAppcastURL: (NSString *)appcastURL {
+- (void)setAppcastURL: (NSURL *)appcastURL {
     if (myAppcastURL != appcastURL) {
         [myAppcastURL release];
         
@@ -147,6 +147,12 @@
 
 - (void)setTargetedForUpdates: (BOOL)targetedForUpdates {
     isTargetedForUpdates = targetedForUpdates;
+}
+
+#pragma mark -
+
+- (NSBundle *)applicationBundle {
+    return [NSBundle bundleWithPath: myPath];
 }
 
 #pragma mark -

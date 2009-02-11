@@ -32,6 +32,7 @@
 #import "SparklerPreferencesWindowController.h"
 #import "SparklerTargetedApplicationManager.h"
 #import "SparklerPreferencePaneManager.h"
+#import "SparklerUpdateEngine.h"
 #import "SparklerUtilities.h"
 
 @implementation SparklerApplicationController
@@ -64,6 +65,14 @@
 
 - (IBAction)togglePreferencesWindow: (id)sender {
     [myPreferencesWindowController togglePreferencesWindow];
+}
+
+#pragma mark -
+
+- (IBAction)checkForUpdates: (id)sender {
+    SparklerUpdateEngine *sharedUpdateEngine = [SparklerUpdateEngine sharedEngine];
+    
+    [sharedUpdateEngine checkForUpdates];
 }
 
 #pragma mark -
