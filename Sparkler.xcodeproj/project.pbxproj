@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070CD5A00F41115F003EA9D0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
+		070CD5DB0F4113AC003EA9D0 /* SparklerUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */; };
+		070CD5DC0F4113AC003EA9D0 /* SparklerUpdateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */; };
+		070CD5DD0F4113AC003EA9D0 /* SparklerUpdateMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5DA0F4113AC003EA9D0 /* SparklerUpdateMonitor.m */; };
 		071214B70F017B4E00FBBDCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		071214B80F017B4E00FBBDCE /* SparklerApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8670EF20FB900C6997D /* SparklerApplicationController.m */; };
 		071214B90F017B4E00FBBDCE /* SparklerApplicationScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8530EF20F7700C6997D /* SparklerApplicationScanner.m */; };
@@ -19,15 +23,11 @@
 		071214C00F017B4E00FBBDCE /* SparklerTargetedApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ACE7C30EF5DC8200DF1D36 /* SparklerTargetedApplication.m */; };
 		071214C10F017B4E00FBBDCE /* SparklerTargetedApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */; };
 		071214C20F017B4E00FBBDCE /* SparklerTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8850EF210F100C6997D /* SparklerTextFieldCell.m */; };
-		071214C30F017B4E00FBBDCE /* SparklerUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AD3F930EFEAC9D003B0B36 /* SparklerUpdateDriver.m */; };
-		071214C40F017B4E00FBBDCE /* SparklerUpdateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AD3EC60EFC1C33003B0B36 /* SparklerUpdateEngine.m */; };
-		071214C50F017B4E00FBBDCE /* SparklerUpdateMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AD3F900EFEAC3C003B0B36 /* SparklerUpdateMonitor.m */; };
 		071214C60F017B4E00FBBDCE /* SparklerUpdatesPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CD909A0EF86D440053BCAF /* SparklerUpdatesPreferencePane.m */; };
 		071214C70F017B4E00FBBDCE /* SparklerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8570EF20F7700C6997D /* SparklerUtilities.m */; };
 		071214CA0F017B5A00FBBDCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		071214CB0F017B5A00FBBDCE /* SparklerHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD84C0EF20F2400C6997D /* SparklerHelperController.m */; };
 		071214CC0F017B5A00FBBDCE /* SparklerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8570EF20F7700C6997D /* SparklerUtilities.m */; };
-		0717DEF60F3D404E00B56132 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		0717DF030F3D406100B56132 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		071F0AF40EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF00EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings */; };
 		071F0AF50EF2B04E00F9ED3E /* Sparkler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF20EF2B04E00F9ED3E /* Sparkler.xib */; };
@@ -83,6 +83,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		070CD5D50F4113AC003EA9D0 /* SparklerUpdateDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateDriver.h; sourceTree = "<group>"; };
+		070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateDriver.m; sourceTree = "<group>"; };
+		070CD5D70F4113AC003EA9D0 /* SparklerUpdateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngine.h; sourceTree = "<group>"; };
+		070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateEngine.m; sourceTree = "<group>"; };
+		070CD5D90F4113AC003EA9D0 /* SparklerUpdateMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateMonitor.h; sourceTree = "<group>"; };
+		070CD5DA0F4113AC003EA9D0 /* SparklerUpdateMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateMonitor.m; sourceTree = "<group>"; };
 		0717DEF50F3D404E00B56132 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = /Library/Frameworks/Sparkle.framework; sourceTree = "<absolute>"; };
 		071F0AF10EF2B04E00F9ED3E /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = "Languages/English.lproj/Sparkler-InfoPlist.strings"; sourceTree = "<group>"; };
 		071F0AF30EF2B04E00F9ED3E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/Sparkler.xib; sourceTree = "<group>"; };
@@ -94,6 +100,15 @@
 		071F0F700EF34CAF00F9ED3E /* SparklerPreferencePaneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerPreferencePaneManager.h; sourceTree = "<group>"; };
 		071F0F710EF34CAF00F9ED3E /* SparklerPreferencePaneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerPreferencePaneManager.m; sourceTree = "<group>"; };
 		071F0FD20EF359B400F9ED3E /* General Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "General Preferences.tiff"; path = "Resources/Icons/Toolbar Icons/General Preferences.tiff"; sourceTree = "<group>"; };
+		0760006E0F425CED00B1FA19 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configurations/Common.xcconfig; sourceTree = "<group>"; };
+		0760006F0F425CED00B1FA19 /* CommonDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDevelopment.xcconfig; path = Configurations/CommonDevelopment.xcconfig; sourceTree = "<group>"; };
+		076000700F425CED00B1FA19 /* CommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonRelease.xcconfig; path = Configurations/CommonRelease.xcconfig; sourceTree = "<group>"; };
+		076000710F425CED00B1FA19 /* Sparkler.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Sparkler.xcconfig; path = Configurations/Sparkler.xcconfig; sourceTree = "<group>"; };
+		076000720F425CED00B1FA19 /* SparklerDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerDevelopment.xcconfig; path = Configurations/SparklerDevelopment.xcconfig; sourceTree = "<group>"; };
+		076000730F425CED00B1FA19 /* SparklerHelper.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerHelper.xcconfig; path = Configurations/SparklerHelper.xcconfig; sourceTree = "<group>"; };
+		076000740F425CED00B1FA19 /* SparklerHelperDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerHelperDevelopment.xcconfig; path = Configurations/SparklerHelperDevelopment.xcconfig; sourceTree = "<group>"; };
+		076000750F425CED00B1FA19 /* SparklerHelperRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerHelperRelease.xcconfig; path = Configurations/SparklerHelperRelease.xcconfig; sourceTree = "<group>"; };
+		076000760F425CED00B1FA19 /* SparklerRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerRelease.xcconfig; path = Configurations/SparklerRelease.xcconfig; sourceTree = "<group>"; };
 		078DD7FA0EF20B8C00C6997D /* SparklerHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparklerHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078DD7FC0EF20B8C00C6997D /* SparklerHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SparklerHelper-Info.plist"; path = "Resources/Property Lists/SparklerHelper-Info.plist"; sourceTree = "<group>"; };
 		078DD8230EF20D1B00C6997D /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = "Resources/Property Lists/Defaults.plist"; sourceTree = "<group>"; };
@@ -118,12 +133,6 @@
 		07ACE7C30EF5DC8200DF1D36 /* SparklerTargetedApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerTargetedApplication.m; sourceTree = "<group>"; };
 		07ACE7D10EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerTargetedApplicationManager.h; sourceTree = "<group>"; };
 		07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerTargetedApplicationManager.m; sourceTree = "<group>"; };
-		07AD3EC50EFC1C33003B0B36 /* SparklerUpdateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngine.h; sourceTree = "<group>"; };
-		07AD3EC60EFC1C33003B0B36 /* SparklerUpdateEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateEngine.m; sourceTree = "<group>"; };
-		07AD3F8F0EFEAC3C003B0B36 /* SparklerUpdateMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateMonitor.h; sourceTree = "<group>"; };
-		07AD3F900EFEAC3C003B0B36 /* SparklerUpdateMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateMonitor.m; sourceTree = "<group>"; };
-		07AD3F920EFEAC9D003B0B36 /* SparklerUpdateDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateDriver.h; sourceTree = "<group>"; };
-		07AD3F930EFEAC9D003B0B36 /* SparklerUpdateDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateDriver.m; sourceTree = "<group>"; };
 		07BDB2C10EF4CDA9003D52CA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerPreferencesWindow.xib; sourceTree = "<group>"; };
 		07CD901A0EF743C80053BCAF /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerUpdatesPreferencePane.xib; sourceTree = "<group>"; };
 		07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Update Preferences.tiff"; path = "Resources/Icons/Toolbar Icons/Update Preferences.tiff"; sourceTree = "<group>"; };
@@ -162,7 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				0717DEF60F3D404E00B56132 /* Sparkle.framework in Frameworks */,
+				070CD5A00F41115F003EA9D0 /* Sparkle.framework in Frameworks */,
 				07ACE4CB0EF57CD400DF1D36 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +297,22 @@
 			name = "Interface Builder";
 			sourceTree = "<group>";
 		};
+		0760006D0F425CDC00B1FA19 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				0760006E0F425CED00B1FA19 /* Common.xcconfig */,
+				0760006F0F425CED00B1FA19 /* CommonDevelopment.xcconfig */,
+				076000700F425CED00B1FA19 /* CommonRelease.xcconfig */,
+				076000710F425CED00B1FA19 /* Sparkler.xcconfig */,
+				076000720F425CED00B1FA19 /* SparklerDevelopment.xcconfig */,
+				076000730F425CED00B1FA19 /* SparklerHelper.xcconfig */,
+				076000740F425CED00B1FA19 /* SparklerHelperDevelopment.xcconfig */,
+				076000750F425CED00B1FA19 /* SparklerHelperRelease.xcconfig */,
+				076000760F425CED00B1FA19 /* SparklerRelease.xcconfig */,
+			);
+			name = Configurations;
+			sourceTree = "<group>";
+		};
 		077C08D60F3BB26200766F11 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,12 +324,12 @@
 		077C09B90F3BBF7700766F11 /* Update Engine */ = {
 			isa = PBXGroup;
 			children = (
-				07AD3F920EFEAC9D003B0B36 /* SparklerUpdateDriver.h */,
-				07AD3F930EFEAC9D003B0B36 /* SparklerUpdateDriver.m */,
-				07AD3EC50EFC1C33003B0B36 /* SparklerUpdateEngine.h */,
-				07AD3EC60EFC1C33003B0B36 /* SparklerUpdateEngine.m */,
-				07AD3F8F0EFEAC3C003B0B36 /* SparklerUpdateMonitor.h */,
-				07AD3F900EFEAC3C003B0B36 /* SparklerUpdateMonitor.m */,
+				070CD5D50F4113AC003EA9D0 /* SparklerUpdateDriver.h */,
+				070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */,
+				070CD5D70F4113AC003EA9D0 /* SparklerUpdateEngine.h */,
+				070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */,
+				070CD5D90F4113AC003EA9D0 /* SparklerUpdateMonitor.h */,
+				070CD5DA0F4113AC003EA9D0 /* SparklerUpdateMonitor.m */,
 			);
 			name = "Update Engine";
 			sourceTree = "<group>";
@@ -384,6 +409,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0760006D0F425CDC00B1FA19 /* Configurations */,
 				077C08D60F3BB26200766F11 /* Images */,
 				071F10230EF35FEA00F9ED3E /* Interface Builder */,
 				071F10220EF35FCF00F9ED3E /* Property Lists */,
@@ -429,6 +455,7 @@
 				07AD3FB10EFEADEA003B0B36 /* CopyFiles */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				0719F6AB0F410B9400748AAB /* Run Script: Include Git commit hash */,
 			);
 			buildRules = (
 			);
@@ -492,6 +519,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0719F6AB0F410B9400748AAB /* Run Script: Include Git commit hash */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: Include Git commit hash";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "# Xcode auto-versioning script for git\n#\n# Based on original Perl script by Marcus S. Zarra and Matt Long at\n#   (http://www.cimgf.com/2008/04/13/git-and-xcode-a-git-build-number-script/)\n \n# fail if not run from Xcode\nraise \"Must be run from Xcode\" unless ENV['XCODE_VERSION_ACTUAL']\n \ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n \n# Get the current git commit hash\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n \n# open Info.plist and set the CFBundleVersion value to the commit hash\nlines = IO.readlines(info_plist).join\nlines.gsub! /(<key>CFBundleVersion<\\/key>\\n\\t<string>).*?(<\\/string>)/, \"\\\\1#{commit}\\\\2\"\n \n# overwrite the original Info.plist file with our modified version\nFile.open(info_plist, 'w') {|f| f.puts lines}";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		078DD7F70EF20B8C00C6997D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -519,10 +563,10 @@
 				071214C00F017B4E00FBBDCE /* SparklerTargetedApplication.m in Sources */,
 				071214C10F017B4E00FBBDCE /* SparklerTargetedApplicationManager.m in Sources */,
 				071214C20F017B4E00FBBDCE /* SparklerTextFieldCell.m in Sources */,
-				071214C30F017B4E00FBBDCE /* SparklerUpdateDriver.m in Sources */,
-				071214C40F017B4E00FBBDCE /* SparklerUpdateEngine.m in Sources */,
-				071214C50F017B4E00FBBDCE /* SparklerUpdateMonitor.m in Sources */,
 				071214C60F017B4E00FBBDCE /* SparklerUpdatesPreferencePane.m in Sources */,
+				070CD5DB0F4113AC003EA9D0 /* SparklerUpdateDriver.m in Sources */,
+				070CD5DC0F4113AC003EA9D0 /* SparklerUpdateEngine.m in Sources */,
+				070CD5DD0F4113AC003EA9D0 /* SparklerUpdateMonitor.m in Sources */,
 				071214C70F017B4E00FBBDCE /* SparklerUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,109 +659,63 @@
 /* Begin XCBuildConfiguration section */
 		078DD7FD0EF20B8D00C6997D /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076000740F425CED00B1FA19 /* SparklerHelperDevelopment.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Sparkler.pch;
-				INFOPLIST_FILE = "Resources/Property Lists/SparklerHelper-Info.plist";
-				INSTALL_PATH = "@executable_path/../Resources";
-				PRODUCT_NAME = SparklerHelper;
 				VERSION_INFO_FILE = "";
 			};
 			name = Development;
 		};
 		078DD7FE0EF20B8D00C6997D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076000750F425CED00B1FA19 /* SparklerHelperRelease.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Sparkler.pch;
-				INFOPLIST_FILE = "Resources/Property Lists/SparklerHelper-Info.plist";
-				INSTALL_PATH = "@executable_path/../Resources";
-				PRODUCT_NAME = SparklerHelper;
 				VERSION_INFO_FILE = "";
 			};
 			name = Release;
 		};
 		C01FCF4B08A954540054247B /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076000720F425CED00B1FA19 /* SparklerDevelopment.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Sparkler.pch;
-				INFOPLIST_FILE = "Resources/Property Lists/Sparkler-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = Sparkler;
 				VERSION_INFO_FILE = "";
 			};
 			name = Development;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076000760F425CED00B1FA19 /* SparklerRelease.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Sparkler.pch;
-				INFOPLIST_FILE = "Resources/Property Lists/Sparkler-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = Sparkler;
 				VERSION_INFO_FILE = "";
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0760006F0F425CED00B1FA19 /* CommonDevelopment.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
 			};
 			name = Development;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076000700F425CED00B1FA19 /* CommonRelease.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};
