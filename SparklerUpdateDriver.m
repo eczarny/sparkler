@@ -30,6 +30,7 @@
 
 #import "SparklerUpdateDriver.h"
 #import "SparklerTargetedApplication.h"
+#import "SparklerVersionComparator.h"
 #import "SparklerUtilities.h"
 
 @interface SparklerUpdateDriver (SparklerUpdateDriverPrivate)
@@ -92,11 +93,8 @@
     [appcast setDelegate: self];
     [appcast setUserAgentString: userAgent];
     
-    // TODO: Remember to release the targeted application and host once the update driver is finished.
+    // TODO: Remember to release the targeted application once the update driver is finished.
     myTargetedApplication = [targetedApplication retain];
-    myHost = [host retain];
-    
-    NSLog(@"Fetching the appcast from URL: %@", appcastURL);
     
     [appcast fetchAppcastFromURL: appcastURL];
 }
@@ -113,13 +111,11 @@
     NSEnumerator *appcastItemEnumerator = [[appcast items] objectEnumerator];
     SUAppcastItem *appcastItem = nil;
     
-    NSLog(@"The appcast for %@ finished loading.", [myTargetedApplication name]);
+    [appcast release];
     
     do {
         appcastItem = [appcastItemEnumerator nextObject];
     } while (appcastItem && ![self hostSupportsAppcastItem: appcastItem]);
-    
-    [appcast release];
     
     if (appcastItem) {
         myAppcastItem = [appcastItem retain];
@@ -129,7 +125,6 @@
         return;
     }
     
-    // TODO: Invoke the proper comparator plug-in to determine if the update is valid.
     if ([self isAppcastItemNewer: myAppcastItem]) {
         [self didFindUpdate];
     } else {
@@ -138,9 +133,9 @@
 }
 
 - (void)appcast: (SUAppcast *)appcast failedToLoadWithError: (NSError *)error {
-    [self abortUpdateWithError: error];
-    
     NSLog(@"The appcast for %@ failed to load.", [myTargetedApplication name]);
+    
+    [self abortUpdateWithError: error];
     
     [appcast release];
 }
@@ -152,11 +147,16 @@
 @implementation SparklerUpdateDriver (SparklerUpdateDriverPrivate)
 
 - (BOOL)hostSupportsAppcastItem: (SUAppcastItem *)appcastItem {
-    if (![appcastItem minimumSystemVersion] || [[appcastItem minimumSystemVersion] isEqualToString: @""]) {
+    NSString *minimumSupportedSystemVersion = [appcastItem minimumSystemVersion];
+    NSString *systemVersion = [SUHost systemVersionString];
+    
+    if (!minimumSupportedSystemVersion || [minimumSupportedSystemVersion isEqualToString: @""]) {
         return YES;
     }
     
-    // TODO: Invoke the generic comparator plug-in to determine if the update is supported by this version of OS X.
+    if ([SparklerVersionComparator compareCurrentVersion: minimumSupportedSystemVersion toVersion: systemVersion] == NSOrderedDescending) {
+        return NO;
+    }
     
     return YES;
 }
@@ -164,9 +164,11 @@
 #pragma mark -
 
 - (BOOL)isAppcastItemNewer: (SUAppcastItem *)appcastItem {
-    // TODO: Invoke the proper comparator plug-in to determine if this update is newer.
+    if ([myTargetedApplication compareToVersion: [appcastItem versionString]] == NSOrderedAscending) {
+        return YES;
+    }
     
-    return YES;
+    return NO;
 }
 
 - (BOOL)appcastItemContainsSkippedVersion: (SUAppcastItem *)appcastItem {
@@ -176,7 +178,7 @@
         return NO;
     }
     
-    // TODO: Invoke the proper comparator plug-in to determine if this update should be skipped.
+    // TODO: This methods needs to be implemented.
     
     return NO;
 }
@@ -192,7 +194,7 @@
 #pragma mark -
 
 - (void)didFindUpdate {
-    NSLog(@"Sparkler found a new update for %@: %@", [myTargetedApplication name], [myAppcastItem title]);
+    NSLog(@"Sparkler found a new update for %@.", [myTargetedApplication name]);
 }
 
 - (void)didNotFindUpdate {

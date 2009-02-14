@@ -80,8 +80,6 @@ static SparklerUpdateEngine *sharedInstance = nil;
         if ([targetedApplication isTargetedForUpdates]) {
             SparklerUpdateDriver *updateDriver = [[SparklerUpdateDriver alloc] init];
             
-            NSLog(@"The update engine is checking %@/%@ for updates...", [targetedApplication name], [targetedApplication version]);
-            
             // This will leak like a sieve until a better workflow has been decided on. We're just testing for now.
             [updateDriver checkTargetedApplicationForUpdates: targetedApplication];
         }

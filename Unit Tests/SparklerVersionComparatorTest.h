@@ -22,73 +22,26 @@
 
 // 
 // Sparkler
-// SparklerTargetedApplication.h
+// SparklerVersionComparatorTest.h
 // 
-// Created by Eric Czarny on Wednesday, December 10, 2008.
+// Created by Eric Czarny on Friday, February 13, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import <Cocoa/Cocoa.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-@interface SparklerTargetedApplication : NSObject<NSCoding> {
-    NSString *myName;
-    NSString *myVersion;
-    NSString *myPath;
-    NSURL *myAppcastURL;
-    NSImage *myIcon;
-    BOOL isTargetedForUpdates;
+@interface SparklerVersionComparatorTest : SenTestCase {
+    
 }
 
-- (id)initWithName: (NSString *)name path: (NSString *)path;
+- (void)testBasicVersionComparison;
 
-- (id)initWithCoder: (NSCoder*)coder;
+- (void)testRevisionNumberComparison;
 
-#pragma mark -
-
-- (void)encodeWithCoder: (NSCoder*)coder;
+- (void)testPreReleaseVersionComparison;
 
 #pragma mark -
 
-- (NSString *)name;
-
-- (void)setName: (NSString *)name;
-
-#pragma mark -
-
-- (NSString *)version;
-
-- (void)setVersion: (NSString *)version;
-
-#pragma mark -
-
-- (NSString *)path;
-
-- (void)setPath: (NSString *)path;
-
-#pragma mark -
-
-- (NSURL *)appcastURL;
-
-- (void)setAppcastURL: (NSURL *)appcastURL;
-
-#pragma mark -
-
-- (NSImage *)icon;
-
-- (void)setIcon: (NSImage *)icon;
-
-#pragma mark -
-
-- (BOOL)isTargetedForUpdates;
-
-- (void)setTargetedForUpdates: (BOOL)flag;
-
-#pragma mark -
-
-- (NSBundle *)applicationBundle;
-
-#pragma mark -
-
-- (NSComparisonResult)compareToVersion: (NSString *)version;
+- (void)testDivisibleByZeroVersionComparison;
 
 @end

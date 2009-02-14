@@ -29,6 +29,7 @@
 // 
 
 #import "SparklerTargetedApplication.h"
+#import "SparklerVersionComparator.h"
 
 @implementation SparklerTargetedApplication
 
@@ -153,6 +154,12 @@
 
 - (NSBundle *)applicationBundle {
     return [NSBundle bundleWithPath: myPath];
+}
+
+#pragma mark -
+
+- (NSComparisonResult)compareToVersion: (NSString *)version {
+    return [SparklerVersionComparator compareCurrentVersion: myVersion toVersion: version];
 }
 
 #pragma mark -

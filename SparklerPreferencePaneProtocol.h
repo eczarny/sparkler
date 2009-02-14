@@ -32,6 +32,8 @@
 
 @protocol SparklerPreferencePaneProtocol
 
+- (void)preferencePaneDidLoad;
+
 - (void)preferencePaneDidDisplay;
 
 #pragma mark -

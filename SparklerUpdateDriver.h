@@ -35,7 +35,6 @@
 
 @interface SparklerUpdateDriver : NSObject {
     SparklerTargetedApplication *myTargetedApplication;
-    SUHost *myHost;
     SUAppcastItem *myAppcastItem;
 }
 
