@@ -86,12 +86,6 @@
         objectValue = [targetedApplication icon];
     } else if ([columnIdentifier isEqualToString: SparklerApplicationNameField]) {
         objectValue = [targetedApplication name];
-    } else if ([columnIdentifier isEqualToString: SparklerApplicationVersionField]) {
-        objectValue = [targetedApplication version];
-        
-        if (!objectValue) {
-            objectValue = @"N/A";
-        }
     } else {
         objectValue = nil;
     }
