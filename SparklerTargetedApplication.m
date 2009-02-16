@@ -30,13 +30,13 @@
 
 #import "SparklerTargetedApplication.h"
 #import "SparklerGenericVersionComparator.h"
+#import "SparklerConstants.h"
 
 @implementation SparklerTargetedApplication
 
 - (id)initWithName: (NSString *)name path: (NSString *)path {
     if (self = [super init]) {
         myName = [name retain];
-        myVersion = nil;
         myPath = [path retain];
         myAppcastURL = nil;
         myIcon = nil;
@@ -49,7 +49,6 @@
 - (id)initWithCoder: (NSCoder*)coder {
     if (self = [super init]) {
         myName = [[coder decodeObjectForKey: @"name"] retain];
-        myVersion = [[coder decodeObjectForKey: @"version"] retain];
         myPath = [[coder decodeObjectForKey: @"path"] retain];
         myAppcastURL = [[coder decodeObjectForKey: @"appcastURL"] retain];
         myIcon = [[coder decodeObjectForKey: @"icon"] retain];
@@ -63,7 +62,6 @@
 
 - (void)encodeWithCoder: (NSCoder*)coder {
     [coder encodeObject: myName forKey: @"name"];
-    [coder encodeObject: myVersion forKey: @"version"];
     [coder encodeObject: myPath forKey: @"path"];
     [coder encodeObject: myAppcastURL forKey: @"appcastURL"];
     [coder encodeObject: myIcon forKey: @"icon"];
@@ -87,15 +85,17 @@
 #pragma mark -
 
 - (NSString *)version {
-    return myVersion;
+    return [[self applicationBundle] objectForInfoDictionaryKey: SparklerApplicationCFBundleVersion];
 }
 
-- (void)setVersion: (NSString *)version {
-    if (myVersion != version) {
-        [myVersion release];
-        
-        myVersion = [version retain];
+- (NSString *)displayVersion {
+    NSString *shortVersionString = [[self applicationBundle] objectForInfoDictionaryKey: SparklerApplicationCFBundleShortVersionString];
+    
+    if (!shortVersionString) {
+        shortVersionString = [self version];
     }
+    
+    return shortVersionString;
 }
 
 #pragma mark -
@@ -159,14 +159,13 @@
 #pragma mark -
 
 - (NSComparisonResult)compareToVersion: (NSString *)version {
-    return [SparklerGenericVersionComparator compareCurrentVersion: myVersion toVersion: version];
+    return [SparklerGenericVersionComparator compareCurrentVersion: [self version] toVersion: version];
 }
 
 #pragma mark -
 
 - (void)dealloc {
     [myName release];
-    [myVersion release];
     [myPath release];
     [myAppcastURL release];
     [myIcon release];

@@ -133,8 +133,6 @@
 }
 
 - (void)appcast: (SUAppcast *)appcast failedToLoadWithError: (NSError *)error {
-    NSLog(@"The appcast for %@ failed to load.", [myTargetedApplication name]);
-    
     [self abortUpdateWithError: error];
     
     [appcast release];

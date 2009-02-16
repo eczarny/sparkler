@@ -157,8 +157,6 @@ typedef enum {
                 NSInteger currentVersionComponentValue = [currentVersionComponent intValue];
                 NSInteger versionComponentValue = [versionComponent intValue];
                 
-                NSLog(@"Comparing the number %d to the number %d.", currentVersionComponentValue, versionComponentValue);
-                
                 if (currentVersionComponentValue > versionComponentValue) {
                     return NSOrderedDescending;
                 } else if (currentVersionComponentValue < versionComponentValue) {
@@ -166,8 +164,6 @@ typedef enum {
                 }
             } else if (currentVersionComponentType == SparklerStringComponentTypeString) {
                 NSComparisonResult comparisonResult = [currentVersionComponent compare: versionComponent];
-                
-                NSLog(@"Comparing the string %@ to the string %@.", currentVersionComponent, versionComponent);
                 
                 if (comparisonResult != NSOrderedSame) {
                     return comparisonResult;

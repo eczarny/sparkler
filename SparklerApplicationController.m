@@ -48,10 +48,6 @@
 #pragma mark -
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
-    
-    [sharedTargetedApplicationManager synchronizeWithFilesystem];
-    
     [myPreferencesWindowController loadPreferencePanes];
 }
 

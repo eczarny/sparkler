@@ -51,12 +51,12 @@
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     [notificationCenter addObserver: self
-                           selector: @selector(applicationMetadataWillUpdate:)
+                           selector: @selector(applicationsWillUpdate:)
                                name: SparklerApplicationsWillUpdateNotification
                              object: nil];
     
     [notificationCenter addObserver: self
-                           selector: @selector(applicationMetadataDidUpdate:)
+                           selector: @selector(applicationsDidUpdate:)
                                name: SparklerApplicationsDidUpdateNotification
                              object: nil];
     
@@ -94,18 +94,18 @@
 #pragma mark -
 
 - (IBAction)viewHelpForPreferencePane: (id)sender {
-    NSLog(@"refreshListOfApplications:");
+    NSLog(@"viewHelpForPreferencePane:");
 }
 
 #pragma mark -
 
-- (void)applicationMetadataWillUpdate: (NSNotification *)notification {
+- (void)applicationsWillUpdate: (NSNotification *)notification {
     [myScanningForApplicationsIndicator startAnimation: nil];
     
     [myRefreshApplicationsButton setEnabled: NO];
 }
 
-- (void)applicationMetadataDidUpdate: (NSNotification *)notification {
+- (void)applicationsDidUpdate: (NSNotification *)notification {
     [myApplicationsTableView reloadData];
     
     [myScanningForApplicationsIndicator stopAnimation: nil];
@@ -116,6 +116,8 @@
 #pragma mark -
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    
     [myApplicationsDataSource release];
     
     [super dealloc];
