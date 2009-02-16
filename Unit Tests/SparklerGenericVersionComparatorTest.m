@@ -22,16 +22,16 @@
 
 // 
 // Sparkler
-// SparklerVersionComparatorTest.m
+// SparklerGenericVersionComparatorTest.m
 // 
 // Created by Eric Czarny on Friday, February 13, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerVersionComparatorTest.h"
-#import "SparklerVersionComparator.h"
+#import "SparklerGenericVersionComparatorTest.h"
+#import "SparklerGenericVersionComparator.h"
 
-@interface SparklerVersionComparatorTest (SparklerVersionComparatorTestPrivate)
+@interface SparklerGenericVersionComparatorTest (SparklerGenericVersionComparatorTestPrivate)
 
 - (void)assertOrderBetweenVersionA: (NSString *)versionA andVersionB: (NSString *)versionB withExpectedResult: (NSComparisonResult)expectedResult;
 
@@ -47,9 +47,9 @@
 
 #pragma mark -
 
-@implementation SparklerVersionComparatorTest
+@implementation SparklerGenericVersionComparatorTest
 
-- (void)testBasicVersionComparison {
+- (void)testGenericVersionComparison {
     [self assertSameOrderBetweenVersionA: @"1.0" andVersionB: @"1.0"];
     
     [self assertAscendingOrderBetweenVersionA: @"0.1" andVersionB: @"1.0"];
@@ -73,47 +73,80 @@
     [self assertSameOrderBetweenVersionA: @"8652" andVersionB: @"8652"];
     
     [self assertAscendingOrderBetweenVersionA: @"8652" andVersionB: @"8653"];
-    [self assertAscendingOrderBetweenVersionA: @"8653" andVersionB: @"8663"];
+    [self assertDescendingOrderBetweenVersionA: @"8653" andVersionB: @"8652"];
     
     [self assertSameOrderBetweenVersionA: @"r8652" andVersionB: @"r8652"];
     
     [self assertAscendingOrderBetweenVersionA: @"r8652" andVersionB: @"r8653"];
-    [self assertAscendingOrderBetweenVersionA: @"r8653" andVersionB: @"r8663"];
+    [self assertDescendingOrderBetweenVersionA: @"r8653" andVersionB: @"r8652"];
     
     [self assertSameOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"1.2.3/8652"];
+    [self assertSameOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"1.2.3"];
+    [self assertSameOrderBetweenVersionA: @"8652" andVersionB: @"1.2.3/8652"];
+    
+    [self assertAscendingOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"8653"];
+    [self assertDescendingOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"8651"];
+    
+    [self assertSameOrderBetweenVersionA: @"1.2.3/r8652" andVersionB: @"1.2.3/r8652"];
+    [self assertSameOrderBetweenVersionA: @"1.2.3/r8652" andVersionB: @"1.2.3"];
+    [self assertSameOrderBetweenVersionA: @"r8652" andVersionB: @"1.2.3/r8652"];
+    
+    [self assertAscendingOrderBetweenVersionA: @"1.2.3/r8652" andVersionB: @"r8653"];
+    [self assertDescendingOrderBetweenVersionA: @"1.2.3/r8652" andVersionB: @"r8651"];
+    
+    [self assertAscendingOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"1.2.3/8653"];
+    [self assertAscendingOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"1.2.4/8652"];
+    [self assertAscendingOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"1.2.4/8653"];
+    [self assertDescendingOrderBetweenVersionA: @"1.2.3/8653" andVersionB: @"1.2.3/8652"];
+    [self assertDescendingOrderBetweenVersionA: @"1.2.4/8652" andVersionB: @"1.2.3/8652"];
+    [self assertDescendingOrderBetweenVersionA: @"1.2.4/8653" andVersionB: @"1.2.3/8652"];
+    
+    [self assertDescendingOrderBetweenVersionA: @"1.2.3" andVersionB: @"8651"];
+    [self assertDescendingOrderBetweenVersionA: @"8651" andVersionB: @"1.2.3"];
 }
 
 - (void)testPreReleaseVersionComparison {
     [self assertSameOrderBetweenVersionA: @"1.0a" andVersionB: @"1.0a"];
-    [self assertSameOrderBetweenVersionA: @"1.0.0b" andVersionB: @"1.0.0b"];
+    [self assertSameOrderBetweenVersionA: @"1.0.0a" andVersionB: @"1.0.0a"];
     
-    [self assertAscendingOrderBetweenVersionA: @"1.0a" andVersionB: @"1.5b"];
-}
-
-#pragma mark -
-
-- (void)testDivisibleByZeroVersionComparison {
+    [self assertAscendingOrderBetweenVersionA: @"1.0a" andVersionB: @"1.0b"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0a" andVersionB: @"1.1a"];
+    [self assertDescendingOrderBetweenVersionA: @"1.0b" andVersionB: @"1.0a"];
+    [self assertDescendingOrderBetweenVersionA: @"1.1a" andVersionB: @"1.0a"];
     
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0a" andVersionB: @"1.1.0a"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0a" andVersionB: @"1.1.0b"];
+    [self assertDescendingOrderBetweenVersionA: @"1.1.0a" andVersionB: @"1.0.0a"];
+    [self assertDescendingOrderBetweenVersionA: @"1.1.0b" andVersionB: @"1.0.0a"];
+    
+    [self assertSameOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"1.0.0a/8652"];
+    [self assertSameOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"1.0.0a"];
+    [self assertSameOrderBetweenVersionA: @"8652" andVersionB: @"1.0.0a/8652"];
+    
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"8653"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"1.0.0b/8652"];
+    [self assertDescendingOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"8651"];
+    [self assertDescendingOrderBetweenVersionA: @"1.0.0b/8652" andVersionB: @"1.0.0a/8652"];
 }
 
 @end
 
 #pragma mark -
 
-@implementation SparklerVersionComparatorTest (SparklerVersionComparatorTestPrivate)
+@implementation SparklerGenericVersionComparatorTest (SparklerGenericVersionComparatorTestPrivate)
 
 - (void)assertOrderBetweenVersionA: (NSString *)versionA andVersionB: (NSString *)versionB withExpectedResult: (NSComparisonResult)expectedResult {
-    NSString *description = @"";
+    NSString *description;
     
     if (expectedResult == NSOrderedAscending) {
-     description = @"Version %@ should be older than version %@.";
-     } else if (expectedResult == NSOrderedDescending) {
-     description = @"Version %@ should be newer than version %@.";
-     } else {
-     description = @"Version %@ and version %@ should be the same.";
-     }
+        description = @"Version %@ should be older than version %@.";
+    } else if (expectedResult == NSOrderedDescending) {
+        description = @"Version %@ should be newer than version %@.";
+    } else {
+        description = @"Version %@ and version %@ should be the same.";
+    }
     
-    STAssertTrue([SparklerVersionComparator compareCurrentVersion: versionA toVersion: versionB] == expectedResult, description, versionA, versionB);
+    STAssertTrue([SparklerGenericVersionComparator compareCurrentVersion: versionA toVersion: versionB] == expectedResult, description, versionA, versionB);
 }
 
 #pragma mark -

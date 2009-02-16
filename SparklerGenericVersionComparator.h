@@ -22,26 +22,20 @@
 
 // 
 // Sparkler
-// SparklerVersionComparatorTest.h
+// SparklerGenericVersionComparator.h
 // 
 // Created by Eric Czarny on Friday, February 13, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <Cocoa/Cocoa.h>
+#import <RegexKit/RegexKit.h>
+#import "SparklerVersionComparatorProtocol.h"
 
-@interface SparklerVersionComparatorTest : SenTestCase {
+@interface SparklerGenericVersionComparator : NSObject<SparklerVersionComparatorProtocol> {
     
 }
 
-- (void)testBasicVersionComparison;
-
-- (void)testRevisionNumberComparison;
-
-- (void)testPreReleaseVersionComparison;
-
-#pragma mark -
-
-- (void)testDivisibleByZeroVersionComparison;
++ (NSComparisonResult)compareCurrentVersion: (NSString *)currentVersion toVersion: (NSString *)version;
 
 @end

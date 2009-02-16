@@ -14,4 +14,5 @@ WRAPPER_EXTENSION=octest
 GCC_PRECOMPILE_PREFIX_HEADER = YES
 GCC_PREFIX_HEADER = Sparkler.pch
 
-INSTALL_PATH = @executable_path/../Resources
+BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR)/Sparkler.app/Contents/MacOS/Sparkler
+TEST_HOST = $(BUNDLE_LOADER)

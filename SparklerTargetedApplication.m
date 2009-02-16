@@ -29,7 +29,7 @@
 // 
 
 #import "SparklerTargetedApplication.h"
-#import "SparklerVersionComparator.h"
+#import "SparklerGenericVersionComparator.h"
 
 @implementation SparklerTargetedApplication
 
@@ -159,7 +159,7 @@
 #pragma mark -
 
 - (NSComparisonResult)compareToVersion: (NSString *)version {
-    return [SparklerVersionComparator compareCurrentVersion: myVersion toVersion: version];
+    return [SparklerGenericVersionComparator compareCurrentVersion: myVersion toVersion: version];
 }
 
 #pragma mark -

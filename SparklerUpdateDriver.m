@@ -30,7 +30,7 @@
 
 #import "SparklerUpdateDriver.h"
 #import "SparklerTargetedApplication.h"
-#import "SparklerVersionComparator.h"
+#import "SparklerGenericVersionComparator.h"
 #import "SparklerUtilities.h"
 
 @interface SparklerUpdateDriver (SparklerUpdateDriverPrivate)
@@ -154,7 +154,7 @@
         return YES;
     }
     
-    if ([SparklerVersionComparator compareCurrentVersion: minimumSupportedSystemVersion toVersion: systemVersion] == NSOrderedDescending) {
+    if ([SparklerGenericVersionComparator compareCurrentVersion: minimumSupportedSystemVersion toVersion: systemVersion] == NSOrderedDescending) {
         return NO;
     }
     

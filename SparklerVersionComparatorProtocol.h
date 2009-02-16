@@ -22,25 +22,15 @@
 
 // 
 // Sparkler
-// SparklerVersionComparator.h
+// SparklerVersionComparatorProtocol.h
 // 
-// Created by Eric Czarny on Friday, February 13, 2009.
+// Created by Eric Czarny on Sunday, February 15, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
 
-typedef enum {
-    SparklerStringComponentTypeNumber,
-    SparklerStringComponentTypePunctuation,
-    SparklerStringComponentTypeString
-} SparklerStringComponentType;
-
-#pragma mark -
-
-@interface SparklerVersionComparator : NSObject {
-    
-}
+@protocol SparklerVersionComparatorProtocol
 
 + (NSComparisonResult)compareCurrentVersion: (NSString *)currentVersion toVersion: (NSString *)version;
 

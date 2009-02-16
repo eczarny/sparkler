@@ -22,31 +22,22 @@
 
 // 
 // Sparkler
-// SparklerUpdateEngine.h
+// SparklerGenericVersionComparatorTest.h
 // 
-// Created by Eric Czarny on Friday, December 19, 2008.
+// Created by Eric Czarny on Friday, February 13, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import <Cocoa/Cocoa.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-@class SparklerTargetedApplicationManager, SparklerUpdateMonitor;
-
-@interface SparklerUpdateEngine : NSObject {
-    SparklerTargetedApplicationManager *myTargetedApplicationManager;
-    SparklerUpdateMonitor *myUpdateMonitor;
+@interface SparklerGenericVersionComparatorTest : SenTestCase {
+    
 }
 
-+ (SparklerUpdateEngine *)sharedEngine;
+- (void)testGenericVersionComparison;
 
-#pragma mark -
+- (void)testRevisionNumberComparison;
 
-- (SparklerUpdateMonitor *)updateMonitor;
-
-- (void)setUpdateMonitor: (SparklerUpdateMonitor *)updateMonitor;
-
-#pragma mark -
-
-- (void)checkForUpdates;
+- (void)testPreReleaseVersionComparison;
 
 @end
