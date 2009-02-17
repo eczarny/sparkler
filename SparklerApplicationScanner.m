@@ -91,12 +91,12 @@ static SparklerApplicationScanner *sharedInstance = nil;
 
 - (void)scanForApplications {
     NSAutoreleasePool *autoreleasePool = [[NSAutoreleasePool alloc] init];
-    NSString *applicationsDirectory = [NSString stringWithString: SparklerApplicationsDirectory];
+    NSString *applicationsPath = [NSString stringWithString: SparklerApplicationsPath];
     NSArray *applications;
     
     NSLog(@"Initiating the scan for applications...");
     
-    applications = [self scanForApplicationsAtSearchPath: applicationsDirectory];
+    applications = [self scanForApplicationsAtSearchPath: applicationsPath];
     
     NSLog(@"The scan has completed. Sparkler found %d Sparkle-enabled applications.", [applications count]);
     

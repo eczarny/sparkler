@@ -42,7 +42,7 @@
 @implementation SparklerUtilities
 
 + (NSBundle *)sparklerBundle {
-    NSString *applicationsDirectory = [NSString stringWithString: SparklerApplicationsDirectory];
+    NSString *applicationsDirectory = [NSString stringWithString: SparklerApplicationsPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *sparklerApplicationPath = [applicationsDirectory stringByAppendingPathComponent: SparklerApplicationName];
     

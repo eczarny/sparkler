@@ -28,7 +28,7 @@
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#define SparklerApplicationsDirectory                    @"/Applications"
+#define SparklerApplicationsPath                         @"/Applications"
 #define SparklerApplicationExtension                     @"app"
 #define SparklerApplicationName                          @"Sparkler.app"
 #define SparklerBundleIdentifier                         @"com.divisiblebyzero.Sparkler"
@@ -37,6 +37,7 @@
 #define SparklerHelperControllerName                     @"SparklerHelperController"
 #define SparklerApplicationSupportPath                   @"~/Library/Application Support/Sparkler"
 #define SparklerTargetedApplicationFile                  @"Applications.plist"
+#define SparklerDownloadsDirectory                       @"Downloads"
 
 #pragma mark -
 

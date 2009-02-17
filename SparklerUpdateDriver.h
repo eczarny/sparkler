@@ -36,6 +36,7 @@
 @interface SparklerUpdateDriver : NSObject {
     SparklerTargetedApplication *myTargetedApplication;
     SUAppcastItem *myAppcastItem;
+    NSString *myDownloadDestination;
 }
 
 - (void)checkTargetedApplicationForUpdates: (SparklerTargetedApplication *)targetedApplication;

@@ -32,6 +32,7 @@
 #import "SparklerTargetedApplication.h"
 #import "SparklerGenericVersionComparator.h"
 #import "SparklerUtilities.h"
+#import "SparklerConstants.h"
 
 @interface SparklerUpdateDriver (SparklerUpdateDriverPrivate)
 
@@ -54,6 +55,18 @@
 #pragma mark -
 
 - (void)downloadUpdate;
+
+#pragma mark -
+
+- (void)download: (NSURLDownload *)download decideDestinationWithSuggestedFilename: (NSString *)suggestedFilename;
+
+- (BOOL)download: (NSURLDownload *)download shouldDecodeSourceDataOfMIMEType: (NSString *)encodingType;
+
+- (void)downloadDidFinish: (NSURLDownload *)download;
+
+- (void)download: (NSURLDownload *)download didFailWithError: (NSError *)error;
+
+#pragma mark -
 
 - (void)extractUpdate;
 
@@ -138,6 +151,16 @@
     [appcast release];
 }
 
+#pragma mark -
+
+- (void)dealloc {
+    [myTargetedApplication release];
+    [myAppcastItem release];
+    [myDownloadDestination release];
+    
+    [super dealloc];
+}
+
 @end
 
 #pragma mark -
@@ -193,6 +216,8 @@
 
 - (void)didFindUpdate {
     NSLog(@"Sparkler found a new update for %@.", [myTargetedApplication name]);
+    
+    [self downloadUpdate];
 }
 
 - (void)didNotFindUpdate {
@@ -202,8 +227,77 @@
 #pragma mark -
 
 - (void)downloadUpdate {
-    NSLog(@"The update driver is downloading the update.");
+    NSURLDownload *download;
+    NSURLRequest *request = [NSURLRequest requestWithURL: [myAppcastItem fileURL]];
+    
+    NSLog(@"The update driver is downloading the update...");
+    
+    download = [[NSURLDownload alloc] initWithRequest: request delegate: self];
+    
+    if (!download) {
+        NSLog(@"There was a problem initiating the download!");
+    }
 }
+
+#pragma mark -
+
+- (void)download: (NSURLDownload *)download decideDestinationWithSuggestedFilename: (NSString *)suggestedFilename {
+    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPath];
+    NSString *downloadPath = [applicationSupportPath stringByAppendingPathComponent: SparklerDownloadsDirectory];
+    NSString *updateDownloadPath = [downloadPath stringByAppendingPathComponent: [myTargetedApplication name]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filename;
+    BOOL isDirectory;
+    
+    if (![fileManager fileExistsAtPath: downloadPath isDirectory: &isDirectory] && isDirectory) {
+        [fileManager createDirectoryAtPath: downloadPath attributes: nil];
+    }
+    
+    if (![fileManager createDirectoryAtPath: updateDownloadPath attributes: nil]) {
+        NSLog(@"There was a problem creating the download destination at: %@", updateDownloadPath);
+        
+        [download cancel];
+        
+        return;
+    }
+    
+    filename = [NSString stringWithFormat: @"%@ %@.%@", [myTargetedApplication name], [myAppcastItem versionString], [suggestedFilename pathExtension]];
+    myDownloadDestination = [[updateDownloadPath stringByAppendingPathComponent: filename] retain];
+    
+    NSLog(@"The download destination is: %@", myDownloadDestination);
+    
+    [download setDestination: myDownloadDestination allowOverwrite: YES];
+}
+
+- (BOOL)download: (NSURLDownload *)download shouldDecodeSourceDataOfMIMEType: (NSString *)encodingType {
+    if ([encodingType rangeOfString:@"gzip"].location == NSNotFound) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)downloadDidFinish: (NSURLDownload *)download {
+    NSLog(@"The update for %@ has been downloaded.", [myTargetedApplication name]);
+    
+    if (myDownloadDestination) {
+        [[NSFileManager defaultManager] removeFileAtPath: [myDownloadDestination stringByDeletingLastPathComponent] handler: nil];
+    }
+    
+    [download release];
+}
+
+- (void)download: (NSURLDownload *)download didFailWithError: (NSError *)error {
+    NSLog(@"The update for %@ could not be downloaded.", [myTargetedApplication name]);
+    
+    if (myDownloadDestination) {
+        [[NSFileManager defaultManager] removeFileAtPath: [myDownloadDestination stringByDeletingLastPathComponent] handler: nil];
+    }
+    
+    [download release];
+}
+
+#pragma mark -
 
 - (void)extractUpdate {
     NSLog(@"The update driver is extracting the update.");
