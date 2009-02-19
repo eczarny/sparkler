@@ -58,6 +58,8 @@ typedef enum {
     NSArray *currentVersionComponents = [currentVersion componentsSeparatedByString: @"/"];
     NSArray *versionComponents = [version componentsSeparatedByString: @"/"];
     
+    NSLog(@"Comparing current version %@ to version %@.", currentVersion, version);
+    
     if (([currentVersionComponents count] > 1) && ([versionComponents count] <= 1)) {
         return [SparklerGenericVersionComparator compareVersion: version toVersionCompenents: currentVersionComponents forCurrentVersion: NO];
     } else if (([currentVersionComponents count] <= 1) && ([versionComponents count] > 1)) {
@@ -104,7 +106,7 @@ typedef enum {
     NSComparisonResult comparisonResult = NSOrderedSame;
     NSInteger i;
     
-    NSLog(@"Comparing version %@ to %d version components: %@", version, [versionComponents count], versionComponents);
+    NSLog(@"Comparing version %@ to %d version components.", version, [versionComponents count]);
     
     for (i = 0; i < [versionComponents count]; i++) {
         NSString *versionComponent = [versionComponents objectAtIndex: i];

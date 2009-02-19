@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="518"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1126,21 +1127,21 @@
 			<object class="NSWindowTemplate" id="53954070">
 				<int key="NSWindowStyleMask">3</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{686, 806}, {306, 60}}</string>
+				<string key="NSWindowRect">{{562, 662}, {315, 60}}</string>
 				<int key="NSWTFlags">607649792</int>
 				<string key="NSWindowTitle">Sparkler</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<object class="NSView" key="NSWindowView" id="571241840">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">268</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSButton" id="1001097343">
 							<reference key="NSNextResponder" ref="571241840"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{68, 12}, {169, 32}}</string>
+							<string key="NSFrame">{{73, 12}, {169, 32}}</string>
 							<reference key="NSSuperview" ref="571241840"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="557251385">
@@ -1162,9 +1163,10 @@
 							</object>
 						</object>
 					</object>
-					<string key="NSFrameSize">{306, 60}</string>
+					<string key="NSFrameSize">{315, 60}</string>
+					<reference key="NSSuperview"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 			</object>
 		</object>
@@ -2842,7 +2844,12 @@
 					<string>517.IBEditorWindowLastContentRect</string>
 					<string>517.IBWindowTemplateEditedContentRect</string>
 					<string>517.NSWindowTemplate.visibleAtLaunch</string>
+					<string>517.windowTemplate.hasMaxSize</string>
+					<string>517.windowTemplate.hasMinSize</string>
+					<string>517.windowTemplate.maxSize</string>
+					<string>517.windowTemplate.minSize</string>
 					<string>518.IBPluginDependency</string>
+					<string>518.IBUserGuides</string>
 					<string>524.IBPluginDependency</string>
 					<string>525.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
@@ -3066,10 +3073,17 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{686, 806}, {306, 60}}</string>
-					<string>{{686, 806}, {306, 60}}</string>
+					<string>{{562, 662}, {315, 60}}</string>
+					<string>{{562, 662}, {315, 60}}</string>
 					<boolean value="YES"/>
+					<boolean value="NO" id="6"/>
+					<reference ref="6"/>
+					<string>{315, 60}</string>
+					<string>{315, 60}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableArray">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
