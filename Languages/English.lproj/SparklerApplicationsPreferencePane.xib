@@ -8,7 +8,6 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -36,7 +35,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSCustomView" id="116251633">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -267,7 +266,6 @@
 								</object>
 								<string key="NSFrame">{{1, 17}, {468, 192}}</string>
 								<reference key="NSSuperview" ref="538023061"/>
-								<reference key="NSNextKeyView" ref="587529132"/>
 								<reference key="NSDocView" ref="587529132"/>
 								<reference key="NSBGColor" ref="867499832"/>
 								<int key="NScvFlags">4</int>
@@ -300,7 +298,6 @@
 								</object>
 								<string key="NSFrame">{{1, 0}, {468, 17}}</string>
 								<reference key="NSSuperview" ref="538023061"/>
-								<reference key="NSNextKeyView" ref="1009236773"/>
 								<reference key="NSDocView" ref="1009236773"/>
 								<reference key="NSBGColor" ref="867499832"/>
 								<int key="NScvFlags">4</int>
@@ -309,7 +306,6 @@
 						</object>
 						<string key="NSFrame">{{20, 70}, {485, 210}}</string>
 						<reference key="NSSuperview" ref="116251633"/>
-						<reference key="NSNextKeyView" ref="183458822"/>
 						<int key="NSsFlags">18</int>
 						<reference key="NSVScroller" ref="976799395"/>
 						<reference key="NSHScroller" ref="767490452"/>
@@ -361,7 +357,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{525, 325}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</object>
@@ -459,6 +454,7 @@
 							<reference ref="538023061"/>
 						</object>
 						<reference key="parent" ref="1002"/>
+						<string key="objectName">Applications</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
@@ -639,7 +635,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{534, 354}, {525, 325}}</string>
+					<string>{{575, 406}, {525, 325}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
