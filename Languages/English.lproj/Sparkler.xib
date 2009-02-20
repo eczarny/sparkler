@@ -1137,7 +1137,7 @@
 				<int key="NSWindowStyleMask">3</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{582, 582}, {515, 168}}</string>
-				<int key="NSWTFlags">606601216</int>
+				<int key="NSWTFlags">611844096</int>
 				<string key="NSWindowTitle">Sparkler</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>

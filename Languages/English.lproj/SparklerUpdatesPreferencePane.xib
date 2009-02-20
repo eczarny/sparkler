@@ -251,8 +251,8 @@
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>{{686, 701}, {525, 96}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="NO"/>
-					<boolean value="YES"/>
+					<boolean value="NO" id="6"/>
+					<reference ref="6"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

@@ -98,7 +98,7 @@
 						<reference key="NSSuperview" ref="238325092"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="54837536">
-							<int key="NSCellFlags">67239424</int>
+							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents">Show Sparkler status in the menu bar</string>
 							<reference key="NSSupport" ref="887291450"/>
@@ -125,7 +125,7 @@
 						<reference key="NSSuperview" ref="238325092"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="162388483">
-							<int key="NSCellFlags">67239424</int>
+							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents">Launch Sparkler at Login</string>
 							<reference key="NSSupport" ref="887291450"/>
@@ -321,8 +321,8 @@
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>{{538, 541}, {525, 113}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="NO"/>
-					<boolean value="YES"/>
+					<boolean value="NO" id="6"/>
+					<reference ref="6"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
