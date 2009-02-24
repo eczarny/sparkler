@@ -73,13 +73,13 @@
 
 + (NSString *)sparklerVersion {
     NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
-    NSString *sparlerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationCFBundleShortVersionString];
+    NSString *sparklerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationBundleShortVersionString];
     
-    if (!sparlerVersion) {
-        sparlerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationCFBundleVersion];
+    if (!sparklerVersion) {
+        sparklerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationBundleVersion];
     }
     
-    return sparlerVersion;
+    return sparklerVersion;
 }
 
 #pragma mark -

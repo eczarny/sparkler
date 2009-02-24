@@ -85,11 +85,11 @@
 #pragma mark -
 
 - (NSString *)version {
-    return [[self applicationBundle] objectForInfoDictionaryKey: SparklerApplicationCFBundleVersion];
+    return [[self applicationBundle] objectForInfoDictionaryKey: SparklerApplicationBundleVersion];
 }
 
 - (NSString *)displayVersion {
-    NSString *shortVersionString = [[self applicationBundle] objectForInfoDictionaryKey: SparklerApplicationCFBundleShortVersionString];
+    NSString *shortVersionString = [[self applicationBundle] objectForInfoDictionaryKey: SparklerApplicationBundleShortVersionString];
     
     if (!shortVersionString) {
         shortVersionString = [self version];
