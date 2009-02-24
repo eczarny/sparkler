@@ -10,7 +10,6 @@
 		070CD5A00F41115F003EA9D0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		070CD5DB0F4113AC003EA9D0 /* SparklerUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */; };
 		070CD5DC0F4113AC003EA9D0 /* SparklerUpdateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */; };
-		070CD5DD0F4113AC003EA9D0 /* SparklerUpdateMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5DA0F4113AC003EA9D0 /* SparklerUpdateMonitor.m */; };
 		071214B70F017B4E00FBBDCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		071214B80F017B4E00FBBDCE /* SparklerApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8670EF20FB900C6997D /* SparklerApplicationController.m */; };
 		071214B90F017B4E00FBBDCE /* SparklerApplicationScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8530EF20F7700C6997D /* SparklerApplicationScanner.m */; };
@@ -107,8 +106,6 @@
 		070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateDriver.m; sourceTree = "<group>"; };
 		070CD5D70F4113AC003EA9D0 /* SparklerUpdateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngine.h; sourceTree = "<group>"; };
 		070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateEngine.m; sourceTree = "<group>"; };
-		070CD5D90F4113AC003EA9D0 /* SparklerUpdateMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateMonitor.h; sourceTree = "<group>"; };
-		070CD5DA0F4113AC003EA9D0 /* SparklerUpdateMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateMonitor.m; sourceTree = "<group>"; };
 		0717DEF50F3D404E00B56132 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = /Library/Frameworks/Sparkle.framework; sourceTree = "<absolute>"; };
 		071F0AF10EF2B04E00F9ED3E /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = "Languages/English.lproj/Sparkler-InfoPlist.strings"; sourceTree = "<group>"; };
 		071F0AF30EF2B04E00F9ED3E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/Sparkler.xib; sourceTree = "<group>"; };
@@ -155,6 +152,8 @@
 		07ACE7D10EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerTargetedApplicationManager.h; sourceTree = "<group>"; };
 		07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerTargetedApplicationManager.m; sourceTree = "<group>"; };
 		07BDB2C10EF4CDA9003D52CA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerPreferencesWindow.xib; sourceTree = "<group>"; };
+		07C9F8F90F50DC9B0017A10D /* SparklerUpdateEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngineDelegate.h; sourceTree = "<group>"; };
+		07C9F9310F50E81C0017A10D /* SparklerUpdateDriverDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateDriverDelegate.h; sourceTree = "<group>"; };
 		07CD901A0EF743C80053BCAF /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerUpdatesPreferencePane.xib; sourceTree = "<group>"; };
 		07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Update Preferences.tiff"; path = "Resources/Icons/Toolbar Icons/Update Preferences.tiff"; sourceTree = "<group>"; };
 		07CD90360EF74E800053BCAF /* PreferencePanes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PreferencePanes.plist; path = "Resources/Property Lists/PreferencePanes.plist"; sourceTree = "<group>"; };
@@ -372,6 +371,7 @@
 		077C09B90F3BBF7700766F11 /* Update Engine */ = {
 			isa = PBXGroup;
 			children = (
+				07C9F8F80F50DC7E0017A10D /* Delegates */,
 				07A680D80F49E678003C04BD /* Protocols */,
 				07D68F2B0F491FD400EC7CC1 /* SparklerGenericVersionComparator.h */,
 				07D68F2C0F491FD400EC7CC1 /* SparklerGenericVersionComparator.m */,
@@ -379,8 +379,6 @@
 				070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */,
 				070CD5D70F4113AC003EA9D0 /* SparklerUpdateEngine.h */,
 				070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */,
-				070CD5D90F4113AC003EA9D0 /* SparklerUpdateMonitor.h */,
-				070CD5DA0F4113AC003EA9D0 /* SparklerUpdateMonitor.m */,
 			);
 			name = "Update Engine";
 			sourceTree = "<group>";
@@ -397,6 +395,15 @@
 			isa = PBXGroup;
 			children = (
 				07ACE6130EF5956A00DF1D36 /* SparklerApplicationScannerDelegate.h */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		07C9F8F80F50DC7E0017A10D /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				07C9F9310F50E81C0017A10D /* SparklerUpdateDriverDelegate.h */,
+				07C9F8F90F50DC9B0017A10D /* SparklerUpdateEngineDelegate.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -687,7 +694,6 @@
 				071214C60F017B4E00FBBDCE /* SparklerUpdatesPreferencePane.m in Sources */,
 				070CD5DB0F4113AC003EA9D0 /* SparklerUpdateDriver.m in Sources */,
 				070CD5DC0F4113AC003EA9D0 /* SparklerUpdateEngine.m in Sources */,
-				070CD5DD0F4113AC003EA9D0 /* SparklerUpdateMonitor.m in Sources */,
 				071214C70F017B4E00FBBDCE /* SparklerUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

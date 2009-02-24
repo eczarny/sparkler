@@ -57,16 +57,12 @@ static SparklerUpdateEngine *sharedInstance = nil;
 
 #pragma mark -
 
-- (SparklerUpdateMonitor *)updateMonitor {
-    return myUpdateMonitor;
+- (id<SparklerUpdateEngineDelegate>)delegate {
+    return myDelegate;
 }
 
-- (void)setUpdateMonitor: (SparklerUpdateMonitor *)updateMonitor {
-    if (myUpdateMonitor != updateMonitor) {
-        [myUpdateMonitor release];
-        
-        myUpdateMonitor = [updateMonitor retain];
-    }
+- (void)setDelegate: (id<SparklerUpdateEngineDelegate>)delegate {
+    myDelegate = delegate;
 }
 
 #pragma mark -
@@ -76,14 +72,44 @@ static SparklerUpdateEngine *sharedInstance = nil;
     NSEnumerator *targetedApplicationsEnumerator = [targetedApplications objectEnumerator];
     SparklerTargetedApplication *targetedApplication;
     
+    [myDelegate updateEngineWillCheckForUpdates: self];
+    
     while (targetedApplication = [targetedApplicationsEnumerator nextObject]) {
         if ([targetedApplication isTargetedForUpdates]) {
-            SparklerUpdateDriver *updateDriver = [[SparklerUpdateDriver alloc] init];
+            SparklerUpdateDriver *updateDriver = [[SparklerUpdateDriver alloc] initWithDelegate: self];
             
             // This will leak like a sieve until a better workflow has been decided on. We're just testing for now.
             [updateDriver checkTargetedApplicationForUpdates: targetedApplication];
         }
     }
+}
+
+#pragma mark -
+
+- (void)downloadUpdatesForTargetedApplications: (NSArray *)targetedApplications {
+    
+}
+
+#pragma mark -
+
+- (void)updateDriverDidFindUpdate: (SparklerUpdateDriver *)updateDriver {
+    NSLog(@"Sparkler found a new update for %@, it will be downloaded now.", [[updateDriver targetedApplication] name]);
+}
+
+- (void)updateDriverDidNotFindUpdate: (SparklerUpdateDriver *)updateDriver {
+    NSLog(@"Sparkler did not find a new update for %@.", [[updateDriver targetedApplication] name]);
+}
+
+#pragma mark -
+
+- (void)updateDriverDidFinishDownloadingUpdate: (SparklerUpdateDriver *)updateDriver {
+    NSLog(@"The update for %@ has been downloaded.", [[updateDriver targetedApplication] name]);
+}
+
+#pragma mark -
+
+- (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFailWithError: (NSError *)error {
+    NSLog(@"The update for %@ failed with error: %@", [[updateDriver targetedApplication] name], [error localizedDescription]);
 }
 
 @end

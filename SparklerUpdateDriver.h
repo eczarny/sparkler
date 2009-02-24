@@ -30,6 +30,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Sparkle/Sparkle.h>
+#import "SparklerUpdateDriverDelegate.h"
 
 @class SparklerTargetedApplication;
 
@@ -37,7 +38,26 @@
     SparklerTargetedApplication *myTargetedApplication;
     SUAppcastItem *myAppcastItem;
     NSString *myDownloadDestination;
+    id<SparklerUpdateDriverDelegate> myDelegate;
 }
+
+- (id)initWithDelegate: (id<SparklerUpdateDriverDelegate>)delegate;
+
+#pragma mark -
+
+- (SparklerTargetedApplication *)targetedApplication;
+
+#pragma mark -
+
+- (SUAppcastItem *)appcastItem;
+
+#pragma mark -
+
+- (id<SparklerUpdateDriverDelegate>)delegate;
+
+- (void)setDelegate: (id<SparklerUpdateDriverDelegate>)delegate;
+
+#pragma mark -
 
 - (void)checkTargetedApplicationForUpdates: (SparklerTargetedApplication *)targetedApplication;
 

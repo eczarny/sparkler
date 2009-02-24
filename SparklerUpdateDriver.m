@@ -42,8 +42,6 @@
 
 - (BOOL)isAppcastItemNewer: (SUAppcastItem *)appcastItem;
 
-- (BOOL)appcastItemContainsSkippedVersion: (SUAppcastItem *)appcastItem;
-
 - (BOOL)appcastItemContainsValidUpdate: (SUAppcastItem *)appcastItem;
 
 #pragma mark -
@@ -80,11 +78,49 @@
 
 @implementation SparklerUpdateDriver
 
+- (id)initWithDelegate: (id<SparklerUpdateDriverDelegate>)delegate {
+    if (self = [super init]) {
+        myDelegate = delegate;
+    }
+    
+    return self;
+}
+
+#pragma mark -
+
+- (SparklerTargetedApplication *)targetedApplication {
+    return myTargetedApplication;
+}
+
+#pragma mark -
+
+- (SUAppcastItem *)appcastItem {
+    return myAppcastItem;
+}
+
+#pragma mark -
+
+- (id<SparklerUpdateDriverDelegate>)delegate {
+    return myDelegate;
+}
+
+- (void)setDelegate: (id<SparklerUpdateDriverDelegate>)delegate {
+    myDelegate = delegate;
+}
+
+#pragma mark -
+
 - (void)checkTargetedApplicationForUpdates: (SparklerTargetedApplication *)targetedApplication {
     SUHost *host = [[[SUHost alloc] initWithBundle: [targetedApplication applicationBundle]] autorelease];
     NSURL *appcastURL = [targetedApplication appcastURL];
     NSString *applicationName = [targetedApplication name];
     NSString *applicationVersion = [targetedApplication version];
+    
+    if (myTargetedApplication || myAppcastItem) {
+        NSLog(@"The update driver is currently working, aborting update check.");
+        
+        return;
+    }
     
     if (!appcastURL) {
         NSLog(@"The host, %@/%@, does not contain a valid appcast URL, aborting update check.", applicationName, applicationVersion);
@@ -104,7 +140,6 @@
     [appcast setDelegate: self];
     [appcast setUserAgentString: userAgent];
     
-    // TODO: Remember to release the targeted application once the update driver is finished.
     myTargetedApplication = [targetedApplication retain];
     
     [appcast fetchAppcastFromURL: appcastURL];
@@ -190,20 +225,8 @@
     return NO;
 }
 
-- (BOOL)appcastItemContainsSkippedVersion: (SUAppcastItem *)appcastItem {
-    NSString *skippedVersion = nil;
-    
-    if (!skippedVersion) {
-        return NO;
-    }
-    
-    // TODO: This methods needs to be implemented.
-    
-    return NO;
-}
-
 - (BOOL)appcastItemContainsValidUpdate: (SUAppcastItem *)appcastItem {
-    if ([self hostSupportsAppcastItem: appcastItem] && [self isAppcastItemNewer: appcastItem] && ![self appcastItemContainsSkippedVersion: appcastItem]) {
+    if ([self hostSupportsAppcastItem: appcastItem] && [self isAppcastItemNewer: appcastItem]) {
         return YES;
     }
     
@@ -213,13 +236,13 @@
 #pragma mark -
 
 - (void)didFindUpdate {
-    NSLog(@"Sparkler found a new update for %@, it will be downloaded now.", [myTargetedApplication name]);
+    [myDelegate updateDriverDidFindUpdate: self];
     
     [self downloadUpdate];
 }
 
 - (void)didNotFindUpdate {
-    NSLog(@"Sparkler did not find a new update for %@.", [myTargetedApplication name]);
+    [myDelegate updateDriverDidNotFindUpdate: self];
 }
 
 #pragma mark -
@@ -260,8 +283,6 @@
     
     myDownloadDestination = [[downloadPath stringByAppendingPathComponent: filename] retain];
     
-    NSLog(@"Sparkler will use the following download destination: %@", myDownloadDestination);
-    
     if ([fileManager fileExistsAtPath: myDownloadDestination isDirectory: NULL]) {
         [fileManager removeFileAtPath: myDownloadDestination handler: nil];
     }
@@ -270,13 +291,13 @@
 }
 
 - (void)downloadDidFinish: (NSURLDownload *)download {
-    NSLog(@"The update for %@ has been downloaded.", [myTargetedApplication name]);
+    [myDelegate updateDriverDidFinishDownloadingUpdate: self];
     
     [download release];
 }
 
 - (void)download: (NSURLDownload *)download didFailWithError: (NSError *)error {
-    NSLog(@"The update for %@ could not be downloaded.", [myTargetedApplication name]);
+    [myDelegate updateDriver: self didFailWithError: error];
     
     [download release];
 }
@@ -294,7 +315,7 @@
 #pragma mark -
 
 - (void)abortUpdateWithError: (NSError *)error {
-    NSLog(@"Aborting the update with the following error: %@", error);
+    [myDelegate updateDriver: self didFailWithError: error];
     
     [self abortUpdate];
 }

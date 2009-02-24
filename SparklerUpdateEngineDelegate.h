@@ -22,18 +22,32 @@
 
 // 
 // Sparkler
-// SparklerUpdateMonitor.h
+// SparklerUpdateEngineDelegate.h
 // 
-// Created by Eric Czarny on Sunday, December 21, 2008.
+// Created by Eric Czarny on Saturday, February 21, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
 
-@interface SparklerUpdateMonitor : NSObject {
-    
-}
+@class SparklerUpdateEngine;
 
+@protocol SparklerUpdateEngineDelegate
 
+- (void)updateEngineWillCheckForUpdates: (SparklerUpdateEngine *)updateEngine;
+
+- (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFindUpdatesForTargetedApplications: (NSArray *)targetedApplications;
+
+- (void)updateEngineDidNotFindUpdates: (SparklerUpdateEngine *)updateEngine;
+
+#pragma mark -
+
+- (void)updateEngineWillDownloadUpdates: (SparklerUpdateEngine *)updateEngine;
+
+- (void)updateEngineDidFinishDownloadingUpdates: (SparklerUpdateEngine *)updateEngine;
+
+#pragma mark -
+
+- (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFailWithError: (NSError *)error;
 
 @end

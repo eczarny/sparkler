@@ -29,24 +29,30 @@
 // 
 
 #import <Cocoa/Cocoa.h>
+#import "SparklerUpdateEngineDelegate.h"
+#import "SparklerUpdateDriverDelegate.h"
 
-@class SparklerTargetedApplicationManager, SparklerUpdateMonitor;
+@class SparklerTargetedApplicationManager;
 
-@interface SparklerUpdateEngine : NSObject {
+@interface SparklerUpdateEngine : NSObject<SparklerUpdateDriverDelegate> {
     SparklerTargetedApplicationManager *myTargetedApplicationManager;
-    SparklerUpdateMonitor *myUpdateMonitor;
+    id<SparklerUpdateEngineDelegate> myDelegate;
 }
 
 + (SparklerUpdateEngine *)sharedEngine;
 
 #pragma mark -
 
-- (SparklerUpdateMonitor *)updateMonitor;
+- (id<SparklerUpdateEngineDelegate>)delegate;
 
-- (void)setUpdateMonitor: (SparklerUpdateMonitor *)updateMonitor;
+- (void)setDelegate: (id<SparklerUpdateEngineDelegate>)delegate;
 
 #pragma mark -
 
 - (void)checkForUpdates;
+
+#pragma mark -
+
+- (void)downloadUpdatesForTargetedApplications: (NSArray *)targetedApplications;
 
 @end

@@ -22,16 +22,28 @@
 
 // 
 // Sparkler
-// SparklerUpdateMonitor.m
+// SparklerUpdateDriverDelegate.h
 // 
-// Created by Eric Czarny on Sunday, December 21, 2008.
+// Created by Eric Czarny on Saturday, February 21, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerUpdateMonitor.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation SparklerUpdateMonitor
+@class SparklerUpdateDriver, SparklerTargetedApplication;
 
+@protocol SparklerUpdateDriverDelegate
 
+- (void)updateDriverDidFindUpdate: (SparklerUpdateDriver *)updateDriver;
+
+- (void)updateDriverDidNotFindUpdate: (SparklerUpdateDriver *)updateDriver;
+
+#pragma mark -
+
+- (void)updateDriverDidFinishDownloadingUpdate: (SparklerUpdateDriver *)updateDriver;
+
+#pragma mark -
+
+- (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFailWithError: (NSError *)error;
 
 @end

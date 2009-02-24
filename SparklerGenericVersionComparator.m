@@ -58,8 +58,6 @@ typedef enum {
     NSArray *currentVersionComponents = [currentVersion componentsSeparatedByString: @"/"];
     NSArray *versionComponents = [version componentsSeparatedByString: @"/"];
     
-    NSLog(@"Comparing current version %@ to version %@.", currentVersion, version);
-    
     if (([currentVersionComponents count] > 1) && ([versionComponents count] <= 1)) {
         return [SparklerGenericVersionComparator compareVersion: version toVersionCompenents: currentVersionComponents forCurrentVersion: NO];
     } else if (([currentVersionComponents count] <= 1) && ([versionComponents count] > 1)) {
@@ -106,16 +104,12 @@ typedef enum {
     NSComparisonResult comparisonResult = NSOrderedSame;
     NSInteger i;
     
-    NSLog(@"Comparing version %@ to %d version components.", version, [versionComponents count]);
-    
     for (i = 0; i < [versionComponents count]; i++) {
         NSString *versionComponent = [versionComponents objectAtIndex: i];
         SparklerStringComponentType versionType = [SparklerGenericVersionComparator typeFromStringComponent: version];
         SparklerStringComponentType versionComponentType = [SparklerGenericVersionComparator typeFromStringComponent: versionComponent];
         
         if (versionType != versionComponentType) {
-            NSLog(@"Skipping comparison between %@ and %@, as they are of differing types.", version, versionComponent);
-            
             continue;
         }
         
@@ -141,8 +135,6 @@ typedef enum {
     NSArray *currentVersionComponents = [currentVersionString componentsSeparatedByString: @"."];
     NSArray *versionComponents = [versionString componentsSeparatedByString: @"."];
     NSInteger i;
-    
-    NSLog(@"Comparing current version string %@ to version string %@.", currentVersionString, versionString);
     
     if ([SparklerGenericVersionComparator typeFromStringComponent: currentVersionString] != [SparklerGenericVersionComparator typeFromStringComponent: versionString]) {
         return NSOrderedDescending;
