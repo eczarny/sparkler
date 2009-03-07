@@ -38,8 +38,6 @@
 
 + (NSBundle *)sparklerHelperBundle;
 
-#pragma mark -
-
 + (NSString *)sparklerVersion;
 
 #pragma mark -

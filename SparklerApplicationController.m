@@ -53,12 +53,6 @@
 
 #pragma mark -
 
-- (void)applicationDidBecomeActive: (NSNotification *)notification {
-    NSLog(@"applicationDidBecomeActive:");
-}
-
-#pragma mark -
-
 - (IBAction)togglePreferencesWindow: (id)sender {
     [myPreferencesWindowController togglePreferencesWindow];
 }
@@ -66,23 +60,13 @@
 #pragma mark -
 
 - (IBAction)checkForUpdates: (id)sender {
-    SparklerUpdateEngine *sharedUpdateEngine = [SparklerUpdateEngine sharedEngine];
-    
-    [sharedUpdateEngine checkForUpdates];
+    [[SparklerUpdateEngine sharedEngine] checkForUpdates];
 }
 
 #pragma mark -
 
 - (void)applicationShouldTerminate: (NSNotification *)notification {
-    SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
-    
-    [sharedTargetedApplicationManager synchronizeWithFilesystem];
-}
-
-#pragma mark -
-
-- (void)applicationDidResignActive: (NSNotification *)notification {
-    NSLog(@"applicationDidResignActive:");
+    [[SparklerTargetedApplicationManager sharedManager] synchronizeWithFilesystem];
 }
 
 @end

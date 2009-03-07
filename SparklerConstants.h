@@ -32,7 +32,7 @@
 #define SparklerApplicationExtension                   @"app"
 #define SparklerApplicationName                        @"Sparkler.app"
 #define SparklerBundleIdentifier                       @"com.divisiblebyzero.Sparkler"
-#define SparklerHelperApplicationBundleIdentifier      @"com.divisiblebyzero.SparklerHelper"
+#define SparklerHelperBundleIdentifier                 @"com.divisiblebyzero.SparklerHelper"
 #define SparklerHelperApplicationName                  @"SparklerHelper"
 #define SparklerHelperControllerName                   @"SparklerHelperController"
 #define SparklerApplicationSupportPath                 @"~/Library/Application Support/Sparkler"

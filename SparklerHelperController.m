@@ -78,11 +78,6 @@
                                name: SparklerStopUpdateEngineNotification
                              object: SparklerHelperControllerName];
     
-    [notificationCenter addObserver: self
-                           selector: @selector(quitSparklerHelper:)
-                               name: SparklerQuitSparklerHelperNotification
-                             object: SparklerHelperControllerName];
-    
     [self createStatusItem];
     
     [self postDistributedNotificationName: SparklerHelperDidLaunchNotification];

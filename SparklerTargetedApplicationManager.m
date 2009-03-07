@@ -77,7 +77,6 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 - (void)rescanFilesystemForApplications {
     SparklerApplicationScanner *sharedApplicationScanner = [SparklerApplicationScanner sharedScanner];
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     [sharedApplicationScanner setDelegate: self];
     
@@ -85,7 +84,7 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
     
     [sharedApplicationScanner scan];
     
-    [notificationCenter postNotificationName: SparklerApplicationsWillUpdateNotification object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerApplicationsWillUpdateNotification object: self];
 }
 
 #pragma mark -
@@ -111,15 +110,13 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)applicationScannerDidFindApplications: (NSArray *)applications {
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
     [self setTargetedApplications: applications];
     
     NSLog(@"The application scanner found targetable applications.");
     
     [self synchronizeWithFilesystem];
     
-    [notificationCenter postNotificationName: SparklerApplicationsDidUpdateNotification object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerApplicationsDidUpdateNotification object: self];
 }
 
 - (void)applicationScannerFailedFindingApplications {

@@ -61,9 +61,7 @@
 #pragma mark -
 
 - (NSInteger)numberOfRowsInTableView: (NSTableView *)tableView {
-    NSArray *targetedApplications = [myTargetedApplicationManager targetedApplications];
-    
-    return [targetedApplications count];
+    return [[myTargetedApplicationManager targetedApplications] count];
 }
 
 - (id)tableView: (NSTableView *)tableView objectValueForTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {

@@ -43,10 +43,9 @@
 
 + (NSBundle *)sparklerBundle {
     NSString *applicationsDirectory = [NSString stringWithString: SparklerApplicationsPath];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *sparklerApplicationPath = [applicationsDirectory stringByAppendingPathComponent: SparklerApplicationName];
     
-    if ([fileManager fileExistsAtPath: sparklerApplicationPath]) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath: sparklerApplicationPath]) {
         NSBundle *applicationBundle = [NSBundle bundleWithPath: sparklerApplicationPath];
         NSString *bundleIdentifier = [applicationBundle bundleIdentifier];
         
@@ -64,12 +63,19 @@
     NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
     NSString *sparklerHelperPath = [sparklerBundle pathForResource: SparklerHelperApplicationName ofType: SparklerApplicationExtension];
     
-    NSLog(@"Returning bundle at path: %@", sparklerHelperPath);
+    if ([[NSFileManager defaultManager] fileExistsAtPath: sparklerHelperPath]) {
+        NSBundle *helperBundle = [NSBundle bundleWithPath: sparklerHelperPath];
+        NSString *bundleIdentifier = [helperBundle bundleIdentifier];
+        
+        if (helperBundle && ([bundleIdentifier isEqualToString: SparklerHelperBundleIdentifier])) {
+            NSLog(@"Returning helper bundle at path: %@", sparklerHelperPath);
+            
+            return helperBundle;
+        }
+    }
     
-    return [NSBundle bundleWithPath: sparklerHelperPath];
+    return [NSBundle mainBundle];
 }
-
-#pragma mark -
 
 + (NSString *)sparklerVersion {
     NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
@@ -106,15 +112,11 @@
 #pragma mark -
 
 + (BOOL)saveTargetedApplications: (NSArray *)targetedApplications toFile: (NSString *)file {
-    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPath];
-    
-    return [NSKeyedArchiver archiveRootObject: targetedApplications toFile: [applicationSupportPath stringByAppendingPathComponent: file]];
+    return [NSKeyedArchiver archiveRootObject: targetedApplications toFile: [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file]];
 }
 
 + (NSArray *)targetedApplicationsFromFile: (NSString *)file {
-    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPath];
-    
-    return [NSKeyedUnarchiver unarchiveObjectWithFile: [applicationSupportPath stringByAppendingPathComponent: file]];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile: [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file]];
 }
 
 #pragma mark -
@@ -152,7 +154,7 @@
 @implementation SparklerUtilities (SparklerUtilitiesPrivate)
 
 + (NSDictionary *)existingSparklerDefaults {
-    NSDictionary *existingSparklerDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName: SparklerHelperApplicationBundleIdentifier];
+    NSDictionary *existingSparklerDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName: SparklerHelperBundleIdentifier];
     NSString *path = [[SparklerUtilities sparklerBundle] pathForResource: @"Defaults" ofType: @"plist"];
     
     NSLog(@"Loading defaults from: %@", path);

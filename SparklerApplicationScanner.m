@@ -110,8 +110,7 @@ static SparklerApplicationScanner *sharedInstance = nil;
 #pragma mark -
 
 - (NSArray *)scanForApplicationsAtSearchPath: (NSString *)searchPath {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *applicationsDirectory = [fileManager directoryContentsAtPath: searchPath];
+    NSArray *applicationsDirectory = [[NSFileManager defaultManager] directoryContentsAtPath: searchPath];
     NSEnumerator *applicationsDirectoryEnumerator = [applicationsDirectory objectEnumerator];
     NSMutableArray *applications = [NSMutableArray array];
     NSString *path;
@@ -152,12 +151,11 @@ static SparklerApplicationScanner *sharedInstance = nil;
 #pragma mark -
 
 - (void)loadIconsForApplications: (NSArray *)applications {
-    NSWorkspace *sharedWorkspace = [NSWorkspace sharedWorkspace];
     NSEnumerator *applicationsEnumerator = [applications objectEnumerator];
     id application;
     
     while (application = [applicationsEnumerator nextObject]) {
-        NSImage *applicationIcon = [sharedWorkspace iconForFile: [application path]];
+        NSImage *applicationIcon = [[NSWorkspace sharedWorkspace] iconForFile: [application path]];
         
         if (applicationIcon) {
             [application setIcon: applicationIcon];
