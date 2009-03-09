@@ -29,9 +29,10 @@
 // 
 
 #import "SparklerPreferencePaneManager.h"
-#import "SparklerPreferencePaneProtocol.h"
 #import "SparklerPreferencePane.h"
+#import "SparklerPreferencePaneProtocol.h"
 #import "SparklerUtilities.h"
+#import "SparklerConstants.h"
 
 @implementation SparklerPreferencePaneManager
 
@@ -66,10 +67,10 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
 
 - (void)loadPreferencePanes {
     NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
-    NSString *path = [sparklerBundle pathForResource: @"PreferencePanes" ofType: @"plist"];
+    NSString *path = [sparklerBundle pathForResource: SparklerPreferencePanesFile ofType: SparklerPropertyListExtension];
     NSDictionary *preferencePaneDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    NSDictionary *preferencePanes = [preferencePaneDictionary objectForKey: @"PreferencePanes"];
-    NSArray *preferencePaneOrder = [preferencePaneDictionary objectForKey: @"PreferencePaneOrder"];
+    NSDictionary *preferencePanes = [preferencePaneDictionary objectForKey: SparklerPreferencePanesKey];
+    NSArray *preferencePaneOrder = [preferencePaneDictionary objectForKey: SparklerPreferencePaneOrderKey];
     NSEnumerator *preferencePaneNameEnumerator = [preferencePanes keyEnumerator];
     NSEnumerator *preferencePaneNameOrderEnumerator = [preferencePaneOrder objectEnumerator];
     NSString *preferencePaneName;

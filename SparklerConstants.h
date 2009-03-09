@@ -28,16 +28,17 @@
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#define SparklerApplicationsPath                       @"/Applications"
-#define SparklerApplicationExtension                   @"app"
-#define SparklerApplicationName                        @"Sparkler.app"
+#define SparklerApplicationName                        @"Sparkler"
+#define SparklerHelperApplicationName                  @"SparklerHelper"
 #define SparklerBundleIdentifier                       @"com.divisiblebyzero.Sparkler"
 #define SparklerHelperBundleIdentifier                 @"com.divisiblebyzero.SparklerHelper"
-#define SparklerHelperApplicationName                  @"SparklerHelper"
 #define SparklerHelperControllerName                   @"SparklerHelperController"
+#define SparklerApplicationsPath                       @"/Applications"
 #define SparklerApplicationSupportPath                 @"~/Library/Application Support/Sparkler"
 #define SparklerTargetedApplicationFile                @"Applications.plist"
 #define SparklerDownloadsDirectory                     @"Downloads"
+#define SparklerApplicationExtension                   @"app"
+#define SparklerPropertyListExtension                  @"plist"
 
 #pragma mark -
 
@@ -45,6 +46,12 @@
 #define SparklerHelperNibName                          @"SparklerHelper"
 #define SparklerPreferencesWindowNibName               @"SparklerPreferencesWindow"
 #define SparklerPreferencePaneNibNameEnding            @"PreferencePane"
+
+#pragma mark -
+
+#define SparklerPreferencePanesFile                    @"Preference Panes"
+#define SparklerPreferencePanesKey                     @"Preference Panes"
+#define SparklerPreferencePaneOrderKey                 @"Preference Pane Order"
 
 #pragma mark -
 
