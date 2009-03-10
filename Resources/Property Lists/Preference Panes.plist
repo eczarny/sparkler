@@ -8,14 +8,14 @@
 		<string>SparklerGeneralPreferencePane</string>
 		<key>Applications</key>
 		<string>SparklerApplicationsPreferencePane</string>
-		<key>Updates</key>
-		<string>SparklerUpdatesPreferencePane</string>
+		<key>Update</key>
+		<string>SparklerUpdatePreferencePane</string>
 	</dict>
 	<key>Preference Pane Order</key>
 	<array>
 		<string>General</string>
 		<string>Applications</string>
-		<string>Updates</string>
+		<string>Update</string>
 	</array>
 </dict>
 </plist>
