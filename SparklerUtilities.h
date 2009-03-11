@@ -58,8 +58,4 @@
 
 + (NSImage *)imageFromBundledImageResource: (NSString *)imageResource;
 
-#pragma mark -
-
-+ (float)heightOfToolbarForWindow: (NSWindow *)window;
-
 @end

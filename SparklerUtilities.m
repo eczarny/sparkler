@@ -128,25 +128,6 @@
     return image;
 }
 
-#pragma mark -
-
-+ (float)heightOfToolbarForWindow: (NSWindow *)window {
-    NSToolbar *toolbar;
-    float toolbarHeight = 0.0;
-    
-    if (window) {
-        toolbar = [window toolbar];
-        
-        if(toolbar && [toolbar isVisible]) {
-            NSRect windowFrame = [NSWindow contentRectForFrameRect: [window frame] styleMask: [window styleMask]];
-            
-            toolbarHeight = NSHeight(windowFrame) - NSHeight([[window contentView] frame]);
-        }
-    }
-    
-    return toolbarHeight;
-}
-
 @end
 
 #pragma mark -
