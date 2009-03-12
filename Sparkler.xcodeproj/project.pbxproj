@@ -24,29 +24,17 @@
 		071214C10F017B4E00FBBDCE /* SparklerTargetedApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */; };
 		071214C20F017B4E00FBBDCE /* SparklerTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8850EF210F100C6997D /* SparklerTextFieldCell.m */; };
 		071214C70F017B4E00FBBDCE /* SparklerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8570EF20F7700C6997D /* SparklerUtilities.m */; };
-		071214CA0F017B5A00FBBDCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		071214CB0F017B5A00FBBDCE /* SparklerHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD84C0EF20F2400C6997D /* SparklerHelperController.m */; };
-		071214CC0F017B5A00FBBDCE /* SparklerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8570EF20F7700C6997D /* SparklerUtilities.m */; };
 		0717DF030F3D406100B56132 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		071F0AF40EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF00EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings */; };
 		071F0AF50EF2B04E00F9ED3E /* Sparkler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF20EF2B04E00F9ED3E /* Sparkler.xib */; };
-		071F0AFA0EF2B05C00F9ED3E /* SparklerHelper-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF60EF2B05C00F9ED3E /* SparklerHelper-InfoPlist.strings */; };
-		071F0AFB0EF2B05C00F9ED3E /* SparklerHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF80EF2B05C00F9ED3E /* SparklerHelper.xib */; };
 		071F0FD30EF359B400F9ED3E /* General Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 071F0FD20EF359B400F9ED3E /* General Preferences.tiff */; };
-		078DD8020EF20BE600C6997D /* SparklerHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = 078DD7FA0EF20B8C00C6997D /* SparklerHelper.app */; };
 		078DD8240EF20D1B00C6997D /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 078DD8230EF20D1B00C6997D /* Defaults.plist */; };
-		078DD8440EF20ED400C6997D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		0799AEBF0F6604E200B71B22 /* SparklerUpdatePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0799AEBE0F6604E200B71B22 /* SparklerUpdatePreferencePane.m */; };
 		0799AEC20F66053100B71B22 /* SparklerUpdatePreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0799AEC00F66053100B71B22 /* SparklerUpdatePreferencePane.xib */; };
 		07A366650EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A366630EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib */; };
 		07A680330F49E353003C04BD /* RegexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
 		07A680990F49E41A003C04BD /* RegexKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
-		07A680CF0F49E5D1003C04BD /* RegexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
-		07A680D00F49E5D1003C04BD /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
-		07A680D10F49E5DF003C04BD /* RegexKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
-		07A680D20F49E5DF003C04BD /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		07ACE3CD0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE3CB0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib */; };
-		07ACE3CE0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE3CB0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib */; };
 		07BDB2C20EF4CDA9003D52CA /* SparklerPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07BDB2C00EF4CDA9003D52CA /* SparklerPreferencesWindow.xib */; };
 		07CD90280EF74A2F0053BCAF /* Update Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */; };
 		07CD90370EF74E800053BCAF /* Preference Panes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90360EF74E800053BCAF /* Preference Panes.plist */; };
@@ -60,13 +48,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		07A6812C0F49EDBA003C04BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 078DD7F90EF20B8C00C6997D;
-			remoteInfo = SparklerHelper;
-		};
 		07A6815B0F49F0B3003C04BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -88,17 +69,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07AD3FC60EFEAE83003B0B36 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				07A680D10F49E5DF003C04BD /* RegexKit.framework in CopyFiles */,
-				07A680D20F49E5DF003C04BD /* Sparkle.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -110,8 +80,6 @@
 		0717DEF50F3D404E00B56132 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = /Library/Frameworks/Sparkle.framework; sourceTree = "<absolute>"; };
 		071F0AF10EF2B04E00F9ED3E /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = "Languages/English.lproj/Sparkler-InfoPlist.strings"; sourceTree = "<group>"; };
 		071F0AF30EF2B04E00F9ED3E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/Sparkler.xib; sourceTree = "<group>"; };
-		071F0AF70EF2B05C00F9ED3E /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = "Languages/English.lproj/SparklerHelper-InfoPlist.strings"; sourceTree = "<group>"; };
-		071F0AF90EF2B05C00F9ED3E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerHelper.xib; sourceTree = "<group>"; };
 		071F0B0D0EF2B36A00F9ED3E /* SparklerPreferencePaneProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerPreferencePaneProtocol.h; sourceTree = "<group>"; };
 		071F0B1C0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerPreferencesWindowController.h; sourceTree = "<group>"; };
 		071F0B1D0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerPreferencesWindowController.m; sourceTree = "<group>"; };
@@ -123,15 +91,8 @@
 		076000700F425CED00B1FA19 /* CommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonRelease.xcconfig; path = Configurations/CommonRelease.xcconfig; sourceTree = "<group>"; };
 		076000710F425CED00B1FA19 /* Sparkler.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Sparkler.xcconfig; path = Configurations/Sparkler.xcconfig; sourceTree = "<group>"; };
 		076000720F425CED00B1FA19 /* SparklerDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerDevelopment.xcconfig; path = Configurations/SparklerDevelopment.xcconfig; sourceTree = "<group>"; };
-		076000730F425CED00B1FA19 /* SparklerHelper.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerHelper.xcconfig; path = Configurations/SparklerHelper.xcconfig; sourceTree = "<group>"; };
-		076000740F425CED00B1FA19 /* SparklerHelperDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerHelperDevelopment.xcconfig; path = Configurations/SparklerHelperDevelopment.xcconfig; sourceTree = "<group>"; };
-		076000750F425CED00B1FA19 /* SparklerHelperRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerHelperRelease.xcconfig; path = Configurations/SparklerHelperRelease.xcconfig; sourceTree = "<group>"; };
 		076000760F425CED00B1FA19 /* SparklerRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SparklerRelease.xcconfig; path = Configurations/SparklerRelease.xcconfig; sourceTree = "<group>"; };
-		078DD7FA0EF20B8C00C6997D /* SparklerHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparklerHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		078DD7FC0EF20B8C00C6997D /* SparklerHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SparklerHelper-Info.plist"; path = "Resources/Property Lists/SparklerHelper-Info.plist"; sourceTree = "<group>"; };
 		078DD8230EF20D1B00C6997D /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = "Resources/Property Lists/Defaults.plist"; sourceTree = "<group>"; };
-		078DD84B0EF20F2400C6997D /* SparklerHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerHelperController.h; sourceTree = "<group>"; };
-		078DD84C0EF20F2400C6997D /* SparklerHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerHelperController.m; sourceTree = "<group>"; };
 		078DD8520EF20F7700C6997D /* SparklerApplicationScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerApplicationScanner.h; sourceTree = "<group>"; };
 		078DD8530EF20F7700C6997D /* SparklerApplicationScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerApplicationScanner.m; sourceTree = "<group>"; };
 		078DD8560EF20F7700C6997D /* SparklerUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUtilities.h; sourceTree = "<group>"; };
@@ -189,16 +150,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		078DD7F80EF20B8C00C6997D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				078DD8440EF20ED400C6997D /* Cocoa.framework in Frameworks */,
-				07A680CF0F49E5D1003C04BD /* RegexKit.framework in Frameworks */,
-				07A680D00F49E5D1003C04BD /* Sparkle.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		07D07A110F465E9800E5E0D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,8 +231,6 @@
 				078DD8670EF20FB900C6997D /* SparklerApplicationController.m */,
 				07ACE5AD0EF58E8100DF1D36 /* SparklerApplicationsDataSource.h */,
 				07ACE5AE0EF58E8100DF1D36 /* SparklerApplicationsDataSource.m */,
-				078DD84B0EF20F2400C6997D /* SparklerHelperController.h */,
-				078DD84C0EF20F2400C6997D /* SparklerHelperController.m */,
 				071F0B1C0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.h */,
 				071F0B1D0EF2B3E100F9ED3E /* SparklerPreferencesWindowController.m */,
 			);
@@ -319,7 +268,6 @@
 				078DD8230EF20D1B00C6997D /* Defaults.plist */,
 				07CD90360EF74E800053BCAF /* Preference Panes.plist */,
 				8D1107310486CEB800E47090 /* Sparkler-Info.plist */,
-				078DD7FC0EF20B8C00C6997D /* SparklerHelper-Info.plist */,
 				07D07A150F465E9800E5E0D0 /* SparklerUnitTests-Info.plist */,
 			);
 			name = "Property Lists";
@@ -332,7 +280,6 @@
 				07D395A20EF4E1BB006583F2 /* SparklerApplicationsPreferencePane.xib */,
 				07ACE3CB0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib */,
 				07A366630EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib */,
-				071F0AF80EF2B05C00F9ED3E /* SparklerHelper.xib */,
 				07BDB2C00EF4CDA9003D52CA /* SparklerPreferencesWindow.xib */,
 				0799AEC00F66053100B71B22 /* SparklerUpdatePreferencePane.xib */,
 			);
@@ -347,9 +294,6 @@
 				076000700F425CED00B1FA19 /* CommonRelease.xcconfig */,
 				076000710F425CED00B1FA19 /* Sparkler.xcconfig */,
 				076000720F425CED00B1FA19 /* SparklerDevelopment.xcconfig */,
-				076000730F425CED00B1FA19 /* SparklerHelper.xcconfig */,
-				076000740F425CED00B1FA19 /* SparklerHelperDevelopment.xcconfig */,
-				076000750F425CED00B1FA19 /* SparklerHelperRelease.xcconfig */,
 				076000760F425CED00B1FA19 /* SparklerRelease.xcconfig */,
 				07D07A520F46624F00E5E0D0 /* SparklerUnitTests.xcconfig */,
 				07D07A530F46624F00E5E0D0 /* SparklerUnitTestsDevelopment.xcconfig */,
@@ -419,7 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				071F0AF00EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings */,
-				071F0AF60EF2B05C00F9ED3E /* SparklerHelper-InfoPlist.strings */,
 			);
 			name = "Localized Strings";
 			sourceTree = "<group>";
@@ -461,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* Sparkler.app */,
-				078DD7FA0EF20B8C00C6997D /* SparklerHelper.app */,
 				07D07A140F465E9800E5E0D0 /* SparklerUnitTests.octest */,
 			);
 			name = Products;
@@ -516,24 +458,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		078DD7F90EF20B8C00C6997D /* SparklerHelper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 078DD7FF0EF20B8D00C6997D /* Build configuration list for PBXNativeTarget "SparklerHelper" */;
-			buildPhases = (
-				078DD7F60EF20B8C00C6997D /* Resources */,
-				07AD3FC60EFEAE83003B0B36 /* CopyFiles */,
-				078DD7F70EF20B8C00C6997D /* Sources */,
-				078DD7F80EF20B8C00C6997D /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SparklerHelper;
-			productName = SparklerHelper;
-			productReference = 078DD7FA0EF20B8C00C6997D /* SparklerHelper.app */;
-			productType = "com.apple.product-type.application";
-		};
 		07D07A130F465E9800E5E0D0 /* SparklerUnitTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 07D07A190F465E9A00E5E0D0 /* Build configuration list for PBXNativeTarget "SparklerUnitTests" */;
@@ -566,7 +490,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				07A6812D0F49EDBA003C04BD /* PBXTargetDependency */,
 			);
 			name = Sparkler;
 			productInstallPath = "$(HOME)/Applications";
@@ -587,23 +510,12 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Sparkler */,
-				078DD7F90EF20B8C00C6997D /* SparklerHelper */,
 				07D07A130F465E9800E5E0D0 /* SparklerUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		078DD7F60EF20B8C00C6997D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07ACE3CE0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */,
-				071F0AFA0EF2B05C00F9ED3E /* SparklerHelper-InfoPlist.strings in Resources */,
-				071F0AFB0EF2B05C00F9ED3E /* SparklerHelper.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		07D07A0F0F465E9800E5E0D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -624,7 +536,6 @@
 				07D395A40EF4E1BB006583F2 /* SparklerApplicationsPreferencePane.xib in Resources */,
 				07ACE3CD0EF4EC0000DF1D36 /* SparklerApplicationUpdatesWindow.xib in Resources */,
 				07A366650EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib in Resources */,
-				078DD8020EF20BE600C6997D /* SparklerHelper.app in Resources */,
 				07BDB2C20EF4CDA9003D52CA /* SparklerPreferencesWindow.xib in Resources */,
 				0799AEC20F66053100B71B22 /* SparklerUpdatePreferencePane.xib in Resources */,
 				07CD90280EF74A2F0053BCAF /* Update Preferences.tiff in Resources */,
@@ -664,16 +575,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		078DD7F70EF20B8C00C6997D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				071214CA0F017B5A00FBBDCE /* main.m in Sources */,
-				071214CB0F017B5A00FBBDCE /* SparklerHelperController.m in Sources */,
-				071214CC0F017B5A00FBBDCE /* SparklerUtilities.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		07D07A100F465E9800E5E0D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -709,11 +610,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		07A6812D0F49EDBA003C04BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 078DD7F90EF20B8C00C6997D /* SparklerHelper */;
-			targetProxy = 07A6812C0F49EDBA003C04BD /* PBXContainerItemProxy */;
-		};
 		07A6815C0F49F0B3003C04BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8D1107260486CEB800E47090 /* Sparkler */;
@@ -736,22 +632,6 @@
 				071F0AF30EF2B04E00F9ED3E /* English */,
 			);
 			name = Sparkler.xib;
-			sourceTree = "<group>";
-		};
-		071F0AF60EF2B05C00F9ED3E /* SparklerHelper-InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				071F0AF70EF2B05C00F9ED3E /* English */,
-			);
-			name = "SparklerHelper-InfoPlist.strings";
-			sourceTree = "<group>";
-		};
-		071F0AF80EF2B05C00F9ED3E /* SparklerHelper.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				071F0AF90EF2B05C00F9ED3E /* English */,
-			);
-			name = SparklerHelper.xib;
 			sourceTree = "<group>";
 		};
 		0799AEC00F66053100B71B22 /* SparklerUpdatePreferencePane.xib */ = {
@@ -797,32 +677,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		078DD7FD0EF20B8D00C6997D /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 076000740F425CED00B1FA19 /* SparklerHelperDevelopment.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
-				);
-				VERSION_INFO_FILE = "";
-			};
-			name = Development;
-		};
-		078DD7FE0EF20B8D00C6997D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 076000750F425CED00B1FA19 /* SparklerHelperRelease.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
-				);
-				VERSION_INFO_FILE = "";
-			};
-			name = Release;
-		};
 		07D07A170F465E9A00E5E0D0 /* Development */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 07D07A530F46624F00E5E0D0 /* SparklerUnitTestsDevelopment.xcconfig */;
@@ -892,15 +746,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		078DD7FF0EF20B8D00C6997D /* Build configuration list for PBXNativeTarget "SparklerHelper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				078DD7FD0EF20B8D00C6997D /* Development */,
-				078DD7FE0EF20B8D00C6997D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		07D07A190F465E9A00E5E0D0 /* Build configuration list for PBXNativeTarget "SparklerUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
