@@ -34,7 +34,6 @@
 #define SparklerHelperBundleIdentifier                 @"com.divisiblebyzero.SparklerHelper"
 #define SparklerHelperControllerName                   @"SparklerHelperController"
 #define SparklerApplicationsPath                       @"/Applications"
-#define SparklerApplicationSupportPath                 @"~/Library/Application Support/Sparkler"
 #define SparklerTargetedApplicationFile                @"Applications.plist"
 #define SparklerDownloadsDirectory                     @"Downloads"
 #define SparklerApplicationExtension                   @"app"

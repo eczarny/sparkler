@@ -97,16 +97,10 @@
 #pragma mark -
 
 + (NSString *)applicationSupportPath {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *applicationSupportPath = SparklerApplicationSupportPath;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *applicationSupportPath = ([paths count] > 0) ? [paths objectAtIndex: 0] : NSTemporaryDirectory();
     
-    applicationSupportPath = [applicationSupportPath stringByExpandingTildeInPath];
-    
-    if (![fileManager fileExistsAtPath: applicationSupportPath]) {
-        [fileManager createDirectoryAtPath: applicationSupportPath attributes: nil];
-    }
-    
-    return applicationSupportPath;
+    return [applicationSupportPath stringByAppendingPathComponent: SparklerApplicationName];
 }
 
 #pragma mark -
