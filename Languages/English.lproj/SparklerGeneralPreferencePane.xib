@@ -82,7 +82,7 @@
 						<reference key="NSSuperview" ref="238325092"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="162388483">
-							<int key="NSCellFlags">-2080244224</int>
+							<int key="NSCellFlags">604110336</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents">Launch Sparkler at login</string>
 							<reference key="NSSupport" ref="887291450"/>
@@ -289,7 +289,7 @@
 					<string key="superclassName">SparklerPreferencePane</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">PreferencePanes/SparklerGeneralPreferencePane.h</string>
+						<string key="minorKey">Preference Panes/SparklerGeneralPreferencePane.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
