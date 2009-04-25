@@ -104,7 +104,7 @@
     
     applicationSupportPath = [applicationSupportPath stringByAppendingPathComponent: SparklerApplicationName];
     
-    if (![fileManager fileExistsAtPath: applicationSupportPath isDirectory: &isDirectory] && !isDirectory) {
+    if (![fileManager fileExistsAtPath: applicationSupportPath isDirectory: &isDirectory] && isDirectory) {
         NSLog(@"The application support directory does not exist, it will be created.");
         
         if (![fileManager createDirectoryAtPath: applicationSupportPath attributes: nil]) {
