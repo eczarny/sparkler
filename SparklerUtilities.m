@@ -42,38 +42,6 @@
 @implementation SparklerUtilities
 
 + (NSBundle *)sparklerBundle {
-    NSString *applicationsDirectory = [NSString stringWithString: SparklerApplicationsPath];
-    NSString *sparklerApplicationPath = [applicationsDirectory stringByAppendingPathComponent: SparklerApplicationName];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath: sparklerApplicationPath]) {
-        NSBundle *applicationBundle = [NSBundle bundleWithPath: sparklerApplicationPath];
-        NSString *bundleIdentifier = [applicationBundle bundleIdentifier];
-        
-        if (applicationBundle && ([bundleIdentifier isEqualToString: SparklerBundleIdentifier])) {
-            NSLog(@"Returning bundle with identifier: %@", bundleIdentifier);
-            
-            return applicationBundle;
-        }
-    }
-    
-    return [NSBundle mainBundle];
-}
-
-+ (NSBundle *)sparklerHelperBundle {
-    NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
-    NSString *sparklerHelperPath = [sparklerBundle pathForResource: SparklerHelperApplicationName ofType: SparklerApplicationExtension];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath: sparklerHelperPath]) {
-        NSBundle *helperBundle = [NSBundle bundleWithPath: sparklerHelperPath];
-        NSString *bundleIdentifier = [helperBundle bundleIdentifier];
-        
-        if (helperBundle && ([bundleIdentifier isEqualToString: SparklerHelperBundleIdentifier])) {
-            NSLog(@"Returning helper bundle at path: %@", sparklerHelperPath);
-            
-            return helperBundle;
-        }
-    }
-    
     return [NSBundle mainBundle];
 }
 

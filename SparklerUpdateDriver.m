@@ -56,14 +56,6 @@
 
 #pragma mark -
 
-- (void)download: (NSURLDownload *)download decideDestinationWithSuggestedFilename: (NSString *)suggestedFilename;
-
-- (void)downloadDidFinish: (NSURLDownload *)download;
-
-- (void)download: (NSURLDownload *)download didFailWithError: (NSError *)error;
-
-#pragma mark -
-
 - (void)extractUpdate;
 
 - (void)installUpdate;
@@ -153,6 +145,18 @@
 
 #pragma mark -
 
+- (void)dealloc {
+    [myTargetedApplication release];
+    [myAppcastItem release];
+    [myDownloadDestination release];
+    
+    [super dealloc];
+}
+
+#pragma mark Appcast Delegate Methods
+
+#pragma mark -
+
 - (void)appcastDidFinishLoading: (SUAppcast *)appcast {
     NSEnumerator *appcastItemEnumerator = [[appcast items] objectEnumerator];
     SUAppcastItem *appcastItem = nil;
@@ -182,16 +186,6 @@
     [self abortUpdateWithError: error];
     
     [appcast release];
-}
-
-#pragma mark -
-
-- (void)dealloc {
-    [myTargetedApplication release];
-    [myAppcastItem release];
-    [myDownloadDestination release];
-    
-    [super dealloc];
 }
 
 @end
@@ -237,8 +231,6 @@
 
 - (void)didFindUpdate {
     [myDelegate updateDriverDidFindUpdate: self];
-    
-    [self downloadUpdate];
 }
 
 - (void)didNotFindUpdate {
@@ -257,6 +249,26 @@
         NSLog(@"There was a problem initiating the download!");
     }
 }
+
+#pragma mark -
+
+- (void)extractUpdate {
+    NSLog(@"The update driver is extracting the update.");
+}
+
+- (void)installUpdate {
+    NSLog(@"The update driver is installing the update.");
+}
+
+#pragma mark -
+
+- (void)abortUpdateWithError: (NSError *)error {
+    [myDelegate updateDriver: self didFailWithError: error];
+    
+    [self abortUpdate];
+}
+
+#pragma mark URL Download Delegate Methods
 
 #pragma mark -
 
@@ -300,24 +312,6 @@
     [myDelegate updateDriver: self didFailWithError: error];
     
     [download release];
-}
-
-#pragma mark -
-
-- (void)extractUpdate {
-    NSLog(@"The update driver is extracting the update.");
-}
-
-- (void)installUpdate {
-    NSLog(@"The update driver is installing the update.");
-}
-
-#pragma mark -
-
-- (void)abortUpdateWithError: (NSError *)error {
-    [myDelegate updateDriver: self didFailWithError: error];
-    
-    [self abortUpdate];
 }
 
 @end

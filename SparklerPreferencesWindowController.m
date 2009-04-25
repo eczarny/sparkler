@@ -174,7 +174,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
         
         [preferencesWindow setContentView: transitionView];
         
-        [transitionView release]; 
+        [transitionView release];
         
         preferencesWindowFrame.size.height = [preferencePaneView frame].size.height + ([preferencesWindow frame].size.height - [[preferencesWindow contentView] frame].size.height);
         preferencesWindowFrame.size.width = [preferencePaneView frame].size.width;

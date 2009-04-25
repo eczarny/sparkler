@@ -51,10 +51,4 @@
 
 - (void)synchronizeWithFilesystem;
 
-#pragma mark -
-
-- (void)applicationScannerDidFindApplications: (NSArray *)applications;
-
-- (void)applicationScannerFailedFindingApplications;
-
 @end

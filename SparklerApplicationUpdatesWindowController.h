@@ -22,46 +22,36 @@
 
 // 
 // Sparkler
-// SparklerApplicationController.m
+// SparklerApplicationUpdatesWindowController.h
 // 
-// Created by Eric Czarny on Thursday, December 11, 2008.
+// Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerApplicationController.h"
-#import "SparklerPreferencesWindowController.h"
-#import "SparklerApplicationUpdatesWindowController.h"
-#import "SparklerPreferencePaneManager.h"
-#import "SparklerUtilities.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation SparklerApplicationController
+@class SparklerApplicationUpdateManager;
 
-- (id)init {
-    if (self = [super init]) {
-        myPreferencesWindowController = [SparklerPreferencesWindowController sharedController];
-    }
-    
-    return self;
+@interface SparklerApplicationUpdatesWindowController : NSWindowController {
+    SparklerApplicationUpdateManager *myApplicationUpdateManager;
+    IBOutlet NSView *myCheckForUpdatesView;
+    IBOutlet NSView *myInstallUpdatesView;
 }
+
++ (SparklerApplicationUpdatesWindowController *)sharedController;
 
 #pragma mark -
 
-- (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    [myPreferencesWindowController loadPreferencePanes];
-    
-    [self toggleSparklerWindow: self];
-}
+- (void)showSparklerWindow: (id)sender;
+
+- (void)hideSparklerWindow: (id)sender;
 
 #pragma mark -
 
-- (IBAction)togglePreferencesWindow: (id)sender {
-    [myPreferencesWindowController togglePreferencesWindow: sender];
-}
+- (void)toggleSparklerWindow: (id)sender;
 
 #pragma mark -
 
-- (IBAction)toggleSparklerWindow: (id)sender {
-    [[SparklerApplicationUpdatesWindowController sharedController] toggleSparklerWindow: sender];
-}
+- (IBAction)checkForUpdates: (id)sender;
 
 @end

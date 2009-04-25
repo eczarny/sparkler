@@ -98,7 +98,7 @@ static SparklerApplicationScanner *sharedInstance = nil;
     
     applications = [self scanForApplicationsAtSearchPath: applicationsPath];
     
-    NSLog(@"The scan has completed. Sparkler found %d Sparkle-enabled applications.", [applications count]);
+    NSLog(@"The scan has completed. Sparkler found %d Sparkle-enabled application(s).", [applications count]);
     
     [self loadIconsForApplications: applications];
     

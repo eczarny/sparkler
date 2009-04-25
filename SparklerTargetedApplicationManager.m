@@ -111,6 +111,16 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (void)dealloc {
+    [myTargetedApplications release];
+    
+    [super dealloc];
+}
+
+#pragma mark Application Scanner Delegate Methods
+
+#pragma mark -
+
 - (void)applicationScannerDidFindApplications: (NSArray *)applications {
     [self setTargetedApplications: applications];
     
@@ -121,14 +131,6 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 - (void)applicationScannerFailedFindingApplications {
     NSLog(@"The application scanner failed to find any targetable applications.");
-}
-
-#pragma mark -
-
-- (void)dealloc {
-    [myTargetedApplications release];
-    
-    [super dealloc];
 }
 
 @end

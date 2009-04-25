@@ -22,46 +22,25 @@
 
 // 
 // Sparkler
-// SparklerApplicationController.m
+// SparklerApplicationUpdateManager.h
 // 
-// Created by Eric Czarny on Thursday, December 11, 2008.
+// Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerApplicationController.h"
-#import "SparklerPreferencesWindowController.h"
-#import "SparklerApplicationUpdatesWindowController.h"
-#import "SparklerPreferencePaneManager.h"
-#import "SparklerUtilities.h"
+#import <Cocoa/Cocoa.h>
+#import "SparklerUpdateEngineDelegate.h"
 
-@implementation SparklerApplicationController
+@class SparklerUpdateEngine;
 
-- (id)init {
-    if (self = [super init]) {
-        myPreferencesWindowController = [SparklerPreferencesWindowController sharedController];
-    }
-    
-    return self;
+@interface SparklerApplicationUpdateManager : NSObject<SparklerUpdateEngineDelegate> {
+    SparklerUpdateEngine *myUpdateEngine;
 }
+
++ (SparklerApplicationUpdateManager *)sharedManager;
 
 #pragma mark -
 
-- (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    [myPreferencesWindowController loadPreferencePanes];
-    
-    [self toggleSparklerWindow: self];
-}
-
-#pragma mark -
-
-- (IBAction)togglePreferencesWindow: (id)sender {
-    [myPreferencesWindowController togglePreferencesWindow: sender];
-}
-
-#pragma mark -
-
-- (IBAction)toggleSparklerWindow: (id)sender {
-    [[SparklerApplicationUpdatesWindowController sharedController] toggleSparklerWindow: sender];
-}
+- (void)checkForUpdates;
 
 @end

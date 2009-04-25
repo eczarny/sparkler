@@ -30,13 +30,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define SparklerLocalizedString(string) NSLocalizedString(string, string)
+
+#pragma mark -
+
 @interface SparklerUtilities : NSObject {
     
 }
 
 + (NSBundle *)sparklerBundle;
-
-+ (NSBundle *)sparklerHelperBundle;
 
 + (NSString *)sparklerVersion;
 

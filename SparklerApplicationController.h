@@ -40,6 +40,6 @@
 
 #pragma mark -
 
-- (IBAction)checkForUpdates: (id)sender;
+- (IBAction)toggleSparklerWindow: (id)sender;
 
 @end
