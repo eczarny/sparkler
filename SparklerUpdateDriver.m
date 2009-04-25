@@ -270,7 +270,7 @@
     
     if (![fileManager fileExistsAtPath: downloadPath isDirectory: &isDirectory] && isDirectory) {
         if (![fileManager createDirectoryAtPath: downloadPath attributes: nil]) {
-            NSLog(@"There was a problem creating the download directory.");
+            NSLog(@"There was a problem creating the download directory at path: %@", downloadPath);
             
             [download cancel];
             

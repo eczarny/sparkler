@@ -80,7 +80,7 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
     
     [sharedApplicationScanner setDelegate: self];
     
-    NSLog(@"The targeted application manager is rescanning the filesystem...");
+    NSLog(@"The targeted application manager is rescanning the filesystem.");
     
     [sharedApplicationScanner scan];
     
@@ -103,7 +103,9 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
     } else {
         NSLog(@"The targeted application manager is saving the current application metadata to disk.");
         
-        [SparklerUtilities saveTargetedApplications: myTargetedApplications toFile: SparklerTargetedApplicationFile];
+        if (![SparklerUtilities saveTargetedApplications: myTargetedApplications toFile: SparklerTargetedApplicationFile]) {
+            NSLog(@"Unable to save the application metadata to disk.");
+        }
     }
 }
 
@@ -111,8 +113,6 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 - (void)applicationScannerDidFindApplications: (NSArray *)applications {
     [self setTargetedApplications: applications];
-    
-    NSLog(@"The application scanner found targetable applications.");
     
     [self synchronizeWithFilesystem];
     

@@ -30,7 +30,6 @@
 
 #import "SparklerApplicationController.h"
 #import "SparklerPreferencesWindowController.h"
-#import "SparklerTargetedApplicationManager.h"
 #import "SparklerPreferencePaneManager.h"
 #import "SparklerUpdateEngine.h"
 #import "SparklerUtilities.h"
@@ -61,12 +60,6 @@
 
 - (IBAction)checkForUpdates: (id)sender {
     [[SparklerUpdateEngine sharedEngine] checkForUpdates];
-}
-
-#pragma mark -
-
-- (void)applicationShouldTerminate: (NSNotification *)notification {
-    [[SparklerTargetedApplicationManager sharedManager] synchronizeWithFilesystem];
 }
 
 @end

@@ -99,8 +99,20 @@
 + (NSString *)applicationSupportPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *applicationSupportPath = ([paths count] > 0) ? [paths objectAtIndex: 0] : NSTemporaryDirectory();
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDirectory;
     
-    return [applicationSupportPath stringByAppendingPathComponent: SparklerApplicationName];
+    applicationSupportPath = [applicationSupportPath stringByAppendingPathComponent: SparklerApplicationName];
+    
+    if (![fileManager fileExistsAtPath: applicationSupportPath isDirectory: &isDirectory] && !isDirectory) {
+        NSLog(@"The application support directory does not exist, it will be created.");
+        
+        if (![fileManager createDirectoryAtPath: applicationSupportPath attributes: nil]) {
+            NSLog(@"There was a problem creating the application support directory at path: %@", applicationSupportPath);
+        }
+    }
+    
+    return applicationSupportPath;
 }
 
 #pragma mark -
@@ -131,8 +143,6 @@
 + (NSDictionary *)existingSparklerDefaults {
     NSDictionary *existingSparklerDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName: SparklerHelperBundleIdentifier];
     NSString *path = [[SparklerUtilities sparklerBundle] pathForResource: @"Defaults" ofType: @"plist"];
-    
-    NSLog(@"Loading defaults from: %@", path);
     
     if (!existingSparklerDefaults) {
         existingSparklerDefaults = [[[NSMutableDictionary alloc] initWithContentsOfFile: path] autorelease];
