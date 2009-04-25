@@ -43,13 +43,13 @@
 
 #pragma mark -
 
-- (void)showPreferencesWindow;
+- (void)showPreferencesWindow: (id)sender;
 
-- (void)hidePreferencesWindow;
+- (void)hidePreferencesWindow: (id)sender;
 
 #pragma mark -
 
-- (void)togglePreferencesWindow;
+- (void)togglePreferencesWindow: (id)sender;
 
 #pragma mark -
 

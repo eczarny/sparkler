@@ -98,21 +98,21 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)showPreferencesWindow {
-    [[self window] makeKeyAndOrderFront: nil];
+- (void)showPreferencesWindow: (id)sender {
+    [self showWindow: sender];
 }
 
-- (void)hidePreferencesWindow {
-    [[self window] performClose: nil];
+- (void)hidePreferencesWindow: (id)sender {
+    [[self window] performClose: sender];
 }
 
 #pragma mark -
 
-- (void)togglePreferencesWindow {
+- (void)togglePreferencesWindow: (id)sender {
     if ([[self window] isKeyWindow]) {
-        [self hidePreferencesWindow];
+        [self hidePreferencesWindow: sender];
     } else {
-        [self showPreferencesWindow];
+        [self showPreferencesWindow: sender];
     }
 }
 

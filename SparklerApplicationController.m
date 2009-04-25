@@ -53,7 +53,7 @@
 #pragma mark -
 
 - (IBAction)togglePreferencesWindow: (id)sender {
-    [myPreferencesWindowController togglePreferencesWindow];
+    [myPreferencesWindowController togglePreferencesWindow: sender];
 }
 
 #pragma mark -

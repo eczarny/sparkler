@@ -40,20 +40,6 @@
     IBOutlet NSProgressIndicator *myScanningForApplicationsIndicator;
 }
 
-- (void)preferencePaneDidLoad;
-
-- (void)preferencePaneDidDisplay;
-
-#pragma mark -
-
-- (NSString *)name;
-
-#pragma mark -
-
-- (NSImage *)icon;
-
-#pragma mark -
-
 - (IBAction)refreshListOfApplications: (id)sender;
 
 #pragma mark -
