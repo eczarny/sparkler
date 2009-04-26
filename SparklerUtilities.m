@@ -68,11 +68,10 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *applicationSupportPath = ([paths count] > 0) ? [paths objectAtIndex: 0] : NSTemporaryDirectory();
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL isDirectory;
     
     applicationSupportPath = [applicationSupportPath stringByAppendingPathComponent: SparklerApplicationName];
     
-    if (![fileManager fileExistsAtPath: applicationSupportPath isDirectory: &isDirectory] && isDirectory) {
+    if (![fileManager fileExistsAtPath: applicationSupportPath isDirectory: nil]) {
         NSLog(@"The application support directory does not exist, it will be created.");
         
         if (![fileManager createDirectoryAtPath: applicationSupportPath attributes: nil]) {

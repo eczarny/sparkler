@@ -22,18 +22,18 @@
 
 // 
 // Sparkler
-// SparklerApplicationUpdateManager.m
+// SparklerUpdateManager.m
 // 
 // Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerApplicationUpdateManager.h"
+#import "SparklerUpdateManager.h"
 #import "SparklerUpdateEngine.h"
 
-@implementation SparklerApplicationUpdateManager
+@implementation SparklerUpdateManager
 
-static SparklerApplicationUpdateManager *sharedInstance = nil;
+static SparklerUpdateManager *sharedInstance = nil;
 
 - (id)init {
     if (self = [super init]) {
@@ -47,9 +47,9 @@ static SparklerApplicationUpdateManager *sharedInstance = nil;
 
 #pragma mark -
 
-+ (SparklerApplicationUpdateManager *)sharedManager {
++ (SparklerUpdateManager *)sharedManager {
     if (!sharedInstance) {
-        sharedInstance = [[SparklerApplicationUpdateManager alloc] init];
+        sharedInstance = [[SparklerUpdateManager alloc] init];
     }
     
     return sharedInstance;

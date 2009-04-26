@@ -67,8 +67,6 @@
     [myApplicationsDataSource setTableView: myApplicationsTableView];
     
     [myApplicationsTableView setDataSource: myApplicationsDataSource];
-    
-    [myScanningForApplicationsIndicator setDisplayedWhenStopped: NO];
 }
 
 #pragma mark -

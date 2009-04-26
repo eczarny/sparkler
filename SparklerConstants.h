@@ -28,60 +28,58 @@
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#define SparklerApplicationName                        @"Sparkler"
-#define SparklerHelperApplicationName                  @"SparklerHelper"
-#define SparklerBundleIdentifier                       @"com.divisiblebyzero.Sparkler"
-#define SparklerHelperBundleIdentifier                 @"com.divisiblebyzero.SparklerHelper"
-#define SparklerHelperControllerName                   @"SparklerHelperController"
-#define SparklerApplicationsPath                       @"/Applications"
-#define SparklerTargetedApplicationFile                @"Applications.plist"
-#define SparklerDownloadsDirectory                     @"Downloads"
-#define SparklerApplicationExtension                   @"app"
-#define SparklerPropertyListExtension                  @"plist"
+#define SparklerApplicationName                                @"Sparkler"
+#define SparklerHelperApplicationName                          @"SparklerHelper"
+#define SparklerBundleIdentifier                               @"com.divisiblebyzero.Sparkler"
+#define SparklerHelperBundleIdentifier                         @"com.divisiblebyzero.SparklerHelper"
+#define SparklerHelperControllerName                           @"SparklerHelperController"
+#define SparklerApplicationsPath                               @"/Applications"
+#define SparklerTargetedApplicationFile                        @"Applications.plist"
+#define SparklerDownloadsDirectory                             @"Downloads"
+#define SparklerApplicationExtension                           @"app"
+#define SparklerPropertyListExtension                          @"plist"
 
 #pragma mark -
 
-#define SparklerNibName                                @"Sparkler"
-#define SparklerHelperNibName                          @"SparklerHelper"
-#define SparklerPreferencesWindowNibName               @"SparklerPreferencesWindow"
-#define SparklerPreferencePaneNibNameEnding            @"PreferencePane"
-#define SparklerApplicationUpdatesWindowNibName        @"SparklerApplicationUpdatesWindow"
+#define SparklerNibName                                        @"Sparkler"
+#define SparklerHelperNibName                                  @"SparklerHelper"
+#define SparklerPreferencesWindowNibName                       @"SparklerPreferencesWindow"
+#define SparklerPreferencePaneNibNameEnding                    @"PreferencePane"
+#define SparklerUpdatesWindowNibName                           @"SparklerUpdatesWindow"
 
 #pragma mark -
 
-#define SparklerPreferencePanesFile                    @"Preference Panes"
-#define SparklerPreferencePanesKey                     @"Preference Panes"
-#define SparklerPreferencePaneOrderKey                 @"Preference Pane Order"
+#define SparklerPreferencePanesFile                            @"Preference Panes"
+#define SparklerPreferencePanesKey                             @"Preference Panes"
+#define SparklerPreferencePaneOrderKey                         @"Preference Pane Order"
 
 #pragma mark -
 
-#define SparklerScanForApplicationsNotification        @"SparklerScanForApplicationsNotification"
-#define SparklerShowStatusItemNotification             @"SparklerShowStatusItemNotification"
-#define SparklerHideStatusItemNotification             @"SparklerHideStatusItemNotification"
-#define SparklerStartUpdateEngineNotification          @"SparklerStartUpdateEngineNotification"
-#define SparklerStopUpdateEngineNotification           @"SparklerStopUpdateEngineNotification"
-#define SparklerQuitSparklerHelperNotification         @"SparklerQuitSparklerHelperNotification"
-#define SparklerApplicationsDidUpdateNotification      @"SparklerApplicationsDidUpdateNotification"
-#define SparklerApplicationsWillUpdateNotification     @"SparklerApplicationsWillUpdateNotification"
-#define SparklerHelperDidLaunchNotification            @"SparklerHelperDidLaunchNotification"
-#define SparklerHelperWillQuitNotification             @"SparklerHelperWillQuitNotification"
+#define SparklerShowStatusItemNotification                     @"SparklerShowStatusItemNotification"
+#define SparklerHideStatusItemNotification                     @"SparklerHideStatusItemNotification"
+#define SparklerScanForApplicationsNotification                @"SparklerScanForApplicationsNotification"
+#define SparklerUpdateEngineWillCheckForUpdatesNotification    @"SparklerUpdateEngineWillCheckForUpdatesNotification"
+#define SparklerUpdateEngineDidFindUpdatesNotification         @"SparklerUpdateEngineDidFindUpdatesNotification"
+#define SparklerUpdateEngineDidNotFindUpdatesNotification      @"SparklerUpdateEngineDidNotFindUpdatesNotification"
+#define SparklerUpdateEngineWillDownloadUpdatesNotification    @"SparklerUpdateEngineWillDownloadUpdatesNotification"
+#define SparklerUpdateEngineDidDownloadUpdatesNotification     @"SparklerUpdateEngineDidDownloadUpdatesNotification"
 
 #pragma mark -
 
-#define SparklerShowStatusItemPreference               @"ShowStatusItem"
+#define SparklerShowStatusItemPreference                       @"ShowStatusItem"
 
 #pragma mark -
 
-#define SparklerApplicationContentsDirectory           @"Contents"
-#define SparklerApplicationResourcesDirectory          @"Resources"
-#define SparklerApplicationInfoFile                    @"Info.plist"
+#define SparklerApplicationContentsDirectory                   @"Contents"
+#define SparklerApplicationResourcesDirectory                  @"Resources"
+#define SparklerApplicationInfoFile                            @"Info.plist"
 
-#define SparklerApplicationBundleName                  @"CFBundleName"
-#define SparklerApplicationBundleVersion               @"CFBundleVersion"
-#define SparklerApplicationBundleShortVersionString    @"CFBundleShortVersionString"
-#define SparklerApplicationFeedURL                     @"SUFeedURL"
+#define SparklerApplicationBundleName                          @"CFBundleName"
+#define SparklerApplicationBundleVersion                       @"CFBundleVersion"
+#define SparklerApplicationBundleShortVersionString            @"CFBundleShortVersionString"
+#define SparklerApplicationFeedURL                             @"SUFeedURL"
 
-#define SparklerApplicationSelectionField              @"applicationSelection"
-#define SparklerApplicationIconField                   @"applicationIcon"
-#define SparklerApplicationNameField                   @"applicationName"
-#define SparklerApplicationVersionField                @"applicationVersion"
+#define SparklerApplicationSelectionField                      @"applicationSelection"
+#define SparklerApplicationIconField                           @"applicationIcon"
+#define SparklerApplicationNameField                           @"applicationName"
+#define SparklerApplicationVersionField                        @"applicationVersion"

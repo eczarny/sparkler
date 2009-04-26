@@ -22,7 +22,7 @@
 
 // 
 // Sparkler
-// SparklerApplicationUpdatesWindowController.h
+// SparklerUpdatesWindowController.h
 // 
 // Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
@@ -30,15 +30,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SparklerApplicationUpdateManager;
+@class SparklerUpdateManager;
 
-@interface SparklerApplicationUpdatesWindowController : NSWindowController {
-    SparklerApplicationUpdateManager *myApplicationUpdateManager;
+@interface SparklerUpdatesWindowController : NSWindowController {
+    SparklerUpdateManager *myApplicationUpdateManager;
     IBOutlet NSView *myCheckForUpdatesView;
     IBOutlet NSView *myInstallUpdatesView;
+    IBOutlet NSButton *myCheckForUpdatesButton;
+    IBOutlet NSProgressIndicator *myCheckForUpdatesIndicator;
 }
 
-+ (SparklerApplicationUpdatesWindowController *)sharedController;
++ (SparklerUpdatesWindowController *)sharedController;
 
 #pragma mark -
 

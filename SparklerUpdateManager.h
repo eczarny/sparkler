@@ -22,7 +22,7 @@
 
 // 
 // Sparkler
-// SparklerApplicationUpdateManager.h
+// SparklerUpdateManager.h
 // 
 // Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
@@ -33,11 +33,11 @@
 
 @class SparklerUpdateEngine;
 
-@interface SparklerApplicationUpdateManager : NSObject<SparklerUpdateEngineDelegate> {
+@interface SparklerUpdateManager : NSObject<SparklerUpdateEngineDelegate> {
     SparklerUpdateEngine *myUpdateEngine;
 }
 
-+ (SparklerApplicationUpdateManager *)sharedManager;
++ (SparklerUpdateManager *)sharedManager;
 
 #pragma mark -
 

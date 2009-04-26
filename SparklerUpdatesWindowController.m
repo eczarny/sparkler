@@ -22,17 +22,17 @@
 
 // 
 // Sparkler
-// SparklerApplicationUpdatesWindowController.m
+// SparklerUpdatesWindowController.m
 // 
 // Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerApplicationUpdatesWindowController.h"
-#import "SparklerApplicationUpdateManager.h"
+#import "SparklerUpdatesWindowController.h"
+#import "SparklerUpdateManager.h"
 #import "SparklerConstants.h"
 
-@interface SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
+@interface SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
 
 - (void)windowDidLoad;
 
@@ -54,13 +54,13 @@
 
 #pragma mark -
 
-@implementation SparklerApplicationUpdatesWindowController
+@implementation SparklerUpdatesWindowController
 
-static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
+static SparklerUpdatesWindowController *sharedInstance = nil;
 
 - (id)init {
-    if (self = [super initWithWindowNibName: SparklerApplicationUpdatesWindowNibName]) {
-        myApplicationUpdateManager = [SparklerApplicationUpdateManager sharedManager];
+    if (self = [super initWithWindowNibName: SparklerUpdatesWindowNibName]) {
+        myApplicationUpdateManager = [SparklerUpdateManager sharedManager];
     }
     
     return self;
@@ -68,9 +68,9 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-+ (SparklerApplicationUpdatesWindowController *)sharedController {
++ (SparklerUpdatesWindowController *)sharedController {
     if (!sharedInstance) {
-        sharedInstance = [[SparklerApplicationUpdatesWindowController alloc] init];
+        sharedInstance = [[SparklerUpdatesWindowController alloc] init];
     }
     
     return sharedInstance;
@@ -106,7 +106,7 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-@implementation SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
+@implementation SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
 
 - (void)windowDidLoad {
     [self prepareSparklerWindow];
