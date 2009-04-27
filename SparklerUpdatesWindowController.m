@@ -50,6 +50,12 @@
 
 - (void)displayInstallUpdatesView;
 
+#pragma mark -
+
+- (void)updateEngineWillCheckForUpdates: (NSNotification *)notification;
+
+- (void)updateEngineDidFindUpdates: (NSNotification *)notification;
+
 @end
 
 #pragma mark -
@@ -60,7 +66,19 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 
 - (id)init {
     if (self = [super initWithWindowNibName: SparklerUpdatesWindowNibName]) {
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        
         myApplicationUpdateManager = [SparklerUpdateManager sharedManager];
+        
+        [notificationCenter addObserver: self
+                               selector: @selector(updateEngineWillCheckForUpdates:)
+                                   name: SparklerUpdateEngineWillCheckForUpdatesNotification
+                                 object: nil];
+        
+        [notificationCenter addObserver: self
+                               selector: @selector(updateEngineDidFindUpdates:)
+                                   name: SparklerUpdateEngineDidFindUpdatesNotification
+                                 object: nil];
     }
     
     return self;
@@ -100,6 +118,14 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 
 - (IBAction)checkForUpdates: (id)sender {
     [myApplicationUpdateManager checkForUpdates];
+}
+
+#pragma mark -
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    
+    [super dealloc];
 }
 
 @end
@@ -161,6 +187,22 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 
 - (void)displayInstallUpdatesView {
     [self displayView: myInstallUpdatesView inWindowWithTitle: @"Install Updates"];
+}
+
+#pragma mark -
+
+- (void)updateEngineWillCheckForUpdates: (NSNotification *)notification {
+    [myCheckForUpdatesIndicator startAnimation: nil];
+    
+    [myCheckForUpdatesButton setEnabled: NO];
+}
+
+- (void)updateEngineDidFindUpdates: (NSNotification *)notification {
+    [myCheckForUpdatesIndicator stopAnimation: nil];
+    
+    [myCheckForUpdatesButton setEnabled: YES];
+    
+    [self displayInstallUpdatesView];
 }
 
 @end

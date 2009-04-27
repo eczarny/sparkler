@@ -34,6 +34,16 @@
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
+@interface SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
+
+- (void)applicationsWillUpdate: (NSNotification *)notification;
+
+- (void)applicationsDidUpdate: (NSNotification *)notification;
+
+@end
+
+#pragma mark -
+
 @implementation SparklerApplicationsPreferencePane
 
 - (id)init {
@@ -47,7 +57,6 @@
 #pragma mark -
 
 - (void)preferencePaneDidLoad {
-    SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     [notificationCenter addObserver: self
@@ -60,7 +69,7 @@
                                name: SparklerApplicationsDidUpdateNotification
                              object: nil];
     
-    [sharedTargetedApplicationManager synchronizeWithFilesystem];
+    [[SparklerTargetedApplicationManager sharedManager] synchronizeWithFilesystem];
 }
 
 - (void)preferencePaneDidDisplay {
@@ -97,6 +106,20 @@
 
 #pragma mark -
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    
+    [myApplicationsDataSource release];
+    
+    [super dealloc];
+}
+
+@end
+
+#pragma mark -
+
+@implementation SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
+
 - (void)applicationsWillUpdate: (NSNotification *)notification {
     [myScanningForApplicationsIndicator startAnimation: nil];
     
@@ -107,18 +130,8 @@
     [myApplicationsTableView reloadData];
     
     [myScanningForApplicationsIndicator stopAnimation: nil];
-
+    
     [myRefreshApplicationsButton setEnabled: YES];
-}
-
-#pragma mark -
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
-    
-    [myApplicationsDataSource release];
-    
-    [super dealloc];
 }
 
 @end

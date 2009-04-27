@@ -30,6 +30,7 @@
 
 #import "SparklerUpdateManager.h"
 #import "SparklerUpdateEngine.h"
+#import "SparklerConstants.h"
 
 @implementation SparklerUpdateManager
 
@@ -67,24 +68,34 @@ static SparklerUpdateManager *sharedInstance = nil;
 
 - (void)updateEngineWillCheckForUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler is checking for updates.");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineWillCheckForUpdatesNotification object: self];
 }
 
 - (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFindUpdatesForTargetedApplications: (NSArray *)targetedApplications {
     NSLog(@"Sparkler found updates for %d application(s).", [targetedApplications count]);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineDidFindUpdatesNotification object: self];
 }
 
 - (void)updateEngineDidNotFindUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler did not find any updates.");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineDidNotFindUpdatesNotification object: self];
 }
 
 #pragma mark -
 
 - (void)updateEngineWillDownloadUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler will download the selected updates.");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineWillDownloadUpdatesNotification object: self];
 }
 
 - (void)updateEngineDidFinishDownloadingUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler finished downloading the selected updates.");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineDidDownloadUpdatesNotification object: self];
 }
 
 #pragma mark -

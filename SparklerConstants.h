@@ -58,6 +58,8 @@
 #define SparklerShowStatusItemNotification                     @"SparklerShowStatusItemNotification"
 #define SparklerHideStatusItemNotification                     @"SparklerHideStatusItemNotification"
 #define SparklerScanForApplicationsNotification                @"SparklerScanForApplicationsNotification"
+#define SparklerApplicationsWillUpdateNotification             @"SparklerApplicationsWillUpdateNotification"
+#define SparklerApplicationsDidUpdateNotification              @"SparklerApplicationsDidUpdateNotification"
 #define SparklerUpdateEngineWillCheckForUpdatesNotification    @"SparklerUpdateEngineWillCheckForUpdatesNotification"
 #define SparklerUpdateEngineDidFindUpdatesNotification         @"SparklerUpdateEngineDidFindUpdatesNotification"
 #define SparklerUpdateEngineDidNotFindUpdatesNotification      @"SparklerUpdateEngineDidNotFindUpdatesNotification"
