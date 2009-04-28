@@ -22,28 +22,25 @@
 
 // 
 // Sparkler
-// SparklerUpdateDriverDelegate.h
+// SparklerApplicationUpdateManager.h
 // 
-// Created by Eric Czarny on Saturday, February 21, 2009.
+// Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
+#import "SparklerUpdateEngineDelegate.h"
 
-@class SparklerUpdateDriver, SparklerApplicationUpdate;
+@class SparklerUpdateEngine;
 
-@protocol SparklerUpdateDriverDelegate
+@interface SparklerApplicationUpdateManager : NSObject<SparklerUpdateEngineDelegate> {
+    SparklerUpdateEngine *myUpdateEngine;
+}
 
-- (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFindApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate;
-
-- (void)updateDriverDidNotFindApplicationUpdate: (SparklerUpdateDriver *)updateDriver;
-
-#pragma mark -
-
-- (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFinishDownloadingApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate;
++ (SparklerApplicationUpdateManager *)sharedManager;
 
 #pragma mark -
 
-- (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFailWithError: (NSError *)error;
+- (void)checkForUpdates;
 
 @end

@@ -22,25 +22,42 @@
 
 // 
 // Sparkler
-// SparklerUpdateManager.h
+// SparklerApplicationUpdate.h
 // 
-// Created by Eric Czarny on Saturday, April 25, 2009.
+// Created by Eric Czarny on Monday, April 27, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerUpdateEngineDelegate.h"
+#import <Sparkle/Sparkle.h>
 
-@class SparklerUpdateEngine;
+@class SparklerTargetedApplication;
 
-@interface SparklerUpdateManager : NSObject<SparklerUpdateEngineDelegate> {
-    SparklerUpdateEngine *myUpdateEngine;
+@interface SparklerApplicationUpdate : NSObject {
+    SUAppcastItem *myAppcastItem;
+    SparklerTargetedApplication *myTargetedApplication;
 }
 
-+ (SparklerUpdateManager *)sharedManager;
+- (id)initWithAppcastItem: (SUAppcastItem *)appcastItem targetedApplication: (SparklerTargetedApplication *)targetedApplication;
 
 #pragma mark -
 
-- (void)checkForUpdates;
+- (SUAppcastItem *)appcastItem;
+
+- (void)setAppcastItem: (SUAppcastItem *)appcastItem;
+
+#pragma mark -
+
+- (SparklerTargetedApplication *)targetedApplication;
+
+- (void)setTargetedApplication: (SparklerTargetedApplication *)targetedApplication;
+
+#pragma mark -
+
+- (NSString *)targetVersion;
+
+#pragma mark -
+
+- (NSString *)installablePath;
 
 @end

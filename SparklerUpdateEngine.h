@@ -37,7 +37,7 @@
 @interface SparklerUpdateEngine : NSObject<SparklerUpdateDriverDelegate> {
     SparklerTargetedApplicationManager *myTargetedApplicationManager;
     NSMutableDictionary *myTargetedApplications;
-    NSMutableArray *myTargetedApplicationsWithUpdates;
+    NSMutableArray *myApplicationUpdates;
     id<SparklerUpdateEngineDelegate> myDelegate;
 }
 
@@ -56,9 +56,5 @@
 #pragma mark -
 
 - (void)checkForUpdates;
-
-#pragma mark -
-
-- (void)downloadUpdatesForTargetedApplications: (NSArray *)targetedApplications;
 
 @end

@@ -34,17 +34,17 @@
 
 @protocol SparklerUpdateEngineDelegate
 
-- (void)updateEngineWillCheckForUpdates: (SparklerUpdateEngine *)updateEngine;
+- (void)updateEngineWillCheckForApplicationUpdates: (SparklerUpdateEngine *)updateEngine;
 
-- (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFindUpdatesForTargetedApplications: (NSArray *)targetedApplications;
+- (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFindApplicationUpdates: (NSArray *)applicationUpdates;
 
-- (void)updateEngineDidNotFindUpdates: (SparklerUpdateEngine *)updateEngine;
+- (void)updateEngineDidNotFindApplicationUpdates: (SparklerUpdateEngine *)updateEngine;
 
 #pragma mark -
 
-- (void)updateEngineWillDownloadUpdates: (SparklerUpdateEngine *)updateEngine;
+- (void)updateEngineWillDownloadApplicationUpdates: (SparklerUpdateEngine *)updateEngine;
 
-- (void)updateEngineDidFinishDownloadingUpdates: (SparklerUpdateEngine *)updateEngine;
+- (void)updateEngineDidFinishDownloadingApplicationUpdates: (SparklerUpdateEngine *)updateEngine;
 
 #pragma mark -
 

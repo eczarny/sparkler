@@ -29,7 +29,7 @@
 // 
 
 #import "SparklerUpdatesWindowController.h"
-#import "SparklerUpdateManager.h"
+#import "SparklerApplicationUpdateManager.h"
 #import "SparklerConstants.h"
 
 @interface SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
@@ -48,9 +48,9 @@
 
 #pragma mark -
 
-- (void)updateEngineWillCheckForUpdates: (NSNotification *)notification;
+- (void)sparklerWillCheckForApplicationUpdates: (NSNotification *)notification;
 
-- (void)updateEngineDidFindUpdates: (NSNotification *)notification;
+- (void)sparklerDidFindApplicationUpdates: (NSNotification *)notification;
 
 @end
 
@@ -64,16 +64,16 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
     if (self = [super initWithWindowNibName: SparklerUpdatesWindowNibName]) {
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         
-        myApplicationUpdateManager = [SparklerUpdateManager sharedManager];
+        myApplicationUpdateManager = [SparklerApplicationUpdateManager sharedManager];
         
         [notificationCenter addObserver: self
-                               selector: @selector(updateEngineWillCheckForUpdates:)
-                                   name: SparklerUpdateEngineWillCheckForUpdatesNotification
+                               selector: @selector(sparklerWillCheckForApplicationUpdates:)
+                                   name: SparklerWillCheckForApplicationUpdatesNotification
                                  object: nil];
         
         [notificationCenter addObserver: self
-                               selector: @selector(updateEngineDidFindUpdates:)
-                                   name: SparklerUpdateEngineDidFindUpdatesNotification
+                               selector: @selector(sparklerDidFindApplicationUpdates:)
+                                   name: SparklerDidFindApplicationUpdatesNotification
                                  object: nil];
     }
     
@@ -186,13 +186,13 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)updateEngineWillCheckForUpdates: (NSNotification *)notification {
+- (void)sparklerWillCheckForApplicationUpdates: (NSNotification *)notification {
     [myCheckForUpdatesIndicator startAnimation: nil];
     
     [myCheckForUpdatesButton setEnabled: NO];
 }
 
-- (void)updateEngineDidFindUpdates: (NSNotification *)notification {
+- (void)sparklerDidFindApplicationUpdates: (NSNotification *)notification {
     [myCheckForUpdatesIndicator stopAnimation: nil];
     
     [myCheckForUpdatesButton setEnabled: YES];

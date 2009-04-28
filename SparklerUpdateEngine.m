@@ -31,6 +31,7 @@
 #import "SparklerUpdateEngine.h"
 #import "SparklerTargetedApplicationManager.h"
 #import "SparklerTargetedApplication.h"
+#import "SparklerApplicationUpdate.h"
 #import "SparklerUpdateDriver.h"
 
 @interface SparklerUpdateEngine (SparklerUpdateEnginePrivate)
@@ -49,7 +50,7 @@ static SparklerUpdateEngine *sharedInstance = nil;
     if (self = [super init]) {
         myTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
         myTargetedApplications = [[NSMutableDictionary alloc] init];
-        myTargetedApplicationsWithUpdates = [[NSMutableArray alloc] init];
+        myApplicationUpdates = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -92,7 +93,7 @@ static SparklerUpdateEngine *sharedInstance = nil;
     NSEnumerator *targetedApplicationsEnumerator = [targetedApplications objectEnumerator];
     SparklerTargetedApplication *targetedApplication;
     
-    [myDelegate updateEngineWillCheckForUpdates: self];
+    [myDelegate updateEngineWillCheckForApplicationUpdates: self];
     
     [myTargetedApplications removeAllObjects];
     
@@ -110,15 +111,9 @@ static SparklerUpdateEngine *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)downloadUpdatesForTargetedApplications: (NSArray *)targetedApplications {
-    
-}
-
-#pragma mark -
-
 - (void)dealloc {
     [myTargetedApplications release];
-    [myTargetedApplicationsWithUpdates release];
+    [myApplicationUpdates release];
     
     [super dealloc];
 }
@@ -127,15 +122,15 @@ static SparklerUpdateEngine *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)updateDriverDidFindUpdate: (SparklerUpdateDriver *)updateDriver {
+- (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFindApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate {
     NSLog(@"Sparkler found a new update for %@.", [[updateDriver targetedApplication] name]);
     
-    [myTargetedApplicationsWithUpdates addObject: [updateDriver targetedApplication]];
+    [myApplicationUpdates addObject: applicationUpdate];
     
     [self handleResponseFromUpdateDriver: updateDriver];
 }
 
-- (void)updateDriverDidNotFindUpdate: (SparklerUpdateDriver *)updateDriver {
+- (void)updateDriverDidNotFindApplicationUpdate: (SparklerUpdateDriver *)updateDriver {
     NSLog(@"Sparkler did not find a new update for %@.", [[updateDriver targetedApplication] name]);
     
     [self handleResponseFromUpdateDriver: updateDriver];
@@ -143,7 +138,7 @@ static SparklerUpdateEngine *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)updateDriverDidFinishDownloadingUpdate: (SparklerUpdateDriver *)updateDriver {
+- (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFinishDownloadingApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate {
     NSLog(@"The update for %@ has been downloaded.", [[updateDriver targetedApplication] name]);
 }
 
@@ -165,13 +160,13 @@ static SparklerUpdateEngine *sharedInstance = nil;
     [myTargetedApplications removeObjectForKey: [[updateDriver targetedApplication] name]];
     
     if (![self isCheckingForUpdates]) {
-        if ([myTargetedApplicationsWithUpdates count] > 0) {
-            [myDelegate updateEngine: self didFindUpdatesForTargetedApplications: myTargetedApplicationsWithUpdates];
+        if ([myApplicationUpdates count] > 0) {
+            [myDelegate updateEngine: self didFindApplicationUpdates: myApplicationUpdates];
         } else {
-            [myDelegate updateEngineDidNotFindUpdates: self];
+            [myDelegate updateEngineDidNotFindApplicationUpdates: self];
         }
         
-        [myTargetedApplicationsWithUpdates removeAllObjects];
+        [myApplicationUpdates removeAllObjects];
     }
 }
 

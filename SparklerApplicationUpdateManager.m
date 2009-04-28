@@ -22,19 +22,19 @@
 
 // 
 // Sparkler
-// SparklerUpdateManager.m
+// SparklerApplicationUpdateManager.m
 // 
 // Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerUpdateManager.h"
+#import "SparklerApplicationUpdateManager.h"
 #import "SparklerUpdateEngine.h"
 #import "SparklerConstants.h"
 
-@implementation SparklerUpdateManager
+@implementation SparklerApplicationUpdateManager
 
-static SparklerUpdateManager *sharedInstance = nil;
+static SparklerApplicationUpdateManager *sharedInstance = nil;
 
 - (id)init {
     if (self = [super init]) {
@@ -48,9 +48,9 @@ static SparklerUpdateManager *sharedInstance = nil;
 
 #pragma mark -
 
-+ (SparklerUpdateManager *)sharedManager {
++ (SparklerApplicationUpdateManager *)sharedManager {
     if (!sharedInstance) {
-        sharedInstance = [[SparklerUpdateManager alloc] init];
+        sharedInstance = [[SparklerApplicationUpdateManager alloc] init];
     }
     
     return sharedInstance;
@@ -66,36 +66,36 @@ static SparklerUpdateManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)updateEngineWillCheckForUpdates: (SparklerUpdateEngine *)updateEngine {
+- (void)updateEngineWillCheckForApplicationUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler is checking for updates.");
     
-    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineWillCheckForUpdatesNotification object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerWillCheckForApplicationUpdatesNotification object: self];
 }
 
-- (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFindUpdatesForTargetedApplications: (NSArray *)targetedApplications {
-    NSLog(@"Sparkler found updates for %d application(s).", [targetedApplications count]);
+- (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFindApplicationUpdates: (NSArray *)applicationUpdates {
+    NSLog(@"Sparkler found updates for %d application(s).", [applicationUpdates count]);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineDidFindUpdatesNotification object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerDidFindApplicationUpdatesNotification object: self];
 }
 
-- (void)updateEngineDidNotFindUpdates: (SparklerUpdateEngine *)updateEngine {
+- (void)updateEngineDidNotFindApplicationUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler did not find any updates.");
     
-    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineDidNotFindUpdatesNotification object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerDidNotFindApplicationUpdatesNotification object: self];
 }
 
 #pragma mark -
 
-- (void)updateEngineWillDownloadUpdates: (SparklerUpdateEngine *)updateEngine {
+- (void)updateEngineWillDownloadApplicationUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler will download the selected updates.");
     
-    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineWillDownloadUpdatesNotification object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerWillDownloadApplicationUpdatesNotification object: self];
 }
 
-- (void)updateEngineDidFinishDownloadingUpdates: (SparklerUpdateEngine *)updateEngine {
+- (void)updateEngineDidFinishDownloadingApplicationUpdates: (SparklerUpdateEngine *)updateEngine {
     NSLog(@"Sparkler finished downloading the selected updates.");
     
-    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerUpdateEngineDidDownloadUpdatesNotification object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: SparklerDidDownloadApplicationUpdatesNotification object: self];
 }
 
 #pragma mark -

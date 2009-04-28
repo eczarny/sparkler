@@ -30,6 +30,7 @@
 
 #import "SparklerUpdateDriver.h"
 #import "SparklerTargetedApplication.h"
+#import "SparklerApplicationUpdate.h"
 #import "SparklerGenericVersionComparator.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
@@ -72,6 +73,8 @@
 
 - (id)initWithDelegate: (id<SparklerUpdateDriverDelegate>)delegate {
     if (self = [super init]) {
+        myTargetedApplication = nil;
+        myApplicationUpdate = nil;
         myDelegate = delegate;
     }
     
@@ -86,8 +89,8 @@
 
 #pragma mark -
 
-- (SUAppcastItem *)appcastItem {
-    return myAppcastItem;
+- (SparklerApplicationUpdate *)applicationUpdate {
+    return myApplicationUpdate;
 }
 
 #pragma mark -
@@ -108,7 +111,7 @@
     NSString *applicationName = [targetedApplication name];
     NSString *applicationVersion = [targetedApplication version];
     
-    if (myTargetedApplication || myAppcastItem) {
+    if (myTargetedApplication || myApplicationUpdate) {
         NSLog(@"The update driver is currently working, aborting update check.");
         
         return;
@@ -140,15 +143,14 @@
 #pragma mark -
 
 - (void)abortUpdate {
-    
+    NSLog(@"Aborting the %@ update.", [myTargetedApplication name]);
 }
 
 #pragma mark -
 
 - (void)dealloc {
     [myTargetedApplication release];
-    [myAppcastItem release];
-    [myDownloadDestination release];
+    [myApplicationUpdate release];
     
     [super dealloc];
 }
@@ -167,15 +169,15 @@
         appcastItem = [appcastItemEnumerator nextObject];
     } while (appcastItem && ![self hostSupportsAppcastItem: appcastItem]);
     
-    if (appcastItem) {
-        myAppcastItem = [appcastItem retain];
-    } else {
+    if (!appcastItem) {
         [self didNotFindUpdate];
         
         return;
     }
     
-    if ([self isAppcastItemNewer: myAppcastItem]) {
+    if ([self isAppcastItemNewer: appcastItem]) {
+        myApplicationUpdate = [[SparklerApplicationUpdate alloc] initWithAppcastItem: appcastItem targetedApplication: myTargetedApplication];
+        
         [self didFindUpdate];
     } else {
         [self didNotFindUpdate];
@@ -230,18 +232,18 @@
 #pragma mark -
 
 - (void)didFindUpdate {
-    [myDelegate updateDriverDidFindUpdate: self];
+    [myDelegate updateDriver: self didFindApplicationUpdate: myApplicationUpdate];
 }
 
 - (void)didNotFindUpdate {
-    [myDelegate updateDriverDidNotFindUpdate: self];
+    [myDelegate updateDriverDidNotFindApplicationUpdate: self];
 }
 
 #pragma mark -
 
 - (void)downloadUpdate {
     NSURLDownload *download;
-    NSURLRequest *request = [NSURLRequest requestWithURL: [myAppcastItem fileURL]];
+    NSURLRequest *request = [NSURLRequest requestWithURL: [[myApplicationUpdate appcastItem] fileURL]];
     
     download = [[NSURLDownload alloc] initWithRequest: request delegate: self];
     
@@ -274,42 +276,31 @@
 
 - (void)download: (NSURLDownload *)download decideDestinationWithSuggestedFilename: (NSString *)suggestedFilename {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPath];
-    NSString *downloadPath = [applicationSupportPath stringByAppendingPathComponent: SparklerDownloadsDirectory];
-    NSString *fileExtension;
-    NSString *filename;
-    BOOL isDirectory;
+    NSString *installablePath = [myApplicationUpdate installablePath];
     
-    if (![fileManager fileExistsAtPath: downloadPath isDirectory: &isDirectory] && isDirectory) {
-        if (![fileManager createDirectoryAtPath: downloadPath attributes: nil]) {
-            NSLog(@"There was a problem creating the download directory at path: %@", downloadPath);
-            
-            [download cancel];
-            
-            return;
-        }
+    if (!installablePath) {
+        NSLog(@"The installable path could not be determined, the download is unable continue.");
+        
+        [download cancel];
+        
+        return;
     }
     
-    fileExtension = [[[myAppcastItem fileURL] absoluteString] pathExtension];
-    filename = [NSString stringWithFormat: @"%@ %@.%@", [myTargetedApplication name], [myTargetedApplication version], fileExtension];
-    
-    myDownloadDestination = [[downloadPath stringByAppendingPathComponent: filename] retain];
-    
-    if ([fileManager fileExistsAtPath: myDownloadDestination isDirectory: NULL]) {
-        [fileManager removeFileAtPath: myDownloadDestination handler: nil];
+    if ([fileManager fileExistsAtPath: installablePath isDirectory: NULL]) {
+        [fileManager removeFileAtPath: installablePath handler: nil];
     }
     
-    [download setDestination: myDownloadDestination allowOverwrite: YES];
+    [download setDestination: installablePath allowOverwrite: YES];
 }
 
 - (void)downloadDidFinish: (NSURLDownload *)download {
-    [myDelegate updateDriverDidFinishDownloadingUpdate: self];
+    [myDelegate updateDriver: self didFinishDownloadingApplicationUpdate: myApplicationUpdate];
     
     [download release];
 }
 
 - (void)download: (NSURLDownload *)download didFailWithError: (NSError *)error {
-    [myDelegate updateDriver: self didFailWithError: error];
+    [self abortUpdateWithError: error];
     
     [download release];
 }

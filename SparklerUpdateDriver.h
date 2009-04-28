@@ -32,12 +32,11 @@
 #import <Sparkle/Sparkle.h>
 #import "SparklerUpdateDriverDelegate.h"
 
-@class SparklerTargetedApplication;
+@class SparklerTargetedApplication, SparklerApplicationUpdate;
 
 @interface SparklerUpdateDriver : NSObject {
     SparklerTargetedApplication *myTargetedApplication;
-    SUAppcastItem *myAppcastItem;
-    NSString *myDownloadDestination;
+    SparklerApplicationUpdate *myApplicationUpdate;
     id<SparklerUpdateDriverDelegate> myDelegate;
 }
 
@@ -49,7 +48,7 @@
 
 #pragma mark -
 
-- (SUAppcastItem *)appcastItem;
+- (SparklerApplicationUpdate *)applicationUpdate;
 
 #pragma mark -
 
