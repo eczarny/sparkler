@@ -38,10 +38,6 @@
 
 #pragma mark -
 
-- (void)prepareSparklerWindow;
-
-#pragma mark -
-
 - (void)displayView: (NSView *)view inWindowWithTitle: (NSString *)title;
 
 #pragma mark -
@@ -135,12 +131,6 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 @implementation SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
 
 - (void)windowDidLoad {
-    [self prepareSparklerWindow];
-}
-
-#pragma mark -
-
-- (void)prepareSparklerWindow {
     [[self window] center];
     
     [self displayCheckForUpdatesView];
@@ -149,34 +139,39 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (void)displayView: (NSView *)view inWindowWithTitle: (NSString *)title {
-    NSWindow *sparklerWindow = [self window];
-    NSRect sparklerWindowFrame = [sparklerWindow frame];
-    NSView *transitionView = [[NSView alloc] initWithFrame: [[sparklerWindow contentView] frame]];
+    NSWindow *updatesWindow = [self window];
+    NSView *transitionView = [[NSView alloc] initWithFrame: [[updatesWindow contentView] frame]];
+    NSRect updatesWindowFrame = [updatesWindow frame];
     
-    [sparklerWindow setContentView: transitionView];
+    [updatesWindow setContentView: transitionView];
     
     [transitionView release];
     
-    sparklerWindowFrame.size.height = [view frame].size.height + ([sparklerWindow frame].size.height - [[sparklerWindow contentView] frame].size.height);
-    sparklerWindowFrame.size.width = [view frame].size.width;
-    sparklerWindowFrame.origin.y += ([[sparklerWindow contentView] frame].size.height - [view frame].size.height);
+    updatesWindowFrame.size.height = [view frame].size.height + (updatesWindowFrame.size.height - [[updatesWindow contentView] frame].size.height);
+    updatesWindowFrame.size.width = [view frame].size.width;
     
-    [sparklerWindow setFrame: sparklerWindowFrame display: YES animate: YES];
+    if ([view frame].size.height > [[updatesWindow contentView] frame].size.height) {
+        updatesWindowFrame.origin.y -= [[updatesWindow contentView] frame].size.height + ([view frame].size.height * 0.25);
+    } else if ([view frame].size.height < [[updatesWindow contentView] frame].size.height) {
+        updatesWindowFrame.origin.y += ([[updatesWindow contentView] frame].size.height * 0.25) + [view frame].size.height;
+    }
     
-    NSDictionary *checkForUpdatesViewAnimation = [NSDictionary dictionaryWithObjectsAndKeys: view, NSViewAnimationTargetKey, NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
-    NSArray *checkForUpdatesViewAnimations = [NSArray arrayWithObjects: checkForUpdatesViewAnimation, nil];
-    NSViewAnimation *viewAnimation = [[NSViewAnimation alloc] initWithViewAnimations: checkForUpdatesViewAnimations];
+    if ([view frame].size.height != [[updatesWindow contentView] frame].size.height) {
+        [updatesWindow setFrame: updatesWindowFrame display: YES animate: YES];
+    }
     
-    [sparklerWindow setContentView: view];
+    [updatesWindow setTitle: title];
     
-    [viewAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
-    [viewAnimation startAnimation];
+    NSDictionary *fadeAnimation = [NSDictionary dictionaryWithObjectsAndKeys: view, NSViewAnimationTargetKey, NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
+    NSArray *updatesWindowAnimations = [NSArray arrayWithObjects: fadeAnimation, nil];
+    NSViewAnimation *updatesWindowAnimation = [[NSViewAnimation alloc] initWithViewAnimations: updatesWindowAnimations];
     
-    [viewAnimation release];
+    [updatesWindow setContentView: view];
     
-    [sparklerWindow setShowsResizeIndicator: YES];
+    [updatesWindowAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
+    [updatesWindowAnimation startAnimation];
     
-    [sparklerWindow setTitle: title];
+    [updatesWindowAnimation release];
 }
 
 #pragma mark -

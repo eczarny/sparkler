@@ -178,24 +178,22 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
         
         preferencesWindowFrame.size.height = [preferencePaneView frame].size.height + ([preferencesWindow frame].size.height - [[preferencesWindow contentView] frame].size.height);
         preferencesWindowFrame.size.width = [preferencePaneView frame].size.width;
-        preferencesWindowFrame.origin.y += ([[preferencesWindow contentView] frame].size.height - [preferencePaneView frame].size.height);
+        preferencesWindowFrame.origin.y += [[preferencesWindow contentView] frame].size.height - [preferencePaneView frame].size.height;
         
         [preferencesWindow setFrame: preferencesWindowFrame display: YES animate: YES];
         
-        NSDictionary *preferencePaneViewAnimation = [NSDictionary dictionaryWithObjectsAndKeys: preferencePaneView, NSViewAnimationTargetKey, NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
-        NSArray *preferencePaneViewAnimations = [NSArray arrayWithObjects: preferencePaneViewAnimation, nil];
-        NSViewAnimation *viewAnimation = [[NSViewAnimation alloc] initWithViewAnimations: preferencePaneViewAnimations];
+        NSDictionary *fadeAnimation = [NSDictionary dictionaryWithObjectsAndKeys: preferencePaneView, NSViewAnimationTargetKey, NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
+        NSArray *preferencePaneViewAnimations = [NSArray arrayWithObjects: fadeAnimation, nil];
+        NSViewAnimation *preferencePaneViewAnimation = [[NSViewAnimation alloc] initWithViewAnimations: preferencePaneViewAnimations];
         
         [preferencesWindow setContentView: preferencePaneView];
         
         if (!initialPreferencePane) {
-            [viewAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
-            [viewAnimation startAnimation];
+            [preferencePaneViewAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
+            [preferencePaneViewAnimation startAnimation];
         }
         
-        [viewAnimation release];
-        
-        [preferencesWindow setShowsResizeIndicator: YES];
+        [preferencePaneViewAnimation release];
         
         if (myToolbarItems && ([myToolbarItems count] > 0)) {
             [preferencesWindow setTitle: name];
