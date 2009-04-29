@@ -68,6 +68,12 @@ static SparklerUpdateEngine *sharedInstance = nil;
 
 #pragma mark -
 
+- (NSArray *)applicationUpdates {
+    return myApplicationUpdates;
+}
+
+#pragma mark -
+
 - (id<SparklerUpdateEngineDelegate>)delegate {
     return myDelegate;
 }

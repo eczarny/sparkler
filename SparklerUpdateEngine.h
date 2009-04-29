@@ -29,8 +29,8 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerUpdateEngineDelegate.h"
 #import "SparklerUpdateDriverDelegate.h"
+#import "SparklerUpdateEngineDelegate.h"
 
 @class SparklerTargetedApplicationManager;
 
@@ -42,6 +42,10 @@
 }
 
 + (SparklerUpdateEngine *)sharedEngine;
+
+#pragma mark -
+
+- (NSArray *)applicationUpdates;
 
 #pragma mark -
 

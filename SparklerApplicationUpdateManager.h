@@ -41,6 +41,10 @@
 
 #pragma mark -
 
+- (NSArray *)applicationUpdates;
+
+#pragma mark -
+
 - (void)checkForUpdates;
 
 @end

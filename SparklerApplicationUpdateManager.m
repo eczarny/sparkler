@@ -39,8 +39,6 @@ static SparklerApplicationUpdateManager *sharedInstance = nil;
 - (id)init {
     if (self = [super init]) {
         myUpdateEngine = [SparklerUpdateEngine sharedEngine];
-        
-        [myUpdateEngine setDelegate: self];
     }
     
     return self;
@@ -58,7 +56,17 @@ static SparklerApplicationUpdateManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (NSArray *)applicationUpdates {
+    return [myUpdateEngine applicationUpdates];
+}
+
+#pragma mark -
+
 - (void)checkForUpdates {
+    if ([myUpdateEngine delegate] != self) {
+        [myUpdateEngine setDelegate: self];
+    }
+    
     [myUpdateEngine checkForUpdates];
 }
 
