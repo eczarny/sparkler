@@ -113,6 +113,12 @@ static SparklerUpdateEngine *sharedInstance = nil;
             [updateDriver checkTargetedApplicationForUpdates: targetedApplication];
         }
     }
+    
+    if (![self isCheckingForUpdates]) {
+        [myDelegate updateEngineDidNotFindApplicationUpdates: self];
+        
+        return;
+    }
 }
 
 #pragma mark -

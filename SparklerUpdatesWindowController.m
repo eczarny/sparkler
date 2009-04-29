@@ -50,7 +50,11 @@
 
 - (void)sparklerWillCheckForApplicationUpdates: (NSNotification *)notification;
 
+#pragma mark -
+
 - (void)sparklerDidFindApplicationUpdates: (NSNotification *)notification;
+
+- (void)sparklerDidNotFindApplicationUpdates: (NSNotification *)notification;
 
 @end
 
@@ -74,6 +78,11 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
         [notificationCenter addObserver: self
                                selector: @selector(sparklerDidFindApplicationUpdates:)
                                    name: SparklerDidFindApplicationUpdatesNotification
+                                 object: nil];
+        
+        [notificationCenter addObserver: self
+                               selector: @selector(sparklerDidNotFindApplicationUpdates:)
+                                   name: SparklerDidNotFindApplicationUpdatesNotification
                                  object: nil];
     }
     
@@ -192,12 +201,20 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
     [myCheckForUpdatesButton setEnabled: NO];
 }
 
+#pragma mark -
+
 - (void)sparklerDidFindApplicationUpdates: (NSNotification *)notification {
     [myCheckForUpdatesIndicator stopAnimation: nil];
     
     [myCheckForUpdatesButton setEnabled: YES];
     
     [self displayInstallUpdatesView];
+}
+
+- (void)sparklerDidNotFindApplicationUpdates: (NSNotification *)notification {
+    [myCheckForUpdatesIndicator stopAnimation: nil];
+    
+    [myCheckForUpdatesButton setEnabled: YES];
 }
 
 @end
