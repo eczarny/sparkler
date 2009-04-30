@@ -30,14 +30,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SparklerApplicationUpdateManager;
+@class SparklerApplicationUpdateManager, SparklerUpdatesDataSource;
 
 @interface SparklerUpdatesWindowController : NSWindowController {
     SparklerApplicationUpdateManager *myApplicationUpdateManager;
+    SparklerUpdatesDataSource *myUpdatesDataSource;
     IBOutlet NSView *myCheckForUpdatesView;
     IBOutlet NSView *myInstallUpdatesView;
     IBOutlet NSButton *myCheckForUpdatesButton;
     IBOutlet NSProgressIndicator *myCheckForUpdatesIndicator;
+    IBOutlet NSTableView *myUpdatesTableView;
 }
 
 + (SparklerUpdatesWindowController *)sharedController;

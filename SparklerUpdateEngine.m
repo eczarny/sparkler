@@ -102,6 +102,7 @@ static SparklerUpdateEngine *sharedInstance = nil;
     [myDelegate updateEngineWillCheckForApplicationUpdates: self];
     
     [myTargetedApplications removeAllObjects];
+    [myApplicationUpdates removeAllObjects];
     
     while (targetedApplication = [targetedApplicationsEnumerator nextObject]) {
         if ([targetedApplication isTargetedForUpdates]) {
@@ -177,8 +178,6 @@ static SparklerUpdateEngine *sharedInstance = nil;
         } else {
             [myDelegate updateEngineDidNotFindApplicationUpdates: self];
         }
-        
-        [myApplicationUpdates removeAllObjects];
     }
 }
 

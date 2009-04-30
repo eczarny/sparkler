@@ -39,6 +39,7 @@
     if (self = [super init]) {
         myAppcastItem = [appcastItem retain];
         myTargetedApplication = [targetedApplication retain];
+        isMarkedForInstallation = NO;
     }
     
     return self;
@@ -70,6 +71,16 @@
         
         myTargetedApplication = [targetedApplication retain];
     }
+}
+
+#pragma mark -
+
+- (BOOL)isMarkedForInstallation {
+    return isMarkedForInstallation;
+}
+
+- (void)setMarkedForInstallation: (BOOL)markedForInstallation {
+    isMarkedForInstallation = markedForInstallation;
 }
 
 #pragma mark -

@@ -48,7 +48,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        myApplicationsDataSource = [[SparklerApplicationsDataSource alloc] init];
+        myApplicationsDataSource = [[SparklerApplicationsDataSource alloc] initWithTableView: myApplicationsTableView];
     }
     
     return self;
@@ -73,8 +73,6 @@
 }
 
 - (void)preferencePaneDidDisplay {
-    [myApplicationsDataSource setTableView: myApplicationsTableView];
-    
     [myApplicationsTableView setDataSource: myApplicationsDataSource];
 }
 

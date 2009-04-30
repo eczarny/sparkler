@@ -22,18 +22,18 @@
 
 // 
 // Sparkler
-// SparklerApplicationsDataSource.h
+// SparklerUpdatesDataSource.h
 // 
-// Created by Eric Czarny on Saturday, November 29, 2008.
+// Created by Eric Czarny on Monday, April 27, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
 
-@class SparklerTargetedApplicationManager;
+@class SparklerApplicationUpdateManager;
 
-@interface SparklerApplicationsDataSource : NSObject {
-    SparklerTargetedApplicationManager *myTargetedApplicationManager;
+@interface SparklerUpdatesDataSource : NSObject {
+    SparklerApplicationUpdateManager *myApplicationUpdateManager;
     NSTableView *myTableView;
 }
 

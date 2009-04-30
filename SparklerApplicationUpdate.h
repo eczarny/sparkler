@@ -36,6 +36,7 @@
 @interface SparklerApplicationUpdate : NSObject {
     SUAppcastItem *myAppcastItem;
     SparklerTargetedApplication *myTargetedApplication;
+    BOOL isMarkedForInstallation;
 }
 
 - (id)initWithAppcastItem: (SUAppcastItem *)appcastItem targetedApplication: (SparklerTargetedApplication *)targetedApplication;
@@ -51,6 +52,12 @@
 - (SparklerTargetedApplication *)targetedApplication;
 
 - (void)setTargetedApplication: (SparklerTargetedApplication *)targetedApplication;
+
+#pragma mark -
+
+- (BOOL)isMarkedForInstallation;
+
+- (void)setMarkedForInstallation: (BOOL)markedForInstallation;
 
 #pragma mark -
 

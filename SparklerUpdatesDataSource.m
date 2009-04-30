@@ -22,22 +22,22 @@
 
 // 
 // Sparkler
-// SparklerApplicationsDataSource.m
+// SparklerUpdatesDataSource.m
 // 
-// Created by Eric Czarny on Saturday, November 29, 2008.
+// Created by Eric Czarny on Monday, April 27, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerApplicationsDataSource.h"
-#import "SparklerTargetedApplicationManager.h"
-#import "SparklerTargetedApplication.h"
+#import "SparklerUpdatesDataSource.h"
+#import "SparklerApplicationUpdateManager.h"
+#import "SparklerApplicationUpdate.h"
 #import "SparklerConstants.h"
 
-@implementation SparklerApplicationsDataSource
+@implementation SparklerUpdatesDataSource
 
 - (id)initWithTableView: (NSTableView *)tableView {
     if (self = [super init]) {
-        myTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
+        myApplicationUpdateManager = [SparklerApplicationUpdateManager sharedManager];
         myTableView = [tableView retain];
     }
     
@@ -71,21 +71,24 @@
 #pragma mark -
 
 - (NSInteger)numberOfRowsInTableView: (NSTableView *)tableView {
-    return [[myTargetedApplicationManager targetedApplications] count];
+    return [[myApplicationUpdateManager applicationUpdates] count];
 }
 
 - (id)tableView: (NSTableView *)tableView objectValueForTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    NSArray *targetedApplications = [myTargetedApplicationManager targetedApplications];
-    SparklerTargetedApplication *targetedApplication = [targetedApplications objectAtIndex: rowIndex];
+    NSArray *applicationUpdates = [myApplicationUpdateManager applicationUpdates];
+    SparklerApplicationUpdate *applicationUpdate = [applicationUpdates objectAtIndex: rowIndex];
+    SparklerTargetedApplication *targetedApplication;
     id objectValue;
     
-    if (!targetedApplication || !columnIdentifier) {
+    if (!applicationUpdate || !columnIdentifier) {
         return nil;
     }
     
-    if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {
-        if ([targetedApplication isTargetedForUpdates]) {
+    targetedApplication = [applicationUpdate targetedApplication];
+    
+    if ([columnIdentifier isEqualToString: SparklerApplicationUpdateSelectionField]) {
+        if ([applicationUpdate isMarkedForInstallation]) {
             objectValue = [NSNumber numberWithInt: NSOnState];
         } else {
             objectValue = [NSNumber numberWithInt: NSOffState];
@@ -94,6 +97,8 @@
         objectValue = [targetedApplication icon];
     } else if ([columnIdentifier isEqualToString: SparklerApplicationNameField]) {
         objectValue = [targetedApplication name];
+    } else if ([columnIdentifier isEqualToString: SparklerApplicationUpdateVersionField]) {
+        objectValue = [applicationUpdate targetVersion];
     } else {
         objectValue = nil;
     }
@@ -103,11 +108,11 @@
 
 - (void)tableView: (NSTableView *)tableView setObjectValue: (id)objectValue forTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)rowIndex {
     NSString *columnIdentifier = (NSString *)[tableColumn identifier];
-    NSArray *targetedApplications = [myTargetedApplicationManager targetedApplications];
-    SparklerTargetedApplication *targetedApplication = [targetedApplications objectAtIndex: rowIndex];
+    NSArray *applicationUpdates = [myApplicationUpdateManager applicationUpdates];
+    SparklerApplicationUpdate *applicationUpdate = [applicationUpdates objectAtIndex: rowIndex];
     
-    if ([columnIdentifier isEqualToString: SparklerApplicationSelectionField]) {
-        [targetedApplication setTargetedForUpdates: [objectValue boolValue]];
+    if ([columnIdentifier isEqualToString: SparklerApplicationUpdateSelectionField]) {
+        [applicationUpdate setMarkedForInstallation: [objectValue boolValue]];
     }
 }
 

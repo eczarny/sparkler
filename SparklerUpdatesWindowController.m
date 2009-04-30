@@ -30,6 +30,7 @@
 
 #import "SparklerUpdatesWindowController.h"
 #import "SparklerApplicationUpdateManager.h"
+#import "SparklerUpdatesDataSource.h"
 #import "SparklerConstants.h"
 
 @interface SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
@@ -69,6 +70,7 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         
         myApplicationUpdateManager = [SparklerApplicationUpdateManager sharedManager];
+        myUpdatesDataSource = [[SparklerUpdatesDataSource alloc] initWithTableView: myUpdatesTableView];
         
         [notificationCenter addObserver: self
                                selector: @selector(sparklerWillCheckForApplicationUpdates:)
@@ -130,6 +132,8 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
     
+    [myUpdatesDataSource release];
+    
     [super dealloc];
 }
 
@@ -141,6 +145,8 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 
 - (void)windowDidLoad {
     [[self window] center];
+    
+    [myUpdatesTableView setDataSource: myUpdatesDataSource];
     
     [self displayCheckForUpdatesView];
 }

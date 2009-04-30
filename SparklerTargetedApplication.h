@@ -80,7 +80,7 @@
 
 - (BOOL)isTargetedForUpdates;
 
-- (void)setTargetedForUpdates: (BOOL)flag;
+- (void)setTargetedForUpdates: (BOOL)targetedForUpdates;
 
 #pragma mark -
 

@@ -82,6 +82,8 @@
 #define SparklerApplicationFeedURL                            @"SUFeedURL"
 
 #define SparklerApplicationSelectionField                     @"applicationSelection"
+#define SparklerApplicationUpdateSelectionField               @"applicationUpdateSelection"
 #define SparklerApplicationIconField                          @"applicationIcon"
 #define SparklerApplicationNameField                          @"applicationName"
 #define SparklerApplicationVersionField                       @"applicationVersion"
+#define SparklerApplicationUpdateVersionField                 @"applicationUpdateVersion"
