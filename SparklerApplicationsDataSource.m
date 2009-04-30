@@ -66,7 +66,7 @@
     [super dealloc];
 }
 
-#pragma mark Table View Delegate Methods
+#pragma mark Table View Data Source Methods
 
 #pragma mark -
 

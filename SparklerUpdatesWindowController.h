@@ -29,6 +29,7 @@
 // 
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
 @class SparklerApplicationUpdateManager, SparklerUpdatesDataSource;
 
@@ -40,6 +41,7 @@
     IBOutlet NSButton *myCheckForUpdatesButton;
     IBOutlet NSProgressIndicator *myCheckForUpdatesIndicator;
     IBOutlet NSTableView *myUpdatesTableView;
+    IBOutlet WebView *myReleaseNotesWebView;
 }
 
 + (SparklerUpdatesWindowController *)sharedController;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07009C590FA933D5004F40A4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07009C580FA933D5004F40A4 /* WebKit.framework */; };
 		070CD5A00F41115F003EA9D0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		070CD5DB0F4113AC003EA9D0 /* SparklerUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */; };
 		070CD5DC0F4113AC003EA9D0 /* SparklerUpdateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */; };
@@ -76,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07009C580FA933D5004F40A4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		070CD5D50F4113AC003EA9D0 /* SparklerUpdateDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateDriver.h; sourceTree = "<group>"; };
 		070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateDriver.m; sourceTree = "<group>"; };
 		070CD5D70F4113AC003EA9D0 /* SparklerUpdateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngine.h; sourceTree = "<group>"; };
@@ -176,9 +178,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				0711AC4C0F65D403003AF147 /* Quartz.framework in Frameworks */,
 				07A680330F49E353003C04BD /* RegexKit.framework in Frameworks */,
 				070CD5A00F41115F003EA9D0 /* Sparkle.framework in Frameworks */,
-				0711AC4C0F65D403003AF147 /* Quartz.framework in Frameworks */,
+				07009C590FA933D5004F40A4 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +409,7 @@
 				07A680320F49E353003C04BD /* RegexKit.framework */,
 				07D07A390F46617000E5E0D0 /* SenTestingKit.framework */,
 				0717DEF50F3D404E00B56132 /* Sparkle.framework */,
+				07009C580FA933D5004F40A4 /* WebKit.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";

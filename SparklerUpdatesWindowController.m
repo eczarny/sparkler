@@ -31,6 +31,7 @@
 #import "SparklerUpdatesWindowController.h"
 #import "SparklerApplicationUpdateManager.h"
 #import "SparklerUpdatesDataSource.h"
+#import "SparklerApplicationUpdate.h"
 #import "SparklerConstants.h"
 
 @interface SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
@@ -137,6 +138,26 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
     [super dealloc];
 }
 
+#pragma mark Table View Delegate Methods
+
+#pragma mark -
+
+- (BOOL)tableView: (NSTableView *)tableView shouldSelectRow: (NSInteger)rowIndex {
+    NSArray *applicationUpdates = [myApplicationUpdateManager applicationUpdates];
+    SparklerApplicationUpdate *applicationUpdate = [applicationUpdates objectAtIndex: rowIndex];
+    NSURL *releaseNotesURL = [[applicationUpdate appcastItem] releaseNotesURL];
+    
+    if (releaseNotesURL) {
+        NSURLRequest *releaseNotesURLRequest = [NSURLRequest requestWithURL: releaseNotesURL];
+        
+        [[myReleaseNotesWebView mainFrame] loadRequest: releaseNotesURLRequest];
+    } else {
+        NSLog(@"%@ does not appear to have any release notes.", [[applicationUpdate targetedApplication] name]);
+    }
+    
+    return YES;
+}
+
 @end
 
 #pragma mark -
@@ -146,6 +167,7 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 - (void)windowDidLoad {
     [[self window] center];
     
+    [myUpdatesTableView setDelegate: self];
     [myUpdatesTableView setDataSource: myUpdatesDataSource];
     
     [self displayCheckForUpdatesView];

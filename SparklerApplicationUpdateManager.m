@@ -83,6 +83,8 @@ static SparklerApplicationUpdateManager *sharedInstance = nil;
 - (void)updateEngine: (SparklerUpdateEngine *)updateEngine didFindApplicationUpdates: (NSArray *)applicationUpdates {
     NSLog(@"Sparkler found updates for %d application(s).", [applicationUpdates count]);
     
+    [[NSApplication sharedApplication] requestUserAttention: NSInformationalRequest];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName: SparklerDidFindApplicationUpdatesNotification object: self];
 }
 

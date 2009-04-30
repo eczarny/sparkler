@@ -32,4 +32,5 @@
     #import <Cocoa/Cocoa.h>
     #import <RegexKit/RegexKit.h>
     #import <Sparkle/Sparkle.h>
+    #import <WebKit/WebKit.h>
 #endif
