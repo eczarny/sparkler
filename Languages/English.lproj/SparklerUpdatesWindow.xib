@@ -536,7 +536,7 @@
 											<bool key="EncodedWithXMLCoder">YES</bool>
 											<object class="WebView" id="158625451">
 												<reference key="NSNextResponder" ref="447797742"/>
-												<int key="NSvFlags">4352</int>
+												<int key="NSvFlags">4370</int>
 												<object class="NSMutableSet" key="NSDragTypes">
 													<bool key="EncodedWithXMLCoder">YES</bool>
 													<object class="NSMutableArray" key="set.sortedObjects">
@@ -569,13 +569,21 @@
 															<bool key="EncodedWithXMLCoder">YES</bool>
 															<string>WebKitDefaultFixedFontSize</string>
 															<string>WebKitDefaultFontSize</string>
+															<string>WebKitJavaEnabled</string>
+															<string>WebKitJavaScriptCanOpenWindowsAutomatically</string>
+															<string>WebKitJavaScriptEnabled</string>
 															<string>WebKitMinimumFontSize</string>
+															<string>WebKitPluginsEnabled</string>
 														</object>
 														<object class="NSMutableArray" key="dict.values">
 															<bool key="EncodedWithXMLCoder">YES</bool>
 															<integer value="12" id="181989298"/>
 															<reference ref="181989298"/>
+															<boolean value="NO" id="6"/>
+															<reference ref="6"/>
+															<reference ref="6"/>
 															<integer value="1"/>
+															<reference ref="6"/>
 														</object>
 													</object>
 												</object>
@@ -587,7 +595,7 @@
 										<reference key="NSSuperview" ref="746325628"/>
 										<reference key="NSDocView" ref="158625451"/>
 										<reference key="NSBGColor" ref="579927374"/>
-										<int key="NScvFlags">4</int>
+										<int key="NScvFlags">2</int>
 									</object>
 									<object class="NSScroller" id="821533063">
 										<reference key="NSNextResponder" ref="746325628"/>
@@ -1099,7 +1107,7 @@
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>{{459, 631}, {515, 168}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="NO" id="6"/>
+					<reference ref="6"/>
 					<boolean value="YES" id="5"/>
 					<string>{{459, 631}, {515, 168}}</string>
 					<reference ref="5"/>
@@ -1113,7 +1121,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.WebKitIBPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{529, 333}, {515, 555}}</string>
+					<string>{{509, 220}, {515, 555}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
