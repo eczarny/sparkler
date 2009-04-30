@@ -32,6 +32,7 @@
 #import "SparklerApplicationUpdateManager.h"
 #import "SparklerUpdatesDataSource.h"
 #import "SparklerApplicationUpdate.h"
+#import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
 @interface SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
@@ -214,11 +215,11 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (void)displayCheckForUpdatesView {
-    [self displayView: myCheckForUpdatesView inWindowWithTitle: @"Check for Updates"];
+    [self displayView: myCheckForUpdatesView inWindowWithTitle: SparklerLocalizedString(@"Check for Updates")];
 }
 
 - (void)displayInstallUpdatesView {
-    [self displayView: myInstallUpdatesView inWindowWithTitle: @"Install Updates"];
+    [self displayView: myInstallUpdatesView inWindowWithTitle: SparklerLocalizedString(@"Install Updates")];
 }
 
 #pragma mark -

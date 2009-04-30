@@ -31,6 +31,7 @@
 #import "SparklerPreferencesWindowController.h"
 #import "SparklerPreferencePaneManager.h"
 #import "SparklerPreferencePaneProtocol.h"
+#import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
 @interface SparklerPreferencesWindowController (SparklerPreferencesWindowControllerPrivate)
@@ -214,7 +215,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     if (!preferencePanes || !preferencePane) {
         NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey: SparklerApplicationBundleName];
         
-        NSRunAlertPanel(@"Preferences", [NSString stringWithFormat: @"Preferences are not available for %@.", applicationName], @"OK", nil, nil);
+        NSRunAlertPanel(SparklerLocalizedString(@"Preferences"), [NSString stringWithFormat: SparklerLocalizedString(@"Preferences are not available for %@."), applicationName], SparklerLocalizedString(@"OK"), nil, nil);
     }
     
     [self displayPreferencePaneWithName: [preferencePane name] initialPreferencePane: YES];

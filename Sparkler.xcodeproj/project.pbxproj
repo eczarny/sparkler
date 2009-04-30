@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07009C590FA933D5004F40A4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07009C580FA933D5004F40A4 /* WebKit.framework */; };
+		07009DA80FA93E37004F40A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07009DA60FA93E37004F40A4 /* Localizable.strings */; };
 		070CD5A00F41115F003EA9D0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		070CD5DB0F4113AC003EA9D0 /* SparklerUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */; };
 		070CD5DC0F4113AC003EA9D0 /* SparklerUpdateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		07009C580FA933D5004F40A4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		07009DA70FA93E37004F40A4 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Languages/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		070CD5D50F4113AC003EA9D0 /* SparklerUpdateDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateDriver.h; sourceTree = "<group>"; };
 		070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateDriver.m; sourceTree = "<group>"; };
 		070CD5D70F4113AC003EA9D0 /* SparklerUpdateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngine.h; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				071F0AF00EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings */,
+				07009DA60FA93E37004F40A4 /* Localizable.strings */,
 			);
 			name = "Localized Strings";
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				07D3959E0EF4E0A0006583F2 /* Application Preferences.tiff in Resources */,
 				078DD8240EF20D1B00C6997D /* Defaults.plist in Resources */,
 				071F0FD30EF359B400F9ED3E /* General Preferences.tiff in Resources */,
+				07009DA80FA93E37004F40A4 /* Localizable.strings in Resources */,
 				07CD90370EF74E800053BCAF /* Preference Panes.plist in Resources */,
 				071F0AF40EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings in Resources */,
 				071F0AF50EF2B04E00F9ED3E /* Sparkler.xib in Resources */,
@@ -616,6 +620,8 @@
 				071214B90F017B4E00FBBDCE /* SparklerApplicationScanner.m in Sources */,
 				071214BA0F017B4E00FBBDCE /* SparklerApplicationsDataSource.m in Sources */,
 				071214BB0F017B4E00FBBDCE /* SparklerApplicationsPreferencePane.m in Sources */,
+				0756E4CB0FA6919600066EF4 /* SparklerApplicationUpdate.m in Sources */,
+				07CF80210FA7C2AE00A07F0C /* SparklerApplicationUpdateManager.m in Sources */,
 				071214BC0F017B4E00FBBDCE /* SparklerGeneralPreferencePane.m in Sources */,
 				07D68F2D0F491FD400EC7CC1 /* SparklerGenericVersionComparator.m in Sources */,
 				071214BD0F017B4E00FBBDCE /* SparklerPreferencePane.m in Sources */,
@@ -627,11 +633,9 @@
 				070CD5DB0F4113AC003EA9D0 /* SparklerUpdateDriver.m in Sources */,
 				070CD5DC0F4113AC003EA9D0 /* SparklerUpdateEngine.m in Sources */,
 				0799AEBF0F6604E200B71B22 /* SparklerUpdatePreferencePane.m in Sources */,
-				071214C70F017B4E00FBBDCE /* SparklerUtilities.m in Sources */,
-				07FF76A00FA408130043F9D2 /* SparklerUpdatesWindowController.m in Sources */,
 				0756E4BC0FA690EA00066EF4 /* SparklerUpdatesDataSource.m in Sources */,
-				0756E4CB0FA6919600066EF4 /* SparklerApplicationUpdate.m in Sources */,
-				07CF80210FA7C2AE00A07F0C /* SparklerApplicationUpdateManager.m in Sources */,
+				07FF76A00FA408130043F9D2 /* SparklerUpdatesWindowController.m in Sources */,
+				071214C70F017B4E00FBBDCE /* SparklerUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +650,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		07009DA60FA93E37004F40A4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07009DA70FA93E37004F40A4 /* English */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		071F0AF00EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
