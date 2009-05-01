@@ -36,8 +36,9 @@
 #define SparklerApplicationsPath                              @"/Applications"
 #define SparklerTargetedApplicationFile                       @"Applications.plist"
 #define SparklerDownloadsDirectory                            @"Downloads"
-#define SparklerApplicationExtension                          @"app"
-#define SparklerPropertyListExtension                         @"plist"
+
+#define SparklerApplicationFileExtension                      @"app"
+#define SparklerPropertyListFileExtension                     @"plist"
 
 #pragma mark -
 

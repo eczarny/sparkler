@@ -95,10 +95,9 @@
 #pragma mark -
 
 + (NSImage *)imageFromBundledImageResource: (NSString *)imageResource {
-    NSString *path = [[SparklerUtilities sparklerBundle] pathForImageResource: imageResource];
-    NSImage *image = [[[NSImage alloc] initWithContentsOfFile: path] autorelease];
+    NSString *resourcePath = [[SparklerUtilities sparklerBundle] pathForImageResource: imageResource];
     
-    return image;
+    return [[[NSImage alloc] initWithContentsOfFile: resourcePath] autorelease];
 }
 
 @end

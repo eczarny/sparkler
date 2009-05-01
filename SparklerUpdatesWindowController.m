@@ -51,6 +51,12 @@
 
 #pragma mark -
 
+- (void)displayReleaseNotesFromApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate;
+
+#pragma mark Update Engine Notifications
+
+#pragma mark -
+
 - (void)sparklerWillCheckForApplicationUpdates: (NSNotification *)notification;
 
 #pragma mark -
@@ -144,16 +150,10 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (BOOL)tableView: (NSTableView *)tableView shouldSelectRow: (NSInteger)rowIndex {
-    NSArray *applicationUpdates = [myApplicationUpdateManager applicationUpdates];
-    SparklerApplicationUpdate *applicationUpdate = [applicationUpdates objectAtIndex: rowIndex];
-    NSURL *releaseNotesURL = [[applicationUpdate appcastItem] releaseNotesURL];
+    SparklerApplicationUpdate *applicationUpdate = [[myApplicationUpdateManager applicationUpdates] objectAtIndex: rowIndex];
     
-    if (releaseNotesURL) {
-        NSURLRequest *releaseNotesURLRequest = [NSURLRequest requestWithURL: releaseNotesURL];
-        
-        [[myReleaseNotesWebView mainFrame] loadRequest: releaseNotesURLRequest];
-    } else {
-        NSLog(@"%@ does not appear to have any release notes.", [[applicationUpdate targetedApplication] name]);
+    if (applicationUpdate) {
+        [self displayReleaseNotesFromApplicationUpdate: applicationUpdate];
     }
     
     return YES;
@@ -166,10 +166,10 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 @implementation SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
 
 - (void)windowDidLoad {
-    [[self window] center];
-    
     [myUpdatesTableView setDelegate: self];
     [myUpdatesTableView setDataSource: myUpdatesDataSource];
+    
+    [[self window] center];
     
     [self displayCheckForUpdatesView];
 }
@@ -221,6 +221,28 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 - (void)displayInstallUpdatesView {
     [self displayView: myInstallUpdatesView inWindowWithTitle: SparklerLocalizedString(@"Install Updates")];
 }
+
+#pragma mark -
+
+- (void)displayReleaseNotesFromApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate {
+    SUAppcastItem *appcastItem = [applicationUpdate appcastItem];
+    NSString *itemDescription = [appcastItem itemDescription];
+    WebFrame *releaseNotesWebFrame = [myReleaseNotesWebView mainFrame];
+    
+    if (itemDescription) {
+        [releaseNotesWebFrame loadHTMLString: itemDescription baseURL: nil];
+    } else {
+        NSURL *releaseNotesURL = [appcastItem releaseNotesURL];
+        
+        if (releaseNotesURL) {
+            [releaseNotesWebFrame loadRequest: [NSURLRequest requestWithURL: releaseNotesURL]];
+        } else {
+            NSLog(@"There are no release notes available for %@.", [[applicationUpdate targetedApplication] name]);
+        }
+    }
+}
+
+#pragma mark Update Engine Notifications
 
 #pragma mark -
 

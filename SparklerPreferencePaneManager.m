@@ -67,7 +67,7 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
 
 - (void)loadPreferencePanes {
     NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
-    NSString *path = [sparklerBundle pathForResource: SparklerPreferencePanesFile ofType: SparklerPropertyListExtension];
+    NSString *path = [sparklerBundle pathForResource: SparklerPreferencePanesFile ofType: SparklerPropertyListFileExtension];
     NSDictionary *preferencePaneDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
     NSDictionary *preferencePanes = [preferencePaneDictionary objectForKey: SparklerPreferencePanesKey];
     NSArray *preferencePaneOrder = [preferencePaneDictionary objectForKey: SparklerPreferencePaneOrderKey];

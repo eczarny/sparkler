@@ -557,7 +557,7 @@
 														<string>public.url-name</string>
 													</object>
 												</object>
-												<string key="NSFrameSize">{475, 183}</string>
+												<string key="NSFrameSize">{473, 183}</string>
 												<reference key="NSSuperview" ref="447797742"/>
 												<string key="FrameName"/>
 												<string key="GroupName"/>
@@ -613,7 +613,6 @@
 										<int key="NSvFlags">256</int>
 										<string key="NSFrame">{{-100, -100}, {458, 15}}</string>
 										<reference key="NSSuperview" ref="746325628"/>
-										<bool key="NSEnabled">YES</bool>
 										<int key="NSsFlags">1</int>
 										<reference key="NSTarget" ref="746325628"/>
 										<string key="NSAction">_doScroller:</string>
@@ -622,7 +621,7 @@
 								</object>
 								<string key="NSFrame">{{0, 191}, {475, 182}}</string>
 								<reference key="NSSuperview" ref="603995259"/>
-								<int key="NSsFlags">706</int>
+								<int key="NSsFlags">578</int>
 								<reference key="NSVScroller" ref="821533063"/>
 								<reference key="NSHScroller" ref="854125622"/>
 								<reference key="NSContentView" ref="447797742"/>
