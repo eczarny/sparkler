@@ -22,18 +22,42 @@
 
 // 
 // Sparkler
-// SparklerApplicationScannerDelegate.h
+// SparklerApplicationUpdatesWindowController.h
 // 
-// Created by Eric Czarny on Sunday, December 14, 2008.
+// Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
-@protocol SparklerApplicationScannerDelegate
+@class SparklerApplicationUpdateManager, SparklerApplicationUpdatesDataSource;
 
-- (void)applicationScannerDidFindApplications: (NSArray *)applications;
+@interface SparklerApplicationUpdatesWindowController : NSWindowController {
+    SparklerApplicationUpdateManager *myApplicationUpdateManager;
+    SparklerApplicationUpdatesDataSource *myUpdatesDataSource;
+    IBOutlet NSView *myCheckForUpdatesView;
+    IBOutlet NSView *myInstallUpdatesView;
+    IBOutlet NSButton *myCheckForUpdatesButton;
+    IBOutlet NSProgressIndicator *myCheckForUpdatesIndicator;
+    IBOutlet NSTableView *myUpdatesTableView;
+    IBOutlet WebView *myReleaseNotesWebView;
+}
 
-- (void)applicationScannerFailedFindingApplications;
++ (SparklerApplicationUpdatesWindowController *)sharedController;
+
+#pragma mark -
+
+- (void)showSparklerWindow: (id)sender;
+
+- (void)hideSparklerWindow: (id)sender;
+
+#pragma mark -
+
+- (void)toggleSparklerWindow: (id)sender;
+
+#pragma mark -
+
+- (IBAction)checkForUpdates: (id)sender;
 
 @end

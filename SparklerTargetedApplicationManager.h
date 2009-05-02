@@ -29,9 +29,9 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerApplicationScannerDelegate.h"
+#import "SparklerTargetedApplicationScannerDelegate.h"
 
-@interface SparklerTargetedApplicationManager : NSObject<SparklerApplicationScannerDelegate> {
+@interface SparklerTargetedApplicationManager : NSObject<SparklerTargetedApplicationScannerDelegate> {
     NSArray *myTargetedApplications;
 }
 
@@ -45,10 +45,10 @@
 
 #pragma mark -
 
-- (void)rescanFilesystemForApplications;
+- (void)rescanFilesystemForTargetedApplications;
 
 #pragma mark -
 
-- (void)synchronizeWithFilesystem;
+- (void)synchronizeTargetedApplicationsWithFilesystem;
 
 @end

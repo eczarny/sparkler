@@ -22,27 +22,29 @@
 
 // 
 // Sparkler
-// SparklerUpdatesDataSource.h
+// SparklerTargetedApplicationScanner.h
 // 
-// Created by Eric Czarny on Monday, April 27, 2009.
+// Created by Eric Czarny on Friday, November 28, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
+#import "SparklerTargetedApplicationScannerDelegate.h"
 
-@class SparklerApplicationUpdateManager;
-
-@interface SparklerUpdatesDataSource : NSObject {
-    SparklerApplicationUpdateManager *myApplicationUpdateManager;
-    NSTableView *myTableView;
+@interface SparklerTargetedApplicationScanner : NSObject {
+    id<SparklerTargetedApplicationScannerDelegate> myDelegate;
 }
 
-- (id)initWithTableView: (NSTableView *)tableView;
++ (SparklerTargetedApplicationScanner *)sharedScanner;
 
 #pragma mark -
 
-- (NSTableView *)tableView;
+- (id<SparklerTargetedApplicationScannerDelegate>)delegate;
 
-- (void)setTableView: (NSTableView *)tableView;
+- (void)setDelegate: (id<SparklerTargetedApplicationScannerDelegate>)delegate;
+
+#pragma mark -
+
+- (void)scan;
 
 @end

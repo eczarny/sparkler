@@ -22,46 +22,46 @@
 
 // 
 // Sparkler
-// SparklerApplicationScanner.m
+// SparklerTargetedApplicationScanner.m
 // 
 // Created by Eric Czarny on Friday, November 28, 2008.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerApplicationScanner.h"
+#import "SparklerTargetedApplicationScanner.h"
 #import "SparklerTargetedApplication.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
-@interface SparklerApplicationScanner (SparklerApplicationScannerPrivate)
+@interface SparklerTargetedApplicationScanner (SparklerTargetedApplicationScannerPrivate)
 
-- (void)scanForApplications;
-
-#pragma mark -
-
-- (NSArray *)scanForApplicationsAtSearchPath: (NSString *)searchPath;
+- (void)scanForTargetedApplications;
 
 #pragma mark -
 
-- (void)loadIconsForApplications: (NSArray *)applications;
+- (NSArray *)scanForTargetedApplicationsAtSearchPath: (NSString *)searchPath;
 
 #pragma mark -
 
-- (void)scannerDidFinishAndFoundApplications: (NSArray *)applications;
+- (void)loadIconsForTargetedApplications: (NSArray *)targetedApplications;
 
-- (void)scannerFailedFindingApplications;
+#pragma mark -
+
+- (void)scannerDidFindTargetedApplications: (NSArray *)targetedApplications;
+
+- (void)scannerDidNotFindTargetedApplications;
 
 @end
 
 #pragma mark -
 
-@implementation SparklerApplicationScanner
+@implementation SparklerTargetedApplicationScanner
 
-static SparklerApplicationScanner *sharedInstance = nil;
+static SparklerTargetedApplicationScanner *sharedInstance = nil;
 
-+ (SparklerApplicationScanner *)sharedScanner {
++ (SparklerTargetedApplicationScanner *)sharedScanner {
     if (!sharedInstance) {
-        sharedInstance = [[SparklerApplicationScanner alloc] init];
+        sharedInstance = [[SparklerTargetedApplicationScanner alloc] init];
     }
     
     return sharedInstance;
@@ -69,50 +69,50 @@ static SparklerApplicationScanner *sharedInstance = nil;
 
 #pragma mark -
 
-- (id<SparklerApplicationScannerDelegate>)delegate {
+- (id<SparklerTargetedApplicationScannerDelegate>)delegate {
     return myDelegate;
 }
 
-- (void)setDelegate: (id<SparklerApplicationScannerDelegate>)delegate {
+- (void)setDelegate: (id<SparklerTargetedApplicationScannerDelegate>)delegate {
     myDelegate = delegate;
 }
 
 #pragma mark -
 
 - (void)scan {
-    [NSThread detachNewThreadSelector: @selector(scanForApplications) toTarget: self withObject: nil];
+    [NSThread detachNewThreadSelector: @selector(scanForTargetedApplications) toTarget: self withObject: nil];
 }
 
 @end
 
 #pragma mark -
 
-@implementation SparklerApplicationScanner (SparklerApplicationScannerPrivate)
+@implementation SparklerTargetedApplicationScanner (SparklerTargetedApplicationScannerPrivate)
 
-- (void)scanForApplications {
+- (void)scanForTargetedApplications {
     NSAutoreleasePool *autoreleasePool = [[NSAutoreleasePool alloc] init];
     NSString *applicationsPath = [NSString stringWithString: SparklerApplicationsPath];
-    NSArray *applications;
+    NSArray *targetedApplications;
     
     NSLog(@"Initiating the scan for applications...");
     
-    applications = [self scanForApplicationsAtSearchPath: applicationsPath];
+    targetedApplications = [self scanForTargetedApplicationsAtSearchPath: applicationsPath];
     
-    NSLog(@"The scan has completed. Sparkler found %d Sparkle-enabled application(s).", [applications count]);
+    NSLog(@"The scan has completed. Sparkler found %d Sparkle-enabled application(s).", [targetedApplications count]);
     
-    [self loadIconsForApplications: applications];
+    [self loadIconsForTargetedApplications: targetedApplications];
     
-    [self scannerDidFinishAndFoundApplications: applications];
+    [self scannerDidFindTargetedApplications: targetedApplications];
     
     [autoreleasePool release];
 }
 
 #pragma mark -
 
-- (NSArray *)scanForApplicationsAtSearchPath: (NSString *)searchPath {
+- (NSArray *)scanForTargetedApplicationsAtSearchPath: (NSString *)searchPath {
     NSArray *applicationsDirectory = [[NSFileManager defaultManager] directoryContentsAtPath: searchPath];
     NSEnumerator *applicationsDirectoryEnumerator = [applicationsDirectory objectEnumerator];
-    NSMutableArray *applications = [NSMutableArray array];
+    NSMutableArray *targetedApplications = [NSMutableArray array];
     NSString *path;
     
     while (path = [applicationsDirectoryEnumerator nextObject]) {
@@ -130,47 +130,47 @@ static SparklerApplicationScanner *sharedInstance = nil;
             NSString *applicationAppcastURL = [applicationBundle objectForInfoDictionaryKey: SparklerApplicationFeedURL];
             
             if (applicationAppcastURL) {
-                SparklerTargetedApplication *application = [[SparklerTargetedApplication alloc] initWithName: applicationName path: applicationPath];
+                SparklerTargetedApplication *targetedApplication = [[SparklerTargetedApplication alloc] initWithName: applicationName path: applicationPath];
                 
-                [application setAppcastURL: [NSURL URLWithString: applicationAppcastURL]];
+                [targetedApplication setAppcastURL: [NSURL URLWithString: applicationAppcastURL]];
                 
-                [applications addObject: application];
+                [targetedApplications addObject: targetedApplication];
                 
-                [application release];
+                [targetedApplication release];
             }
             
             [applicationInformation release];
         } else {
-            [applications addObjectsFromArray: [self scanForApplicationsAtSearchPath: path]];
+            [targetedApplications addObjectsFromArray: [self scanForTargetedApplicationsAtSearchPath: path]];
         }
     }
     
-    return applications;
+    return targetedApplications;
 }
 
 #pragma mark -
 
-- (void)loadIconsForApplications: (NSArray *)applications {
-    NSEnumerator *applicationsEnumerator = [applications objectEnumerator];
-    id application;
+- (void)loadIconsForTargetedApplications: (NSArray *)targetedApplications {
+    NSEnumerator *targetedApplicationsEnumerator = [targetedApplications objectEnumerator];
+    id targetedApplication;
     
-    while (application = [applicationsEnumerator nextObject]) {
-        NSImage *applicationIcon = [[NSWorkspace sharedWorkspace] iconForFile: [application path]];
+    while (targetedApplication = [targetedApplicationsEnumerator nextObject]) {
+        NSImage *targetedApplicationIcon = [[NSWorkspace sharedWorkspace] iconForFile: [targetedApplication path]];
         
-        if (applicationIcon) {
-            [application setIcon: applicationIcon];
+        if (targetedApplicationIcon) {
+            [targetedApplication setIcon: targetedApplicationIcon];
         }
     }
 }
 
 #pragma mark -
 
-- (void)scannerDidFinishAndFoundApplications: (NSArray *)applications {
-    [myDelegate applicationScannerDidFindApplications: applications];
+- (void)scannerDidFindTargetedApplications: (NSArray *)targetedApplications {
+    [myDelegate applicationScannerDidFindTargetedApplications: targetedApplications];
 }
 
-- (void)scannerFailedFindingApplications {
-    [myDelegate applicationScannerFailedFindingApplications];
+- (void)scannerDidNotFindTargetedApplications {
+    [myDelegate applicationScannerDidNotFindTargetedApplications];
 }
 
 @end

@@ -30,7 +30,7 @@
 
 #import "SparklerApplicationController.h"
 #import "SparklerPreferencesWindowController.h"
-#import "SparklerUpdatesWindowController.h"
+#import "SparklerApplicationUpdatesWindowController.h"
 #import "SparklerPreferencePaneManager.h"
 #import "SparklerUtilities.h"
 
@@ -61,7 +61,7 @@
 #pragma mark -
 
 - (IBAction)toggleSparklerWindow: (id)sender {
-    [[SparklerUpdatesWindowController sharedController] toggleSparklerWindow: sender];
+    [[SparklerApplicationUpdatesWindowController sharedController] toggleSparklerWindow: sender];
 }
 
 @end

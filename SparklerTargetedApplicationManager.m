@@ -29,7 +29,7 @@
 // 
 
 #import "SparklerTargetedApplicationManager.h"
-#import "SparklerApplicationScanner.h"
+#import "SparklerTargetedApplicationScanner.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
@@ -59,7 +59,7 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 - (NSArray *)targetedApplications {
     if (!myTargetedApplications) {
-        [self synchronizeWithFilesystem];
+        [self synchronizeTargetedApplicationsWithFilesystem];
     }
     
     return myTargetedApplications;
@@ -75,8 +75,8 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)rescanFilesystemForApplications {
-    SparklerApplicationScanner *sharedApplicationScanner = [SparklerApplicationScanner sharedScanner];
+- (void)rescanFilesystemForTargetedApplications {
+    SparklerTargetedApplicationScanner *sharedApplicationScanner = [SparklerTargetedApplicationScanner sharedScanner];
     
     [sharedApplicationScanner setDelegate: self];
     
@@ -89,7 +89,7 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)synchronizeWithFilesystem {
+- (void)synchronizeTargetedApplicationsWithFilesystem {
     NSArray *targetedApplications = [SparklerUtilities targetedApplicationsFromFile: SparklerTargetedApplicationFile];
     
     if (!myTargetedApplications && targetedApplications) {
@@ -99,7 +99,7 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
         
         return;
     } else if (!myTargetedApplications && !targetedApplications) {
-        [self rescanFilesystemForApplications];
+        [self rescanFilesystemForTargetedApplications];
     } else {
         NSLog(@"The targeted application manager is saving the current application metadata to disk.");
         
@@ -121,15 +121,15 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)applicationScannerDidFindApplications: (NSArray *)applications {
-    [self setTargetedApplications: applications];
+- (void)applicationScannerDidFindTargetedApplications: (NSArray *)targetedApplications {
+    [self setTargetedApplications: targetedApplications];
     
-    [self synchronizeWithFilesystem];
+    [self synchronizeTargetedApplicationsWithFilesystem];
     
     [[NSNotificationCenter defaultCenter] postNotificationName: SparklerApplicationsDidUpdateNotification object: self];
 }
 
-- (void)applicationScannerFailedFindingApplications {
+- (void)applicationScannerDidNotFindTargetedApplications {
     NSLog(@"The application scanner failed to find any targetable applications.");
 }
 

@@ -34,16 +34,6 @@
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
-@interface SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
-
-- (void)applicationsWillUpdate: (NSNotification *)notification;
-
-- (void)applicationsDidUpdate: (NSNotification *)notification;
-
-@end
-
-#pragma mark -
-
 @implementation SparklerApplicationsPreferencePane
 
 - (id)init {
@@ -69,7 +59,7 @@
                                name: SparklerApplicationsDidUpdateNotification
                              object: nil];
     
-    [[SparklerTargetedApplicationManager sharedManager] synchronizeWithFilesystem];
+    [[SparklerTargetedApplicationManager sharedManager] synchronizeTargetedApplicationsWithFilesystem];
 }
 
 - (void)preferencePaneDidDisplay {
@@ -93,7 +83,7 @@
 - (IBAction)refreshListOfApplications: (id)sender {
     SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
     
-    [sharedTargetedApplicationManager rescanFilesystemForApplications];
+    [sharedTargetedApplicationManager rescanFilesystemForTargetedApplications];
 }
 
 #pragma mark -
@@ -112,11 +102,9 @@
     [super dealloc];
 }
 
-@end
+#pragma mark Application Scanner Notifications
 
 #pragma mark -
-
-@implementation SparklerApplicationsPreferencePane (SparklerApplicationsPreferencePanePrivate)
 
 - (void)applicationsWillUpdate: (NSNotification *)notification {
     [myScanningForApplicationsIndicator startAnimation: nil];

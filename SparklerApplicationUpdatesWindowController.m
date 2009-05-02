@@ -22,20 +22,20 @@
 
 // 
 // Sparkler
-// SparklerUpdatesWindowController.m
+// SparklerApplicationUpdatesWindowController.m
 // 
 // Created by Eric Czarny on Saturday, April 25, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerUpdatesWindowController.h"
+#import "SparklerApplicationUpdatesWindowController.h"
 #import "SparklerApplicationUpdateManager.h"
-#import "SparklerUpdatesDataSource.h"
+#import "SparklerApplicationUpdatesDataSource.h"
 #import "SparklerApplicationUpdate.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
-@interface SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
+@interface SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
 
 - (void)windowDidLoad;
 
@@ -69,16 +69,16 @@
 
 #pragma mark -
 
-@implementation SparklerUpdatesWindowController
+@implementation SparklerApplicationUpdatesWindowController
 
-static SparklerUpdatesWindowController *sharedInstance = nil;
+static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 - (id)init {
-    if (self = [super initWithWindowNibName: SparklerUpdatesWindowNibName]) {
+    if (self = [super initWithWindowNibName: SparklerApplicationUpdatesWindowNibName]) {
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         
         myApplicationUpdateManager = [SparklerApplicationUpdateManager sharedManager];
-        myUpdatesDataSource = [[SparklerUpdatesDataSource alloc] initWithTableView: myUpdatesTableView];
+        myUpdatesDataSource = [[SparklerApplicationUpdatesDataSource alloc] initWithTableView: myUpdatesTableView];
         
         [notificationCenter addObserver: self
                                selector: @selector(sparklerWillCheckForApplicationUpdates:)
@@ -101,9 +101,9 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-+ (SparklerUpdatesWindowController *)sharedController {
++ (SparklerApplicationUpdatesWindowController *)sharedController {
     if (!sharedInstance) {
-        sharedInstance = [[SparklerUpdatesWindowController alloc] init];
+        sharedInstance = [[SparklerApplicationUpdatesWindowController alloc] init];
     }
     
     return sharedInstance;
@@ -163,7 +163,7 @@ static SparklerUpdatesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-@implementation SparklerUpdatesWindowController (SparklerUpdatesWindowControllerPrivate)
+@implementation SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
 
 - (void)windowDidLoad {
     [myUpdatesTableView setDelegate: self];

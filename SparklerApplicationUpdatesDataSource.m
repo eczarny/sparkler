@@ -22,18 +22,18 @@
 
 // 
 // Sparkler
-// SparklerUpdatesDataSource.m
+// SparklerApplicationUpdatesDataSource.m
 // 
 // Created by Eric Czarny on Monday, April 27, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
-#import "SparklerUpdatesDataSource.h"
+#import "SparklerApplicationUpdatesDataSource.h"
 #import "SparklerApplicationUpdateManager.h"
 #import "SparklerApplicationUpdate.h"
 #import "SparklerConstants.h"
 
-@implementation SparklerUpdatesDataSource
+@implementation SparklerApplicationUpdatesDataSource
 
 - (id)initWithTableView: (NSTableView *)tableView {
     if (self = [super init]) {
