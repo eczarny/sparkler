@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="66"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -27,7 +28,7 @@
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSCustomObject" id="1001">
-				<string key="NSClassName">SparklerUpdatesWindowController</string>
+				<string key="NSClassName">SparklerApplicationUpdatesWindowController</string>
 			</object>
 			<object class="NSCustomObject" id="1003">
 				<string key="NSClassName">FirstResponder</string>
@@ -184,7 +185,7 @@
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="646477798">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -476,6 +477,7 @@
 										</object>
 										<string key="NSFrame">{{1, 17}, {458, 164}}</string>
 										<reference key="NSSuperview" ref="262977176"/>
+										<reference key="NSNextKeyView" ref="694476009"/>
 										<reference key="NSDocView" ref="694476009"/>
 										<reference key="NSBGColor" ref="234567113"/>
 										<int key="NScvFlags">4</int>
@@ -508,6 +510,7 @@
 										</object>
 										<string key="NSFrame">{{1, 0}, {458, 17}}</string>
 										<reference key="NSSuperview" ref="262977176"/>
+										<reference key="NSNextKeyView" ref="863333757"/>
 										<reference key="NSDocView" ref="863333757"/>
 										<reference key="NSBGColor" ref="234567113"/>
 										<int key="NScvFlags">4</int>
@@ -516,6 +519,7 @@
 								</object>
 								<string key="NSFrameSize">{475, 182}</string>
 								<reference key="NSSuperview" ref="603995259"/>
+								<reference key="NSNextKeyView" ref="91816092"/>
 								<int key="NSsFlags">18</int>
 								<reference key="NSVScroller" ref="936351019"/>
 								<reference key="NSHScroller" ref="34176170"/>
@@ -559,6 +563,7 @@
 												</object>
 												<string key="NSFrameSize">{473, 183}</string>
 												<reference key="NSSuperview" ref="447797742"/>
+												<reference key="NSNextKeyView"/>
 												<string key="FrameName"/>
 												<string key="GroupName"/>
 												<object class="WebPreferences" key="Preferences">
@@ -567,6 +572,8 @@
 														<bool key="EncodedWithXMLCoder">YES</bool>
 														<object class="NSMutableArray" key="dict.sortedKeys">
 															<bool key="EncodedWithXMLCoder">YES</bool>
+															<string>WebKitAllowAnimatedImageLoopingPreferenceKey</string>
+															<string>WebKitAllowAnimatedImagesPreferenceKey</string>
 															<string>WebKitDefaultFixedFontSize</string>
 															<string>WebKitDefaultFontSize</string>
 															<string>WebKitJavaEnabled</string>
@@ -574,16 +581,20 @@
 															<string>WebKitJavaScriptEnabled</string>
 															<string>WebKitMinimumFontSize</string>
 															<string>WebKitPluginsEnabled</string>
+															<string>WebKitStandardFont</string>
 														</object>
 														<object class="NSMutableArray" key="dict.values">
 															<bool key="EncodedWithXMLCoder">YES</bool>
+															<boolean value="NO" id="6"/>
+															<reference ref="6"/>
 															<integer value="12" id="181989298"/>
 															<reference ref="181989298"/>
-															<boolean value="NO" id="6"/>
+															<reference ref="6"/>
 															<reference ref="6"/>
 															<reference ref="6"/>
 															<integer value="1"/>
 															<reference ref="6"/>
+															<string>Lucida Grande</string>
 														</object>
 													</object>
 												</object>
@@ -593,6 +604,7 @@
 										</object>
 										<string key="NSFrame">{{1, 1}, {473, 180}}</string>
 										<reference key="NSSuperview" ref="746325628"/>
+										<reference key="NSNextKeyView" ref="158625451"/>
 										<reference key="NSDocView" ref="158625451"/>
 										<reference key="NSBGColor" ref="579927374"/>
 										<int key="NScvFlags">2</int>
@@ -621,6 +633,7 @@
 								</object>
 								<string key="NSFrame">{{0, 191}, {475, 182}}</string>
 								<reference key="NSSuperview" ref="603995259"/>
+								<reference key="NSNextKeyView" ref="447797742"/>
 								<int key="NSsFlags">578</int>
 								<reference key="NSVScroller" ref="821533063"/>
 								<reference key="NSHScroller" ref="854125622"/>
@@ -632,6 +645,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{515, 555}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</object>
@@ -1180,15 +1194,7 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">SparklerTextFieldCell</string>
-					<string key="superclassName">NSTextFieldCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">SparklerTextFieldCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SparklerUpdatesWindowController</string>
+					<string key="className">SparklerApplicationUpdatesWindowController</string>
 					<string key="superclassName">NSWindowController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1230,7 +1236,15 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">SparklerUpdatesWindowController.h</string>
+						<string key="minorKey">SparklerApplicationUpdatesWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SparklerTextFieldCell</string>
+					<string key="superclassName">NSTextFieldCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">SparklerTextFieldCell.h</string>
 					</object>
 				</object>
 			</object>
