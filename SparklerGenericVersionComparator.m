@@ -33,8 +33,23 @@
 typedef enum {
     SparklerStringComponentTypeNumber,
     SparklerStringComponentTypeString,
-    SparklerStringComponentTypeVersionString
+    SparklerStringComponentTypeVersionString,
+    SparklerStringComponentTypePreReleaseVersionString
 } SparklerStringComponentType;
+
+#pragma mark -
+
+#define SparklerPreReleaseDevelopmentModifier         @"d"
+#define SparklerPreReleaseAlphaModifier               @"a"
+#define SparklerPreReleaseBetaModifier                @"b"
+
+#pragma mark -
+
+#define SparklerVersionStringComponentRegex           @"^\\d+\\.\\d+(\\.\\d+)*\\w*$"
+#define SparklerVersionNumberComponentRegex           @"^\\d+$"
+#define SparklerPreReleaseVersionStringComponentRegex @"^\\d+\\w$"
+
+#define SparklerPreReleaseVersionComponentRegex       @"^(\\d+)(\\w)$"
 
 #pragma mark -
 
@@ -47,6 +62,14 @@ typedef enum {
 + (NSComparisonResult)compareVersion: (NSString *)version toVersionCompenents: (NSArray *)versionComponents forCurrentVersion: (BOOL)currentVersion;
 
 + (NSComparisonResult)compareCurrentVersionString: (NSString *)currentVersionString toVersionString: (NSString *)versionString;
+
+#pragma mark -
+
++ (NSComparisonResult)compareCurrentPreReleaseVersionComponent: (NSString *)currentPreReleaseVersionComponent toPreReleaseVersionComponent: (NSString *)preReleaseVersionComponent;
+
+#pragma mark -
+
++ (NSComparisonResult)comparePreReleaseVersionComponent: (NSString *)preReleaseVersionComponent toVersionComponent: (NSString *)versionComponent;
 
 @end
 
@@ -89,10 +112,12 @@ typedef enum {
 @implementation SparklerGenericVersionComparator (SparklerGenericVersionComparatorPrivate)
 
 + (SparklerStringComponentType)typeFromStringComponent: (NSString *)stringComponent {
-    if ([stringComponent isMatchedByRegex: @"^\\d+$"]) {
-        return SparklerStringComponentTypeNumber;
-    } else if ([stringComponent isMatchedByRegex: @"^\\d+\\.\\d+(\\.\\d+)*\\w*$"]) {
+    if ([stringComponent isMatchedByRegex: SparklerVersionStringComponentRegex]) {
         return SparklerStringComponentTypeVersionString;
+    } else if ([stringComponent isMatchedByRegex: SparklerVersionNumberComponentRegex]) {
+        return SparklerStringComponentTypeNumber;
+    } else if ([stringComponent isMatchedByRegex: SparklerPreReleaseVersionStringComponentRegex]) {
+        return SparklerStringComponentTypePreReleaseVersionString;
     }
     
     return SparklerStringComponentTypeString;
@@ -162,23 +187,86 @@ typedef enum {
                 if (comparisonResult != NSOrderedSame) {
                     return comparisonResult;
                 }
+            } else if (currentVersionComponentType == SparklerStringComponentTypePreReleaseVersionString) {
+                return [SparklerGenericVersionComparator compareCurrentPreReleaseVersionComponent: currentVersionComponent toPreReleaseVersionComponent: versionComponent];
             }
         } else {
-            if ((currentVersionComponentType != SparklerStringComponentTypeString) && (versionComponentType == SparklerStringComponentTypeString)) {
-                return NSOrderedDescending;
-            } else if ((currentVersionComponentType == SparklerStringComponentTypeString) && (versionComponentType != SparklerStringComponentTypeString)) {
-                return NSOrderedAscending;
-            } else {
-                if (currentVersionComponentType == SparklerStringComponentTypeNumber) {
+            if (currentVersionComponentType == SparklerStringComponentTypePreReleaseVersionString) {
+                return [SparklerGenericVersionComparator comparePreReleaseVersionComponent: currentVersionComponent toVersionComponent: versionComponent];
+            } else if (versionComponentType == SparklerStringComponentTypePreReleaseVersionString) {
+                NSComparisonResult comparisonResult = [SparklerGenericVersionComparator comparePreReleaseVersionComponent: versionComponent toVersionComponent: currentVersionComponent];
+                
+                if (comparisonResult == NSOrderedAscending) {
                     return NSOrderedDescending;
-                } else {
+                } else if (comparisonResult == NSOrderedDescending) {
                     return NSOrderedAscending;
                 }
+            }
+            
+            if ((currentVersionComponentType != SparklerStringComponentTypeString) && (versionComponentType == SparklerStringComponentTypeString)) {
+                return NSOrderedAscending;
+            } else if ((currentVersionComponentType == SparklerStringComponentTypeString) && (versionComponentType != SparklerStringComponentTypeString)) {
+                return NSOrderedDescending;
             }
         }
     }
     
     return NSOrderedSame;
+}
+
+#pragma mark -
+
++ (NSComparisonResult)compareCurrentPreReleaseVersionComponent: (NSString *)currentPreReleaseVersionComponent toPreReleaseVersionComponent: (NSString *)preReleaseVersionComponent {
+    NSString *currentVersionNumber, *currentPreReleaseModifier;
+    NSString *versionNumber, *preReleaseModifier;
+    
+    [currentPreReleaseVersionComponent getCapturesWithRegexAndReferences: SparklerPreReleaseVersionComponentRegex, @"${1}", &currentVersionNumber, @"${2}", &currentPreReleaseModifier, nil];
+    [preReleaseVersionComponent getCapturesWithRegexAndReferences: SparklerPreReleaseVersionComponentRegex, @"${1}", &versionNumber, @"${2}", &preReleaseModifier, nil];
+    
+    NSInteger currentVersionNumberValue = [currentVersionNumber intValue];
+    NSInteger versionNumberValue = [versionNumber intValue];
+    
+    if (currentVersionNumberValue > versionNumberValue) {
+        return NSOrderedDescending;
+    } else if (currentVersionNumberValue < versionNumberValue) {
+        return NSOrderedAscending;
+    }
+    
+    if ([currentPreReleaseModifier isEqualToString: SparklerPreReleaseDevelopmentModifier]) {
+        return NSOrderedAscending;
+    } else if ([preReleaseModifier isEqualToString: SparklerPreReleaseDevelopmentModifier]) {
+        return NSOrderedDescending;
+    }
+    
+    NSComparisonResult comparisonResult = [currentPreReleaseModifier compare: preReleaseModifier];
+    
+    if (comparisonResult != NSOrderedSame) {
+        return comparisonResult;
+    }
+    
+    return NSOrderedSame;
+}
+
+#pragma mark -
+
++ (NSComparisonResult)comparePreReleaseVersionComponent: (NSString *)preReleaseVersionComponent toVersionComponent: (NSString *)versionComponent {
+    NSString *versionNumber, *preReleaseModifier;
+    SparklerStringComponentType versionComponentType = [SparklerGenericVersionComparator typeFromStringComponent: versionComponent];
+    
+    [preReleaseVersionComponent getCapturesWithRegexAndReferences: SparklerPreReleaseVersionComponentRegex, @"${1}", &versionNumber, @"${2}", &preReleaseModifier, nil];
+    
+    if (versionComponentType == SparklerStringComponentTypeNumber) {
+        NSInteger versionNumberValue = [versionNumber intValue];
+        NSInteger versionComponentValue = [versionComponent intValue];
+        
+        if (versionNumberValue > versionComponentValue) {
+            return NSOrderedDescending;
+        } else if (versionNumberValue < versionComponentValue) {
+            return NSOrderedAscending;
+        }
+    }
+    
+    return NSOrderedAscending;
 }
 
 @end

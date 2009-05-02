@@ -109,14 +109,21 @@
     [self assertSameOrderBetweenVersionA: @"1.0a" andVersionB: @"1.0a"];
     [self assertSameOrderBetweenVersionA: @"1.0.0a" andVersionB: @"1.0.0a"];
     
+    [self assertAscendingOrderBetweenVersionA: @"1.0d" andVersionB: @"1.0a"];
     [self assertAscendingOrderBetweenVersionA: @"1.0a" andVersionB: @"1.0b"];
-    [self assertAscendingOrderBetweenVersionA: @"1.0a" andVersionB: @"1.1a"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0b" andVersionB: @"1.0"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0" andVersionB: @"1.1a"];
+    [self assertDescendingOrderBetweenVersionA: @"1.1b" andVersionB: @"1.1a"];
+    [self assertDescendingOrderBetweenVersionA: @"1.1a" andVersionB: @"1.0"];
+    [self assertDescendingOrderBetweenVersionA: @"1.0" andVersionB: @"1.0b"];
     [self assertDescendingOrderBetweenVersionA: @"1.0b" andVersionB: @"1.0a"];
-    [self assertDescendingOrderBetweenVersionA: @"1.1a" andVersionB: @"1.0a"];
+    [self assertDescendingOrderBetweenVersionA: @"1.0a" andVersionB: @"1.0d"];
     
-    [self assertAscendingOrderBetweenVersionA: @"1.0.0a" andVersionB: @"1.1.0a"];
-    [self assertAscendingOrderBetweenVersionA: @"1.0.0a" andVersionB: @"1.1.0b"];
-    [self assertDescendingOrderBetweenVersionA: @"1.1.0a" andVersionB: @"1.0.0a"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0a" andVersionB: @"1.0.0b"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0b" andVersionB: @"1.0.0"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0" andVersionB: @"1.0.1a"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.1b" andVersionB: @"1.1.0"];
+    [self assertDescendingOrderBetweenVersionA: @"1.1.0" andVersionB: @"1.0.1b"];
     [self assertDescendingOrderBetweenVersionA: @"1.1.0b" andVersionB: @"1.0.0a"];
     
     [self assertSameOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"1.0.0a/8652"];
@@ -125,8 +132,11 @@
     
     [self assertAscendingOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"8653"];
     [self assertAscendingOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"1.0.0b/8652"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0b/8652" andVersionB: @"1.0.0/8652"];
+    [self assertAscendingOrderBetweenVersionA: @"1.0.0/8652" andVersionB: @"1.0.0/8653"];
     [self assertDescendingOrderBetweenVersionA: @"1.0.0a/8652" andVersionB: @"8651"];
     [self assertDescendingOrderBetweenVersionA: @"1.0.0b/8652" andVersionB: @"1.0.0a/8652"];
+    [self assertDescendingOrderBetweenVersionA: @"1.0.1b/8652" andVersionB: @"1.0.0/8652"];
 }
 
 @end
