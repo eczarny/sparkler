@@ -52,6 +52,10 @@
 
 #pragma mark -
 
++ (NSArray *)applicationBlacklist;
+
+#pragma mark -
+
 + (BOOL)saveTargetedApplications: (NSArray *)targetedApplications toFile: (NSString *)file;
 
 + (NSArray *)targetedApplicationsFromFile: (NSString *)file;

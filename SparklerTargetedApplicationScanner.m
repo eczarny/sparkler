@@ -113,6 +113,7 @@ static SparklerTargetedApplicationScanner *sharedInstance = nil;
     NSArray *applicationsDirectory = [[NSFileManager defaultManager] directoryContentsAtPath: searchPath];
     NSEnumerator *applicationsDirectoryEnumerator = [applicationsDirectory objectEnumerator];
     NSMutableArray *targetedApplications = [NSMutableArray array];
+    NSArray *applicationBlacklist = [SparklerUtilities applicationBlacklist];
     NSString *path;
     
     while (path = [applicationsDirectoryEnumerator nextObject]) {
@@ -122,6 +123,12 @@ static SparklerTargetedApplicationScanner *sharedInstance = nil;
             NSString *applicationName = [[path stringByDeletingPathExtension] lastPathComponent];
             NSString *applicationPath = [NSString stringWithString: path];
             NSBundle *applicationBundle = [NSBundle bundleWithPath: applicationPath];
+            
+            if ([applicationBlacklist containsObject: applicationName]) {
+                NSLog(@"The application scanner found a blacklisted application: %@", applicationName);
+                
+                continue;
+            }
             
             path = [path stringByAppendingPathComponent: SparklerApplicationContentsDirectory];
             path = [path stringByAppendingPathComponent: SparklerApplicationInfoFile];

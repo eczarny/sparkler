@@ -31,14 +31,6 @@
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
-@interface SparklerUtilities (SparklerUtilitiesPrivate)
-
-+ (NSDictionary *)existingSparklerDefaults;
-
-@end
-
-#pragma mark -
-
 @implementation SparklerUtilities
 
 + (NSBundle *)sparklerBundle {
@@ -59,7 +51,11 @@
 #pragma mark -
 
 + (void)registerDefaults {
-    [[NSUserDefaults standardUserDefaults] registerDefaults: [SparklerUtilities existingSparklerDefaults]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *path = [[SparklerUtilities sparklerBundle] pathForResource: SparklerDefaultPreferencesFile ofType: SparklerPropertyListFileExtension];
+    NSDictionary *sparklerDefaults = [[[NSDictionary alloc] initWithContentsOfFile: path] autorelease];
+    
+    [defaults registerDefaults: sparklerDefaults];
 }
 
 #pragma mark -
@@ -84,6 +80,16 @@
 
 #pragma mark -
 
++ (NSArray *)applicationBlacklist {
+    NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
+    NSString *path = [sparklerBundle pathForResource: SparklerApplicationBlacklistFile ofType: SparklerPropertyListFileExtension];
+    NSDictionary *applicationBlacklistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
+    
+    return [applicationBlacklistDictionary objectForKey: SparklerBlacklistedApplicationsKey];
+}
+
+#pragma mark -
+
 + (BOOL)saveTargetedApplications: (NSArray *)targetedApplications toFile: (NSString *)file {
     return [NSKeyedArchiver archiveRootObject: targetedApplications toFile: [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file]];
 }
@@ -98,25 +104,6 @@
     NSString *resourcePath = [[SparklerUtilities sparklerBundle] pathForImageResource: imageResource];
     
     return [[[NSImage alloc] initWithContentsOfFile: resourcePath] autorelease];
-}
-
-@end
-
-#pragma mark -
-
-@implementation SparklerUtilities (SparklerUtilitiesPrivate)
-
-+ (NSDictionary *)existingSparklerDefaults {
-    NSDictionary *existingSparklerDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName: SparklerHelperBundleIdentifier];
-    NSString *path = [[SparklerUtilities sparklerBundle] pathForResource: @"Defaults" ofType: @"plist"];
-    
-    if (!existingSparklerDefaults) {
-        existingSparklerDefaults = [[[NSMutableDictionary alloc] initWithContentsOfFile: path] autorelease];
-    }
-    
-    NSLog(@"Found existing defaults: %@", existingSparklerDefaults);
-    
-    return existingSparklerDefaults;
 }
 
 @end

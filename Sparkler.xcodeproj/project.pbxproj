@@ -40,6 +40,7 @@
 		07A366650EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A366630EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib */; };
 		07A680330F49E353003C04BD /* RegexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
 		07A680990F49E41A003C04BD /* RegexKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
+		07B0CEBB0FAE28CD006E3716 /* Blacklist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07B0CEBA0FAE28CD006E3716 /* Blacklist.plist */; };
 		07BDB2C20EF4CDA9003D52CA /* SparklerPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07BDB2C00EF4CDA9003D52CA /* SparklerPreferencesWindow.xib */; };
 		07CD90280EF74A2F0053BCAF /* Update Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90270EF74A2F0053BCAF /* Update Preferences.tiff */; };
 		07CD90370EF74E800053BCAF /* Preference Panes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07CD90360EF74E800053BCAF /* Preference Panes.plist */; };
@@ -129,6 +130,7 @@
 		07ACE7C30EF5DC8200DF1D36 /* SparklerTargetedApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerTargetedApplication.m; sourceTree = "<group>"; };
 		07ACE7D10EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerTargetedApplicationManager.h; sourceTree = "<group>"; };
 		07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerTargetedApplicationManager.m; sourceTree = "<group>"; };
+		07B0CEBA0FAE28CD006E3716 /* Blacklist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Blacklist.plist; path = "Resources/Property Lists/Blacklist.plist"; sourceTree = "<group>"; };
 		07BDB2C10EF4CDA9003D52CA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SparklerPreferencesWindow.xib; sourceTree = "<group>"; };
 		07C9F8F90F50DC9B0017A10D /* SparklerUpdateEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngineDelegate.h; sourceTree = "<group>"; };
 		07C9F9310F50E81C0017A10D /* SparklerUpdateDriverDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateDriverDelegate.h; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		071F10220EF35FCF00F9ED3E /* Property Lists */ = {
 			isa = PBXGroup;
 			children = (
+				07B0CEBA0FAE28CD006E3716 /* Blacklist.plist */,
 				078DD8230EF20D1B00C6997D /* Defaults.plist */,
 				07CD90360EF74E800053BCAF /* Preference Panes.plist */,
 				8D1107310486CEB800E47090 /* Sparkler-Info.plist */,
@@ -555,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07D3959E0EF4E0A0006583F2 /* Application Preferences.tiff in Resources */,
+				07B0CEBB0FAE28CD006E3716 /* Blacklist.plist in Resources */,
 				078DD8240EF20D1B00C6997D /* Defaults.plist in Resources */,
 				071F0FD30EF359B400F9ED3E /* General Preferences.tiff in Resources */,
 				07009DA80FA93E37004F40A4 /* Localizable.strings in Resources */,

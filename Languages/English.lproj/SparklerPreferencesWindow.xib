@@ -101,7 +101,7 @@
 							<reference ref="702105383"/>
 						</object>
 						<reference key="parent" ref="1002"/>
-						<string key="objectName">Sparkler Preferences</string>
+						<string key="objectName">Preferences</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">2</int>
@@ -128,9 +128,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{580, 508}, {520, 325}}</string>
+					<string>{{453, 302}, {520, 325}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{580, 508}, {520, 325}}</string>
+					<string>{{453, 302}, {520, 325}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>

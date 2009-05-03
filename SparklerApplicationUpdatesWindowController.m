@@ -37,7 +37,7 @@
 
 @interface SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
 
-- (void)windowDidLoad;
+- (void)awakeFromNib;
 
 #pragma mark -
 
@@ -165,11 +165,13 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 @implementation SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
 
-- (void)windowDidLoad {
+- (void)awakeFromNib {
+    NSWindow *sparklerWindow = [self window];
+    
     [myUpdatesTableView setDelegate: self];
     [myUpdatesTableView setDataSource: myUpdatesDataSource];
     
-    [[self window] center];
+    [sparklerWindow center];
     
     [self displayCheckForUpdatesView];
 }
@@ -177,39 +179,42 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (void)displayView: (NSView *)view inWindowWithTitle: (NSString *)title {
-    NSWindow *updatesWindow = [self window];
-    NSView *transitionView = [[NSView alloc] initWithFrame: [[updatesWindow contentView] frame]];
-    NSRect updatesWindowFrame = [updatesWindow frame];
+    NSWindow *sparklerWindow = [self window];
+    NSView *transitionView = [[NSView alloc] initWithFrame: [[sparklerWindow contentView] frame]];
+    NSRect sparklerWindowFrame = [sparklerWindow frame];
     
-    [updatesWindow setContentView: transitionView];
+    [sparklerWindow setContentView: transitionView];
     
     [transitionView release];
     
-    updatesWindowFrame.size.height = [view frame].size.height + (updatesWindowFrame.size.height - [[updatesWindow contentView] frame].size.height);
-    updatesWindowFrame.size.width = [view frame].size.width;
+    sparklerWindowFrame.size.height = [view frame].size.height + (sparklerWindowFrame.size.height - [[sparklerWindow contentView] frame].size.height);
+    sparklerWindowFrame.size.width = [view frame].size.width;
     
-    if ([view frame].size.height > [[updatesWindow contentView] frame].size.height) {
-        updatesWindowFrame.origin.y -= [[updatesWindow contentView] frame].size.height + ([view frame].size.height * 0.25);
-    } else if ([view frame].size.height < [[updatesWindow contentView] frame].size.height) {
-        updatesWindowFrame.origin.y += ([[updatesWindow contentView] frame].size.height * 0.25) + [view frame].size.height;
+    NSView *contentView = [sparklerWindow contentView];
+    NSRect contentViewFrame = [contentView frame];
+    
+    if ([view frame].size.height > contentViewFrame.size.height) {
+        sparklerWindowFrame.origin.y -= contentViewFrame.size.height + ([view frame].size.height * 0.25);
+    } else if ([view frame].size.height < contentViewFrame.size.height) {
+        sparklerWindowFrame.origin.y += (contentViewFrame.size.height * 0.25) + [view frame].size.height;
     }
     
-    if ([view frame].size.height != [[updatesWindow contentView] frame].size.height) {
-        [updatesWindow setFrame: updatesWindowFrame display: YES animate: YES];
+    if ([view frame].size.height != contentViewFrame.size.height) {
+        [sparklerWindow setFrame: sparklerWindowFrame display: YES animate: YES];
     }
     
-    [updatesWindow setTitle: title];
+    [sparklerWindow setTitle: title];
     
     NSDictionary *fadeAnimation = [NSDictionary dictionaryWithObjectsAndKeys: view, NSViewAnimationTargetKey, NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
-    NSArray *updatesWindowAnimations = [NSArray arrayWithObjects: fadeAnimation, nil];
-    NSViewAnimation *updatesWindowAnimation = [[NSViewAnimation alloc] initWithViewAnimations: updatesWindowAnimations];
+    NSArray *sparklerWindowAnimations = [NSArray arrayWithObjects: fadeAnimation, nil];
+    NSViewAnimation *sparklerWindowAnimation = [[NSViewAnimation alloc] initWithViewAnimations: sparklerWindowAnimations];
     
-    [updatesWindow setContentView: view];
+    [sparklerWindow setContentView: view];
     
-    [updatesWindowAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
-    [updatesWindowAnimation startAnimation];
+    [sparklerWindowAnimation setAnimationBlockingMode: NSAnimationNonblockingThreaded];
+    [sparklerWindowAnimation startAnimation];
     
-    [updatesWindowAnimation release];
+    [sparklerWindowAnimation release];
 }
 
 #pragma mark -
@@ -226,16 +231,18 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 - (void)displayReleaseNotesFromApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate {
     SUAppcastItem *appcastItem = [applicationUpdate appcastItem];
-    NSString *itemDescription = [appcastItem itemDescription];
+    NSURL *releaseNotesURL = [appcastItem releaseNotesURL];
     WebFrame *releaseNotesWebFrame = [myReleaseNotesWebView mainFrame];
     
-    if (itemDescription) {
-        [releaseNotesWebFrame loadHTMLString: itemDescription baseURL: nil];
-    } else {
-        NSURL *releaseNotesURL = [appcastItem releaseNotesURL];
+    if (releaseNotesURL) {
+        NSURLRequest *releaseNotesRequest = [NSURLRequest requestWithURL: releaseNotesURL];
         
-        if (releaseNotesURL) {
-            [releaseNotesWebFrame loadRequest: [NSURLRequest requestWithURL: releaseNotesURL]];
+        [releaseNotesWebFrame loadRequest: releaseNotesRequest];
+    } else {
+        NSString *itemDescription = [appcastItem itemDescription];
+        
+        if (itemDescription) {
+            [releaseNotesWebFrame loadHTMLString: itemDescription baseURL: nil];
         } else {
             NSLog(@"There are no release notes available for %@.", [[applicationUpdate targetedApplication] name]);
         }
@@ -263,9 +270,20 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 }
 
 - (void)sparklerDidNotFindApplicationUpdates: (NSNotification *)notification {
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    
+    [alert addButtonWithTitle: SparklerLocalizedString(@"OK")];
+    
+    [alert setMessageText: SparklerLocalizedString(@"There are no updates available.")];
+    [alert setInformativeText: SparklerLocalizedString(@"Sparkler was unable to find an updates. Please try checking again later.")];
+    
+    [alert setAlertStyle: NSInformationalAlertStyle];
+    
     [myCheckForUpdatesIndicator stopAnimation: nil];
     
     [myCheckForUpdatesButton setEnabled: YES];
+    
+    [alert beginSheetModalForWindow: [self window] modalDelegate: self didEndSelector: NULL contextInfo: nil];
 }
 
 @end

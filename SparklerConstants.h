@@ -29,10 +29,7 @@
 // 
 
 #define SparklerApplicationName                               @"Sparkler"
-#define SparklerHelperApplicationName                         @"SparklerHelper"
 #define SparklerBundleIdentifier                              @"com.divisiblebyzero.Sparkler"
-#define SparklerHelperBundleIdentifier                        @"com.divisiblebyzero.SparklerHelper"
-#define SparklerHelperControllerName                          @"SparklerHelperController"
 #define SparklerApplicationsPath                              @"/Applications"
 #define SparklerTargetedApplicationFile                       @"Applications.plist"
 #define SparklerDownloadsDirectory                            @"Downloads"
@@ -43,7 +40,6 @@
 #pragma mark -
 
 #define SparklerNibName                                       @"Sparkler"
-#define SparklerHelperNibName                                 @"SparklerHelper"
 #define SparklerPreferencesWindowNibName                      @"SparklerPreferencesWindow"
 #define SparklerPreferencePaneNibNameEnding                   @"PreferencePane"
 #define SparklerApplicationUpdatesWindowNibName               @"SparklerApplicationUpdatesWindow"
@@ -53,6 +49,11 @@
 #define SparklerPreferencePanesFile                           @"Preference Panes"
 #define SparklerPreferencePanesKey                            @"Preference Panes"
 #define SparklerPreferencePaneOrderKey                        @"Preference Pane Order"
+
+#define SparklerDefaultPreferencesFile                        @"Defaults"
+
+#define SparklerApplicationBlacklistFile                      @"Blacklist"
+#define SparklerBlacklistedApplicationsKey                    @"Blacklisted Applications"
 
 #pragma mark -
 
