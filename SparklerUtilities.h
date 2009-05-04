@@ -62,6 +62,8 @@
 
 #pragma mark -
 
-+ (NSImage *)imageFromBundledImageResource: (NSString *)imageResource;
++ (NSImage *)imageFromBundledResource: (NSString *)resource;
+
++ (NSString *)stringFromBundledHTMLResource: (NSString *)resource;
 
 @end

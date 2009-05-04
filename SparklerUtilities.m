@@ -100,10 +100,16 @@
 
 #pragma mark -
 
-+ (NSImage *)imageFromBundledImageResource: (NSString *)imageResource {
-    NSString *resourcePath = [[SparklerUtilities sparklerBundle] pathForImageResource: imageResource];
++ (NSImage *)imageFromBundledResource: (NSString *)resource {
+    NSString *resourcePath = [[SparklerUtilities sparklerBundle] pathForImageResource: resource];
     
     return [[[NSImage alloc] initWithContentsOfFile: resourcePath] autorelease];
+}
+
++ (NSString *)stringFromBundledHTMLResource: (NSString *)resource {
+    NSString *resourcePath = [[SparklerUtilities sparklerBundle] pathForResource: resource ofType: SparklerHTMLFileExtension];
+    
+    return [[[NSString alloc] initWithContentsOfFile: resourcePath encoding: NSUTF8StringEncoding error: nil] autorelease];
 }
 
 @end

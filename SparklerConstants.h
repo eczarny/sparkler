@@ -36,6 +36,7 @@
 
 #define SparklerApplicationFileExtension                      @"app"
 #define SparklerPropertyListFileExtension                     @"plist"
+#define SparklerHTMLFileExtension                             @"html"
 
 #pragma mark -
 
@@ -46,7 +47,7 @@
 
 #pragma mark -
 
-#define SparklerPreferencePanesFile                           @"Preference Panes"
+#define SparklerPreferencePanesFile                           @"PreferencePanes"
 #define SparklerPreferencePanesKey                            @"Preference Panes"
 #define SparklerPreferencePaneOrderKey                        @"Preference Pane Order"
 
@@ -54,6 +55,8 @@
 
 #define SparklerApplicationBlacklistFile                      @"Blacklist"
 #define SparklerBlacklistedApplicationsKey                    @"Blacklisted Applications"
+
+#define SparklerReleaseNotesNotFoundFile                      @"ReleaseNotesNotFound"
 
 #pragma mark -
 

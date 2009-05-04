@@ -244,7 +244,11 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
         if (itemDescription) {
             [releaseNotesWebFrame loadHTMLString: itemDescription baseURL: nil];
         } else {
+            NSString *releaseNotesNotFound = [SparklerUtilities stringFromBundledHTMLResource: SparklerReleaseNotesNotFoundFile];
+            
             NSLog(@"There are no release notes available for %@.", [[applicationUpdate targetedApplication] name]);
+            
+            [releaseNotesWebFrame loadHTMLString: releaseNotesNotFound baseURL: nil];
         }
     }
 }
