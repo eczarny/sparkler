@@ -104,7 +104,7 @@
     [alert addButtonWithTitle: SparklerLocalizedString(@"OK")];
     
     [alert setMessageText: SparklerLocalizedString(@"There are no updates available.")];
-    [alert setInformativeText: SparklerLocalizedString(@"Sparkler was unable to find an updates. Please try checking again later.")];
+    [alert setInformativeText: SparklerLocalizedString(@"Sparkler was unable to find any updates. Please try checking again later.")];
     
     [alert setAlertStyle: NSInformationalAlertStyle];
     

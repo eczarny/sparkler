@@ -60,20 +60,6 @@
 
 #pragma mark -
 
-@interface SparklerPreferencesWindowController (SparklerPreferencesWindowControllerToolbarDelegate)
-
-- (NSArray *)toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar;
-
-- (NSArray *)toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar;
-
-- (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar;
-
-- (NSToolbarItem *)toolbar: (NSToolbar *)toolbar itemForItemIdentifier: (NSString *)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag;
-
-@end
-
-#pragma mark -
-
 @implementation SparklerPreferencesWindowController
 
 static SparklerPreferencesWindowController *sharedInstance = nil;
@@ -140,6 +126,26 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     [myToolbarItems release];
     
     [super dealloc];
+}
+
+#pragma mark Toolbar Delegate Methods
+
+#pragma mark -
+
+- (NSArray *)toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar {
+    return [myPreferencePaneManager preferencePaneOrder];
+}
+
+- (NSArray *)toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar {
+    return [myPreferencePaneManager preferencePaneOrder];
+}
+
+- (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar {
+    return [myPreferencePaneManager preferencePaneOrder];
+}
+
+- (NSToolbarItem *)toolbar: (NSToolbar *)toolbar itemForItemIdentifier: (NSString *)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {
+    return [myToolbarItems objectForKey: itemIdentifier];
 }
 
 @end
@@ -274,28 +280,6 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     if (![toolbarItemIdentifier isEqualToString: [[self window] title]]) {
         [self displayPreferencePaneWithName: toolbarItemIdentifier initialPreferencePane: NO];
     }
-}
-
-@end
-
-#pragma mark -
-
-@implementation SparklerPreferencesWindowController (SparklerPreferencesWindowControllerToolbarDelegate)
-
-- (NSArray *)toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar {
-    return [myPreferencePaneManager preferencePaneOrder];
-}
-
-- (NSArray *)toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar {
-    return [myPreferencePaneManager preferencePaneOrder];
-}
-
-- (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar {
-    return [myPreferencePaneManager preferencePaneOrder];
-}
-
-- (NSToolbarItem *)toolbar: (NSToolbar *)toolbar itemForItemIdentifier: (NSString *)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {
-    return [myToolbarItems objectForKey: itemIdentifier];
 }
 
 @end

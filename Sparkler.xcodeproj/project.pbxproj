@@ -605,7 +605,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		0719F6AB0F410B9400748AAB /* Run Script: Include Git commit hash */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -615,7 +615,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/bin/ruby;
-			shellScript = "# Xcode auto-versioning script for git\n#\n# Based on original Perl script by Marcus S. Zarra and Matt Long at\n#   (http://www.cimgf.com/2008/04/13/git-and-xcode-a-git-build-number-script/)\n \n# fail if not run from Xcode\nraise \"Must be run from Xcode\" unless ENV['XCODE_VERSION_ACTUAL']\n \ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n \n# Get the current git commit hash\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n \n# open Info.plist and set the CFBundleVersion value to the commit hash\nlines = IO.readlines(info_plist).join\nlines.gsub! /(<key>CFBundleVersion<\\/key>\\n\\t<string>).*?(<\\/string>)/, \"\\\\1#{commit}\\\\2\"\n \n# overwrite the original Info.plist file with our modified version\nFile.open(info_plist, 'w') {|f| f.puts lines}";
+			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleVersion<\\/key>\\n\\t<string>).*?(<\\/string>)/, \"\\\\1#{commit}\\\\2\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
 		};
 		07D07A120F465E9800E5E0D0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

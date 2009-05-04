@@ -38,7 +38,7 @@
 				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{580, 508}, {520, 325}}</string>
-				<int key="NSWTFlags">607649792</int>
+				<int key="NSWTFlags">607650816</int>
 				<string key="NSWindowTitle">Preferences</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>

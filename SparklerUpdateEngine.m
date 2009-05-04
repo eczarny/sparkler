@@ -36,7 +36,7 @@
 
 @interface SparklerUpdateEngine (SparklerUpdateEnginePrivate)
 
-- (void)handleResponseFromUpdateDriver: (SparklerUpdateDriver *)updateDriver;
+- (void)updateDriverDidRespond: (SparklerUpdateDriver *)updateDriver;
 
 @end
 
@@ -156,13 +156,13 @@ static SparklerUpdateEngine *sharedInstance = nil;
     
     [myApplicationUpdates addObject: applicationUpdate];
     
-    [self handleResponseFromUpdateDriver: updateDriver];
+    [self updateDriverDidRespond: updateDriver];
 }
 
 - (void)updateDriverDidNotFindApplicationUpdate: (SparklerUpdateDriver *)updateDriver {
     NSLog(@"Sparkler did not find a new update for %@.", [[updateDriver targetedApplication] name]);
     
-    [self handleResponseFromUpdateDriver: updateDriver];
+    [self updateDriverDidRespond: updateDriver];
 }
 
 #pragma mark -
@@ -176,7 +176,7 @@ static SparklerUpdateEngine *sharedInstance = nil;
 - (void)updateDriver: (SparklerUpdateDriver *)updateDriver didFailWithError: (NSError *)error {
     NSLog(@"The update for %@ failed with error: %@", [[updateDriver targetedApplication] name], [error localizedDescription]);
     
-    [self handleResponseFromUpdateDriver: updateDriver];
+    [self updateDriverDidRespond: updateDriver];
 }
 
 @end
@@ -185,7 +185,7 @@ static SparklerUpdateEngine *sharedInstance = nil;
 
 @implementation SparklerUpdateEngine (SparklerUpdateEnginePrivate)
 
-- (void)handleResponseFromUpdateDriver: (SparklerUpdateDriver *)updateDriver {
+- (void)updateDriverDidRespond: (SparklerUpdateDriver *)updateDriver {
     [myTargetedApplications removeObjectForKey: [[updateDriver targetedApplication] name]];
     
     if (![self isCheckingForUpdates]) {
