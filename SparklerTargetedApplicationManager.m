@@ -47,9 +47,25 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
 
 #pragma mark -
 
++ (id)allocWithZone: (NSZone *)zone {
+    @synchronized(self) {
+        if (!sharedInstance) {
+            sharedInstance = [super allocWithZone: zone];
+            
+            return sharedInstance;
+        }
+    }
+    
+    return nil;
+}
+
+#pragma mark -
+
 + (SparklerTargetedApplicationManager *)sharedManager {
-    if (!sharedInstance) {
-        sharedInstance = [[SparklerTargetedApplicationManager alloc] init];
+    @synchronized(self) {
+        if (!sharedInstance) {
+            [[self alloc] init];
+        }
     }
     
     return sharedInstance;

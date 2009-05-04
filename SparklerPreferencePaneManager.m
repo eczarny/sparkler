@@ -49,9 +49,25 @@ static SparklerPreferencePaneManager *sharedInstance = nil;
 
 #pragma mark -
 
++ (id)allocWithZone: (NSZone *)zone {
+    @synchronized(self) {
+        if (!sharedInstance) {
+            sharedInstance = [super allocWithZone: zone];
+            
+            return sharedInstance;
+        }
+    }
+    
+    return nil;
+}
+
+#pragma mark -
+
 + (SparklerPreferencePaneManager *)sharedManager {
-    if (!sharedInstance) {
-        sharedInstance = [[SparklerPreferencePaneManager alloc] init];
+    @synchronized(self) {
+        if (!sharedInstance) {
+            [[self alloc] init];
+        }
     }
     
     return sharedInstance;
