@@ -22,38 +22,28 @@
 
 // 
 // Sparkler
-// SparklerApplicationUpdatesWindowController.h
+// SparklerCheckForUpdatesController.h
 // 
-// Created by Eric Czarny on Saturday, April 25, 2009.
+// Created by Eric Czarny on Sunday, May 3, 2009.
 // Copyright (c) 2009 Divisible by Zero.
 // 
 
 #import <Cocoa/Cocoa.h>
 
-@class SparklerApplicationUpdateManager, SparklerCheckForUpdatesController, SparklerInstallUpdatesController;
+@class SparklerApplicationUpdateManager, SparklerApplicationUpdatesWindowController;
 
-@interface SparklerApplicationUpdatesWindowController : NSWindowController {
+@interface SparklerCheckForUpdatesController : NSObject {
     SparklerApplicationUpdateManager *myApplicationUpdateManager;
-    IBOutlet SparklerCheckForUpdatesController *myCheckForUpdatesController;
-    IBOutlet SparklerInstallUpdatesController *myInstallUpdatesController;
+    IBOutlet SparklerApplicationUpdatesWindowController *myApplicationUpdatesWindowController;
+    IBOutlet NSView *myCheckForUpdatesView;
+    IBOutlet NSButton *myCheckForUpdatesButton;
+    IBOutlet NSProgressIndicator *myCheckForUpdatesIndicator;
 }
 
-+ (SparklerApplicationUpdatesWindowController *)sharedController;
+- (NSView *)checkForUpdatesView;
 
 #pragma mark -
 
-- (void)showSparklerWindow: (id)sender;
-
-- (void)hideSparklerWindow: (id)sender;
-
-#pragma mark -
-
-- (void)toggleSparklerWindow: (id)sender;
-
-#pragma mark -
-
-- (void)displayCheckForUpdatesView;
-
-- (void)displayInstallUpdatesView;
+- (IBAction)checkForUpdates: (id)sender;
 
 @end

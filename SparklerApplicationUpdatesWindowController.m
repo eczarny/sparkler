@@ -30,40 +30,14 @@
 
 #import "SparklerApplicationUpdatesWindowController.h"
 #import "SparklerApplicationUpdateManager.h"
-#import "SparklerApplicationUpdatesDataSource.h"
-#import "SparklerApplicationUpdate.h"
+#import "SparklerCheckForUpdatesController.h"
+#import "SparklerInstallUpdatesController.h"
 #import "SparklerUtilities.h"
 #import "SparklerConstants.h"
 
 @interface SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
 
-- (void)awakeFromNib;
-
-#pragma mark -
-
 - (void)displayView: (NSView *)view inWindowWithTitle: (NSString *)title;
-
-#pragma mark -
-
-- (void)displayCheckForUpdatesView;
-
-- (void)displayInstallUpdatesView;
-
-#pragma mark -
-
-- (void)displayReleaseNotesFromApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate;
-
-#pragma mark Update Engine Notifications
-
-#pragma mark -
-
-- (void)sparklerWillCheckForApplicationUpdates: (NSNotification *)notification;
-
-#pragma mark -
-
-- (void)sparklerDidFindApplicationUpdates: (NSNotification *)notification;
-
-- (void)sparklerDidNotFindApplicationUpdates: (NSNotification *)notification;
 
 @end
 
@@ -75,25 +49,7 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 - (id)init {
     if (self = [super initWithWindowNibName: SparklerApplicationUpdatesWindowNibName]) {
-        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-        
         myApplicationUpdateManager = [SparklerApplicationUpdateManager sharedManager];
-        myUpdatesDataSource = [[SparklerApplicationUpdatesDataSource alloc] initWithTableView: myUpdatesTableView];
-        
-        [notificationCenter addObserver: self
-                               selector: @selector(sparklerWillCheckForApplicationUpdates:)
-                                   name: SparklerWillCheckForApplicationUpdatesNotification
-                                 object: nil];
-        
-        [notificationCenter addObserver: self
-                               selector: @selector(sparklerDidFindApplicationUpdates:)
-                                   name: SparklerDidFindApplicationUpdatesNotification
-                                 object: nil];
-        
-        [notificationCenter addObserver: self
-                               selector: @selector(sparklerDidNotFindApplicationUpdates:)
-                                   name: SparklerDidNotFindApplicationUpdatesNotification
-                                 object: nil];
     }
     
     return self;
@@ -107,6 +63,16 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
     }
     
     return sharedInstance;
+}
+
+#pragma mark -
+
+- (void)awakeFromNib {
+    NSWindow *sparklerWindow = [self window];
+    
+    [sparklerWindow center];
+    
+    [self displayCheckForUpdatesView];
 }
 
 #pragma mark -
@@ -131,32 +97,18 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 #pragma mark -
 
-- (IBAction)checkForUpdates: (id)sender {
-    [myApplicationUpdateManager checkForUpdates];
+- (void)displayCheckForUpdatesView {
+    NSView *checkForUpdatesView = [myCheckForUpdatesController checkForUpdatesView];
+    NSString *title = SparklerLocalizedString(@"Check for Updates");
+    
+    [self displayView: checkForUpdatesView inWindowWithTitle: title];
 }
 
-#pragma mark -
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
+- (void)displayInstallUpdatesView {
+    NSView *installUpdatesView = [myInstallUpdatesController installUpdatesView];
+    NSString *title = SparklerLocalizedString(@"Install Updates");
     
-    [myUpdatesDataSource release];
-    
-    [super dealloc];
-}
-
-#pragma mark Table View Delegate Methods
-
-#pragma mark -
-
-- (BOOL)tableView: (NSTableView *)tableView shouldSelectRow: (NSInteger)rowIndex {
-    SparklerApplicationUpdate *applicationUpdate = [[myApplicationUpdateManager applicationUpdates] objectAtIndex: rowIndex];
-    
-    if (applicationUpdate) {
-        [self displayReleaseNotesFromApplicationUpdate: applicationUpdate];
-    }
-    
-    return YES;
+    [self displayView: installUpdatesView inWindowWithTitle: title];
 }
 
 @end
@@ -164,19 +116,6 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 #pragma mark -
 
 @implementation SparklerApplicationUpdatesWindowController (SparklerApplicationUpdatesWindowControllerPrivate)
-
-- (void)awakeFromNib {
-    NSWindow *sparklerWindow = [self window];
-    
-    [myUpdatesTableView setDelegate: self];
-    [myUpdatesTableView setDataSource: myUpdatesDataSource];
-    
-    [sparklerWindow center];
-    
-    [self displayCheckForUpdatesView];
-}
-
-#pragma mark -
 
 - (void)displayView: (NSView *)view inWindowWithTitle: (NSString *)title {
     NSWindow *sparklerWindow = [self window];
@@ -215,79 +154,6 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
     [sparklerWindowAnimation startAnimation];
     
     [sparklerWindowAnimation release];
-}
-
-#pragma mark -
-
-- (void)displayCheckForUpdatesView {
-    [self displayView: myCheckForUpdatesView inWindowWithTitle: SparklerLocalizedString(@"Check for Updates")];
-}
-
-- (void)displayInstallUpdatesView {
-    [self displayView: myInstallUpdatesView inWindowWithTitle: SparklerLocalizedString(@"Install Updates")];
-}
-
-#pragma mark -
-
-- (void)displayReleaseNotesFromApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate {
-    SUAppcastItem *appcastItem = [applicationUpdate appcastItem];
-    NSURL *releaseNotesURL = [appcastItem releaseNotesURL];
-    WebFrame *releaseNotesWebFrame = [myReleaseNotesWebView mainFrame];
-    
-    if (releaseNotesURL) {
-        NSURLRequest *releaseNotesRequest = [NSURLRequest requestWithURL: releaseNotesURL];
-        
-        [releaseNotesWebFrame loadRequest: releaseNotesRequest];
-    } else {
-        NSString *itemDescription = [appcastItem itemDescription];
-        
-        if (itemDescription) {
-            [releaseNotesWebFrame loadHTMLString: itemDescription baseURL: nil];
-        } else {
-            NSString *releaseNotesNotFound = [SparklerUtilities stringFromBundledHTMLResource: SparklerReleaseNotesNotFoundFile];
-            
-            NSLog(@"There are no release notes available for %@.", [[applicationUpdate targetedApplication] name]);
-            
-            [releaseNotesWebFrame loadHTMLString: releaseNotesNotFound baseURL: nil];
-        }
-    }
-}
-
-#pragma mark Update Engine Notifications
-
-#pragma mark -
-
-- (void)sparklerWillCheckForApplicationUpdates: (NSNotification *)notification {
-    [myCheckForUpdatesIndicator startAnimation: nil];
-    
-    [myCheckForUpdatesButton setEnabled: NO];
-}
-
-#pragma mark -
-
-- (void)sparklerDidFindApplicationUpdates: (NSNotification *)notification {
-    [myCheckForUpdatesIndicator stopAnimation: nil];
-    
-    [myCheckForUpdatesButton setEnabled: YES];
-    
-    [self displayInstallUpdatesView];
-}
-
-- (void)sparklerDidNotFindApplicationUpdates: (NSNotification *)notification {
-    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    
-    [alert addButtonWithTitle: SparklerLocalizedString(@"OK")];
-    
-    [alert setMessageText: SparklerLocalizedString(@"There are no updates available.")];
-    [alert setInformativeText: SparklerLocalizedString(@"Sparkler was unable to find an updates. Please try checking again later.")];
-    
-    [alert setAlertStyle: NSInformationalAlertStyle];
-    
-    [myCheckForUpdatesIndicator stopAnimation: nil];
-    
-    [myCheckForUpdatesButton setEnabled: YES];
-    
-    [alert beginSheetModalForWindow: [self window] modalDelegate: self didEndSelector: NULL contextInfo: nil];
 }
 
 @end
