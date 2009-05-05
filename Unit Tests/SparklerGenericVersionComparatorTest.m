@@ -58,6 +58,9 @@
     [self assertDescendingOrderBetweenVersionA: @"1.9" andVersionB: @"1.0"];
     [self assertDescendingOrderBetweenVersionA: @"1.0" andVersionB: @"0.1"];
     
+    [self assertAscendingOrderBetweenVersionA: @"1.0" andVersionB: @"1.0.1"];
+    [self assertDescendingOrderBetweenVersionA: @"1.0.1" andVersionB: @"1.0"];
+    
     [self assertSameOrderBetweenVersionA: @"1.0.0" andVersionB: @"1.0.0"];
     
     [self assertAscendingOrderBetweenVersionA: @"0.0.0" andVersionB: @"0.0.1"];
@@ -103,6 +106,12 @@
     
     [self assertDescendingOrderBetweenVersionA: @"1.2.3" andVersionB: @"8651"];
     [self assertDescendingOrderBetweenVersionA: @"8651" andVersionB: @"1.2.3"];
+    
+    [self assertAscendingOrderBetweenVersionA: @"1.2/8652" andVersionB: @"1.2.3/8652"];
+    [self assertDescendingOrderBetweenVersionA: @"1.2.3/8652" andVersionB: @"1.2/8652"];
+    
+    [self assertAscendingOrderBetweenVersionA: @"1.2/8652" andVersionB: @"1.2.3/8653"];
+    [self assertDescendingOrderBetweenVersionA: @"1.2.3/8653" andVersionB: @"1.2/8652"];
 }
 
 - (void)testPreReleaseVersionComparison {

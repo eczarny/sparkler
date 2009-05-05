@@ -34,9 +34,9 @@
 @class SparklerPreferencePaneManager;
 
 @interface SparklerPreferencesWindowController : NSWindowController {
+    SparklerPreferencePaneManager *myPreferencePaneManager;
     NSToolbar *myToolbar;
     NSMutableDictionary *myToolbarItems;
-    SparklerPreferencePaneManager *myPreferencePaneManager;
 }
 
 + (SparklerPreferencesWindowController *)sharedController;

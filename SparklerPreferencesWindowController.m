@@ -215,6 +215,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (void)preparePreferencesWindow {
+    NSWindow *preferencesWindow = [self window];
     NSArray *preferencePanes = [myPreferencePaneManager preferencePanes];
     id<SparklerPreferencePaneProtocol> preferencePane = [preferencePanes objectAtIndex: 0];
     
@@ -226,12 +227,13 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     
     [self displayPreferencePaneWithName: [preferencePane name] initialPreferencePane: YES];
     
-    [[self window] center];
+    [preferencesWindow center];
 }
 
 #pragma mark -
 
 - (void)createToolbar {
+    NSWindow *preferencesWindow = [self window];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     NSArray *preferencePanes = [myPreferencePaneManager preferencePanes];
     NSEnumerator *preferencePaneEnumerator = [preferencePanes objectEnumerator];
@@ -266,7 +268,7 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     [myToolbar setAutosavesConfiguration: NO];
     
     if (myToolbarItems && ([myToolbarItems count] > 0)) {
-        [[self window] setToolbar: myToolbar];
+        [preferencesWindow setToolbar: myToolbar];
     } else {
         NSLog(@"No toolbar items were found, the preferences window will not display a toolbar.");
     }
@@ -275,9 +277,10 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 #pragma mark -
 
 - (void)toolbarItemWasSelected: (NSToolbarItem *)toolbarItem {
+    NSWindow *preferencesWindow = [self window];
     NSString *toolbarItemIdentifier = [toolbarItem itemIdentifier];
     
-    if (![toolbarItemIdentifier isEqualToString: [[self window] title]]) {
+    if (![toolbarItemIdentifier isEqualToString: [preferencesWindow title]]) {
         [self displayPreferencePaneWithName: toolbarItemIdentifier initialPreferencePane: NO];
     }
 }

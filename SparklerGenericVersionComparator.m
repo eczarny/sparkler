@@ -211,6 +211,12 @@ typedef enum {
         }
     }
     
+    if ([currentVersionComponents count] > [versionComponents count]) {
+        return NSOrderedDescending;
+    } else if ([currentVersionComponents count] < [versionComponents count]) {
+        return NSOrderedAscending;
+    }
+    
     return NSOrderedSame;
 }
 

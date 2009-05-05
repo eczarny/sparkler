@@ -115,6 +115,12 @@ static SparklerUpdateEngine *sharedInstance = nil;
     NSEnumerator *targetedApplicationsEnumerator = [targetedApplications objectEnumerator];
     SparklerTargetedApplication *targetedApplication;
     
+    if ([self isCheckingForUpdates]) {
+        NSLog(@"The update engine is already checking for updates.");
+        
+        return;
+    }
+    
     [myDelegate updateEngineWillCheckForApplicationUpdates: self];
     
     [myTargetedApplications removeAllObjects];
@@ -126,15 +132,8 @@ static SparklerUpdateEngine *sharedInstance = nil;
             
             [myTargetedApplications setObject: targetedApplication forKey: [targetedApplication name]];
             
-            // This will leak like a sieve until a better workflow has been decided on. We're just testing for now.
             [updateDriver checkTargetedApplicationForUpdates: targetedApplication];
         }
-    }
-    
-    if (![self isCheckingForUpdates]) {
-        [myDelegate updateEngineDidNotFindApplicationUpdates: self];
-        
-        return;
     }
 }
 
@@ -195,6 +194,8 @@ static SparklerUpdateEngine *sharedInstance = nil;
             [myDelegate updateEngineDidNotFindApplicationUpdates: self];
         }
     }
+    
+    [updateDriver release];
 }
 
 @end

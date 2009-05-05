@@ -42,7 +42,7 @@
 					<object class="NSTextField" id="450763677">
 						<reference key="NSNextResponder" ref="238325092"/>
 						<int key="NSvFlags">302</int>
-						<string key="NSFrame">{{17, 51}, {165, 17}}</string>
+						<string key="NSFrame">{{17, 20}, {165, 17}}</string>
 						<reference key="NSSuperview" ref="238325092"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="386205342">
@@ -78,7 +78,7 @@
 					<object class="NSButton" id="516005167">
 						<reference key="NSNextResponder" ref="238325092"/>
 						<int key="NSvFlags">299</int>
-						<string key="NSFrame">{{185, 50}, {322, 18}}</string>
+						<string key="NSFrame">{{185, 19}, {322, 18}}</string>
 						<reference key="NSSuperview" ref="238325092"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="162388483">
@@ -102,28 +102,8 @@
 							<int key="NSPeriodicInterval">25</int>
 						</object>
 					</object>
-					<object class="NSButton" id="127304040">
-						<reference key="NSNextResponder" ref="238325092"/>
-						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{483, 16}, {25, 25}}</string>
-						<reference key="NSSuperview" ref="238325092"/>
-						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="50352816">
-							<int key="NSCellFlags">67239424</int>
-							<int key="NSCellFlags2">134217728</int>
-							<string key="NSContents"/>
-							<reference key="NSSupport" ref="887291450"/>
-							<reference key="NSControlView" ref="127304040"/>
-							<int key="NSButtonFlags">-2038415105</int>
-							<int key="NSButtonFlags2">161</int>
-							<string key="NSAlternateContents"/>
-							<string key="NSKeyEquivalent"/>
-							<int key="NSPeriodicDelay">200</int>
-							<int key="NSPeriodicInterval">25</int>
-						</object>
-					</object>
 				</object>
-				<string key="NSFrameSize">{525, 88}</string>
+				<string key="NSFrameSize">{525, 57}</string>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</object>
@@ -175,7 +155,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="450763677"/>
 							<reference ref="516005167"/>
-							<reference ref="127304040"/>
 						</object>
 						<reference key="parent" ref="1002"/>
 						<string key="objectName">General Preferences</string>
@@ -208,20 +187,6 @@
 						<reference key="object" ref="386205342"/>
 						<reference key="parent" ref="450763677"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">29</int>
-						<reference key="object" ref="127304040"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="50352816"/>
-						</object>
-						<reference key="parent" ref="238325092"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">30</int>
-						<reference key="object" ref="50352816"/>
-						<reference key="parent" ref="127304040"/>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -236,9 +201,7 @@
 					<string>1.IBViewEditorWindowController.showingBoundsRectangles</string>
 					<string>1.IBViewEditorWindowController.showingLayoutRectangles</string>
 					<string>14.IBPluginDependency</string>
-					<string>29.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
-					<string>30.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
 				</object>
@@ -247,12 +210,10 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{468, 566}, {525, 88}}</string>
+					<string>{{468, 597}, {525, 57}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO" id="6"/>
 					<reference ref="6"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="66"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -190,7 +191,7 @@
 				<string key="NSClassName">SparklerInstallUpdatesController</string>
 			</object>
 			<object class="NSCustomView" id="646477798">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -249,7 +250,7 @@
 					<object class="NSTextField" id="573355477">
 						<reference key="NSNextResponder" ref="646477798"/>
 						<int key="NSvFlags">-2147483380</int>
-						<string key="NSFrame">{{37, 23}, {340, 13}}</string>
+						<string key="NSFrame">{{37, 22}, {340, 13}}</string>
 						<reference key="NSSuperview" ref="646477798"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="913446343">
@@ -261,7 +262,7 @@
 								<double key="NSSize">1.000000e+01</double>
 								<int key="NSfFlags">16</int>
 							</object>
-							<string key="NSPlaceholderString">Error Message</string>
+							<string key="NSPlaceholderString">1 error</string>
 							<reference key="NSControlView" ref="573355477"/>
 							<reference key="NSBackgroundColor" ref="579927374"/>
 							<reference key="NSTextColor" ref="183513174"/>
@@ -666,7 +667,7 @@
 					<object class="NSButton" id="536205486">
 						<reference key="NSNextResponder" ref="646477798"/>
 						<int key="NSvFlags">-2147483380</int>
-						<string key="NSFrame">{{18, 18}, {16, 21}}</string>
+						<string key="NSFrame">{{18, 21}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="646477798"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="203512328">
@@ -676,7 +677,7 @@
 							<reference key="NSSupport" ref="1267625"/>
 							<reference key="NSControlView" ref="536205486"/>
 							<int key="NSButtonFlags">-2039201537</int>
-							<int key="NSButtonFlags2">1</int>
+							<int key="NSButtonFlags2">2</int>
 							<object class="NSCustomResource" key="NSNormalImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">Error</string>
@@ -689,6 +690,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{515, 555}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</object>
@@ -790,6 +792,22 @@
 						<reference key="destination" ref="179031381"/>
 					</object>
 					<int key="connectionID">155</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myUpdateErrorTextField</string>
+						<reference key="source" ref="179031381"/>
+						<reference key="destination" ref="573355477"/>
+					</object>
+					<int key="connectionID">157</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myUpdateErrorButton</string>
+						<reference key="source" ref="179031381"/>
+						<reference key="destination" ref="536205486"/>
+					</object>
+					<int key="connectionID">158</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1193,6 +1211,7 @@
 					<string>2.IBPluginDependency</string>
 					<string>66.IBEditorWindowLastContentRect</string>
 					<string>66.IBPluginDependency</string>
+					<string>66.IBViewEditorWindowController.showingLayoutRectangles</string>
 					<string>67.IBPluginDependency</string>
 					<string>68.IBPluginDependency</string>
 					<string>69.IBPluginDependency</string>
@@ -1253,6 +1272,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{387, 213}, {515, 555}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<reference ref="6"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1305,7 +1325,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">155</int>
+			<int key="maxID">158</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1385,6 +1405,8 @@
 							<string>myApplicationUpdatesWindowController</string>
 							<string>myInstallUpdatesView</string>
 							<string>myReleaseNotesWebView</string>
+							<string>myUpdateErrorButton</string>
+							<string>myUpdateErrorTextField</string>
 							<string>myUpdatesTableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1392,6 +1414,8 @@
 							<string>SparklerApplicationUpdatesWindowController</string>
 							<string>NSView</string>
 							<string>WebView</string>
+							<string>NSButton</string>
+							<string>NSTextField</string>
 							<string>NSTableView</string>
 						</object>
 					</object>

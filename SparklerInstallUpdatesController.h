@@ -40,6 +40,8 @@
     IBOutlet NSView *myInstallUpdatesView;
     IBOutlet NSTableView *myUpdatesTableView;
     IBOutlet WebView *myReleaseNotesWebView;
+    IBOutlet NSButton *myUpdateErrorButton;
+    IBOutlet NSTextField *myUpdateErrorTextField;
 }
 
 - (NSView *)installUpdatesView;
