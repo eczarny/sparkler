@@ -30,9 +30,6 @@
 
 #define SparklerApplicationName                               @"Sparkler"
 #define SparklerBundleIdentifier                              @"com.divisiblebyzero.Sparkler"
-#define SparklerApplicationsPath                              @"/Applications"
-#define SparklerTargetedApplicationFile                       @"Applications.plist"
-#define SparklerDownloadsDirectory                            @"Downloads"
 
 #define SparklerApplicationFileExtension                      @"app"
 #define SparklerPropertyListFileExtension                     @"plist"
@@ -52,6 +49,10 @@
 #define SparklerPreferencePaneOrderKey                        @"Preference Pane Order"
 
 #define SparklerDefaultPreferencesFile                        @"Defaults"
+
+#define SparklerTargetedApplicationFile                       @"Applications.plist"
+#define SparklerApplicationsPath                              @"/Applications"
+#define SparklerDownloadsDirectory                            @"Downloads"
 
 #define SparklerApplicationBlacklistFile                      @"Blacklist"
 #define SparklerBlacklistedApplicationsKey                    @"Blacklisted Applications"

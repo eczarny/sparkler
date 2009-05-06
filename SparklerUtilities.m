@@ -91,11 +91,15 @@
 #pragma mark -
 
 + (BOOL)saveTargetedApplications: (NSArray *)targetedApplications toFile: (NSString *)file {
-    return [NSKeyedArchiver archiveRootObject: targetedApplications toFile: [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file]];
+    NSString *targetedApplicationsPath = [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file];
+    
+    return [NSKeyedArchiver archiveRootObject: targetedApplications toFile: targetedApplicationsPath];
 }
 
 + (NSArray *)targetedApplicationsFromFile: (NSString *)file {
-    return [NSKeyedUnarchiver unarchiveObjectWithFile: [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file]];
+    NSString *targetedApplicationsPath = [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file];
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithFile: targetedApplicationsPath];
 }
 
 #pragma mark -
