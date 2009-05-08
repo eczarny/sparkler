@@ -40,10 +40,10 @@
     IBOutlet NSProgressIndicator *myScanningForApplicationsIndicator;
 }
 
-- (IBAction)refreshListOfApplications: (id)sender;
+- (void)refreshListOfApplications: (id)sender;
 
 #pragma mark -
 
-- (IBAction)viewHelpForPreferencePane: (id)sender;
+- (void)viewHelpForPreferencePane: (id)sender;
 
 @end

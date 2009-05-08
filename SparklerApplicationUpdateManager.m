@@ -86,6 +86,8 @@ static SparklerApplicationUpdateManager *sharedInstance = nil;
     [myUpdateEngine checkForUpdates];
 }
 
+#pragma mark -
+
 #pragma mark Update Engine Delegate Methods
 
 #pragma mark -

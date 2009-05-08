@@ -80,7 +80,7 @@
 
 #pragma mark -
 
-- (IBAction)refreshListOfApplications: (id)sender {
+- (void)refreshListOfApplications: (id)sender {
     SparklerTargetedApplicationManager *sharedTargetedApplicationManager = [SparklerTargetedApplicationManager sharedManager];
     
     [sharedTargetedApplicationManager rescanFilesystemForTargetedApplications];
@@ -88,7 +88,7 @@
 
 #pragma mark -
 
-- (IBAction)viewHelpForPreferencePane: (id)sender {
+- (void)viewHelpForPreferencePane: (id)sender {
     NSLog(@"viewHelpForPreferencePane:");
 }
 
@@ -101,6 +101,8 @@
     
     [super dealloc];
 }
+
+#pragma mark -
 
 #pragma mark Application Scanner Notifications
 

@@ -66,6 +66,8 @@
     [super dealloc];
 }
 
+#pragma mark -
+
 #pragma mark Table View Data Source Methods
 
 #pragma mark -

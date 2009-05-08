@@ -68,6 +68,8 @@
     [super dealloc];
 }
 
+#pragma mark -
+
 #pragma mark Table View Delegate Methods
 
 #pragma mark -

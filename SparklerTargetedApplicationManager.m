@@ -133,6 +133,8 @@ static SparklerTargetedApplicationManager *sharedInstance = nil;
     [super dealloc];
 }
 
+#pragma mark -
+
 #pragma mark Application Scanner Delegate Methods
 
 #pragma mark -

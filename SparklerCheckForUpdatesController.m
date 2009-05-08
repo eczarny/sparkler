@@ -65,7 +65,7 @@
 
 #pragma mark -
 
-- (IBAction)checkForUpdates: (id)sender {
+- (void)checkForUpdates: (id)sender {
     [myApplicationUpdateManager checkForUpdates];
 }
 
@@ -76,6 +76,8 @@
     
     [super dealloc];
 }
+
+#pragma mark -
 
 #pragma mark Update Engine Notifications
 

@@ -44,6 +44,6 @@
 
 #pragma mark -
 
-- (IBAction)checkForUpdates: (id)sender;
+- (void)checkForUpdates: (id)sender;
 
 @end

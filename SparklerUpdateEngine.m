@@ -146,6 +146,8 @@ static SparklerUpdateEngine *sharedInstance = nil;
     [super dealloc];
 }
 
+#pragma mark -
+
 #pragma mark Update Driver Delegate Methods
 
 #pragma mark -

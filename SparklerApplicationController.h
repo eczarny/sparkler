@@ -36,10 +36,10 @@
     SparklerPreferencesWindowController *myPreferencesWindowController;
 }
 
-- (IBAction)togglePreferencesWindow: (id)sender;
+- (void)togglePreferencesWindow: (id)sender;
 
 #pragma mark -
 
-- (IBAction)toggleSparklerWindow: (id)sender;
+- (void)toggleSparklerWindow: (id)sender;
 
 @end

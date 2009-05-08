@@ -54,13 +54,13 @@
 
 #pragma mark -
 
-- (IBAction)togglePreferencesWindow: (id)sender {
+- (void)togglePreferencesWindow: (id)sender {
     [myPreferencesWindowController togglePreferencesWindow: sender];
 }
 
 #pragma mark -
 
-- (IBAction)toggleSparklerWindow: (id)sender {
+- (void)toggleSparklerWindow: (id)sender {
     [[SparklerApplicationUpdatesWindowController sharedController] toggleSparklerWindow: sender];
 }
 

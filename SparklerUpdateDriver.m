@@ -155,6 +155,8 @@
     [super dealloc];
 }
 
+#pragma mark -
+
 #pragma mark Appcast Delegate Methods
 
 #pragma mark -

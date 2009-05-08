@@ -128,6 +128,8 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
     [super dealloc];
 }
 
+#pragma mark -
+
 #pragma mark Toolbar Delegate Methods
 
 #pragma mark -
