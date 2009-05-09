@@ -468,6 +468,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				071F101C0EF35EB800F9ED3E /* Preference Panes */,
 				077C09B90F3BBF7700766F11 /* Update Engine */,
+				07D07A0C0F465E7700E5E0D0 /* Unit Tests */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -479,7 +480,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				07D07A0C0F465E7700E5E0D0 /* Unit Tests */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				32CA4F630368D1EE00C91783 /* Sparkler.pch */,
 				078DD8830EF210F100C6997D /* SparklerConstants.h */,
