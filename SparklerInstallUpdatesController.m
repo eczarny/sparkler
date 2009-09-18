@@ -62,6 +62,12 @@
 
 #pragma mark -
 
+- (void)installUpdates: (id)sender {
+    [myApplicationUpdateManager installUpdates];
+}
+
+#pragma mark -
+
 - (void)dealloc {
     [myUpdatesDataSource release];
     

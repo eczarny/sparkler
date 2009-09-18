@@ -29,6 +29,7 @@
 // 
 
 #import "SparklerApplicationUpdateManager.h"
+#import "SparklerApplicationUpdate.h"
 #import "SparklerUpdateEngine.h"
 #import "SparklerConstants.h"
 
@@ -39,6 +40,8 @@ static SparklerApplicationUpdateManager *sharedInstance = nil;
 - (id)init {
     if (self = [super init]) {
         myUpdateEngine = [SparklerUpdateEngine sharedEngine];
+        
+        [myUpdateEngine setDelegate: self];
     }
     
     return self;
@@ -79,11 +82,13 @@ static SparklerApplicationUpdateManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)checkForUpdates {
-    if ([myUpdateEngine delegate] != self) {
-        [myUpdateEngine setDelegate: self];
-    }
-    
     [myUpdateEngine checkForUpdates];
+}
+
+#pragma mark -
+
+- (void)installUpdates {
+    [myUpdateEngine installUpdates];
 }
 
 #pragma mark -

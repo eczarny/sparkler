@@ -142,6 +142,12 @@
 
 #pragma mark -
 
+- (void)installApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate {
+    
+}
+
+#pragma mark -
+
 - (void)abortUpdate {
     NSLog(@"Aborting the %@ update.", [myTargetedApplication name]);
 }

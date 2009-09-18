@@ -61,4 +61,8 @@
 
 - (void)checkForUpdates;
 
+#pragma mark -
+
+- (void)installUpdates;
+
 @end

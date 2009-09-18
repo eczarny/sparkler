@@ -62,6 +62,10 @@
 
 #pragma mark -
 
+- (void)installApplicationUpdate: (SparklerApplicationUpdate *)applicationUpdate;
+
+#pragma mark -
+
 - (void)abortUpdate;
 
 @end

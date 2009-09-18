@@ -139,6 +139,21 @@ static SparklerUpdateEngine *sharedInstance = nil;
 
 #pragma mark -
 
+- (void)installUpdates {
+    NSEnumerator *applicationUpdatesEnumerator = [myApplicationUpdates objectEnumerator];
+    SparklerApplicationUpdate *applicationUpdate;
+    
+    while (applicationUpdate = [applicationUpdatesEnumerator nextObject]) {
+        if ([applicationUpdate isMarkedForInstallation]) {
+            SparklerUpdateDriver *updateDriver = [[SparklerUpdateDriver alloc] initWithDelegate: self];
+            
+            [updateDriver installApplicationUpdate: applicationUpdate];
+        }
+    }
+}
+
+#pragma mark -
+
 - (void)dealloc {
     [myTargetedApplications release];
     [myApplicationUpdates release];

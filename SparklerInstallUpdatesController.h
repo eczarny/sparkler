@@ -46,4 +46,8 @@
 
 - (NSView *)installUpdatesView;
 
+#pragma mark -
+
+- (void)installUpdates: (id)sender;
+
 @end
