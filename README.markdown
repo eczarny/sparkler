@@ -6,11 +6,24 @@ A simple, Sparkle-powered, software updater.
 
 Sparkler has been built, and designed, for Mac OS X 10.5 or later.
 
+In  order  to  build  Sparkler please download the [Sparkle] [1] source code and
+make the following header files public:
+
+    * SUAppcast
+    * SUAppcastItem
+    * SUHost
+
+Once Sparkle has been built with the necessary changes copy it to:
+
+    /Library/Frameworks/
+
+If  everything  worked Xcode should be able to find Sparkle and the build should
+succeed.
+
 # What if I find a bug, or what if I want to help?
 
 Please, contact me with any questions, comments, suggestions, or problems. I try
-to  make the time to answer every request. If you would like to submit a bug, or
-file an enhancement request, please [create a new ticket with Lighthouse] [1].
+to  make the time to answer every request.
 
 Those  wishing to contribute to the project should begin by obtaining the latest
 source  with  Git. The project is hosted on GitHub, making it easy for anyone to
@@ -31,4 +44,4 @@ relevant to this distribution.
 
 If no LICENSES exists please contact Eric Czarny <eczarny@gmail.com>.
 
-[1]: http://eczarny.lighthouseapp.com/projects/<project>/tickets/new
+[1]: http://sparkle.andymatuschak.org/
