@@ -9,9 +9,9 @@ Sparkler has been built, and designed, for Mac OS X 10.5 or later.
 In  order  to  build  Sparkler please download the [Sparkle] [1] source code and
 make the following header files public:
 
-    * SUAppcast
-    * SUAppcastItem
-    * SUHost
+  * SUAppcast
+  * SUAppcastItem
+  * SUHost
 
 Once Sparkle has been built with the necessary changes copy it to:
 
