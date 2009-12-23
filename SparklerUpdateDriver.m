@@ -273,9 +273,9 @@
 #pragma mark -
 
 - (void)abortUpdateWithError: (NSError *)error {
-    [myDelegate updateDriver: self didFailWithError: error];
-    
     [self abortUpdate];
+    
+    [myDelegate updateDriver: self didFailWithError: error];
 }
 
 #pragma mark URL Download Delegate Methods
