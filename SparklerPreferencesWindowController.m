@@ -218,16 +218,18 @@ static SparklerPreferencesWindowController *sharedInstance = nil;
 
 - (void)preparePreferencesWindow {
     NSWindow *preferencesWindow = [self window];
-    NSArray *preferencePanes = [myPreferencePaneManager preferencePanes];
-    id<SparklerPreferencePaneProtocol> preferencePane = [preferencePanes objectAtIndex: 0];
+    NSArray *preferencePaneOrder = [myPreferencePaneManager preferencePaneOrder];
+    NSString *preferencePaneName = [preferencePaneOrder objectAtIndex: 0];
     
-    if (!preferencePanes || !preferencePane) {
+    if (![myPreferencePaneManager preferencePanesAreReady]) {
         NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey: SparklerApplicationBundleName];
         
         NSRunAlertPanel(SparklerLocalizedString(@"Preferences"), [NSString stringWithFormat: SparklerLocalizedString(@"Preferences are not available for %@."), applicationName], SparklerLocalizedString(@"OK"), nil, nil);
     }
     
-    [self displayPreferencePaneWithName: [preferencePane name] initialPreferencePane: YES];
+    [myToolbar setSelectedItemIdentifier: preferencePaneName];
+    
+    [self displayPreferencePaneWithName: preferencePaneName initialPreferencePane: YES];
     
     [preferencesWindow center];
 }
