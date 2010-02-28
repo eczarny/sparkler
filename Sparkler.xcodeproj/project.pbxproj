@@ -25,7 +25,7 @@
 		071214C10F017B4E00FBBDCE /* SparklerTargetedApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ACE7D20EF5DD9700DF1D36 /* SparklerTargetedApplicationManager.m */; };
 		071214C20F017B4E00FBBDCE /* SparklerTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8850EF210F100C6997D /* SparklerTextFieldCell.m */; };
 		071214C70F017B4E00FBBDCE /* SparklerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DD8570EF20F7700C6997D /* SparklerUtilities.m */; };
-		0717DF030F3D406100B56132 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
+		0717DF030F3D406100B56132 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0717DEF50F3D404E00B56132 /* Sparkle.framework */; };
 		071F0AF40EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF00EF2B04E00F9ED3E /* Sparkler-InfoPlist.strings */; };
 		071F0AF50EF2B04E00F9ED3E /* Sparkler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F0AF20EF2B04E00F9ED3E /* Sparkler.xib */; };
 		071F0FD30EF359B400F9ED3E /* General Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 071F0FD20EF359B400F9ED3E /* General Preferences.tiff */; };
@@ -39,7 +39,7 @@
 		0799AEC20F66053100B71B22 /* SparklerUpdatePreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0799AEC00F66053100B71B22 /* SparklerUpdatePreferencePane.xib */; };
 		07A366650EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A366630EF423BC00E78A70 /* SparklerGeneralPreferencePane.xib */; };
 		07A680330F49E353003C04BD /* RegexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
-		07A680990F49E41A003C04BD /* RegexKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
+		07A680990F49E41A003C04BD /* RegexKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 07A680320F49E353003C04BD /* RegexKit.framework */; };
 		07B0CEBB0FAE28CD006E3716 /* Blacklist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07B0CEBA0FAE28CD006E3716 /* Blacklist.plist */; };
 		07B0CF9F0FAE7499006E3716 /* PreferencePanes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07B0CF9E0FAE7499006E3716 /* PreferencePanes.plist */; };
 		07B0CFA10FAE74B2006E3716 /* ReleaseNotesNotFound.html in Resources */ = {isa = PBXBuildFile; fileRef = 07B0CFA00FAE74B2006E3716 /* ReleaseNotesNotFound.html */; };
@@ -69,15 +69,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		07AD3FB10EFEADEA003B0B36 /* CopyFiles */ = {
+		07AD3FB10EFEADEA003B0B36 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				07A680990F49E41A003C04BD /* RegexKit.framework in CopyFiles */,
-				0717DF030F3D406100B56132 /* Sparkle.framework in CopyFiles */,
+				07A680990F49E41A003C04BD /* RegexKit.framework in Copy Frameworks */,
+				0717DF030F3D406100B56132 /* Sparkle.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -536,7 +537,7 @@
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Sparkler" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
-				07AD3FB10EFEADEA003B0B36 /* CopyFiles */,
+				07AD3FB10EFEADEA003B0B36 /* Copy Frameworks */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				0719F6AB0F410B9400748AAB /* Run Script: Include Git commit hash */,

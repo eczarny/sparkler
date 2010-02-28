@@ -34,7 +34,11 @@
 @implementation SparklerUpdatePreferencePane
 
 - (void)preferencePaneDidDisplay {
-    
+    if ([mySparkleUpdater automaticallyChecksForUpdates]) {
+        [myCheckForUpdatesButton setState: NSOnState];
+    } else {
+        [myCheckForUpdatesButton setState: NSOffState];
+    }
 }
 
 #pragma mark -
@@ -47,6 +51,12 @@
 
 - (NSImage *)icon {
     return [SparklerUtilities imageFromBundledResource: @"Update Preferences"];
+}
+
+#pragma mark -
+
+- (void)toggleCheckForUpdates: (id)sender {
+    [mySparkleUpdater setAutomaticallyChecksForUpdates: ![mySparkleUpdater automaticallyChecksForUpdates]];
 }
 
 @end

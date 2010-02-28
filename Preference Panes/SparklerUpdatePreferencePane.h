@@ -32,9 +32,10 @@
 #import "SparklerPreferencePane.h"
 
 @interface SparklerUpdatePreferencePane : SparklerPreferencePane {
-    
+    IBOutlet NSButton *myCheckForUpdatesButton;
+    IBOutlet SUUpdater *mySparkleUpdater;
 }
 
-
+- (void)toggleCheckForUpdates: (id)sender;
 
 @end
