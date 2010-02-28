@@ -17,8 +17,8 @@ Once Sparkle has been built with the necessary changes copy it to:
 
     /Library/Frameworks/
 
-If  everything  worked Xcode should be able to find Sparkle and the build should
-succeed.
+Finally,  please  be  sure to download and install [RegexKit] [2]. If everything
+worked the Xcode build should succeed.
 
 # What if I find a bug, or what if I want to help?
 
@@ -45,3 +45,4 @@ relevant to this distribution.
 If no LICENSES exists please contact Eric Czarny <eczarny@gmail.com>.
 
 [1]: http://sparkle.andymatuschak.org/
+[2]: http://regexkit.sourceforge.net/
