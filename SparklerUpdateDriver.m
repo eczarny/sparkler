@@ -295,7 +295,7 @@
     }
     
     if ([fileManager fileExistsAtPath: installablePath isDirectory: NULL]) {
-        [fileManager removeFileAtPath: installablePath handler: nil];
+        [fileManager removeItemAtPath: installablePath error: nil];
     }
     
     [download setDestination: installablePath allowOverwrite: YES];

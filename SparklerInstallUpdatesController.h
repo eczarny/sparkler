@@ -33,7 +33,7 @@
 
 @class SparklerApplicationUpdateManager, SparklerApplicationUpdatesDataSource, SparklerApplicationUpdatesWindowController;
 
-@interface SparklerInstallUpdatesController : NSObject {
+@interface SparklerInstallUpdatesController : NSObject<NSTableViewDelegate> {
     SparklerApplicationUpdateManager *myApplicationUpdateManager;
     SparklerApplicationUpdatesDataSource *myUpdatesDataSource;
     IBOutlet SparklerApplicationUpdatesWindowController *myApplicationUpdatesWindowController;

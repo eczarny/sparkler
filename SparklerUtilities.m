@@ -70,7 +70,7 @@
     if (![fileManager fileExistsAtPath: applicationSupportPath isDirectory: nil]) {
         NSLog(@"The application support directory does not exist, it will be created.");
         
-        if (![fileManager createDirectoryAtPath: applicationSupportPath attributes: nil]) {
+        if (![fileManager createDirectoryAtPath: applicationSupportPath withIntermediateDirectories: NO attributes: nil error: nil]) {
             NSLog(@"There was a problem creating the application support directory at path: %@", applicationSupportPath);
         }
     }

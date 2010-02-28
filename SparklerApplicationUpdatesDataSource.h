@@ -32,7 +32,7 @@
 
 @class SparklerApplicationUpdateManager;
 
-@interface SparklerApplicationUpdatesDataSource : NSObject {
+@interface SparklerApplicationUpdatesDataSource : NSObject<NSTableViewDataSource> {
     SparklerApplicationUpdateManager *myApplicationUpdateManager;
     NSTableView *myTableView;
 }

@@ -32,7 +32,7 @@
 
 @class SparklerTargetedApplicationManager;
 
-@interface SparklerApplicationsDataSource : NSObject {
+@interface SparklerApplicationsDataSource : NSObject<NSTableViewDataSource> {
     SparklerTargetedApplicationManager *myTargetedApplicationManager;
     NSTableView *myTableView;
 }

@@ -94,7 +94,7 @@
     BOOL isDirectory;
     
     if (![fileManager fileExistsAtPath: downloadPath isDirectory: &isDirectory] && isDirectory) {
-        if (![fileManager createDirectoryAtPath: downloadPath attributes: nil]) {
+        if (![fileManager createDirectoryAtPath: downloadPath withIntermediateDirectories: NO attributes: nil error: nil]) {
             NSLog(@"There was a problem creating the download directory at path: %@", downloadPath);
             
             return nil;

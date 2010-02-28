@@ -126,7 +126,7 @@ static SparklerTargetedApplicationScanner *sharedInstance = nil;
 #pragma mark -
 
 - (NSArray *)scanForTargetedApplicationsAtSearchPath: (NSString *)searchPath {
-    NSArray *applicationsDirectory = [[NSFileManager defaultManager] directoryContentsAtPath: searchPath];
+    NSArray *applicationsDirectory = [[NSFileManager defaultManager] contentsOfDirectoryAtPath: searchPath error: nil];
     NSEnumerator *applicationsDirectoryEnumerator = [applicationsDirectory objectEnumerator];
     NSMutableArray *targetedApplications = [NSMutableArray array];
     NSArray *applicationBlacklist = [SparklerUtilities applicationBlacklist];
