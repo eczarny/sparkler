@@ -26,8 +26,6 @@
 	<string>Sparkler</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2009 Divisible by Zero</string>
 	<key>SUFeedURL</key>
 	<string>http://appcasts.divisiblebyzero.com/sparkler/updates.xml</string>
 	<key>SUAllowsAutomaticUpdates</key>
