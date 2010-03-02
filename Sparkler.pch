@@ -33,4 +33,5 @@
     #import <RegexKit/RegexKit.h>
     #import <Sparkle/Sparkle.h>
     #import <WebKit/WebKit.h>
+    #import <ZeroKit/ZeroKit.h>
 #endif

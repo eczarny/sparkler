@@ -29,11 +29,10 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerPreferencePane.h"
 
 @class SparklerApplicationsDataSource;
 
-@interface SparklerApplicationsPreferencePane : SparklerPreferencePane {
+@interface SparklerApplicationsPreferencePane : ZeroKitPreferencePane {
     SparklerApplicationsDataSource *myApplicationsDataSource;
     IBOutlet NSTableView *myApplicationsTableView;
     IBOutlet NSButton *myRefreshApplicationsButton;

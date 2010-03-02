@@ -130,7 +130,7 @@
     }
     
     SUAppcast *appcast = [[SUAppcast alloc] init];
-    NSString *userAgent = [NSString stringWithFormat: @"%@/%@ Sparkler/%@", applicationName, applicationVersion, [SparklerUtilities sparklerVersion]];
+    NSString *userAgent = [NSString stringWithFormat: @"%@/%@ Sparkler/%@", applicationName, applicationVersion, [SparklerUtilities applicationVersion]];
     
     [appcast setDelegate: self];
     [appcast setUserAgentString: userAgent];

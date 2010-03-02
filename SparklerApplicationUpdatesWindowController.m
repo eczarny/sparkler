@@ -99,14 +99,14 @@ static SparklerApplicationUpdatesWindowController *sharedInstance = nil;
 
 - (void)displayCheckForUpdatesView {
     NSView *checkForUpdatesView = [myCheckForUpdatesController checkForUpdatesView];
-    NSString *title = SparklerLocalizedString(@"Check for Updates");
+    NSString *title = ZeroKitLocalizedString(@"Check for Updates");
     
     [self displayView: checkForUpdatesView inWindowWithTitle: title];
 }
 
 - (void)displayInstallUpdatesView {
     NSView *installUpdatesView = [myInstallUpdatesController installUpdatesView];
-    NSString *title = SparklerLocalizedString(@"Install Updates");
+    NSString *title = ZeroKitLocalizedString(@"Install Updates");
     
     [self displayView: installUpdatesView inWindowWithTitle: title];
 }

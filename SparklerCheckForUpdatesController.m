@@ -103,10 +103,10 @@
     NSWindow *sparklerWindow = [myApplicationUpdatesWindowController window];
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     
-    [alert addButtonWithTitle: SparklerLocalizedString(@"OK")];
+    [alert addButtonWithTitle: ZeroKitLocalizedString(@"OK")];
     
-    [alert setMessageText: SparklerLocalizedString(@"There are no updates available.")];
-    [alert setInformativeText: SparklerLocalizedString(@"Sparkler was unable to find any updates. Please try checking again later.")];
+    [alert setMessageText: ZeroKitLocalizedString(@"There are no updates available.")];
+    [alert setInformativeText: ZeroKitLocalizedString(@"Sparkler was unable to find any updates. Please try checking again later.")];
     
     [alert setAlertStyle: NSInformationalAlertStyle];
     

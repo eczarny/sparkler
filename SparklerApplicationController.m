@@ -29,16 +29,14 @@
 // 
 
 #import "SparklerApplicationController.h"
-#import "SparklerPreferencesWindowController.h"
 #import "SparklerApplicationUpdatesWindowController.h"
-#import "SparklerPreferencePaneManager.h"
 #import "SparklerUtilities.h"
 
 @implementation SparklerApplicationController
 
 - (id)init {
     if (self = [super init]) {
-        myPreferencesWindowController = [SparklerPreferencesWindowController sharedController];
+        myPreferencesWindowController = [ZeroKitPreferencesWindowController sharedController];
     }
     
     return self;

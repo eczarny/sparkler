@@ -30,27 +30,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define SparklerLocalizedString(string) NSLocalizedString(string, string)
-
-#pragma mark -
-
-@interface SparklerUtilities : NSObject {
+@interface SparklerUtilities : ZeroKitUtilities {
     
 }
-
-+ (NSBundle *)sparklerBundle;
-
-+ (NSString *)sparklerVersion;
-
-#pragma mark -
-
-+ (void)registerDefaults;
-
-#pragma mark -
-
-+ (NSString *)applicationSupportPath;
-
-#pragma mark -
 
 + (NSArray *)applicationBlacklist;
 
@@ -61,8 +43,6 @@
 + (NSArray *)targetedApplicationsFromFile: (NSString *)file;
 
 #pragma mark -
-
-+ (NSImage *)imageFromBundledResource: (NSString *)resource;
 
 + (NSString *)stringFromBundledHTMLResource: (NSString *)resource;
 

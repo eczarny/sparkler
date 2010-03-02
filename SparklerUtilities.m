@@ -33,56 +33,9 @@
 
 @implementation SparklerUtilities
 
-+ (NSBundle *)sparklerBundle {
-    return [NSBundle mainBundle];
-}
-
-+ (NSString *)sparklerVersion {
-    NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
-    NSString *sparklerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationBundleShortVersionString];
-    
-    if (!sparklerVersion) {
-        sparklerVersion = [sparklerBundle objectForInfoDictionaryKey: SparklerApplicationBundleVersion];
-    }
-    
-    return sparklerVersion;
-}
-
-#pragma mark -
-
-+ (void)registerDefaults {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *path = [[SparklerUtilities sparklerBundle] pathForResource: SparklerDefaultPreferencesFile ofType: SparklerPropertyListFileExtension];
-    NSDictionary *sparklerDefaults = [[[NSDictionary alloc] initWithContentsOfFile: path] autorelease];
-    
-    [defaults registerDefaults: sparklerDefaults];
-}
-
-#pragma mark -
-
-+ (NSString *)applicationSupportPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString *applicationSupportPath = ([paths count] > 0) ? [paths objectAtIndex: 0] : NSTemporaryDirectory();
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    applicationSupportPath = [applicationSupportPath stringByAppendingPathComponent: SparklerApplicationName];
-    
-    if (![fileManager fileExistsAtPath: applicationSupportPath isDirectory: nil]) {
-        NSLog(@"The application support directory does not exist, it will be created.");
-        
-        if (![fileManager createDirectoryAtPath: applicationSupportPath withIntermediateDirectories: NO attributes: nil error: nil]) {
-            NSLog(@"There was a problem creating the application support directory at path: %@", applicationSupportPath);
-        }
-    }
-    
-    return applicationSupportPath;
-}
-
-#pragma mark -
-
 + (NSArray *)applicationBlacklist {
-    NSBundle *sparklerBundle = [SparklerUtilities sparklerBundle];
-    NSString *path = [sparklerBundle pathForResource: SparklerApplicationBlacklistFile ofType: SparklerPropertyListFileExtension];
+    NSBundle *applicationBundle = [SparklerUtilities applicationBundle];
+    NSString *path = [applicationBundle pathForResource: SparklerApplicationBlacklistFile ofType: SparklerPropertyListFileExtension];
     NSDictionary *applicationBlacklistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
     
     return [applicationBlacklistDictionary objectForKey: SparklerBlacklistedApplicationsKey];
@@ -104,14 +57,8 @@
 
 #pragma mark -
 
-+ (NSImage *)imageFromBundledResource: (NSString *)resource {
-    NSString *resourcePath = [[SparklerUtilities sparklerBundle] pathForImageResource: resource];
-    
-    return [[[NSImage alloc] initWithContentsOfFile: resourcePath] autorelease];
-}
-
 + (NSString *)stringFromBundledHTMLResource: (NSString *)resource {
-    NSString *resourcePath = [[SparklerUtilities sparklerBundle] pathForResource: resource ofType: SparklerHTMLFileExtension];
+    NSString *resourcePath = [[SparklerUtilities applicationBundle] pathForResource: resource ofType: SparklerHTMLFileExtension];
     
     return [[[NSString alloc] initWithContentsOfFile: resourcePath encoding: NSUTF8StringEncoding error: nil] autorelease];
 }

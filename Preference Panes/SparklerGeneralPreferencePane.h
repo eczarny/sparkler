@@ -29,9 +29,8 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerPreferencePane.h"
 
-@interface SparklerGeneralPreferencePane : SparklerPreferencePane {
+@interface SparklerGeneralPreferencePane : ZeroKitPreferencePane {
     
 }
 

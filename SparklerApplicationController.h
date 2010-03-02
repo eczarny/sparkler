@@ -30,10 +30,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SparklerPreferencesWindowController;
+@class ZeroKitPreferencesWindowController;
 
 @interface SparklerApplicationController : NSObject {
-    SparklerPreferencesWindowController *myPreferencesWindowController;
+    ZeroKitPreferencesWindowController *myPreferencesWindowController;
 }
 
 - (void)togglePreferencesWindow: (id)sender;

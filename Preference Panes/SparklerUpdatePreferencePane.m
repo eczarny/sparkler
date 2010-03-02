@@ -50,7 +50,7 @@
 #pragma mark -
 
 - (NSImage *)icon {
-    return [SparklerUtilities imageFromBundledResource: @"Update Preferences"];
+    return [SparklerUtilities imageFromBundledImageResource: @"Update Preferences"];
 }
 
 #pragma mark -

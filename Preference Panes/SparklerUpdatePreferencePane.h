@@ -29,9 +29,8 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SparklerPreferencePane.h"
 
-@interface SparklerUpdatePreferencePane : SparklerPreferencePane {
+@interface SparklerUpdatePreferencePane : ZeroKitPreferencePane {
     IBOutlet NSButton *myCheckForUpdatesButton;
     IBOutlet SUUpdater *mySparkleUpdater;
 }
