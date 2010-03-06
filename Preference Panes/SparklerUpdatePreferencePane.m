@@ -33,7 +33,7 @@
 
 @implementation SparklerUpdatePreferencePane
 
-- (void)preferencePaneDidDisplay {
+- (void)preferencePaneDidLoad {
     if ([mySparkleUpdater automaticallyChecksForUpdates]) {
         [myCheckForUpdatesButton setState: NSOnState];
     } else {
@@ -44,13 +44,23 @@
 #pragma mark -
 
 - (NSString *)name {
-    return @"Update";
+    return ZeroKitLocalizedString(@"Update");
 }
 
 #pragma mark -
 
 - (NSImage *)icon {
     return [SparklerUtilities imageFromBundledImageResource: @"Update Preferences"];
+}
+
+- (NSString *)toolTip {
+    return nil;
+}
+
+#pragma mark -
+
+- (NSView *)view {
+    return myView;
 }
 
 #pragma mark -

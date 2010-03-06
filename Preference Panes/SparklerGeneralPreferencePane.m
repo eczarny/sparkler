@@ -33,20 +33,32 @@
 
 @implementation SparklerGeneralPreferencePane
 
-- (void)preferencePaneDidDisplay {
+- (void)preferencePaneDidLoad {
     
 }
 
 #pragma mark -
 
 - (NSString *)name {
-    return @"General";
+    return ZeroKitLocalizedString(@"General");
 }
 
 #pragma mark -
 
 - (NSImage *)icon {
     return [SparklerUtilities imageFromBundledImageResource: @"General Preferences"];
+}
+
+#pragma mark -
+
+- (NSString *)toolTip {
+    return nil;
+}
+
+#pragma mark -
+
+- (NSView *)view {
+    return myView;
 }
 
 @end

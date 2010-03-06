@@ -60,22 +60,32 @@
                              object: nil];
     
     [[SparklerTargetedApplicationManager sharedManager] synchronizeTargetedApplicationsWithFilesystem];
-}
-
-- (void)preferencePaneDidDisplay {
+    
     [myApplicationsTableView setDataSource: myApplicationsDataSource];
 }
 
 #pragma mark -
 
 - (NSString *)name {
-    return @"Applications";
+    return ZeroKitLocalizedString(@"Applications");
 }
 
 #pragma mark -
 
 - (NSImage *)icon {
     return [SparklerUtilities imageFromBundledImageResource: @"Application Preferences"];
+}
+
+#pragma mark -
+
+- (NSString *)toolTip {
+    return nil;
+}
+
+#pragma mark -
+
+- (NSView *)view {
+    return myView;
 }
 
 #pragma mark -

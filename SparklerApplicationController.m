@@ -45,8 +45,6 @@
 #pragma mark -
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    [myPreferencesWindowController loadPreferencePanes];
-    
     [self toggleSparklerWindow: self];
 }
 
