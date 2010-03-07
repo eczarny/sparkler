@@ -29,12 +29,6 @@ Those  wishing to contribute to the project should begin by obtaining the latest
 source  with  Git. The project is hosted on GitHub, making it easy for anyone to
 make contributions. Simply create a fork and make your changes.
 
-# Acknowledgments
-
-The preferences window controller is based on software provided by Matt Gemmel.
-
-Please refer to the LICENSES file for third-party license information.
-
 # License
 
 Copyright (c) 2010 Eric Czarny.
