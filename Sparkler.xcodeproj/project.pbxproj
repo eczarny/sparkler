@@ -89,7 +89,7 @@
 		070CD5D60F4113AC003EA9D0 /* SparklerUpdateDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateDriver.m; sourceTree = "<group>"; };
 		070CD5D70F4113AC003EA9D0 /* SparklerUpdateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparklerUpdateEngine.h; sourceTree = "<group>"; };
 		070CD5D80F4113AC003EA9D0 /* SparklerUpdateEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparklerUpdateEngine.m; sourceTree = "<group>"; };
-		070D7AEE113B1129007645BB /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZeroKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		070D7AEE113B1129007645BB /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = /Library/Frameworks/ZeroKit.framework; sourceTree = "<absolute>"; };
 		0711AC4B0F65D403003AF147 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
 		0717DEF50F3D404E00B56132 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = /Library/Frameworks/Sparkle.framework; sourceTree = "<absolute>"; };
 		071C23CE113CA822006A905B /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Languages/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
