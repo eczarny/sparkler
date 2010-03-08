@@ -17,8 +17,11 @@ Once Sparkle has been built with the necessary changes copy it to:
 
     /Library/Frameworks/
 
-Finally,  please  be  sure to download and install [RegexKit] [2]. If everything
-worked the Xcode build should succeed.
+In  addition to Sparkle, [RegexKit] [2] and [ZeroKit] [3] are also required when
+building  Emergence.  Place  RegexKit in the default location and be sure to put
+ZeroKit in the same directory as Sparkle.
+
+If everything is in its proper place the Xcode build should succeed.
 
 # What if I find a bug, or what if I want to help?
 
@@ -33,10 +36,11 @@ make contributions. Simply create a fork and make your changes.
 
 Copyright (c) 2010 Eric Czarny.
 
-Sparkler  should  be  accompanied  by  a  LICENSES  file containing the licenses
-relevant to this distribution.
+Sparkler should be accompanied by a LICENSE file containing the license relevant
+to this distribution.
 
-If no LICENSES exists please contact Eric Czarny <eczarny@gmail.com>.
+If no LICENSE exists please contact Eric Czarny <eczarny@gmail.com>.
 
-[1]: http://sparkle.andymatuschak.org/
-[2]: http://regexkit.sourceforge.net/
+[1]: http://sparkle.andymatuschak.org
+[2]: http://regexkit.sourceforge.net
+[3]: http://github.com/eczarny/zerokit
