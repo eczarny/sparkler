@@ -38,15 +38,9 @@
 #pragma mark -
 
 #define SparklerNibName                                       @"Sparkler"
-#define SparklerPreferencesWindowNibName                      @"SparklerPreferencesWindow"
-#define SparklerPreferencePaneNibNameEnding                   @"PreferencePane"
 #define SparklerApplicationUpdatesWindowNibName               @"SparklerApplicationUpdatesWindow"
 
 #pragma mark -
-
-#define SparklerPreferencePanesFile                           @"PreferencePanes"
-#define SparklerPreferencePanesKey                            @"Preference Panes"
-#define SparklerPreferencePaneOrderKey                        @"Preference Pane Order"
 
 #define SparklerDefaultPreferencesFile                        @"Defaults"
 
