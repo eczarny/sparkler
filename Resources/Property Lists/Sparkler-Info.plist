@@ -32,5 +32,7 @@
 	<true/>
 	<key>SUScheduledCheckInterval</key>
 	<integer>86400</integer>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_public.pem</string>
 </dict>
 </plist>
