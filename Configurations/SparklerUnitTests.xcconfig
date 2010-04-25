@@ -7,11 +7,9 @@
 // 
 
 PRODUCT_NAME = SparklerUnitTests
+WRAPPER_EXTENSION=octest
 INFOPLIST_FILE = Resources/Property Lists/SparklerUnitTests-Info.plist
 
-WRAPPER_EXTENSION=octest
-
-GCC_PRECOMPILE_PREFIX_HEADER = YES
 GCC_PREFIX_HEADER = Sparkler.pch
 
 BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR)/Sparkler.app/Contents/MacOS/Sparkler

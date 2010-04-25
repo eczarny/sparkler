@@ -754,11 +754,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 076000720F425CED00B1FA19 /* SparklerDevelopment.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_DIR)/Local/Frameworks\"";
 				VERSION_INFO_FILE = "";
 			};
 			name = Development;
@@ -767,11 +763,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 076000760F425CED00B1FA19 /* SparklerRelease.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_DIR)/Local/Frameworks\"";
 				VERSION_INFO_FILE = "";
 			};
 			name = Release;

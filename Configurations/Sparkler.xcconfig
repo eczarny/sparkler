@@ -9,7 +9,6 @@
 PRODUCT_NAME = Sparkler
 INFOPLIST_FILE = Resources/Property Lists/Sparkler-Info.plist
 
-GCC_PRECOMPILE_PREFIX_HEADER = YES
 GCC_PREFIX_HEADER = Sparkler.pch
 
 INSTALL_PATH = /Applications
