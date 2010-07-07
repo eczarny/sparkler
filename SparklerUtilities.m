@@ -44,13 +44,13 @@
 #pragma mark -
 
 + (BOOL)saveTargetedApplications: (NSArray *)targetedApplications toFile: (NSString *)file {
-    NSString *targetedApplicationsPath = [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file];
+    NSString *targetedApplicationsPath = [[SparklerUtilities applicationSupportPathForBundle: [SparklerUtilities applicationBundle]] stringByAppendingPathComponent: file];
     
     return [NSKeyedArchiver archiveRootObject: targetedApplications toFile: targetedApplicationsPath];
 }
 
 + (NSArray *)targetedApplicationsFromFile: (NSString *)file {
-    NSString *targetedApplicationsPath = [[SparklerUtilities applicationSupportPath] stringByAppendingPathComponent: file];
+    NSString *targetedApplicationsPath = [[SparklerUtilities applicationSupportPathForBundle: [SparklerUtilities applicationBundle]] stringByAppendingPathComponent: file];
     
     return [NSKeyedUnarchiver unarchiveObjectWithFile: targetedApplicationsPath];
 }

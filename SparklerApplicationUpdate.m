@@ -87,7 +87,7 @@
 
 - (NSString *)installablePath {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPath];
+    NSString *applicationSupportPath = [SparklerUtilities applicationSupportPathForBundle: [SparklerUtilities applicationBundle]];
     NSString *downloadPath = [applicationSupportPath stringByAppendingPathComponent: SparklerDownloadsDirectory];
     NSString *fileExtension;
     NSString *filename;

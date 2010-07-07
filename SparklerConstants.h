@@ -31,7 +31,7 @@
 #define SparklerApplicationName                               @"Sparkler"
 #define SparklerBundleIdentifier                              @"com.divisiblebyzero.Sparkler"
 
-#define SparklerApplicationFileExtension                      @"app"
+#define SparklerApplicationBundleExtension                    @"app"
 #define SparklerPropertyListFileExtension                     @"plist"
 #define SparklerHTMLFileExtension                             @"html"
 

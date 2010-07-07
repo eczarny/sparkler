@@ -135,7 +135,7 @@ static SparklerTargetedApplicationScanner *sharedInstance = nil;
     while (path = [applicationsDirectoryEnumerator nextObject]) {
         path = [searchPath stringByAppendingPathComponent: path];
         
-        if ([[path pathExtension] isEqualToString: SparklerApplicationFileExtension]) {
+        if ([[path pathExtension] isEqualToString: SparklerApplicationBundleExtension]) {
             NSString *applicationName = [[path stringByDeletingPathExtension] lastPathComponent];
             NSString *applicationPath = [NSString stringWithString: path];
             NSBundle *applicationBundle = [NSBundle bundleWithPath: applicationPath];
