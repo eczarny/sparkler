@@ -27,7 +27,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>http://appcasts.divisiblebyzero.com/sparkler/updates.xml</string>
+	<string>http://appcasts.divisiblebyzero.com/sparkler/appcast.xml</string>
 	<key>SUAllowsAutomaticUpdates</key>
 	<true/>
 	<key>SUScheduledCheckInterval</key>
