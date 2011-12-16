@@ -217,13 +217,6 @@
 			name = "Toolbar Icons";
 			sourceTree = "<group>";
 		};
-		071F101B0EF35EA400F9ED3E /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		071F101C0EF35EB800F9ED3E /* Preference Panes */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,7 +233,6 @@
 		071F101E0EF35F0300F9ED3E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				071F101B0EF35EA400F9ED3E /* Protocols */,
 				0756E4C90FA6919600066EF4 /* SparklerApplicationUpdate.h */,
 				0756E4CA0FA6919600066EF4 /* SparklerApplicationUpdate.m */,
 				07ACE7C20EF5DC8200DF1D36 /* SparklerTargetedApplication.h */,
@@ -556,7 +548,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Sparkler" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Sparkler */;
 			projectDirPath = "";
 			projectRoot = "";
