@@ -16,7 +16,7 @@ Once Sparkle has been built with the necessary changes copy it to:
 
     /Library/Frameworks/
 
-In addition to Sparkle, [RegexKit] [2] and [ZeroKit] [3] are also required when building Emergence. Place RegexKit in the default location and be sure to put ZeroKit in the same directory as Sparkle.
+In addition to Sparkle, [RegexKit] [2] and [ZeroKit] [3] are also required when building Sparkler. Place RegexKit in the default location and be sure to put ZeroKit in the same directory as Sparkle.
 
 If everything is in its proper place the Xcode build should succeed.
 
